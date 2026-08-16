@@ -1,0 +1,288 @@
+[
+  {
+    "name": "company_phone_numbers",
+    "context_pattern": "Glenmark\\ Pharmaceuticals\\ Limited",
+    "field_names": [
+      "country_code",
+      "area_code",
+      "phone_number_part_1",
+      "phone_number_part_2"
+    ],
+    "source_context": "Glenmark Pharmaceuticals Limited",
+    "sample_label": "T:",
+    "sample_values": [
+      "91",
+      "22",
+      "4018",
+      "9999"
+    ],
+    "sample_page": 1
+  },
+  {
+    "name": "corporate_address_pin_code",
+    "context_pattern": "3\\ Year\\ of\\ incorporation\\ 1977",
+    "field_names": [
+      "pin_code_separator",
+      "pin_code_first_block",
+      "pin_code_second_block"
+    ],
+    "source_context": "3 Year of incorporation 1977",
+    "sample_label": "Corporate address Glenmark House, B. D. Sawant Marg, Chakala, Off Western Express Highway, Andheri (E), Mumbai",
+    "sample_values": [
+      "-",
+      "400",
+      "099,"
+    ],
+    "sample_page": 2
+  },
+  {
+    "name": "compliance_officer_contact_details",
+    "context_pattern": "6\\ E\\-mail\\ complianceofficer@glenmarkpharma\\.com",
+    "field_names": [
+      "area_code",
+      "local_number_part_1",
+      "local_number_part_2"
+    ],
+    "source_context": "6 E-mail complianceofficer@glenmarkpharma.com",
+    "sample_label": "Telephone +91",
+    "sample_values": [
+      "22",
+      "4018",
+      "9999"
+    ],
+    "sample_page": 2
+  },
+  {
+    "name": "entity_locations_summary",
+    "context_pattern": "18\\.\\ Number\\ of\\ locations\\ where\\ plants\\ and/or\\ operations/offices\\ of\\ the\\ entity\\ are",
+    "field_names": [
+      "number_of_plants_national",
+      "number_of_offices_national",
+      "total_national_locations"
+    ],
+    "source_context": "18. Number of locations where plants and/or operations/offices of the entity are situated:",
+    "sample_label": "Location* Number of plants Number of offices Total National",
+    "sample_values": [
+      "8",
+      "19",
+      "27"
+    ],
+    "sample_page": 3
+  },
+  {
+    "name": "board_gender_representation",
+    "context_pattern": "21\\.\\ Representation\\ of\\ women:",
+    "field_names": [
+      "total_members",
+      "women_members",
+      "women_members_percentage"
+    ],
+    "source_context": "21. Representation of women:",
+    "sample_label": "Board of Directors",
+    "sample_values": [
+      "9",
+      "5",
+      "56%"
+    ],
+    "sample_page": 4
+  },
+  {
+    "name": "permanent_employee_turnover_rates",
+    "context_pattern": "22\\.\\ Turnover\\ rate\\ for\\ permanent\\ employees\\ and\\ workers\\ \\(Disclose\\ trends\\ for\\ the\\ p",
+    "field_names": [
+      "reporting_year_male_turnover_rate",
+      "reporting_year_female_turnover_rate",
+      "reporting_year_total_turnover_rate",
+      "previous_year_male_turnover_rate",
+      "previous_year_female_turnover_rate",
+      "previous_year_total_turnover_rate",
+      "two_years_ago_male_turnover_rate",
+      "two_years_ago_female_turnover_rate",
+      "two_years_ago_total_turnover_rate"
+    ],
+    "source_context": "22. Turnover rate for permanent employees and workers (Disclose trends for the past 3 years):",
+    "sample_label": "Male Female Total Male Female Total Male Female Total Permanent Employees",
+    "sample_values": [
+      "16%",
+      "16%",
+      "16%",
+      "15%",
+      "17%",
+      "15%",
+      "18%",
+      "19%",
+      "18%"
+    ],
+    "sample_page": 4
+  },
+  {
+    "name": "retirement_benefit_details",
+    "context_pattern": "2\\.\\ Details\\ of\\ retirement\\ benefits,\\ for\\ Current\\ FY\\ and\\ Previous\\ Financial\\ Year:",
+    "field_names": [
+      "gratuity_current_fy_permanent_coverage",
+      "gratuity_current_fy_contractual_coverage",
+      "gratuity_current_fy_other_coverage",
+      "gratuity_previous_fy_permanent_coverage",
+      "gratuity_previous_fy_contractual_coverage",
+      "gratuity_previous_fy_other_coverage"
+    ],
+    "source_context": "2. Details of retirement benefits, for Current FY and Previous Financial Year:",
+    "sample_label": "Yes Gratuity",
+    "sample_values": [
+      "100%",
+      "100%",
+      "N/A",
+      "100%",
+      "100%",
+      "N/A"
+    ],
+    "sample_page": 21
+  },
+  {
+    "name": "parental_leave_return_retention_rates",
+    "context_pattern": "5\\.\\ Return\\ to\\ work\\ and\\ Retention\\ rates\\ of\\ permanent\\ employees\\ and\\ workers\\ that\\ to",
+    "field_names": [
+      "male_permanent_employee_return_to_work_rate",
+      "male_permanent_employee_retention_rate",
+      "male_worker_return_to_work_rate",
+      "male_worker_retention_rate"
+    ],
+    "source_context": "5. Return to work and Retention rates of permanent employees and workers that took parental leave:",
+    "sample_label": "Male",
+    "sample_values": [
+      "100%",
+      "88%",
+      "100%",
+      "84%"
+    ],
+    "sample_page": 21
+  },
+  {
+    "name": "performance_career_reviews",
+    "context_pattern": "9\\ Details\\ of\\ performance\\ and\\ career\\ development\\ reviews\\ of\\ employees\\ and\\ workers",
+    "field_names": [
+      "performance_review_eligible",
+      "performance_review_conducted",
+      "performance_review_coverage_percentage",
+      "career_development_review_eligible",
+      "career_development_review_conducted",
+      "career_development_review_coverage_percentage"
+    ],
+    "source_context": "9 Details of performance and career development reviews of employees and workers:",
+    "sample_label": "Employees Male",
+    "sample_values": [
+      "9,529",
+      "9,529",
+      "100%",
+      "9,419",
+      "9,419",
+      "100%"
+    ],
+    "sample_page": 23
+  },
+  {
+    "name": "rehabilitation_and_placement",
+    "context_pattern": "3\\ Provide\\ the\\ number\\ of\\ employees\\ /\\ workers\\ having\\ suffered\\ high\\ consequence\\ wor",
+    "field_names": [
+      "rehabilitated_employees_current_year",
+      "rehabilitated_employees_previous_year",
+      "placed_family_members_current_year",
+      "placed_family_members_previous_year"
+    ],
+    "source_context": "3 Provide the number of employees / workers having suffered high consequence work- related injury / ill-health / fatalities (as reported in Q11 of Essential Indicators above), who have been rehabilitated and placed in suitable employment or whose family members have been placed in suitable employment:",
+    "sample_label": "Employees",
+    "sample_values": [
+      "NIL",
+      "NIL",
+      "NIL",
+      "NIL"
+    ],
+    "sample_page": 26
+  },
+  {
+    "name": "employee_human_rights_training",
+    "context_pattern": "1\\.\\ Employees\\ and\\ workers\\ who\\ have\\ been\\ provided\\ training\\ on\\ human\\ rights\\ issues\\ ",
+    "field_names": [
+      "total_employees_current_year",
+      "employees_trained_current_year",
+      "percentage_trained_current_year",
+      "total_employees_previous_year",
+      "employees_trained_previous_year",
+      "percentage_trained_previous_year"
+    ],
+    "source_context": "1. Employees and workers who have been provided training on human rights issues and policy(ies) of the entity:",
+    "sample_label": "Employees Permanent",
+    "sample_values": [
+      "12,312",
+      "4,576",
+      "37%",
+      "11,641",
+      "5,594",
+      "48%"
+    ],
+    "sample_page": 28
+  },
+  {
+    "name": "employee_worker_sexual_harassment_complaints",
+    "context_pattern": "6\\.\\ Number\\ of\\ Complaints\\ on\\ the\\ following\\ made\\ by\\ employees\\ and\\ workers:",
+    "field_names": [
+      "complaints_pending_start_of_year",
+      "complaints_received_during_year",
+      "complaints_disposed_of_during_year",
+      "complaints_pending_end_of_year",
+      "complaints_where_disciplinary_action_taken",
+      "complaints_referred_to_external_authorities"
+    ],
+    "source_context": "6. Number of Complaints on the following made by employees and workers:",
+    "sample_label": "Sexual Harassment",
+    "sample_values": [
+      "8",
+      "2",
+      "N/A",
+      "4",
+      "0",
+      "N/A"
+    ],
+    "sample_page": 30
+  },
+  {
+    "name": "non_ghg_air_emissions",
+    "context_pattern": "6\\.\\ Please\\ provide\\ details\\ of\\ air\\ emissions\\ \\(other\\ than\\ GHG\\ emissions\\)\\ by\\ the\\ ent",
+    "field_names": [
+      "total_emissions",
+      "direct_emissions",
+      "indirect_emissions"
+    ],
+    "source_context": "6. Please provide details of air emissions (other than GHG emissions) by the entity:",
+    "sample_label": "Persistent organic pollutants (POP)",
+    "sample_values": [
+      "-",
+      "N/A",
+      "N/A"
+    ],
+    "sample_page": 34
+  },
+  {
+    "name": "consumer_complaints",
+    "context_pattern": "3\\.\\ Number\\ of\\ consumer\\ complaints\\ in\\ respect\\ of\\ the\\ following:",
+    "field_names": [
+      "total_pending_at_year_end",
+      "pending_escalated",
+      "pending_legal_action",
+      "pending_critical_severity",
+      "pending_major_severity",
+      "pending_minor_severity"
+    ],
+    "source_context": "3. Number of consumer complaints in respect of the following:",
+    "sample_label": "Pending resolution at end of year Data Privacy",
+    "sample_values": [
+      "NIL",
+      "NIL",
+      "N/A",
+      "NIL",
+      "NIL",
+      "N/A"
+    ],
+    "sample_page": 42
+  }
+]

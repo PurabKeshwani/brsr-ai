@@ -1,0 +1,656 @@
+{
+  "schema_version": "SEBI_BRSR_Annexure_II_2023",
+  "families": [
+    {
+      "family_id": "differently_abled_headcount",
+      "section": "A",
+      "principle": null,
+      "disclosure_question_id": "20b",
+      "context_patterns": [
+        "differently abled (employees|workers)"
+      ],
+      "field_names": [
+        "total",
+        "male_count",
+        "male_pct",
+        "female_count",
+        "female_pct"
+      ],
+      "units": {
+        "total": "count",
+        "male_count": "count",
+        "male_pct": "percent",
+        "female_count": "count",
+        "female_pct": "percent"
+      },
+      "validation_rules": [
+        {
+          "type": "sum_equals",
+          "operands": [
+            "male_count",
+            "female_count"
+          ],
+          "target": "total",
+          "tolerance": 0.5
+        }
+      ],
+      "notes": "Context wording differs by company — verified: Glenmark uses 'b. Differently abled Employees and workers', Aequs uses short all-caps label 'DIFFERENTLY ABLED EMPLOYEES'/'DIFFERENTLY ABLED WORKERS'.",
+      "canonical_phrases": [
+        "b. Differently abled Employees and workers",
+        "DIFFERENTLY ABLED EMPLOYEES"
+      ]
+    },
+    {
+      "family_id": "employee_worker_headcount",
+      "section": "A",
+      "principle": null,
+      "disclosure_question_id": "20a",
+      "context_patterns": [
+        "including differently abled"
+      ],
+      "field_names": [
+        "total",
+        "male_count",
+        "male_pct",
+        "female_count",
+        "female_pct"
+      ],
+      "units": {
+        "total": "count",
+        "male_count": "count",
+        "male_pct": "percent",
+        "female_count": "count",
+        "female_pct": "percent"
+      },
+      "validation_rules": [
+        {
+          "type": "sum_equals",
+          "operands": [
+            "male_count",
+            "female_count"
+          ],
+          "target": "total",
+          "tolerance": 0.5
+        }
+      ],
+      "notes": "Verified identically worded on Glenmark and Aequs.",
+      "canonical_phrases": [
+        "a. Employees and workers (including differently abled)"
+      ]
+    },
+    {
+      "family_id": "representation_of_women",
+      "section": "A",
+      "principle": null,
+      "disclosure_question_id": "21",
+      "context_patterns": [
+        "representation of women"
+      ],
+      "field_names": [
+        "total",
+        "female_count",
+        "female_pct"
+      ],
+      "units": {
+        "total": "count",
+        "female_count": "count",
+        "female_pct": "percent"
+      },
+      "validation_rules": [],
+      "notes": "No arithmetic cross-check — female_count is a subset of total, not a complement pair.",
+      "canonical_phrases": [
+        "21. Representation of women"
+      ]
+    },
+    {
+      "family_id": "turnover_rate_3yr",
+      "section": "A",
+      "principle": null,
+      "disclosure_question_id": "22",
+      "context_patterns": [
+        "turnover rate for permanent employees and workers"
+      ],
+      "field_names": [
+        "current_fy_male_turnover_pct",
+        "current_fy_female_turnover_pct",
+        "current_fy_total_turnover_pct",
+        "previous_fy_male_turnover_pct",
+        "previous_fy_female_turnover_pct",
+        "previous_fy_total_turnover_pct",
+        "two_years_ago_male_turnover_pct",
+        "two_years_ago_female_turnover_pct",
+        "two_years_ago_total_turnover_pct"
+      ],
+      "units": {
+        "*": "percent"
+      },
+      "validation_rules": [],
+      "notes": "Rates, not counts — no sum relation between male/female/total.",
+      "canonical_phrases": [
+        "Turnover rate for permanent employees and workers, disclose trends for the past 3 years"
+      ]
+    },
+    {
+      "family_id": "wellbeing_coverage_employees",
+      "section": "C",
+      "principle": 3,
+      "disclosure_question_id": "1a",
+      "context_patterns": [
+        "details of measures for the well-?being of employees"
+      ],
+      "field_names": [
+        "total",
+        "health_insurance_count",
+        "health_insurance_pct",
+        "accident_insurance_count",
+        "accident_insurance_pct",
+        "maternity_benefit_count",
+        "maternity_benefit_pct",
+        "paternity_benefit_count",
+        "paternity_benefit_pct",
+        "daycare_count",
+        "daycare_pct"
+      ],
+      "units": {
+        "total": "count"
+      },
+      "validation_rules": [],
+      "notes": "TIGHTENED pattern: was 'well-?being of employees' (too broad, incorrectly matched Q1.c 'Spending on measures towards well-being of employees and workers' — real Glenmark shape_mismatch found and traced). Now anchored on 'details of measures for the', which only the real Q1.a/Q1.b question text contains.",
+      "canonical_phrases": [
+        "Details of measures for the well-being of employees"
+      ]
+    },
+    {
+      "family_id": "wellbeing_coverage_workers",
+      "section": "C",
+      "principle": 3,
+      "disclosure_question_id": "1b",
+      "context_patterns": [
+        "details of measures for the well-?being of workers"
+      ],
+      "field_names": [
+        "total",
+        "health_insurance_count",
+        "health_insurance_pct",
+        "accident_insurance_count",
+        "accident_insurance_pct",
+        "maternity_benefit_count",
+        "maternity_benefit_pct",
+        "paternity_benefit_count",
+        "paternity_benefit_pct",
+        "daycare_count",
+        "daycare_pct"
+      ],
+      "units": {
+        "total": "count"
+      },
+      "validation_rules": [],
+      "notes": "Same tightening rationale as wellbeing_coverage_employees.",
+      "canonical_phrases": [
+        "Details of measures for the well-being of workers"
+      ]
+    },
+    {
+      "family_id": "wellbeing_spending_pct",
+      "section": "C",
+      "principle": 3,
+      "disclosure_question_id": "1c",
+      "context_patterns": [
+        "spending on measures towards well-?being"
+      ],
+      "field_names": [
+        "current_fy_pct",
+        "previous_fy_pct"
+      ],
+      "units": {
+        "current_fy_pct": "percent",
+        "previous_fy_pct": "percent"
+      },
+      "validation_rules": [],
+      "notes": "NEW — discovered as a real shape_mismatch against wellbeing_coverage_employees before the pattern was tightened. Verified real Glenmark data: fields=[0.16%, 0.19%], context='c. Spending on measures towards well-being of employees and workers (including permanent and other than permanent) in the following format:'. Matches SEBI spec Q1.c exactly.",
+      "canonical_phrases": [
+        "Spending on measures towards well-being of employees and workers"
+      ]
+    },
+    {
+      "family_id": "minimum_wages",
+      "section": "C",
+      "principle": 5,
+      "disclosure_question_id": "2",
+      "context_patterns": [
+        "minimum wages? paid"
+      ],
+      "field_names": [
+        "total_current_fy",
+        "equal_to_min_wage_count_current_fy",
+        "equal_to_min_wage_pct_current_fy",
+        "more_than_min_wage_count_current_fy",
+        "more_than_min_wage_pct_current_fy",
+        "total_previous_fy",
+        "equal_to_min_wage_count_previous_fy",
+        "equal_to_min_wage_pct_previous_fy",
+        "more_than_min_wage_count_previous_fy",
+        "more_than_min_wage_pct_previous_fy"
+      ],
+      "units": {
+        "*_count_*": "count",
+        "*_pct_*": "percent"
+      },
+      "validation_rules": [
+        {
+          "type": "sum_equals",
+          "operands": [
+            "equal_to_min_wage_count_current_fy",
+            "more_than_min_wage_count_current_fy"
+          ],
+          "target": "total_current_fy",
+          "tolerance": 0.5
+        },
+        {
+          "type": "sum_equals",
+          "operands": [
+            "equal_to_min_wage_count_previous_fy",
+            "more_than_min_wage_count_previous_fy"
+          ],
+          "target": "total_previous_fy",
+          "tolerance": 0.5
+        }
+      ],
+      "notes": "CORRECTED shape (10 values: current+previous FY) — an earlier 5-field version failed identically on both companies until fixed.",
+      "canonical_phrases": [
+        "Details of minimum wages paid to employees and workers"
+      ]
+    },
+    {
+      "family_id": "union_membership",
+      "section": "C",
+      "principle": 3,
+      "disclosure_question_id": "7",
+      "context_patterns": [
+        "membership of employees and workers"
+      ],
+      "field_names": [
+        "total_current_fy",
+        "union_members_current_fy",
+        "union_members_pct_current_fy",
+        "total_previous_fy",
+        "union_members_previous_fy",
+        "union_members_pct_previous_fy"
+      ],
+      "units": {
+        "total_current_fy": "count",
+        "union_members_current_fy": "count",
+        "union_members_pct_current_fy": "percent"
+      },
+      "validation_rules": [
+        {
+          "type": "le",
+          "field": "union_members_current_fy",
+          "bound_field": "total_current_fy"
+        },
+        {
+          "type": "le",
+          "field": "union_members_previous_fy",
+          "bound_field": "total_previous_fy"
+        }
+      ],
+      "notes": "Verified: no period after '7' in Glenmark's real source text.",
+      "canonical_phrases": [
+        "Membership of employees and workers in association(s) or Unions recognized by the listed entity"
+      ]
+    },
+    {
+      "family_id": "training_coverage",
+      "section": "C",
+      "principle": 3,
+      "disclosure_question_id": "8",
+      "context_patterns": [
+        "details of training given to employees"
+      ],
+      "field_names": [
+        "total_current_fy",
+        "health_safety_count_current_fy",
+        "health_safety_pct_current_fy",
+        "skill_upgrade_count_current_fy",
+        "skill_upgrade_pct_current_fy",
+        "total_previous_fy",
+        "health_safety_count_previous_fy",
+        "health_safety_pct_previous_fy",
+        "skill_upgrade_count_previous_fy",
+        "skill_upgrade_pct_previous_fy"
+      ],
+      "units": {
+        "total_current_fy": "count",
+        "total_previous_fy": "count"
+      },
+      "validation_rules": [
+        {
+          "type": "le",
+          "field": "health_safety_count_current_fy",
+          "bound_field": "total_current_fy"
+        },
+        {
+          "type": "le",
+          "field": "skill_upgrade_count_current_fy",
+          "bound_field": "total_current_fy"
+        }
+      ],
+      "notes": "Verified: no period after '8' in Glenmark's real source text.",
+      "canonical_phrases": [
+        "Details of training given to employees and workers"
+      ]
+    },
+    {
+      "family_id": "locations_summary",
+      "section": "A",
+      "principle": null,
+      "disclosure_question_id": "18",
+      "context_patterns": [
+        "number of locations where plants and/or operations"
+      ],
+      "field_names": [
+        "plants_count",
+        "offices_count",
+        "total_count"
+      ],
+      "units": {
+        "plants_count": "count",
+        "offices_count": "count",
+        "total_count": "count"
+      },
+      "validation_rules": [
+        {
+          "type": "sum_equals",
+          "operands": [
+            "plants_count",
+            "offices_count"
+          ],
+          "target": "total_count",
+          "tolerance": 0.5
+        }
+      ],
+      "notes": "Verified on real Glenmark data: National row [8,19,27], 8+19=27 confirmed.",
+      "canonical_phrases": [
+        "Number of locations where plants and/or operations/offices of the entity are situated"
+      ]
+    },
+    {
+      "family_id": "gross_wages_female_pct",
+      "section": "C",
+      "principle": 5,
+      "disclosure_question_id": "3b",
+      "context_patterns": [
+        "gross wages paid to females as % of total wages"
+      ],
+      "field_names": [
+        "current_fy_pct",
+        "previous_fy_pct"
+      ],
+      "units": {
+        "current_fy_pct": "percent",
+        "previous_fy_pct": "percent"
+      },
+      "validation_rules": [],
+      "notes": "Verified on real Glenmark data: [10.23%, 9.40%]. Required lowering MIN_VALUE_TOKENS_FOR_CANDIDATE from 4 to 2 in row_parser.py to stop this row being silently dropped before it ever became a candidate.",
+      "canonical_phrases": [
+        "Gross wages paid to females as % of total wages paid by the entity"
+      ]
+    },
+    {
+      "family_id": "posh_and_shw_act_metrics",
+      "section": "C",
+      "principle": 5,
+      "disclosure_question_id": "7",
+      "context_patterns": [
+        "complaints filed under the sexual harassment of women at workplace"
+      ],
+      "field_names": [
+        "current_fy_value",
+        "previous_fy_value"
+      ],
+      "units": {},
+      "validation_rules": [],
+      "notes": "DELIBERATELY GENERIC field names: this context covers 3 distinct metrics (total complaints, %-of-female-workforce, upheld count) sharing the same 2-value shape. Actual metric identity preserved in MappedRow.row.label.",
+      "canonical_phrases": [
+        "Complaints filed under the Sexual Harassment of Women at Workplace Act, 2013"
+      ]
+    },
+    {
+      "family_id": "energy_consumption",
+      "section": "C",
+      "principle": 6,
+      "disclosure_question_id": "1",
+      "context_patterns": [
+        "details of total energy consumption and energy intensity"
+      ],
+      "field_names": [
+        "current_fy_value",
+        "previous_fy_value"
+      ],
+      "units": {},
+      "validation_rules": [],
+      "notes": "DELIBERATELY GENERIC (same pattern as posh_and_shw_act_metrics): this context covers 9 distinct metrics (electricity/fuel/other-source consumption x renewable/non-renewable, plus 2 subtotals, plus grand total, plus intensity ratios) sharing the same 2-value (current FY, previous FY) shape. Actual metric identity preserved in MappedRow.row.label. KNOWN GAP: SEBI spec defines cross-row arithmetic relationships here (A+B+C=renewable total, D+E+F=non-renewable total, all summed=grand total) that this schema cannot check — validation_rules only operate within a single row's fields, not across rows. Deferred to a future cross-row validation layer. Verified real Glenmark data: 'Total electricity consumption (A)' -> [46,951, 16,602], 'Total electricity consumption (D)' -> [3,71,005, 3,77,263].",
+      "canonical_phrases": [
+        "Details of total energy consumption and energy intensity"
+      ]
+    },
+    {
+      "family_id": "water_disclosures",
+      "section": "C",
+      "principle": 6,
+      "disclosure_question_id": "3",
+      "context_patterns": [
+        "provide details of the following disclosures related to water"
+      ],
+      "field_names": [
+        "current_fy_value",
+        "previous_fy_value"
+      ],
+      "units": {},
+      "validation_rules": [],
+      "notes": "DELIBERATELY GENERIC (same pattern as energy_consumption/posh): covers ~9 distinct water metrics (withdrawal by 5 sources, total withdrawal, total consumption, 2 intensity ratios) sharing the same 2-value shape. Metric identity preserved in MappedRow.row.label. Verified real Glenmark data: 'Total volume of water withdrawal...' -> [5,46,033, 5,29,632]. Company-wide scope — distinct from water_stress_area_disclosures (a different, narrower question).",
+      "canonical_phrases": [
+        "Provide details of the following disclosures related to water"
+      ]
+    },
+    {
+      "family_id": "water_stress_area_disclosures",
+      "section": "C",
+      "principle": 6,
+      "disclosure_question_id": "1_leadership",
+      "context_patterns": [
+        "water withdrawal, consumption and discharge in areas of water stress"
+      ],
+      "field_names": [
+        "current_fy_value",
+        "previous_fy_value"
+      ],
+      "units": {},
+      "validation_rules": [],
+      "notes": "Leadership Indicator, narrower scope than water_disclosures — only facilities located in identified water-stress areas, not company-wide. Verified real Glenmark data (page 37): 'Total volume of water withdrawal...' -> [1,04,684, 1,02,606] — DIFFERENT number from the company-wide figure despite an almost-identical row label, confirming these must stay separate families.",
+      "canonical_phrases": [
+        "Water withdrawal, consumption and discharge in areas of water stress"
+      ]
+    },
+    {
+      "family_id": "waste_management",
+      "section": "C",
+      "principle": 6,
+      "disclosure_question_id": "9",
+      "context_patterns": [
+        "provide details related to waste management by the entity"
+      ],
+      "field_names": [
+        "current_fy_value",
+        "previous_fy_value"
+      ],
+      "units": {},
+      "validation_rules": [],
+      "notes": "DELIBERATELY GENERIC (same pattern as energy/water): covers ~8 waste categories (plastic, e-waste, bio-medical, construction, battery, hazardous, non-hazardous, total) plus recovery/disposal breakdowns, all 2-value shape. Metric identity in MappedRow.row.label. Verified real Glenmark data: 'Total Waste Generated (A+B+...+H)' -> [4,060, 3,808].",
+      "canonical_phrases": [
+        "Provide details related to waste management by the entity"
+      ]
+    },
+    {
+      "family_id": "ghg_emissions",
+      "section": "C",
+      "principle": 6,
+      "disclosure_question_id": "7",
+      "context_patterns": [
+        "provide details of greenhouse gas emissions.*and its intensity"
+      ],
+      "field_names": [
+        "current_fy_value",
+        "previous_fy_value"
+      ],
+      "units": {},
+      "validation_rules": [],
+      "notes": "DELIBERATELY GENERIC: covers Scope 1, Scope 2 emissions, and 4 intensity ratios, all 2-value shape. Note: many rows here have an EMPTY label (source paragraph is just raw numbers, no leading label text) — this is normal, not a bug (also seen in union_membership). Verified real Glenmark data: Scope 1 emissions -> [11,797, 17,263].",
+      "canonical_phrases": [
+        "Provide details of greenhouse gas emissions, Scope 1 and Scope 2 emissions, and its intensity"
+      ]
+    },
+    {
+      "family_id": "air_emissions",
+      "section": "C",
+      "principle": 6,
+      "disclosure_question_id": "6",
+      "context_patterns": [
+        "please provide details of air emissions"
+      ],
+      "field_names": [
+        "current_fy_value",
+        "previous_fy_value"
+      ],
+      "units": {},
+      "validation_rules": [],
+      "notes": "DELIBERATELY GENERIC: covers NOx, SOx, Particulate Matter, POP, VOC, HAP, and other air pollutants, all 2-value shape. Distinct from ghg_emissions (Q7, a separate SEBI question — GHG is Scope 1/2 CO2-equivalent, this is other pollutants). Verified real Glenmark data: NOx -> [118, 120].",
+      "canonical_phrases": [
+        "Please provide details of air emissions other than GHG emissions by the entity"
+      ]
+    },
+    {
+      "family_id": "air_emissions_with_blank_unit",
+      "section": "C",
+      "principle": 6,
+      "disclosure_question_id": "6",
+      "context_patterns": [
+        "please provide details of air emissions"
+      ],
+      "field_names": [
+        "unit_placeholder",
+        "current_fy_value",
+        "previous_fy_value"
+      ],
+      "units": {},
+      "validation_rules": [],
+      "notes": "3-value variant of air_emissions: when a pollutant's unit column is blank, the source renders it as a literal '-', which our NA_TOKENS treats as a value token, producing 3 raw values instead of 2. Verified real data (both companies): 'Persistent organic pollutants (POP)' -> ['-', 'N/A', 'N/A'].",
+      "canonical_phrases": [
+        "Please provide details of air emissions other than GHG emissions by the entity"
+      ]
+    },
+    {
+      "family_id": "waste_management_with_blank_unit",
+      "section": "C",
+      "principle": 6,
+      "disclosure_question_id": "9",
+      "context_patterns": [
+        "provide details related to waste management by the entity"
+      ],
+      "field_names": [
+        "unit_placeholder",
+        "current_fy_value",
+        "previous_fy_value"
+      ],
+      "units": {},
+      "validation_rules": [],
+      "notes": "3-value variant of waste_management — same root cause as air_emissions_with_blank_unit. Verified real Aequs data: 'Radioactive waste (F)' -> ['-', '0.00', '0.00'].",
+      "canonical_phrases": [
+        "Provide details related to waste management by the entity"
+      ]
+    },
+    {
+      "family_id": "accounts_payable_days",
+      "section": "C",
+      "principle": 1,
+      "disclosure_question_id": "8",
+      "context_patterns": [
+        "number of days of accounts payables"
+      ],
+      "field_names": [
+        "current_fy_days",
+        "previous_fy_days"
+      ],
+      "units": {
+        "current_fy_days": "days",
+        "previous_fy_days": "days"
+      },
+      "validation_rules": [],
+      "notes": "Single metric, simple 2-value shape. Verified real Glenmark data: [292, 275].",
+      "canonical_phrases": [
+        "Number of days of accounts payables"
+      ]
+    },
+    {
+      "family_id": "rd_capex_pct",
+      "section": "C",
+      "principle": 2,
+      "disclosure_question_id": "1",
+      "context_patterns": [
+        "percentage of r&d and capital expenditure"
+      ],
+      "field_names": [
+        "current_fy_value",
+        "previous_fy_value"
+      ],
+      "units": {},
+      "validation_rules": [],
+      "notes": "DELIBERATELY GENERIC: context shared by 2 rows (R&D, Capex), same 2-value shape. Metric identity in MappedRow.row.label. Verified real Glenmark data: 'R&D' -> [100%, 100%], 'Capex' -> [0.06%, 0.02%].",
+      "canonical_phrases": [
+        "Percentage of R&D and capital expenditure investments in specific technologies"
+      ]
+    },
+    {
+      "family_id": "retirement_benefits",
+      "section": "C",
+      "principle": 3,
+      "disclosure_question_id": "2",
+      "context_patterns": [
+        "details of retirement benefits"
+      ],
+      "field_names": [
+        "current_fy_employee_coverage_pct",
+        "current_fy_worker_coverage_pct",
+        "current_fy_deducted_deposited",
+        "previous_fy_employee_coverage_pct",
+        "previous_fy_worker_coverage_pct",
+        "previous_fy_deducted_deposited"
+      ],
+      "units": {},
+      "validation_rules": [],
+      "notes": "Specific field names (unlike other generic-shared-context families): PF/Gratuity/ESI/Others rows here genuinely share identical SEBI-defined columns, this isn't a case of unrelated metrics sharing a context. Verified real Glenmark data: 'Gratuity' -> [100%, 100%, N/A, 100%, 100%, N/A].",
+      "canonical_phrases": [
+        "Details of retirement benefits, for Current FY and Previous Financial Year"
+      ]
+    },
+    {
+      "family_id": "safety_incidents",
+      "section": "C",
+      "principle": 3,
+      "disclosure_question_id": "11",
+      "context_patterns": [
+        "details of safety related incidents"
+      ],
+      "field_names": [
+        "current_fy_value",
+        "previous_fy_value"
+      ],
+      "units": {},
+      "validation_rules": [],
+      "notes": "DELIBERATELY GENERIC: covers LTIFR, total recordable injuries, fatalities, high-consequence injuries — each split into Employees/Workers rows, all 2-value shape. Metric identity in MappedRow.row.label. Verified real Glenmark data: 'Employees' -> [0.43, 0.51] (LTIFR).",
+      "canonical_phrases": [
+        "Details of safety related incidents"
+      ]
+    }
+  ]
+}

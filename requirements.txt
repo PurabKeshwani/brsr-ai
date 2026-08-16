@@ -1,0 +1,25 @@
+# --- Phase 1: Ingestion ---
+opendataloader-pdf
+reportlab          # only used to generate synthetic test PDFs for pipeline smoke-tests
+
+# --- Backend (scaffolded early, built out in Phase 7) ---
+fastapi
+uvicorn[standard]
+pydantic
+sqlalchemy
+python-dotenv
+
+# --- Testing / tooling ---
+pytest
+pytest-cov
+ruff                # linting, used by CI
+
+google-genai
+
+sentence-transformers
+streamlit
+
+sqlalchemy
+
+fastapi
+uvicorn[standard]

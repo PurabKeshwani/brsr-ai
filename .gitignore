@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+.coverage
+htmlcov/
+
+# Data — real BRSR filings and derived artifacts should not go into git.
+# Use DVC (or at minimum a manifest + external storage) once the corpus grows past
+# a handful of files. Synthetic test fixtures under tests/fixtures/ are the exception.
+data/raw_pdfs/*
+data/extracted/*
+data/annotations/*
+!data/raw_pdfs/.gitkeep
+!data/extracted/.gitkeep
+!data/annotations/.gitkeep
+
+# Models / experiment artifacts
+*.pt
+*.bin
+*.onnx
+*.csv
+experiments/**/checkpoints/
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/build/
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
+
+# Env
+.env
+
+data/
