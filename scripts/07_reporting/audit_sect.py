@@ -1,0 +1,21 @@
+import pandas as pd
+sector_sum = pd.read_csv('data/analysis/sector_summary.csv')
+reliable = sector_sum[sector_sum['reliable'] == True].copy()
+by_count = reliable.sort_values('company_count', ascending=False)
+by_mean  = reliable.sort_values('mean_score', ascending=False)
+top12c = set(by_count.head(12)['sector'])
+top12m = set(by_mean.head(12)['sector'])
+print('In top-12-by-count but NOT top-12-by-mean:', top12c - top12m)
+print('In top-12-by-mean but NOT top-12-by-count:', top12m - top12c)
+print()
+print('Top 12 by company count (actual):')
+for i,(idx,r) in enumerate(by_count.head(12).iterrows()):
+    marker = '<<' if r['sector'] not in top12m else ''
+    print(f"  {i+1:2d}. n={r['company_count']:3d}  mean={r['mean_score']:.2f}  {r['sector']} {marker}")
+print()
+print('Min/max mean across ALL reliable:')
+print('  min:', reliable['mean_score'].min(), reliable.loc[reliable['mean_score'].idxmin(),'sector'])
+print('  max:', reliable['mean_score'].max(), reliable.loc[reliable['mean_score'].idxmax(),'sector'])
+print('  gap:', round(reliable['mean_score'].max()-reliable['mean_score'].min(), 2))
+print()
+print('Between-sector std dev (all reliable):', round(reliable['mean_score'].std(), 2))

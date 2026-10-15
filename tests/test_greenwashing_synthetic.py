@@ -16,7 +16,7 @@ import pytest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
-from analysis.greenwashing import Severity, find_claim_evidence_signals
+from analysis.audit_checks.greenwashing import Severity, find_claim_evidence_signals
 from db.models import Company, Fact, Filing
 from db.session import get_session, init_db
 

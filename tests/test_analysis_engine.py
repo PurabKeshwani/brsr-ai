@@ -3,10 +3,10 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
-from analysis.assurance import get_assurance_profile
-from analysis.consistency import CheckStatus, run_all_consistency_checks
-from analysis.queries import get_company_by_name, get_latest_filing
-from analysis.trends import get_trend
+from analysis.audit_checks.assurance import get_assurance_profile
+from analysis.audit_checks.consistency import CheckStatus, run_all_consistency_checks
+from analysis.core.queries import get_company_by_name, get_latest_filing
+from analysis.core.trends import get_trend
 from db.session import get_session, init_db
 
 
@@ -75,7 +75,7 @@ def test_zero_population_percentage_is_skipped_not_failed():
     genuinely empty, Male%=0 and Female%=0 correctly sum to 0%, not 100%
     — this must be SKIPPED, not FAILED, since there's no population to
     have a composition of."""
-    from analysis.consistency import CheckStatus, check_gender_percentage_sums
+    from analysis.audit_checks.consistency import CheckStatus, check_gender_percentage_sums
     from db.models import Company, Fact, Filing
     from db.session import get_session, init_db
 
@@ -120,7 +120,7 @@ def test_wellbeing_coverage_percentage_is_never_checked_for_100_sum():
     represent independent per-gender coverage rates, not a population
     composition — must be excluded entirely from the sum-to-100% check
     (reproduces the real Mastek 'sums to 200%' false failure)."""
-    from analysis.consistency import check_gender_percentage_sums
+    from analysis.audit_checks.consistency import check_gender_percentage_sums
     from db.models import Company, Fact, Filing
     from db.session import get_session, init_db
 
@@ -162,8 +162,8 @@ def test_assurance_naming_inconsistencies_are_resolved_not_left_null():
     assured=true but had assurance_level=None due to SEBI's own taxonomy
     inconsistently naming the paired AssuranceSubTypeFor tag. After the
     fix, assured_but_level_unresolved_count must be 0."""
-    from analysis.assurance import get_assurance_profile
-    from analysis.queries import get_company_by_name, get_latest_filing
+    from analysis.audit_checks.assurance import get_assurance_profile
+    from analysis.core.queries import get_company_by_name, get_latest_filing
     from db.session import get_session, init_db
 
     init_db()

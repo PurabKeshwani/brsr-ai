@@ -1,0 +1,142 @@
+================================================================================
+TASK 5 — STAGE 6 TRANSPARENCY SCORE HONEST AUDIT
+================================================================================
+
+## 1. SYNTHETIC DATA VERIFICATION
+  WARNING: human_score_validation_n50.csv still in data/validation/ (not quarantined yet).
+  This script will NOT use it. Run task0_label_provenance.py to quarantine.
+  WARNING: lti_calibration_results_n50.csv still in data/validation/ (not quarantined yet).
+
+## 2. LOADED 20 REAL HUMAN-RATED COMPANIES
+  File: d:\brsr-ai-phase0-1\brsr-ai\data\validation\human_score_validation.csv
+  Columns: ['company_name', 'cin', 'ai_transparency_score', 'human_score']
+
+  ANCHORING CHECK:
+  The CSV has 'ai_transparency_score' column alongside 'human_score'.
+  The export script (export_human_validation_sample.py) prints:
+    'IMPORTANT: read the summaries WITHOUT looking at ai_transparency_score'
+  Whether the rater saw ai_transparency_score during rating is UNVERIFIABLE
+  from file contents alone — needs team confirmation.
+
+  SEBI WEIGHTS CHECK (40-30-20-10):
+  These weights are stated as a SEBI statutory baseline.
+  The human_score_validation.csv was created AFTER transparency_scores.csv existed,
+  meaning the scores (computed with these weights) were ALREADY present when humans rated.
+  => Anchoring is plausible but unconfirmed. Must disclose in paper.
+
+## 3. HEADLINE METRICS (N=20, Fixed SEBI Weights 40-30-20-10)
+
+  --- N=20 Full (Headline) (n=20) ---
+  Pearson r:     0.6314  (p=0.0028)  95% CI [0.2683, 0.8519]
+  Spearman rho:  0.6285  (p=0.0030)  95% CI [0.2321, 0.8540]
+  Kendall tau:   0.4534  (p=0.0057)
+  MAE:           12.16
+  RMSE:          15.19
+  R-squared:     39.9%
+
+## 4. RESIDUAL TABLE (Bland-Altman style)
+  Company                                      AI  Human    Diff
+  ------------------------------------------------------------
+  Geojit Financial Services Limited          47.9   80.0   +32.1
+  ZENSAR TECHNOLOGIES LIMITED                55.7   25.0   -30.7
+  Affle 3i Limited                           34.4   58.0   +23.6
+  Kirloskar Brothers Limited                 58.0   80.0   +22.0
+  TASTY BITE EATABLES LIMITED                42.5   62.0   +19.5
+  Eureka Forbes Limited                      53.6   72.0   +18.4
+  Neogen Chemicals Limited                   51.6   65.0   +13.4
+  Shankara Building Products Limited         41.3   28.0   -13.3
+  KRBL Limited                               46.5   58.0   +11.5
+  Kajaria Ceramics Limited                   45.3   35.0   -10.3
+  Sula Vineyards Limited                     38.6   48.0    +9.4
+  BF UTILITIES LIMITED                       26.9   20.0    -6.9
+  Tata Steel Limited                         75.6   82.0    +6.4
+  GREENLAM INDUSTRIES LIMITED                49.6   55.0    +5.4
+  D. P. Abhushan Limited                     36.7   42.0    +5.3
+  DLF Limited                                63.0   68.0    +5.0
+  Xpro India Limited                         43.9   40.0    -3.9
+  Godrej Industries Limited                  65.8   68.0    +2.2
+  IDFC FIRST Bank Limited                    60.1   58.0    -2.1
+  VISHAL MEGA MART LIMITED                   39.8   38.0    -1.8
+
+## 5. ZENSAR URL-REDIRECT DIAGNOSIS
+  Zensar: AI=55.7, Human=25.0, Diff=-30.7
+
+  KNOWN BUG: The original export_human_validation_sample.py (before fix)
+  took the FIRST N segments in DB query order, which for Zensar (56 facts)
+  happened to include bare weblinks like 'https://company.com/policy.pdf'.
+  The fix (in current code) excludes segments starting with 'http://'/'https://'.
+
+  TO FIX: Re-run export for Zensar only, get new text summaries, and
+  re-rate from scratch (not just adjust — full fresh rating).
+  Re-export script: scripts/06_transparency_score/export_human_validation_sample.py
+  After re-rating Zensar: recompute N=20 correlation with corrected Zensar score.
+
+  CURRENT STATUS: Zensar INCLUDED in N=20 headline (with known artifact).
+  Post-hoc sensitivity: N=19 excluding Zensar listed below (not headline).
+
+  CHECKING ALL 20 COMPANIES FOR URL-REDIRECT ARTIFACT:
+    BF UTILITIES LIMITED: 3/64 bare-URL facts
+    Affle 3i Limited: 9/70 bare-URL facts
+    VISHAL MEGA MART LIMITED: 9/50 bare-URL facts
+    TASTY BITE EATABLES LIMITED: 9/90 bare-URL facts
+    Kajaria Ceramics Limited: 9/85 bare-URL facts
+    KRBL Limited: 7/78 bare-URL facts
+    GREENLAM INDUSTRIES LIMITED: 9/77 bare-URL facts
+    Eureka Forbes Limited: 9/87 bare-URL facts
+    ZENSAR TECHNOLOGIES LIMITED: 1/107 bare-URL facts
+    Kirloskar Brothers Limited: 9/100 bare-URL facts
+    DLF Limited: 9/83 bare-URL facts
+    Tata Steel Limited: 9/105 bare-URL facts
+
+## 6. POST-HOC SENSITIVITY ANALYSES (declared, not headline)
+  Criterion stated IN ADVANCE before seeing test results:
+
+
+  --- N=18 ex-Geojit (BFSI sector) (n=19) ---
+  Pearson r:     0.6735  (p=0.0016)  95% CI [0.2966, 0.8830]
+  Spearman rho:  0.6497  (p=0.0026)  95% CI [0.2130, 0.8848]
+  Kendall tau:   0.4793  (p=0.0045)
+  MAE:           11.12
+  RMSE:          13.74
+  R-squared:     45.4%
+  Criterion: Geojit is a pure retail brokerage/BFSI firm; BRSR environmental KPIs
+  are designed for manufacturing/industrial firms, creating structural non-applicability.
+  This criterion is SECTOR-BASED, independent of model performance.
+
+
+  --- N=19 ex-Zensar (URL-redirect extraction bug) (n=19) ---
+  Pearson r:     0.7379  (p=0.0003)  95% CI [0.5158, 0.8861]
+  Spearman rho:  0.7432  (p=0.0003)  95% CI [0.4555, 0.8921]
+  Kendall tau:   0.5461  (p=0.0012)
+  MAE:           11.19
+  RMSE:          13.90
+  R-squared:     54.4%
+  Criterion: Zensar human ratings were done on a summary that included bare-URL
+  segments (extraction bug, now fixed). The human impression was based on
+  artificially thin content. This is a DATA COLLECTION artifact, not model performance.
+
+
+  --- N=18 ex-Geojit and ex-Zensar (n=18) ---
+  Pearson r:     0.7847  (p=0.0001)  95% CI [0.5667, 0.9090]
+  Spearman rho:  0.7615  (p=0.0002)  95% CI [0.4250, 0.9144]
+  Kendall tau:   0.5762  (p=0.0009)
+  MAE:           10.03
+  RMSE:          12.12
+  R-squared:     61.6%
+
+## 7. EXPLORATORY: LOOCV (N=20 real data, weight tuning on train fold)
+  This is EXPLORATORY, not headline. Weights are learned from N-1=19 companies
+  and applied to 1 held-out — this is a legitimate CV estimate of calibration gain.
+
+  LOOCV (weight-tuned) Pearson r: 0.4993  (p=0.0250)
+  LOOCV (weight-tuned) Spearman rho: 0.4243
+  SEBI fixed (r=0.6314) vs LOOCV calibrated (r=0.4993)
+  Note: This uses real N=20 labels. With n=20, LOOCV still has high variance.
+
+## 8. BLOCKED: NEEDS HUMAN — New rating sheet
+  See: data/labeling_sheets/stage6_new_ratings.csv
+  30 new companies sampled stratified across score distribution.
+  Rater must see ONLY company narrative (NOT ai_transparency_score).
+  After ratings: recompute N=50 Pearson/Spearman with bootstrap CI.
+
+Results saved to d:\brsr-ai-phase0-1\brsr-ai\results\audit\task5_stage6_results.json

@@ -14,8 +14,8 @@ from ingestion.xbrl_ingest import ingest_filing
 import pandas as pd
 from pathlib import Path
 
-from analysis.completeness_score import get_concept_universe
-from analysis.transparency_score import get_transparency_score
+from analysis.scoring.completeness_score import get_concept_universe
+from analysis.scoring.transparency_score import get_transparency_score
 from analysis.truth_auditor import run_truth_audit
 from api.converters import transparency_score_to_schema, greenwashing_signal_to_schema, silent_removal_to_schema
 from api.schemas import TransparencyScoreBreakdown, TruthAuditorSummary, SectorBenchmarkInfo
@@ -25,12 +25,12 @@ SECTOR_BENCHMARKS_PATH = Path("data/analysis/sector_benchmarks.csv")
 from fastapi import APIRouter, HTTPException
 from sqlalchemy.orm import Session
 
-from analysis.assurance import get_assurance_profile
-from analysis.consistency import run_all_consistency_checks
-from analysis.greenwashing import find_claim_evidence_signals
-from analysis.queries import get_all_filings, get_company_by_name, get_latest_filing
-from analysis.silent_removal import find_silently_removed_metrics
-from analysis.trends import get_trend
+from analysis.audit_checks.assurance import get_assurance_profile
+from analysis.audit_checks.consistency import run_all_consistency_checks
+from analysis.audit_checks.greenwashing import find_claim_evidence_signals
+from analysis.core.queries import get_all_filings, get_company_by_name, get_latest_filing
+from analysis.audit_checks.silent_removal import find_silently_removed_metrics
+from analysis.core.trends import get_trend
 from api.converters import (
     assurance_to_schema,
     consistency_to_schema,

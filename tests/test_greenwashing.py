@@ -3,9 +3,9 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
-from analysis.greenwashing import find_claim_evidence_signals
-from analysis.queries import get_company_by_name, get_latest_filing
-from analysis.silent_removal import find_silently_removed_metrics
+from analysis.audit_checks.greenwashing import find_claim_evidence_signals
+from analysis.core.queries import get_company_by_name, get_latest_filing
+from analysis.audit_checks.silent_removal import find_silently_removed_metrics
 from db.session import get_session, init_db
 
 

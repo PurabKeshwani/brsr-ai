@@ -1,0 +1,84 @@
+================================================================================
+TASK 1 — STAGE 3 LEAKAGE AUDIT
+Device: cuda
+================================================================================
+
+Loaded train: 27272, test: 5853
+
+## (a) COMPANY OVERLAP (CIN) in SEGMENT-SPLIT
+  Train unique CINs: 1164
+  Test unique CINs:  1146
+  Overlapping CINs:  1146 (100.0% of test companies)
+  Test rows from shared companies: 5853 / 5853 (100.0%)
+
+  FINDING: 100% of test companies are in train (segment-stratified split).
+  The model had access to other disclosures from every test company during training.
+  => The 93.83% accuracy CANNOT be claimed as out-of-sample company generalization.
+
+## (b) WINDOW / DISCLOSURE OVERLAP
+  The dataset does NOT use sliding-window chunking at build time.
+  (Verified: build_training_dataset.py uses full fact.value strings, no chunking.)
+  evaluate_sliding_window.py uses windows only at INFERENCE time on long texts.
+  => No disclosure-window overlap issue at the dataset level.
+
+  However: same (cin, concept) pair can appear in both train and test because
+  the segment split is stratified by label, not by (cin, concept).
+  Shared (cin, source) combos in train∩test: 1663
+  Exact text duplicates in test (cross-company boilerplate): 656 (11.21%)
+
+## (c) NEAR-DUPLICATE SIMILARITY (TF-IDF cosine)
+  Computing TF-IDF max cosine similarity of each test row against all train rows...
+  TF-IDF fitted in 5.3s. Shape: train=(27272, 18630), test=(5853, 18630)
+  Computing chunk-wise max cosine (chunk=200)...
+    0/5853
+    1000/5853
+    2000/5853
+    3000/5853
+    4000/5853
+    5000/5853
+  TF-IDF similarity computed in 3.5s
+
+  TF-IDF Similarity Buckets:
+    <0.70: 4,505 (77.0%)
+    0.70-0.80: 254 (4.3%)
+    0.80-0.90: 206 (3.5%)
+    0.90-0.95: 76 (1.3%)
+    >0.95: 812 (13.9%)
+
+  Running model inference for per-bucket accuracy...
+  Using checkpoint: final_model
+    <0.70: n=4505, Top-1=93.58%, Top-2=98.27%, Macro-F1=0.9302
+    0.70-0.80: n=254, Top-1=90.55%, Top-2=97.24%, Macro-F1=0.8958
+    0.80-0.90: n=206, Top-1=86.89%, Top-2=93.20%, Macro-F1=0.8633
+    0.90-0.95: n=76, Top-1=82.89%, Top-2=92.11%, Macro-F1=0.8120
+    >0.95: n=812, Top-1=95.69%, Top-2=98.40%, Macro-F1=0.8677
+
+  STRICT SUBSET (TF-IDF sim < 0.90): n=4965, Top-1=93.15%, Top-2=98.01%, Macro-F1=0.9258
+  FULL TEST SET: n=5853, Top-1=93.37%, Top-2=97.98%, Macro-F1=0.9266
+
+  Saved bucket results to d:\brsr-ai-phase0-1\brsr-ai\results\audit\task1_per_bucket_accuracy.csv
+  Saved per-row similarity to d:\brsr-ai-phase0-1\brsr-ai\results\audit\task1_similarity_buckets.csv
+
+## (d) LABEL NOISE CHECK — BLOCKED: needs human
+
+  A 200-row stratified sample of Section C concept-mapped rows has been
+  prepared at: data/labeling_sheets/stage3_section_c_spot_check.csv
+  Columns: principle_id (system label), text, system_label, human_label (blank), notes
+  Action: An expert must verify each row's principle assignment WITHOUT seeing model predictions.
+  Model prediction column deliberately excluded from the sheet.
+  Cohen's kappa between system_label and human_label to be computed after review.
+
+## SUMMARY
+
+  | Check | Finding |
+  |---|---|
+  | Company overlap (segment-split) | 1146/1146 test CINs in train (100%) |
+  | Test rows from shared companies | 5853/5853 (100%) |
+  | Window/disclosure overlap | None at build time (full XBRL fact values used) |
+  | Exact text duplicates (cross-company boilerplate) | ~656 (~11%) |
+  | Top-1 on full test (segment-split) | 93.37% |
+  | Top-1 on TF-IDF-sim<0.90 subset | 93.15% |
+  | Company-disjoint test result | PENDING — TASK 2 retrain needed |
+
+  CRITICAL: 93.83% is within-company-distribution accuracy, not out-of-sample.
+  The correct out-of-sample number will come from TASK 2 (company-level split retrain).

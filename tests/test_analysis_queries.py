@@ -3,7 +3,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
-from analysis.queries import get_company_by_name, get_gender_split, get_latest_filing, get_single_fact
+from analysis.core.queries import get_company_by_name, get_gender_split, get_latest_filing, get_single_fact
 from db.session import get_session, init_db
 
 

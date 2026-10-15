@@ -5,11 +5,11 @@ happens, kept separate from the route handlers for testability.
 """
 from __future__ import annotations
 
-from analysis.assurance import AssuranceProfile
-from analysis.consistency import CheckStatus, ConsistencyResult
-from analysis.greenwashing import GreenwashingSignal
-from analysis.silent_removal import SilentRemovalFlag
-from analysis.trends import TrendResult
+from analysis.audit_checks.assurance import AssuranceProfile
+from analysis.audit_checks.consistency import CheckStatus, ConsistencyResult
+from analysis.audit_checks.greenwashing import GreenwashingSignal
+from analysis.audit_checks.silent_removal import SilentRemovalFlag
+from analysis.core.trends import TrendResult
 from api.schemas import (
     AssuranceSummary,
     ConsistencyCheckItem,

@@ -11,7 +11,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 from db.models import Company, Fact, Filing
 from db.session import get_session, init_db
-from analysis.silent_removal import find_silently_removed_metrics
+from analysis.audit_checks.silent_removal import find_silently_removed_metrics
 
 TEST_CIN = "TESTSYN000000000002"
 

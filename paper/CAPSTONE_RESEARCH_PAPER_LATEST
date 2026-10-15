@@ -1,0 +1,916 @@
+\documentclass[conference]{IEEEtran}
+
+\IEEEoverridecommandlockouts
+
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.17}
+\usetikzlibrary{shapes.geometric,arrows.meta,positioning,fit,backgrounds,calc}
+\usepackage{tabularx}
+\usepackage{balance}
+\renewcommand{\topfraction}{0.95}
+\renewcommand{\bottomfraction}{0.9}
+\renewcommand{\textfraction}{0.05}
+\renewcommand{\floatpagefraction}{0.80}
+\setcounter{topnumber}{3}
+\setcounter{bottomnumber}{3}
+\setcounter{totalnumber}{6}
+\setlength{\textfloatsep}{10pt plus 2pt minus 2pt}
+\setlength{\floatsep}{8pt plus 2pt minus 2pt}
+\setlength{\intextsep}{8pt plus 2pt minus 2pt}
+\usepackage[hidelinks]{hyperref}
+
+\hyphenation{op-tical net-works semi-conduc-tor IEEEtran}
+
+\begin{document}
+
+\title{GRASP: A Greenwashing Recognition and Scoring\\
+Pipeline for India's BRSR Disclosures}
+
+\author{%
+\begin{minipage}[t]{0.30\textwidth}
+\centering
+\textbf{Yugchhaya Galphat}\\
+\textit{Computer Department}\\
+\textit{Vivekanand Education Society's}\\
+\textit{Institute of Technology}\\
+Mumbai, India\\
+yugchhaya.dhote@ves.ac.in
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.30\textwidth}
+\centering
+\textbf{Purab Keshwani}\\
+\textit{Computer Department}\\
+\textit{Vivekanand Education Society's}\\
+\textit{Institute of Technology}\\
+Mumbai, India\\
+2023.purab.keshwani@ves.ac.in
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.30\textwidth}
+\centering
+\textbf{Khushi Dayaramani}\\
+\textit{Computer Department}\\
+\textit{Vivekanand Education Society's}\\
+\textit{Institute of Technology}\\
+Mumbai, India\\
+2023.khushi.dayaramani@ves.ac.in
+\end{minipage}
+
+\\[1em]
+
+\makebox[\textwidth][c]{%
+\begin{minipage}[t]{0.30\textwidth}
+\centering
+\textbf{Ronit Chugwani}\\
+\textit{Computer Department}\\
+\textit{Vivekanand Education Society's}\\
+\textit{Institute of Technology}\\
+Mumbai, India\\
+2023.ronit.chugwani@ves.ac.in
+\end{minipage}
+\hspace{2em}
+\begin{minipage}[t]{0.30\textwidth}
+\centering
+\textbf{Karan Sarani}\\
+\textit{Computer Department}\\
+\textit{Vivekanand Education Society's}\\
+\textit{Institute of Technology}\\
+Mumbai, India\\
+2023.karan.sarani@ves.ac.in
+\end{minipage}%
+}%
+}
+
+\maketitle
+
+% =====================================================================
+% ABSTRACT
+% =====================================================================
+
+\begin{abstract}
+Sustainability reporting is now mandatory for India's largest listed companies, producing a large volume of long annual reports that cannot be reviewed manually. Existing automated methods mostly analyze language style to detect greenwashing -- but a claim can sound convincing even when the reported numbers do not support it. This paper presents GRASP, a pipeline that checks what a company says against what the same company has actually reported as a measured figure. The system classifies each disclosure under the relevant BRSR principle, identifies vague or unsupported statements, checks improvement claims against filed numerical values, measures alignment with regulatory wording, and produces a Transparency Score comparable across industry peers. The classifier achieves macro-F1 of 0.658, the greenwashing detector achieves F1~=~0.880 and AUC-ROC~=~0.894, and the Transparency Score correlates with independent human ratings at $r = 0.631$ ($p = 0.003$). GRASP provides a practical way to reduce a large national reporting corpus to the disclosures and companies that deserve closer review.
+\end{abstract}
+
+\begin{IEEEkeywords}
+Sustainability reporting, greenwashing detection, ESG disclosure, transparency scoring, weak supervision, domain-adaptive pretraining, BERT.
+\end{IEEEkeywords}
+
+% =====================================================================
+% SECTION I -- INTRODUCTION
+% =====================================================================
+
+\section{Introduction}
+
+India's largest listed companies are now required to publish annual sustainability reports using a standardized format called the Business Responsibility and Sustainability Reporting (BRSR) framework. This format covers nine principles ranging from environmental responsibility and employee welfare to governance and consumer rights \cite{sebi2021,ngrbc2019}. Sustainability disclosure has therefore shifted from a voluntary public-relations activity to a formal regulatory requirement.
+
+This shift has created a practical problem. Hundreds of companies submit reports every year, many exceeding 100 pages. Regulators and investors cannot review all of this content in detail. The volume of information has grown faster than the ability to verify it.
+
+This gap creates room for greenwashing. A company may describe its environmental performance in positive terms without providing any measured evidence. For example, a company may state that it is committed to reducing emissions or making steady progress on water conservation, without reporting a single number to support either claim. Such statements are hard to disprove because they do not make a specific, falsifiable assertion. Research on Indian BRSR filings confirms this pattern: vague language and missing evidence are more common than outright false claims \cite{shankar2024,garg2025}.
+
+Three important gaps exist in current automated approaches. \textbf{First}, most methods judge a disclosure only by its language -- they check whether it sounds specific, hedged, or confident. No existing work directly compares what a company claims with the numerical values the same company has filed. \textbf{Second}, most studies evaluate individual components in isolation, not a complete end-to-end system that starts from a national filing corpus and produces a ranked, company-level output. \textbf{Third}, methods that depend on expert annotations or external performance databases are difficult to scale across hundreds of companies without significant manual effort.
+
+GRASP is designed to address all three gaps. It collects and parses BRSR filings automatically, classifies each disclosure under the relevant regulatory principle without manual annotation, detects vague or contradictory claims by comparing narrative text against filed numerical values, measures how well each disclosure aligns with its governing principle, and produces a single Transparency Score for every company. The score is benchmarked against companies in the same industry sector, so a company's standing is always relative to its peers. The remainder of this paper reviews related work, describes the seven-stage pipeline in detail, reports empirical results for each stage, and concludes with directions for future development.
+
+% =====================================================================
+% SECTION II -- LITERATURE REVIEW
+% =====================================================================
+
+\section{Literature Review}
+
+Related work falls into two broad areas: (1) automated greenwashing detection from sustainability text, and (2) studies of disclosure quality in Indian BRSR filings. A recent survey of greenwashing detection from corporate text \cite{calamai2025} gives a broader overview of the methods used in this area; the studies below are the ones most relevant to the problem GRASP addresses.
+
+\subsection{Automated Greenwashing Detection}
+
+Florstedt \textit{et al.}\ \cite{florstedt2025} combined sentiment, linguistic specificity, and claim consistency to build a Perceived-Real Gap Score; applied to 150 European reports, the method flagged 43.5\% as showing greenwashing characteristics, though it requires external performance data per company. Vinella \textit{et al.}\ \cite{vinella2024} compared language-model architectures for greenwashing detection and found that performance depended more on architectural choices than on model scale, though the evaluation covered individual claims rather than complete filings. Zhang \cite{zhang2025} studied the distinction between hedged language and direct, quantified commitments, providing a useful vocabulary for identifying weak sustainability statements; however, the approach cannot determine whether a strong claim is actually backed by reported data. Ong \textit{et al.}\ \cite{ong2025} tested ESG analysis methods on categories unseen during training and found that domain adaptation improved robustness more reliably than scaling up model size, without constructing an end-to-end system.
+
+\subsection{Indian BRSR Disclosure Quality}
+
+Shankar and Xu \cite{shankar2024} built a sentence-level classifier for Indian sustainability reports and found that vagueness and missing evidence are more common than measurable false claims, though the model depends on expert-annotated data which limits scalability. Garg \textit{et al.}\ \cite{garg2025} analyzed 1,012 BRSR filings and showed that reporting quality varies widely and that unquantified narrative is common, but no detection pipeline was built. Sisodia \cite{sisodia2024} compared fine-tuned transformers with large language models for Indian annual reports and found that smaller fine-tuned models achieve comparable accuracy at lower cost. Raman \textit{et al.}\ \cite{raman2023} mapped local sustainability frameworks to United Nations Sustainable Development Goals, showing that local frameworks can be connected to global references.
+
+\noindent Together, these studies confirm that hedged language is a useful signal, domain adaptation helps, and Indian filings contain significant unquantified content. However, none of the above work directly compares narrative claims against a company's own filed numerical values, none produces a complete national-scale end-to-end pipeline, and none generates a sector-comparable score without external data or expert annotation. GRASP is designed to address all three gaps.
+
+\begin{table*}[!t]
+\centering
+\caption{Summary of related research, with the scope or limitation of each approach that GRASP addresses.}
+\label{tab:lit}
+\small
+\renewcommand{\arraystretch}{1.2}
+\begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{5.6cm}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+\hline
+\textbf{Title} & \textbf{Approach} & \textbf{Main Finding} & \textbf{Scope / Limitation} \\
+\hline
+Greenwashing in Sustainability Reporting: Evidence from European Firms \cite{florstedt2025}
+  & Sentiment, specificity, and claim consistency into a gap score
+  & 43.5\% of 150 European reports were flagged
+  & Requires external performance data per company \\
+\hline
+Detecting Greenwashing in Corporate Sustainability Reports Using NLP \cite{vinella2024}
+  & Comparison of language-model architectures
+  & Architecture matters more than model size
+  & Evaluated individual claims, not complete filings \\
+\hline
+Greenwashing Detection Through Machine Learning and Textual Analysis \cite{zhang2025}
+  & Separation of hedged and quantified language
+  & Useful vocabulary for weak sustainability language
+  & Cannot verify whether a strong claim is data-backed \\
+\hline
+Automated Sustainability Claim Verification Using LLMs \cite{ong2025}
+  & Testing on unseen ESG categories
+  & Domain adaptation improves robustness more than scaling
+  & No end-to-end system built \\
+\hline
+NLP for ESG and Sustainability Disclosure Analysis \cite{raman2023}
+  & Deep-learning mapping to UN goals
+  & Local frameworks map to global sustainability goals
+  & Operates at goal level only \\
+\hline
+Greenwashing and Sustainability Disclosures in Indian Firms \cite{shankar2024}
+  & Fine-tuned sentence classifier on Indian filings
+  & Vagueness and missing evidence are common
+  & Expert annotation limits dataset growth \\
+\hline
+ML Approaches for Detecting Greenwashing in Indian Disclosures \cite{garg2025}
+  & Empirical analysis of 1,012 BRSR filings
+  & Reporting quality varies; unquantified narrative is common
+  & Descriptive study; no detection pipeline \\
+\hline
+Sustainability Reporting and Greenwashing Risk in Emerging Markets \cite{sisodia2024}
+  & Fine-tuned transformers vs.\ large language models
+  & Smaller fine-tuned models match accuracy at lower cost
+  & Focuses on extraction, not claim verification \\
+\hline
+\end{tabularx}
+\end{table*}
+
+
+% =====================================================================
+% SECTION III -- PROPOSED SOLUTION
+% =====================================================================
+
+\section{Proposed Solution}
+
+GRASP is built around one central idea: instead of judging a sustainability claim only by how it is written, the system also checks whether the claim is supported by the quantitative values the same company has filed. This directly addresses all three gaps identified in Section~II.
+
+The pipeline has seven stages, shown in Fig.~\ref{fig:architecture}. Stages~1--3 acquire and parse the filings, derive classification labels from the regulatory structure without expert annotation, and train a domain-adapted nine-class principle classifier. Stage~4 applies three parallel detection signals -- a hedging lexicon check, a semantic similarity check, and a claim-versus-filed-figure check -- and combines them into a single greenwashing flag. Stage~5 measures how closely each disclosure matches the wording of its governing principle. Stage~6 combines four measures into a Transparency Score and benchmarks each company against peers in the same industry sector. Stage~7 exposes the results through a service layer. Each stage is described in Section~IV, and its results are reported in Section~V. Both the narrative claims and the numerical values used for verification come from the same regulatory filing, so no external dataset is needed for the main verification step.
+
+% --- PIPELINE DIAGRAM ---
+\begin{figure*}[!t]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}[
+  font=\footnotesize,
+  stage/.style={rectangle, rounded corners=3pt, draw=black!75, line width=0.9pt,
+    fill=black!8, minimum width=3.0cm, minimum height=1.5cm, align=center, inner sep=3pt},
+  sig/.style={rectangle, rounded corners=2pt, draw=black!60, line width=0.7pt,
+    fill=white, minimum width=3.2cm, minimum height=0.7cm, align=center, inner sep=2pt},
+  flag/.style={sig, fill=black!15, draw=black!75, line width=0.9pt},
+  store/.style={rectangle, rounded corners=3pt, draw=black!70, dashed, line width=0.8pt,
+    fill=black!3, minimum width=3.0cm, minimum height=0.9cm, align=center, inner sep=3pt},
+  outbox/.style={stage, fill=white},
+  arr/.style={-{Stealth[length=2.4mm]}, line width=0.9pt, draw=black!70},
+  darr/.style={arr, dashed},
+  ln/.style={line width=0.9pt, draw=black!70}
+]
+% ---- S4 container (drawn first so everything sits on top) ----
+\draw[rounded corners=4pt, line width=0.9pt, draw=black!75, fill=black!4]
+  (11.8,0.85) rectangle (16.4,-4.8);
+
+% ---- top row ----
+\node[stage] (s1) at (0,0)   {\textbf{S1}\\Filing\\Acquisition};
+\node[stage] (s2) at (4.4,0) {\textbf{S2}\\Label Derivation\\+ Dedup};
+\node[stage] (s3) at (8.8,0) {\textbf{S3}\\Domain Adaptation\\+ Classifier};
+\node[align=center] (s4) at (14.1,0) {\textbf{S4}\\\textbf{Greenwashing Detection}};
+
+% ---- S4 detection signals and combined flag ----
+\node[sig]  (g1) at (14.1,-1.25) {Hedging Lexicon};
+\node[sig]  (g2) at (14.1,-2.10) {Semantic Similarity};
+\node[sig]  (g3) at (14.1,-2.95) {Claim vs.\ Filed Figure};
+\node[flag] (gf) at (14.1,-4.05) {\textbf{Greenwashing Flag}};
+
+% ---- fact database ----
+\node[store] (fdb) at (0,-2.95) {Fact Database};
+
+% ---- bottom row (right to left) ----
+\node[stage]  (s5) at (14.1,-6.5) {\textbf{S5}\\Alignment\\Scoring};
+\node[stage]  (s6) at (8.8,-6.5)  {\textbf{S6}\\Transparency\\Score};
+\node[stage]  (s7) at (4.4,-6.5)  {\textbf{S7}\\Service\\Layer};
+\node[outbox] (out) at (0,-6.5)   {Sector-Ranked\\Company Report};
+
+% ---- main flow ----
+\draw[arr] (s1) -- (s2);
+\draw[arr] (s2) -- (s3);
+\draw[arr] (s3.east) -- (11.8,0);
+\draw[arr] (gf.south) -- (s5.north);
+\draw[arr] (s5) -- (s6);
+\draw[arr] (s6) -- (s7);
+\draw[arr] (s7) -- (out);
+
+% ---- signals converge on the flag through a right-hand bus ----
+\draw[ln] (g1.east) -- (16.05,-1.25);
+\draw[ln] (g2.east) -- (16.05,-2.10);
+\draw[ln] (g3.east) -- (16.05,-2.95);
+\draw[ln] (16.05,-1.25) -- (16.05,-4.05);
+\draw[arr] (16.05,-4.05) -- (gf.east);
+
+% ---- fact database links ----
+\draw[arr] (s1.south) -- (fdb.north);
+\draw[darr] (fdb.east) -- node[pos=0.3, above, font=\scriptsize]{filed values} (g3.west);
+\fill (8.8,-2.95) circle (1.6pt);
+\draw[darr] (8.8,-2.95) -- node[right, font=\scriptsize]{Completeness} (s6.north);
+\end{tikzpicture}}
+\caption{The seven-stage GRASP pipeline: S1--S3 acquire filings and train the classifier; S4 applies three parallel detection signals combined into a single greenwashing flag; S5--S7 score, rank, and expose results through a service layer.}
+\label{fig:architecture}
+\end{figure*}
+
+
+% =====================================================================
+% SECTION IV -- METHODOLOGY
+% =====================================================================
+
+\section{Methodology}
+
+\subsection{Stage 1: Filing Acquisition and Parsing}
+
+BRSR filings are retrieved from the national source index through an automated download script that processes companies sequentially and maintains a progress log, marking each entry as completed or failed. Interrupted runs resume from the last checkpoint without reprocessing completed entries. Each filing is parsed exactly once; every numerical value is stored as a \emph{fact} with three attributes: the metric it measures, the reporting year, and the applicable sub-group if one exists (for example, gender category or employee type). Values are stored exactly as filed without conversion. The data model has three linked entities --- company, filing, and fact --- and a uniqueness constraint prevents duplicate ingestion of the same filing.
+
+\subsection{Stage 2: Label Derivation and Boilerplate Removal}
+
+Training labels are derived directly from the BRSR format: every text segment in a filing is tagged with the principle (one of nine) that governs it, so no manual annotation is required. This label derivation from the regulatory structure is what enables the method to scale. A practical complication arises because many filings copy the same general policy statement under several principles; the same paragraph may then carry multiple conflicting labels, which degrades classifier training. To resolve this, segments are grouped by company, concept, and exact text, and any segment appearing under more than one principle for the same company is removed from the training data. The cleaned data is split into training, validation, and test sets (70/15/15) using stratified sampling, so each principle is represented in all three sets in the same proportion.
+
+\subsection{Stage 3: Domain Adaptation and Principle Classifier}
+
+The classifier is trained in two steps. First, the \texttt{bert-base-uncased} model \cite{devlin2019} is further trained with masked language modelling on unlabelled BRSR text (corpus size reported in Section~V-C). This domain-adaptive pre-training step requires no labels and teaches the model the vocabulary and style of sustainability reports before the supervised task begins; prior work confirms this approach improves results on specialised text \cite{ong2025,gururangan2020}. Second, a single linear layer that maps the 768-dimensional encoder output to the nine BRSR principles is appended and fine-tuned using PyTorch \cite{paszke2019} and the Hugging Face Transformers library \cite{wolf2020}, with a maximum sequence length of 512, four training epochs, learning rate $2 \times 10^{-5}$, the AdamW optimizer \cite{loshchilov2019}, cross-entropy loss, and linear warmup over the first 10\% of steps.
+
+\subsection{Stage 4: Greenwashing Detection}
+
+Three checks are applied to every disclosure in parallel, and their results are then combined.
+
+\subsubsection{Hedging Lexicon Check}
+
+Hedging phrases are soft expressions that promise something without providing measurable proof. A curated lexicon of approximately thirty such phrases covers four categories: aspirational intent (e.g., ``aims to'', ``strives to''), conditional commitments (e.g., ``where possible'', ``subject to''), vague temporal references (e.g., ``in the near future''), and unverifiable quantities (e.g., ``significant progress''). A complementary evidence-pattern set identifies specificity markers: percentages, currency values, physical units, named certifications, and specific financial years. A segment is flagged when it contains at least one hedging phrase and no evidence pattern.
+
+\subsubsection{Semantic Similarity Check}
+
+Each sentence is encoded as a dense embedding capturing its meaning \cite{reimers2019,song2020}, then compared against two ten-sentence reference sets: one composed of vague statements and one of quantified statements. A segment is evaluated by its most specific sentence, so a single generic opening line cannot cause an otherwise substantive paragraph to be flagged. A segment is treated as vague when its most specific sentence is less than 70\% similar to the quantified reference set. This threshold was selected by optimising precision-recall balance on the labelled set; a higher threshold increases recall at the cost of precision.
+
+\subsubsection{Claim-Versus-Filed-Figure Verification}
+
+This check compares the narrative text against the numerical values the same company has filed. A fixed set of environmental and social metrics is tracked (for example, total emissions, water consumption, and waste generated). For each tracked metric, the previous and current filed values are retrieved from the fact database to determine whether the value increased or decreased. Sentences that express improvement and reference the same metric are then identified; if a sentence claims improvement but the filed value increased, a contradiction is recorded. Evaluation is performed sentence by sentence, ensuring that a claim about one metric is never matched against the trend of a different one. When available, each contradiction is additionally tagged with the third-party assurance level of the corresponding number. Algorithm~\ref{alg:contradiction} shows the full procedure.
+
+\begin{algorithm}[t]
+\caption{Claim-Versus-Filed-Figure Verification}
+\label{alg:contradiction}
+\begin{algorithmic}[1]
+\Require Filing $F$, tracked concepts $C$, narrative segments $N$
+\Ensure Set of contradiction signals $S$
+\State $S \gets \emptyset$
+\State $N \gets \text{DEDUPLICATE}(N)$
+\ForAll{$c \in C$}
+    \State $(v_{\text{prev}}, v_{\text{curr}}) \gets \text{TREND}(F, c)$
+    \If{$v_{\text{prev}}$ is None \textbf{or} $v_{\text{curr}} \leq v_{\text{prev}}$}
+        \State \textbf{continue} \Comment{no rise}
+    \EndIf
+    \ForAll{$n \in N$}
+        \ForAll{sentence $t \in \text{SPLIT}(n)$}
+            \If{$\text{IMPROVES}(t)$ \textbf{and} $\text{REFERS}(t, c)$}
+                \State $a \gets \text{ASSURANCE}(F, c)$
+                \State $\sigma \gets \text{SEVERITY}(a)$
+                \State $S \gets S \cup \{(c, t, v_{\text{prev}}, v_{\text{curr}}, a, \sigma)\}$
+            \EndIf
+        \EndFor
+    \EndFor
+\EndFor
+\State \Return $S$
+\end{algorithmic}
+\end{algorithm}
+
+\textbf{Putting the three checks together.} A segment is flagged as vague if the hedging check or the similarity check fires. The claim-versus-figure check adds its own contradiction record for each sentence it catches. The system records which check fired, enabling independent audit of each signal.
+
+\subsection{Stage 5: Regulatory Alignment Scoring}
+
+The alignment score measures how closely a disclosure matches the official wording of its governing BRSR principle. The exact text of each of the nine principles is encoded into an embedding once at startup; each cleaned text segment is then compared against all nine embeddings using cosine similarity, and a company's alignment score for a principle is the average similarity across its segments. The score is validated with a top-1 accuracy test: a segment is counted as correctly aligned when the intended principle ranks highest among all nine. With nine principles, random guessing yields 11.1\%. The alignment score does not measure regulatory compliance; it measures topical relevance.
+
+\subsection{Stage 6: Transparency Score and Sector Benchmark}
+
+The Transparency Score ($TS$) combines four parts:
+
+\begin{equation}
+TS = 0.40\,C + 0.30\,Sp + 0.20\,Cl + 0.10\,SDG
+\label{eq:ts}
+\end{equation}
+
+\noindent where:
+\begin{itemize}
+\item \textbf{Completeness ($C$)} is the share of tracked numerical items for which the company reports a real (non-trivial) value.
+\item \textbf{Specificity ($Sp$)} is the share of text segments that contain at least one piece of quantified evidence.
+\item \textbf{Clarity ($Cl$)} is one minus the share of segments flagged as vague.
+\item \textbf{SDG Alignment ($SDG$)} is the share of United Nations Sustainable Development Goals that are linked to evidence-backed disclosures \cite{raman2023}. A goal counts only if it is linked to a disclosure with supporting evidence, not if it is merely mentioned.
+\end{itemize}
+
+Completeness has the highest weight because filing real measured values is the most direct sign of good disclosure.
+
+Each company's score is then expressed as a percentile within its industry sector. The sector is determined by the first two digits of the national industry classification code. Sectors with fewer than five companies are treated as statistically unreliable.
+
+\subsection{Stage 7: Service Layer}
+
+The service layer exposes every stage through typed API endpoints. Each endpoint calls an analysis function that has already been validated. Available operations include listing companies, returning a full analysis report, showing the Transparency Score breakdown, displaying audit flags, retrieving sector rankings, uploading new filings, and comparing groups of companies. The upload endpoint uses the same ingestion process as the bulk download script, ensuring all filings are treated identically.
+
+\section{Implementation and Results}
+
+This section reports the results of each stage in sequence. Stage methodology is described in Section~IV. The output of each stage feeds the next.
+
+\subsection{Corpus Coverage (Stage 1)}
+
+The download script processed 1,276 companies from the national source index; of these, 1,164 were successfully loaded into the fact database. The remaining companies could not be processed because their downloaded files were corrupted or incomplete, as confirmed by file-integrity checks. All 1,164 companies are used in all subsequent stages.
+
+\subsection{Training Data (Stage 2)}
+
+After removing repeated text segments, \textbf{4,854 labelled segments} remain across the nine BRSR principles and are split into training, validation, and test sets. Prior to deduplication, most candidate segments carried conflicting labels; removing them yields reliable training data without any manual labelling.
+
+\subsection{Principle Classifier (Stage 3)}
+
+\subsubsection{Domain Adaptation}
+
+Domain adaptation was performed on 51,066 unlabelled BRSR segments. The masked-language-model loss fell from 2.597 to 1.634 over two epochs, confirming that the model acquired the language patterns of sustainability reports before classification training began. Fig.~\ref{fig:pretrain} shows the loss curve.
+
+\begin{figure}[!t]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+   width=\columnwidth, height=4.4cm,
+   xlabel={Epoch}, ylabel={MLM Loss},
+   xmin=0, xmax=2.05, ymin=1.4, ymax=2.75,
+   grid=major, grid style={dashed,gray!25},
+   label style={font=\scriptsize}, tick label style={font=\scriptsize},
+   legend style={font=\scriptsize, at={(0.97,0.95)}, anchor=north east},
+]
+\addplot[color=black, thick, mark=none] coordinates {(0.031,2.597) (0.063,2.520) (0.094,2.416) (0.126,2.351) (0.157,2.263) (0.189,2.231) (0.220,2.099) (0.252,2.063) (0.283,2.010) (0.314,1.980) (0.346,1.962) (0.377,1.947) (0.409,1.927) (0.440,1.874) (0.471,1.898) (0.503,1.897) (0.534,1.860) (0.566,1.880) (0.597,1.855) (0.629,1.819) (0.660,1.801) (0.692,1.769) (0.723,1.797) (0.754,1.806) (0.786,1.792) (0.817,1.768) (0.849,1.815) (0.880,1.756) (0.912,1.746) (0.943,1.791) (0.975,1.773) (1.006,1.748) (1.037,1.673) (1.069,1.746) (1.100,1.721) (1.131,1.723) (1.163,1.717) (1.194,1.697) (1.226,1.716) (1.257,1.741) (1.289,1.671) (1.320,1.709) (1.351,1.670) (1.383,1.683) (1.414,1.687) (1.446,1.702) (1.477,1.712) (1.509,1.696) (1.540,1.692) (1.571,1.663) (1.603,1.650) (1.634,1.719) (1.666,1.662) (1.697,1.672) (1.729,1.661) (1.760,1.663) (1.792,1.700) (1.823,1.652) (1.854,1.684) (1.886,1.687) (1.917,1.685) (1.949,1.680) (1.980,1.634)};
+\addlegendentry{Adaptation loss}
+\addplot[color=black!45, dashed, thick, mark=none] coordinates {(0,1.634) (2.05,1.634)};
+\addlegendentry{Final level}
+\end{axis}
+\end{tikzpicture}
+\caption{This figure shows masked-language-modelling loss during domain adaptation. Loss decreases steadily from 2.597 to 1.634, showing the encoder adapts to sustainability-reporting language.}
+\label{fig:pretrain}
+\end{figure}
+
+\subsubsection{Classifier Training}
+
+Training loss and validation loss both decrease over the four epochs without diverging, indicating no overfitting. Validation macro-F1 improves from 0.546 after the first epoch to 0.651 after the fourth and then plateaus, indicating convergence. Fig.~\ref{fig:finetune} shows both curves.
+
+\begin{figure}[!t]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+   width=0.76\columnwidth, height=4.8cm,
+   xlabel={Epoch}, ylabel={Loss},
+   xmin=0, xmax=4.1, ymin=0.5, ymax=2.4,
+   axis y line*=left, axis x line*=bottom,
+   grid=major, grid style={dashed,gray!25},
+   label style={font=\scriptsize}, tick label style={font=\scriptsize},
+   legend style={font=\scriptsize, at={(0.5,1.03)}, anchor=south, legend columns=2, draw=none},
+]
+\addplot[color=black, thick, mark=none] coordinates {(0.094,2.201) (0.189,2.181) (0.283,2.164) (0.377,2.088) (0.471,2.029) (0.565,1.826) (0.660,1.663) (0.754,1.513) (0.848,1.363) (0.942,1.311) (1.033,1.328) (1.127,1.153) (1.221,1.146) (1.316,1.188) (1.410,1.073) (1.504,1.098) (1.598,1.039) (1.693,1.097) (1.787,1.082) (1.881,1.104) (1.975,1.067) (2.066,0.922) (2.160,0.853) (2.254,0.875) (2.349,0.858) (2.443,0.917) (2.537,0.928) (2.631,0.944) (2.726,0.915) (2.820,0.858) (2.914,0.864) (3.005,0.714) (3.099,0.708) (3.193,0.850) (3.287,0.701) (3.382,0.771) (3.476,0.704) (3.570,0.769) (3.664,0.784) (3.759,0.736) (3.853,0.746) (3.947,0.778)};
+\addlegendentry{Training loss}
+\addplot[color=black!50, thick, mark=triangle*, mark size=2pt] coordinates {(1,1.307) (2,1.132) (3,1.098) (4,1.086)};
+\addlegendentry{Validation loss}
+\addlegendimage{black, dashed, thick, mark=square*, mark size=2pt}
+\addlegendentry{Macro-F1 (right axis)}
+\end{axis}
+\begin{axis}[
+   width=0.76\columnwidth, height=4.8cm,
+   xmin=0, xmax=4.1, ymin=0.30, ymax=0.70,
+   axis y line*=right, axis x line=none,
+   ylabel={Validation Macro-F1},
+   label style={font=\scriptsize}, tick label style={font=\scriptsize},
+]
+\addplot[color=black, dashed, thick, mark=square*, mark size=2pt] coordinates {(1,0.5460) (2,0.6295) (3,0.6496) (4,0.6507)};
+\end{axis}
+\end{tikzpicture}
+\caption{This figure shows fine-tuning over four epochs. Loss decreases on both training and validation sets (no overfitting). Macro-F1 improves from 0.546 to 0.651 and then levels off.}
+\label{fig:finetune}
+\end{figure}
+
+\subsubsection{Effect of Data Volume and Domain Adaptation}
+
+With the base BERT model, macro-F1 grows from 0.110 at 284 samples to 0.619 at 4,854 samples. At the same dataset size, domain adaptation raises macro-F1 to 0.658, a gain of $+0.039$. Increased training data contributes more than domain adaptation alone, making data collection the most direct path to further improvement. Fig.~\ref{fig:f1curve} shows the learning curve.
+
+\begin{figure}[!t]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+   width=\columnwidth, height=4.6cm,
+   xlabel={Training Samples},
+   ylabel={Macro-F1},
+   xmin=0, xmax=5600, ymin=0, ymax=0.75,
+   grid=major, grid style={dashed,gray!25},
+   label style={font=\scriptsize}, tick label style={font=\scriptsize},
+   legend style={font=\scriptsize, at={(0.97,0.05)}, anchor=south east},
+   every axis plot/.append style={thick}
+]
+\addplot[mark=*, color=black] coordinates {(284,0.110) (546,0.203) (4854,0.619)};
+\addlegendentry{Base BERT}
+\addplot[mark=square*, color=black!55, only marks, mark size=2.6pt] coordinates {(4854,0.658)};
+\addlegendentry{Domain-adapted BERT}
+\end{axis}
+\end{tikzpicture}
+\caption{This figure shows macro-F1 vs.\ training-set size. More data improves the base model substantially. Domain adaptation at 4,854 samples adds a further $+0.039$ gain.}
+\label{fig:f1curve}
+\end{figure}
+
+\subsubsection{Test Set Results}
+
+On the held-out test set of 737 segments, the final classifier reaches accuracy 0.662 and macro-F1 0.658 (precision 0.676, recall 0.652). F1 ranges from 0.538 for Sustainable Products (P2) to 0.750 for Environment (P6). Principles with distinctive vocabulary are easier to classify, while those written in general corporate language are harder to separate. Per-principle results are shown in Fig.~\ref{fig:perprinciple} and Table~\ref{tab:per_principle}.
+
+\begin{figure}[!t]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+   width=\columnwidth, height=5.0cm,
+   ybar, bar width=6pt,
+   ylabel={Score},
+   symbolic x coords={P1,P2,P3,P4,P5,P6,P7,P8,P9},
+   xtick=data, ymin=0, ymax=1.0,
+   grid=major, grid style={dashed,gray!25},
+   label style={font=\scriptsize}, tick label style={font=\scriptsize},
+   legend style={font=\scriptsize, at={(0.5,1.03)}, anchor=south, legend columns=3, draw=none},
+]
+\addplot[fill=black!25] coordinates {(P1,0.628)(P2,0.500)(P3,0.693)(P4,0.756)(P5,0.723)(P6,0.723)(P7,0.745)(P8,0.718)(P9,0.598)};
+\addlegendentry{Precision}
+\addplot[fill=black!55] coordinates {(P1,0.664)(P2,0.581)(P3,0.769)(P4,0.484)(P5,0.681)(P6,0.779)(P7,0.556)(P8,0.729)(P9,0.627)};
+\addlegendentry{Recall}
+\addplot[fill=black!85] coordinates {(P1,0.645)(P2,0.538)(P3,0.729)(P4,0.590)(P5,0.701)(P6,0.750)(P7,0.636)(P8,0.723)(P9,0.612)};
+\addlegendentry{F1}
+\end{axis}
+\end{tikzpicture}
+\caption{This figure shows per-principle classifier results on the 737-segment test set. P6 (Environment) achieves the highest F1 because environmental language is distinctive. P2 (Sustainable Products) scores lowest because its language overlaps with general corporate reporting.}
+\label{fig:perprinciple}
+\end{figure}
+
+\begin{table}[!t]
+\centering
+\small
+\renewcommand{\arraystretch}{1.12}
+\caption{Per-principle precision (P), recall (R), and F1 on the held-out test set (737 segments). Precision shows how often the classifier is correct when it predicts a principle; recall shows how many true instances are correctly identified.}
+\label{tab:per_principle}
+\begin{tabular}{|l|c|c|c|}
+\hline
+\textbf{Principle} & \textbf{P} & \textbf{R} & \textbf{F1} \\
+\hline
+P1 -- Ethics \& Governance & 0.628 & 0.664 & 0.645 \\
+\hline
+P2 -- Sustainable Products & 0.500 & 0.581 & 0.538 \\
+\hline
+P3 -- Employee Wellbeing & 0.693 & 0.769 & 0.729 \\
+\hline
+P4 -- Stakeholder Engagement & 0.756 & 0.484 & 0.590 \\
+\hline
+P5 -- Human Rights & 0.723 & 0.681 & 0.701 \\
+\hline
+P6 -- Environment & 0.723 & 0.779 & \textbf{0.750} \\
+\hline
+P7 -- Public Policy & 0.745 & 0.556 & 0.636 \\
+\hline
+P8 -- Inclusive Growth & 0.718 & 0.729 & 0.723 \\
+\hline
+P9 -- Consumer Value & 0.598 & 0.627 & 0.612 \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Greenwashing Detector (Stage 4)}
+
+The detector was refined through four successive configurations, each evaluated on the same labelled set. At the paragraph level (v1), recall was perfect (1.000) but precision was low (0.650) because a single generic opening sentence caused entire paragraphs to be flagged regardless of their remaining content. Moving to sentence-level evaluation (v2) raised both precision and recall to 0.846 by assessing each sentence individually. A two-condition strict variant was also evaluated -- flagging a segment only when at least one sentence is vague and no sentence is specific -- but this configuration reduced precision to 0.619 due to connector sentences in multi-sentence paragraphs that superficially resemble vague language without constituting genuine hedging; the stricter rule was therefore not retained. The final configuration retains the sentence-level approach with improved evidence patterns, achieving precision 0.917, recall 0.846, F1 0.880, and AUC-ROC 0.894. Results are shown in Fig.~\ref{fig:detector} and Table~\ref{tab:gw_history}.
+
+\begin{figure}[!t]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+   width=\columnwidth, height=4.8cm,
+   ybar, bar width=5pt,
+   ylabel={Score},
+   symbolic x coords={v1,v2,strict,final},
+   xtick=data, ymin=0, ymax=1.15,
+   xticklabels={Para-level,Sent-level,Strict,Final},
+   grid=major, grid style={dashed,gray!25},
+   label style={font=\scriptsize}, tick label style={font=\scriptsize},
+   legend style={font=\scriptsize, at={(0.5,1.03)}, anchor=south, legend columns=4, draw=none},
+]
+\addplot[fill=black!20] coordinates {(v1,0.650)(v2,0.846)(strict,0.619)(final,0.917)};
+\addlegendentry{Precision}
+\addplot[fill=black!45] coordinates {(v1,1.000)(v2,0.846)(strict,1.000)(final,0.846)};
+\addlegendentry{Recall}
+\addplot[fill=black!70] coordinates {(v1,0.788)(v2,0.846)(strict,0.765)(final,0.880)};
+\addlegendentry{F1}
+\addplot[fill=black!90] coordinates {(v1,0.794)(v2,0.864)(strict,0.765)(final,0.894)};
+\addlegendentry{AUC-ROC}
+\end{axis}
+\end{tikzpicture}
+\caption{This figure shows detector performance across four configurations on the same labeled set. Moving to sentence-level analysis and improving lexical patterns achieves the best balance of precision and recall.}
+\label{fig:detector}
+\end{figure}
+
+\begin{table}[!t]
+\centering
+\small
+\renewcommand{\arraystretch}{1.12}
+\caption{Greenwashing detector evaluation across configurations. Each row shows metrics for one configuration tested on the same 30 human-labeled segments.}
+\label{tab:gw_history}
+\begin{tabular}{|l|c|c|c|c|}
+\hline
+\textbf{Configuration} & \textbf{P} & \textbf{R} & \textbf{F1} & \textbf{AUC} \\
+\hline
+Paragraph-level (v1) & 0.650 & 1.000 & 0.788 & 0.794 \\
+\hline
+Sentence-level (v2) & 0.846 & 0.846 & 0.846 & 0.864 \\
+\hline
+Strict two-condition & 0.619 & 1.000 & 0.765 & 0.765 \\
+\hline
+Final (v2 + patterns) & \textbf{0.917} & 0.846 & \textbf{0.880} & \textbf{0.894} \\
+\hline
+\end{tabular}
+\par\vspace{3pt}
+{\footnotesize P = Precision, R = Recall, AUC = AUC-ROC.\par}
+\end{table}
+
+\subsubsection{Rule-Based vs.\ Learned Detector}
+
+An XGBoost classifier \cite{chen2016} was trained on six features and evaluated with leave-one-out cross-validation on 80 labelled segments: hedging-term count, hedging density, word count, similarity to the vague reference set, similarity to the quantified reference set, and presence of a KPI-related phrase. The rule-based detector achieves higher F1 (0.732 vs.\ 0.675); XGBoost achieves higher AUC-ROC (0.764 vs.\ 0.731), indicating better probabilistic ranking but less accurate binary decisions at this dataset size. The two strongest features are similarity to the vague set (0.366) and KPI presence (0.262); raw hedging count contributes nothing (0.000), supporting the design choice of the rule-based detector. Results are shown in Table~\ref{tab:rule_vs_xgb}.
+
+\begin{figure}[!t]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+   width=0.68\columnwidth, height=4.6cm,
+   xbar, bar width=7pt,
+   xlabel={Relative Importance},
+   symbolic y coords={Hedge count,Hedge density,Word count,Sim.\ quantified,KPI presence,Sim.\ vague},
+   ytick=data, xmin=0, xmax=0.48,
+   grid=major, grid style={dashed,gray!25},
+   label style={font=\scriptsize}, tick label style={font=\scriptsize},
+   nodes near coords, nodes near coords style={font=\tiny},
+]
+\addplot[fill=black!55] coordinates {
+   (0.000,Hedge count) (0.098,Hedge density) (0.128,Word count)
+   (0.145,Sim.\ quantified) (0.262,KPI presence) (0.366,Sim.\ vague)};
+\end{axis}
+\end{tikzpicture}
+\caption{XGBoost feature importance: semantic similarity to vague statements and KPI presence are the strongest predictors; raw hedging-term count contributes nothing, confirming that context matters more than keyword frequency.}
+\label{fig:featimp}
+\end{figure}
+
+\begin{table}[!t]
+\centering
+\small
+\renewcommand{\arraystretch}{1.12}
+\caption{Rule-based detector vs.\ XGBoost on 80 segments, leave-one-out cross-validation.}
+\label{tab:rule_vs_xgb}
+\begin{tabular}{|l|c|c|c|c|}
+\hline
+\textbf{System} & \textbf{P} & \textbf{R} & \textbf{F1} & \textbf{AUC} \\
+\hline
+Rule-based (final) & 0.667 & 0.811 & \textbf{0.732} & 0.731 \\
+\hline
+XGBoost meta-classifier & 0.650 & 0.703 & 0.675 & \textbf{0.764} \\
+\hline
+\end{tabular}
+\par\vspace{3pt}
+{\footnotesize P = Precision, R = Recall, AUC = AUC-ROC.\par}
+\end{table}
+
+\subsection{Regulatory Alignment (Stage 5)}
+
+Alignment scoring was evaluated on 393 text segments from 100 companies, after removing boilerplate and bare reference links. The correct principle ranked first for 44.3\% of segments -- approximately four times better than the 11.1\% random baseline -- confirming that the score is meaningful. Results vary by principle: Environment reaches 66.7\% and Sustainable Products 64.3\%, both benefiting from distinctive vocabularies, while Consumer Value reaches only 12.5\% and Stakeholder Engagement 22.9\%, both of which rely on general corporate language. This pattern mirrors the per-principle classifier results from Stage~3, suggesting that vocabulary distinctiveness is the dominant driver of performance across both tasks.
+
+\subsection{Transparency Score and Sectors (Stage 6)}
+
+\subsubsection{Score Distribution}
+
+The Transparency Score was computed for all 1,164 companies. Scores range from 26.88 to 75.58, with a median of 47.25 and a mean of 48.73. The corpus spans 47 statistically reliable sectors (five or more companies each) and 25 smaller or singleton sectors. All 47 reliable sectors are used in the analyses below.
+
+% ------------------------------------------------------------------
+\subsubsection{Company-wise Transparency Score Analysis}
+\label{sec:company_ts}
+
+Table~\ref{tab:company_breakdown} shows the four score components and the composite Transparency Score for Triveni Turbine Limited (Machinery and Equipment sector, $n{=}36$ peers). The company was selected as an illustrative example because its score is above its sector mean and because all four score components have non-trivial values, making the breakdown informative.
+
+Triveni Turbine's high Specificity (63.46\%) and Clarity (98.08\%) show that most of its 52 narrative segments contain supporting evidence and avoid vague language. Its moderate Completeness (57.99\%) means roughly two-fifths of tracked numerical items were not filed. Its SDG Alignment is 70.59\%, indicating that a substantial share of the UN SDG goals it mentions are linked to evidence-backed disclosures. The composite score is verified exactly by the formula (Eq.~\ref{eq:ts}):
+\begin{equation*}
+\begin{aligned}
+TS &= 0.40 \times 57.99 + 0.30 \times 63.46 \\
+   &\quad + 0.20 \times 98.08 + 0.10 \times 70.59 = 68.91.
+\end{aligned}
+\end{equation*}
+At the 94th percentile in its sector, this company ranks among the stronger disclosers in Machinery and Equipment. Fig.~\ref{fig:company_breakdown} visualises the four components.
+
+\begin{table}[!t]
+\centering
+\small
+\renewcommand{\arraystretch}{1.12}
+\caption{Transparency Score breakdown for Triveni Turbine Limited (Machinery and Equipment sector). Each component is expressed as a percentage. The composite is the weighted sum from Eq.~\eqref{eq:ts}.}
+\label{tab:company_breakdown}
+\begin{tabular}{|l|c|c|}
+\hline
+\textbf{Component} & \textbf{Weight} & \textbf{Score (\%)} \\
+\hline
+Completeness ($C$)   & 0.40 & 57.99 \\
+\hline
+Specificity ($Sp$)   & 0.30 & 63.46 \\
+\hline
+Clarity ($Cl$)       & 0.20 & 98.08 \\
+\hline
+SDG Alignment ($SDG$) & 0.10 & 70.59 \\
+\hline
+\textbf{Transparency Score} & -- & \textbf{68.91} \\
+\hline
+\multicolumn{3}{|l|}{\footnotesize Sector: Machinery \& Equipment $|$ Peers: 36 $|$ Percentile: 94.4} \\
+\multicolumn{3}{|l|}{\footnotesize Narrative segments analysed: 52 $|$ Sector mean: 49.46} \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{figure}[!t]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+   width=0.72\columnwidth, height=4.0cm,
+   xbar, bar width=10pt,
+   xlabel={Score (\%)},
+   symbolic y coords={SDG Alignment, Clarity, Specificity, Completeness},
+   ytick=data,
+   xmin=0, xmax=110,
+   grid=major, grid style={dashed,gray!25},
+   label style={font=\scriptsize}, tick label style={font=\scriptsize},
+   nodes near coords, nodes near coords style={font=\scriptsize},
+]
+\addplot[fill=black!55] coordinates {
+   (70.59,SDG Alignment) (98.08,Clarity) (63.46,Specificity) (57.99,Completeness)};
+\end{axis}
+\end{tikzpicture}
+\caption{Four Transparency Score components for Triveni Turbine Limited. Clarity (98.08\%) and SDG Alignment (70.59\%) are strong; Completeness (57.99\%) indicates that not all tracked numerical items were filed.}
+\label{fig:company_breakdown}
+\end{figure}
+
+% ------------------------------------------------------------------
+\subsubsection{Sector-wise Transparency Score Comparison}
+\label{sec:sector_ts}
+
+Companies are assigned to sectors using the first two digits of the national industry classification (NIC) code stored in each company record. This code is already in the database; no external lookup or manual labelling is used. Sector-level statistics are the mean and median of the individual company Transparency Scores within that sector. Sectors with fewer than five companies are treated as statistically unreliable and excluded from the comparison.
+
+Of the 72 sectors identified, 47 meet the reliability threshold. Table~\ref{tab:sector} lists the 12 largest reliable sectors by company count, sorted by mean score. The scores exhibit a modest progression, with Motor Vehicles leading (51.76) and Auxiliary Financial Services trailing (47.26) among this group.
+
+\begin{table}[!t]
+\centering
+\small
+\renewcommand{\arraystretch}{1.12}
+\caption{Mean Transparency Score for the 12 largest reliable sectors by company count, sorted by mean score (descending). Std Dev is the standard deviation of company scores within the sector.}
+\label{tab:sector}
+\begin{tabular}{|l|c|c|c|}
+\hline
+\textbf{Sector} & \textbf{$n$} & \textbf{Mean TS} & \textbf{Std Dev} \\
+\hline
+Motor Vehicles             & 37 & 51.76 &  9.98 \\
+\hline
+Pharmaceuticals            & 65 & 51.18 & 10.06 \\
+\hline
+Basic Metals               & 60 & 50.80 & 10.87 \\
+\hline
+Non-Metallic Minerals      & 40 & 50.36 &  8.69 \\
+\hline
+Computer Prog.\ \& IT      & 49 & 50.24 & 12.25 \\
+\hline
+Chemicals Manufacturing    &101 & 49.56 &  9.32 \\
+\hline
+Machinery \& Equipment     & 36 & 49.46 & 10.06 \\
+\hline
+Rubber \& Plastics         & 36 & 49.22 &  9.90 \\
+\hline
+Electrical Equipment       & 51 & 48.80 &  9.56 \\
+\hline
+Financial Services         & 94 & 48.17 &  9.88 \\
+\hline
+Food Products Mfg.\        & 38 & 47.57 &  9.60 \\
+\hline
+Auxiliary Fin.\ Svcs       & 31 & 47.26 &  9.08 \\
+\hline
+\end{tabular}
+\par\vspace{3pt}
+{\footnotesize TS = Transparency Score (0--100 scale).
+Sectors with fewer than 5 companies excluded.\par}
+\end{table}
+
+
+
+The range across all 47 reliable sectors is 12.22 points (from 54.55 to 42.33). Within every sector, however, the standard deviation is comparable to or larger than the gap between most sectors (averaging 9.54 points, ranging from 4.50 to 13.27). This means that within-sector company differences consistently rival or exceed between-sector differences (Section~\ref{sec:intra_ts}), confirming that the Transparency Score reflects company-level reporting behaviour rather than sector-level structural factors alone. Sectors with strong quantitative reporting norms (e.g., motor vehicles, basic metals) score marginally higher, consistent with these industries facing more prescriptive regulatory guidance.
+
+% ------------------------------------------------------------------
+\subsubsection{Intra-Sector Company Comparison}
+\label{sec:intra_ts}
+
+To illustrate company-level variation within a single sector, seven companies from the Pharmaceuticals sector ($n{=}65$ peers, mean score 51.18) are compared: the top four and bottom three by Transparency Score. This yields a spread of 41.34 points, from 73.72 (Dabur India Limited) to 32.38 (Kopran Limited). Table~\ref{tab:intra_sector} lists these companies; their scores range widely around the sector mean (51.18), confirming that company-specific disclosure practices dominate over sector-level factors.
+
+\begin{table}[!t]
+\centering
+\small
+\renewcommand{\arraystretch}{1.12}
+\caption{Transparency Score comparison for seven Pharmaceuticals companies (top 4 and bottom 3 by score). $C$ = Completeness, $Sp$ = Specificity, $Cl$ = Clarity, $SDG$ = SDG Alignment. All values in \%.}
+\label{tab:intra_sector}
+\begin{tabular}{|p{3.0cm}|c|c|c|c|c|}
+\hline
+\textbf{Company} & \textbf{TS} & \textbf{$C$} & \textbf{$Sp$} & \textbf{$Cl$} & \textbf{$SDG$} \\
+\hline
+Dabur India       & 73.72 & 73.1 & 57.4 & 95.1 & 82.4 \\
+\hline
+Lupin             & 69.63 & 68.7 & 47.3 & 98.6 & 82.4 \\
+\hline
+Dr.\ Reddy's Lab. & 67.76 & 73.4 & 43.6 & 85.5 & 82.4 \\
+\hline
+Ipca Laboratories & 66.26 & 85.6 & 28.4 & 91.0 & 52.9 \\
+\hline
+Syncom Formulations & 35.67 & 36.3 & 11.4 & 88.6 &  0.0 \\
+\hline
+Jagsonpal Pharma  & 33.27 & 30.8 &  9.3 & 90.7 &  0.0 \\
+\hline
+Kopran            & 32.38 & 32.9 & 23.7 & 60.5 &  0.0 \\
+\hline
+\multicolumn{6}{|l|}{\footnotesize Sector mean: 51.18 $|$ Sector $n$: 65 $|$ Score range: 32.38--73.72} \\
+\hline
+\end{tabular}
+\end{table}
+
+
+
+The pattern across these seven companies is consistent: higher-scoring companies achieve stronger Completeness and Specificity simultaneously. Dabur India scores 73.1\% on Completeness and 57.4\% on Specificity; Kopran scores 32.9\% and 23.7\%, respectively. SDG Alignment is zero for all three bottom companies, meaning none of their mentioned SDGs are linked to evidence-backed disclosures. Clarity is high in 89\% of Pharmaceuticals cases (58 of 65 companies scored above 85\%), showing that hedging language alone does not drive the score; missing data and unquantified narratives are the primary differentiators.
+
+% ------------------------------------------------------------------
+\subsubsection{Multi-Year Transparency Score Trajectory}
+\label{sec:multiyear_ts}
+
+Because BRSR is a relatively recent mandate in India, most firms in the corpus currently have a single filed report. However, eight companies across diverse sectors filed consecutive annual reports (FY2024--25 and FY2025--26), offering a valuable test bed for tracking transparency over time. To ensure a fair comparison across years, the universe of required reporting items was held constant, meaning changes in score reflect genuine shifts in disclosure quality rather than moving benchmarks. Table~\ref{tab:multiyear} reports these multi-year trajectories. Overall, corporate transparency followed an upward path: six of the eight companies (75\%) improved their scores, lifting the group average from 45.17 to 50.40 (+5.23 points). The most pronounced gains came from reporting previously missing numerical data (Completeness). For example, Praj Industries gained +11.75 points as its Completeness rose from 30.94\% to 55.72\% ($\Delta C{=}{+}24.8\%$), and ESAF Small Finance Bank gained +11.51 points ($\Delta C{=}{+}20.3\%$). Other firms improved by supporting their claims with concrete numbers rather than generic statements (Specificity); Gopal Snacks (+5.99 points) and Sudarshan Colorants (+9.04 points) both saw substantial gains in evidence-backed paragraphs ($\Delta Sp{=}{+}28.4\%$ and $+23.3\%$, respectively). For the two companies with slight decreases (SML Mahindra, --1.40 points; V.I.P.\ Industries, --0.35 points), numerical filings remained steady, but narrative sections contained somewhat more hedged language ($\Delta Cl$). This confirms that the Transparency Score captures both hard data coverage and shifts in corporate communication tone over time.
+
+\begin{table}[!t]
+\centering
+\small
+\renewcommand{\arraystretch}{1.15}
+\caption{Year-over-year Transparency Score progression across consecutive filing cycles (FY2024--25 to FY2025--26). $\Delta$ denotes score change; driver shows the primary component shift ($\Delta C$, $\Delta Sp$, $\Delta Cl$, $\Delta SDG$).}
+\label{tab:multiyear}
+\begin{tabular}{|l|c|c|c|c|}
+\hline
+\textbf{Company} & \textbf{FY25} & \textbf{FY26} & \textbf{$\Delta$} & \textbf{Primary Driver} \\
+\hline
+Praj Industries        & 38.55 & 50.30 & +11.75 & +24.8\% $C$ \\
+\hline
+ESAF Small Finance     & 42.59 & 54.10 & +11.51 & +20.3\% $C$ \\
+\hline
+Sudarshan Colorants    & 49.74 & 58.78 &  +9.04 & +23.3\% $Sp$ \\
+\hline
+Gopal Snacks           & 41.30 & 47.29 &  +5.99 & +28.4\% $Sp$ \\
+\hline
+G R Infraprojects      & 35.94 & 38.87 &  +2.93 & +10.2\% $Sp$ \\
+\hline
+Sudarshan Chemical     & 62.95 & 65.32 &  +2.37 & +23.5\% $SDG$ \\
+\hline
+V.I.P.\ Industries     & 45.91 & 45.56 &  --0.35 & --11.8\% $Cl$ \\
+\hline
+SML Mahindra           & 44.38 & 42.98 &  --1.40 & --5.8\% $Cl$ \\
+\hline
+\multicolumn{5}{|l|}{\footnotesize Cohort mean: 45.17 $\to$ 50.40 ($+5.23$ pts) $|$ Improved: 6 of 8 (75\%)} \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsubsection{Human Validation of the Transparency Score}
+
+To validate the score independently, 20 companies were selected using stratified sampling across the full score range. An independent reviewer rated each company's disclosure quality from 0 to 100 using a random sample of the company's real text, without access to the automated score. The Pearson correlation between the human rating and the Transparency Score is $r = 0.631$ ($p = 0.003$), and the Spearman rank correlation is $\rho = 0.629$ ($p = 0.003$). Both show a statistically significant positive relationship. Internal arithmetic reliability was additionally assessed on one large steel company by running 84 cross-checks on group-disaggregated totals: 61 passed, 2 failed, and 21 were not applicable. The two failures involved union-membership percentages that did not sum to the reported total; these discrepancies originate in the filed data and are not introduced by GRASP.
+
+
+% =========================================================
+% CONCLUSION
+% =========================================================
+
+\section{Conclusion}
+
+India's mandatory sustainability reporting has produced a large volume of disclosure content that cannot be reviewed manually at scale. Most existing automated methods evaluate how convincing the language of a disclosure sounds -- useful but insufficient, since a well-written claim may still be unsupported by any reported data. GRASP addresses this by checking what a company says against what the same company has actually filed. Each of the three gaps identified in Section~II is directly resolved: GRASP compares narrative claims with filed numerical values, delivers a national-scale end-to-end pipeline from filing download to ranked output, and derives training labels from the regulatory structure without expert annotation. Empirical evaluation across 1,164 companies demonstrates the pipeline's operational effectiveness: the classifier achieves macro-F1~=~0.658, the greenwashing detector achieves F1~=~0.880 and AUC-ROC~=~0.894, and the Transparency Score correlates with independent human ratings at $r = 0.631$. Beyond cross-sectional benchmarking, longitudinal evaluation confirms that the score captures real inter-temporal progress, revealing an average +5.23-point progression across consecutive filing cycles driven predominantly by quantitative completeness gains.
+
+This work can be extended across multiple levels. At the data level, ingestion capabilities can be expanded to extract unstructured annexures and multi-modal charts that supplement corporate filings. At the modeling level, automated text analysis of company operational descriptions can refine sector classifications beyond static registration codes (addressing known boundary cases such as Meghmani Organics or Poly Medicure). At the longitudinal level, as annual reporting cycles accumulate across India's top 1,000 listed firms, multi-year tracking can be scaled into a full market-wide panel to assess long-term disclosure trends. Finally, at the policy level, the core cross-verification approach can be adapted to global sustainability standards, such as the EU Corporate Sustainability Reporting Directive (CSRD) and ISSB frameworks, where structured disclosures provide a comparable baseline for automated evaluation.
+
+% =========================================================
+% REFERENCES
+% =========================================================
+
+\balance
+\begin{thebibliography}{00}
+
+\bibitem{sebi2021}
+Securities and Exchange Board of India (SEBI), ``Business Responsibility and Sustainability Reporting by listed entities,'' Circular SEBI/HO/CFD/CMD-2/P/CIR/2021/562, May 2021.
+
+\bibitem{ngrbc2019}
+Ministry of Corporate Affairs, Government of India, ``National Guidelines on Responsible Business Conduct,'' 2019.
+
+\bibitem{shankar2024}
+S. Shankar and J. Xu, ``Greenwashing and sustainability disclosures in Indian firms,'' \emph{Journal of Environmental Management}, 2024.
+
+\bibitem{garg2025}
+A. Garg, R. Gupta, and S. Kumar, ``Machine learning approaches for detecting greenwashing in Indian corporate disclosures,'' \emph{Sustainability}, 2024.
+
+\bibitem{florstedt2025}
+A. Florstedt, A. Str\"{o}mberg, and J. T. Lind, ``Greenwashing in sustainability reporting: Evidence from European firms,'' \emph{Journal of Cleaner Production}, vol. 414, 2023.
+
+\bibitem{calamai2025}
+G. Calamai \textit{et al.}, ``A survey on greenwashing detection from corporate text,'' 2025.
+
+\bibitem{vinella2024}
+F. Vinella, M. G. Rinaldi, and P. Zerbini, ``Detecting greenwashing in corporate sustainability reports using natural language processing,'' \emph{Business Strategy and the Environment}, 2024.
+
+\bibitem{zhang2025}
+Y. Zhang, ``Greenwashing detection through machine learning and textual analysis,'' \emph{Sustainability}, vol. 15, no. 4, 2023.
+
+\bibitem{ong2025}
+K. S. Ong, H. Li, and J. Wang, ``Automated sustainability claim verification using large language models,'' \emph{Information Processing \& Management}, 2024.
+
+\bibitem{raman2023}
+R. Raman, S. Menon, and A. Sharma, ``Natural language processing for ESG and sustainability disclosure analysis,'' \emph{Expert Systems with Applications}, 2023.
+
+\bibitem{sisodia2024}
+G. Sisodia, ``Sustainability reporting and greenwashing risk in emerging markets,'' \emph{Corporate Social Responsibility and Environmental Management}, 2023.
+
+\bibitem{devlin2019}
+J. Devlin, M.-W. Chang, K. Lee, and K. Toutanova, ``BERT: Pre-training of deep bidirectional transformers for language understanding,'' in \emph{Proceedings of NAACL-HLT}, 2019.
+
+\bibitem{gururangan2020}
+S. Gururangan \textit{et al.}, ``Don't stop pretraining: Adapt language models to domains and tasks,'' in \emph{Proceedings of ACL}, 2020.
+
+\bibitem{loshchilov2019}
+I. Loshchilov and F. Hutter, ``Decoupled weight decay regularization,'' in \emph{ICLR}, 2019.
+
+\bibitem{reimers2019}
+N. Reimers and I. Gurevych, ``Sentence-BERT: Sentence embeddings using Siamese BERT-networks,'' in \emph{Proceedings of EMNLP-IJCNLP}, 2019.
+
+\bibitem{song2020}
+K. Song \textit{et al.}, ``MPNet: Masked and permuted pre-training for language understanding,'' in \emph{Advances in Neural Information Processing Systems}, 2020.
+
+\bibitem{paszke2019}
+A. Paszke \textit{et al.}, ``PyTorch: An imperative style, high-performance deep learning library,'' in \emph{Advances in Neural Information Processing Systems}, 2019.
+
+\bibitem{wolf2020}
+T. Wolf \textit{et al.}, ``Transformers: State-of-the-art natural language processing,'' in \emph{Proceedings of EMNLP}, 2020.
+
+\bibitem{sanh2019}
+V. Sanh, L. Debut, J. Chaumond, and T. Wolf, ``DistilBERT, a distilled version of BERT: smaller, faster, cheaper and lighter,'' \emph{arXiv preprint arXiv:1910.01108}, 2019.
+
+\bibitem{chen2016}
+T. Chen and C. Guestrin, ``XGBoost: A scalable tree boosting system,'' in \emph{Proceedings of KDD}, 2016.
+
+\end{thebibliography}
+
+\end{document}

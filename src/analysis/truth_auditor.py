@@ -48,10 +48,11 @@ from dataclasses import dataclass, field
 
 from sqlalchemy.orm import Session
 
-from analysis.greenwashing import GreenwashingSignal, find_claim_evidence_signals
-from analysis.silent_removal import SilentRemovalFlag, find_silently_removed_metrics
-from analysis.specificity_clarity_score import get_deduplicated_narrative_texts
-from analysis.vagueness_combined import CombinedVaguenessResult, analyze_combined_vagueness
+from analysis.audit_checks.assurance_gap import AssuranceGapSignal, check_assurance_gap
+from analysis.audit_checks.greenwashing import GreenwashingSignal, find_claim_evidence_signals
+from analysis.audit_checks.silent_removal import SilentRemovalFlag, find_silently_removed_metrics
+from analysis.scoring.specificity_clarity_score import get_deduplicated_narrative_texts
+from analysis.vagueness.vagueness_combined import CombinedVaguenessResult, analyze_combined_vagueness
 
 
 @dataclass
@@ -60,6 +61,7 @@ class TruthAuditorReport:
     claim_evidence_contradictions: list[GreenwashingSignal]
     silent_removals: list[SilentRemovalFlag]
     vague_segments: list[CombinedVaguenessResult]  # only the flagged ones, kept for evidence review
+    assurance_gaps: list[AssuranceGapSignal]  # Signal 4: fact-missing or unassured narrative claims
     total_narrative_segments_checked: int
 
     @property
@@ -68,6 +70,7 @@ class TruthAuditorReport:
             len(self.claim_evidence_contradictions)
             + len(self.silent_removals)
             + len(self.vague_segments)
+            + len(self.assurance_gaps)
         )
 
     @property
@@ -76,7 +79,9 @@ class TruthAuditorReport:
         auditor produces — it's checked against the company's own filed
         numbers, not inferred from language alone. Any occurrence here is
         worth flagging as high-priority for human review."""
-        return len(self.claim_evidence_contradictions) > 0
+        return len(self.claim_evidence_contradictions) > 0 or any(
+            g.severity.value.startswith("high") for g in self.assurance_gaps
+        )
 
     def summary(self) -> str:
         lines = [
@@ -85,29 +90,35 @@ class TruthAuditorReport:
             f"  Claim-evidence contradictions (claim vs filed XBRL numbers): {len(self.claim_evidence_contradictions)}",
             f"  Silent removals (metric disclosed last period, absent now): {len(self.silent_removals)}",
             f"  Vague/unsubstantiated segments (hedging without KPI evidence): {len(self.vague_segments)}",
+            f"  Assurance & Fact Gaps (narrative claim with missing/unassured fact): {len(self.assurance_gaps)}",
         ]
         return "\n".join(lines)
 
 
 def run_truth_audit(session: Session, filing_id: int) -> TruthAuditorReport:
-    """Runs all three verification signals against one filing and returns
+    """Runs all four verification signals against one filing and returns
     a unified report. Each sub-check reuses its own already-validated
-    module rather than re-implementing logic here — see module docstring
-    for why each is trusted and what it specifically catches."""
+    module rather than re-implementing logic here."""
     contradictions = find_claim_evidence_signals(session, filing_id)
     removals = find_silently_removed_metrics(session, filing_id)
 
     texts = get_deduplicated_narrative_texts(session, filing_id)
     vague_results = []
+    assurance_gaps = []
+
     for text in texts:
         result = analyze_combined_vagueness(text)
         if result.is_flagged_vague:
             vague_results.append(result)
+
+        gaps = check_assurance_gap(session, filing_id, text)
+        assurance_gaps.extend(gaps)
 
     return TruthAuditorReport(
         filing_id=filing_id,
         claim_evidence_contradictions=contradictions,
         silent_removals=removals,
         vague_segments=vague_results,
+        assurance_gaps=assurance_gaps,
         total_narrative_segments_checked=len(texts),
     )
