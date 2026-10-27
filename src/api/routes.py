@@ -41,6 +41,7 @@ from api.converters import (
 from api.schemas import (
     CompanyFullReport,
     CompanySummary,
+    ComplianceMappingSummary,
     FilingSummary,
     IngestRequest,
     IngestResponse,
@@ -150,6 +151,72 @@ def get_company_transparency_score(name: str):
         universe = get_concept_universe(session)
         result = get_transparency_score(session, filing.id, concept_universe=universe)
         return transparency_score_to_schema(result)
+
+
+@router.get(
+    "/companies/{name}/compliance-mapping",
+    response_model=ComplianceMappingSummary,
+)
+def get_company_compliance_mapping(name: str):
+    """Score each uniquely tagged narrative group with the recovered seed-99 model.
+
+    This endpoint intentionally fails closed if the recovered checkpoint cannot
+    be loaded; it must not silently switch to the zero-shot embedding fallback.
+    The result is a classifier probability against taxonomy-derived labels, not
+    a legal or regulatory compliance determination.
+    """
+    with get_session() as session:
+        company = _get_company_or_404(session, name)
+        filing = _get_latest_filing_or_404(session, company)
+
+        # Import lazily so ordinary API routes do not load ML dependencies or
+        # weights. The classifier loads only when this endpoint is requested.
+        from analysis.compliance.compliance_mapper import (
+            SUPERVISED_MODEL_PATH,
+            _get_domain_adapted_model,
+            get_compliance_mapping,
+        )
+
+        if not SUPERVISED_MODEL_PATH.exists():
+            raise HTTPException(
+                status_code=503,
+                detail="Recovered seed-99 classifier checkpoint is unavailable.",
+            )
+
+        tokenizer, model = _get_domain_adapted_model()
+        if tokenizer is None or model is None:
+            raise HTTPException(
+                status_code=503,
+                detail="Recovered seed-99 classifier could not be loaded.",
+            )
+
+        result = get_compliance_mapping(
+            session,
+            filing.id,
+            use_domain_adapted=True,
+        )
+
+        return ComplianceMappingSummary(
+            method="recovered_seed99_supervised_classifier",
+            model_path=str(SUPERVISED_MODEL_PATH),
+            overall_mean_principle_probability_pct=(
+                result.overall_compliance_alignment_pct
+            ),
+            per_principle=[
+                {
+                    "principle_num": score.principle_num,
+                    "mean_classifier_probability": score.mean_similarity,
+                    "segment_count": score.segment_count,
+                    "weakest_segment": score.weakest_segment,
+                    "weakest_segment_probability": score.weakest_segment_similarity,
+                }
+                for score in result.per_principle.values()
+            ],
+            interpretation=(
+                "Mean classifier probabilities for principle-tagged narrative groups; "
+                "taxonomy-derived weak-label agreement, not a compliance determination."
+            ),
+        )
 
 
 @router.get("/companies/{name}/truth-audit", response_model=TruthAuditorSummary)

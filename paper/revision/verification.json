@@ -1,0 +1,370 @@
+{
+  "prepared_date": "2026-10-22",
+  "included_manuscript_files": 16,
+  "language_violations": [],
+  "undefined_references": [],
+  "duplicate_labels": [],
+  "undefined_citations": [],
+  "figures": 7,
+  "tables": 13,
+  "literature_comparison_rows": 14,
+  "bibliography_entries": 20,
+  "financial_company_rows": 94,
+  "sector_rows": 72,
+  "new_training_steps": 0,
+  "new_model_inference": false,
+  "terminal_commands_executed": false,
+  "latex_compilation": {
+    "status": "PASS",
+    "compiler": "Codex built-in LaTeX compiler",
+    "message": "The existing main.tex compiled successfully after complete removal of Discussion and Practical Use and the roadmap reference.",
+    "repaired_issue": "tabularx row-input expansion: expanded generated rows into section sources",
+    "final_source_sha256": "cb4eafd6b660a2b08f05514aab6bc74deada0e7aaf71319d9da0cc9afb58bc20",
+    "figure_titles_sha256": "d34d78177c556cb379a3ba7fea6cee62dc7d245815c648d70a613fe685552d93",
+    "manuscript_bundle_sha256": "9f6c61df82ed25ed887b88caa50f5ab31ef33890d6ab0077caea5775cddd158b"
+  },
+  "visual_pdf_review": {
+    "status": "NOT_PERFORMED_FOR_REVISED_FULL_PDF",
+    "reason": "The built-in compiler returns diagnostics without an exportable PDF/page artifact. Tables 12 and 13 were independently checked against exact textheight/textwidth bounds. The old PDF result pages and new supplied diagram were visually inspected."
+  },
+  "additional_two_epochs": {
+    "status": "NOT_RUN",
+    "available_final_model_epochs": 5,
+    "reason": "No six-epoch audited run exists; no invented results added."
+  },
+  "diagram_titles_match_methodology": true,
+  "model_history_comparison_revision": {
+    "model_lineage_clarified": true,
+    "comparison_summary_table": "tab:comparison_summary",
+    "controlled_ablation_not_claimed": true,
+    "approved_metric_values_changed": false
+  },
+  "supplementary_counts": {
+    "financial_company_rows": 94,
+    "sector_rows": 72,
+    "paired_year_filings": 16,
+    "pharmaceutical_examples": 7
+  },
+  "main_text_result_counts": {
+    "table_11_paired_companies": 8,
+    "table_12_bands": 4,
+    "table_12_companies": 94,
+    "table_13_individual_sectors": 47,
+    "table_13_pooled_sectors": 25,
+    "table_13_total_companies": 1164
+  },
+  "section_6_5_removed": true,
+  "original_23_request_audit": {
+    "report": "paper/revision/request_audit_and_old_paper_comparison.md",
+    "implemented": 22,
+    "experimental_request_unavailable": 14
+  },
+  "diagram_review": {
+    "path": "paper/figures/grasp_pipeline.png",
+    "status": "VISUALLY_INSPECTED",
+    "pixels": [
+      1122,
+      1402
+    ],
+    "seven_titles_match": true,
+    "module_4_to_6_dependency_present": true,
+    "dependency_label": "Detector reuse for Clarity (20%)",
+    "solid_and_dashed_legend": true,
+    "no_unconnected_arrow_crossings": true,
+    "shared_results_bus": true
+  },
+  "old_pdf_review": {
+    "pages_read": 9,
+    "visually_rendered_pages": [
+      7,
+      8
+    ]
+  },
+  "table_single_page_bounds": {
+    "status": "PASS",
+    "tables": [
+      12,
+      13
+    ],
+    "compiler": "Codex built-in LaTeX compiler",
+    "source": "Temporary in-place box checks in the existing main document for this revision",
+    "dimensions": "Current caption+table boxes fit within textheight; temporary checks removed after passing."
+  },
+  "methodology_opening_layout": {
+    "status": "PASS",
+    "check_source": "Inline box-height guard in paper/sections/03_methodology.tex, compiled through paper/main.tex",
+    "dedicated_overview_page": true,
+    "heading_paragraph_image_caption_kept_together": true,
+    "next_subsection_forced_to_next_page": true,
+    "diagram_is_nonfloating": true,
+    "image_height_limit": "0.72 textheight",
+    "caption_words": 19,
+    "full_pdf_visual_review": false,
+    "methodology_start_page": null,
+    "previous_methodology_start_page": 6,
+    "pagination_note": "The earlier page-6 check predates the new Proposed Solution section; the absolute start page was not rechecked after this insertion."
+  },
+  "literature_pagination": {
+    "selected_table_rows": 14,
+    "removed_table_rows": [
+      "ratner2017: Snorkel",
+      "kapoor2023: general leakage review"
+    ],
+    "sources_retained_in_prose": true,
+    "bibliography_entries": 20,
+    "methodology_start_page": null,
+    "verification": "Earlier page-counter assertion passed before the Proposed Solution insertion; current main-document compilation passed, with absolute pagination not rechecked.",
+    "previous_methodology_start_page": 6
+  },
+  "plain_language_revision": {
+    "date": "2026-10-22",
+    "abstract_words_before": 245,
+    "abstract_words_after": 204,
+    "abstract_main_results": [
+      "Classifier agreement with filing-derived labels: 93.00% on 6,201 test passages",
+      "Transparency Score vs 20 historical human ratings: r=0.6314; blinding unconfirmed"
+    ],
+    "all_seven_workflow_parts_retained": true,
+    "narrative_sections_rewritten": 7,
+    "files_edited": [
+      "paper/main.tex",
+      "paper/sections/01_introduction.tex",
+      "paper/sections/02_literature.tex",
+      "paper/sections/03_methodology.tex",
+      "paper/sections/04_evaluation.tex",
+      "paper/sections/05_results.tex",
+      "paper/sections/06_discussion.tex",
+      "paper/sections/07_conclusion.tex",
+      "paper/figures/company_contributions.tex",
+      "paper/figures/concept_holdouts.tex",
+      "paper/figures/detector_results.tex",
+      "paper/figures/principle_f1.tex",
+      "paper/figures/source_results.tex",
+      "paper/figures/training_history.tex"
+    ],
+    "technical_definitions_added_or_clarified": [
+      "weak labels",
+      "XBRL concepts and dimensions",
+      "tokens",
+      "checkpoint",
+      "epoch",
+      "microbatch and gradient accumulation",
+      "learning rate, warmup, decay and class weighting",
+      "hedging density",
+      "sentence vectors and cosine similarity",
+      "logits and softmax",
+      "zero-shot comparison",
+      "confidence intervals and company-cluster bootstrap",
+      "micro-F1 and macro-F1",
+      "Pearson and Spearman correlation",
+      "score denominators and percentiles"
+    ],
+    "numeric_table_entries_unchanged": true,
+    "equation_blocks_unchanged": true,
+    "methodology_start_page": 6,
+    "tables_12_13_one_page": "PASS",
+    "source_checks": {
+      "included_manuscript_files": 16,
+      "language_violations": [],
+      "undefined_references": [],
+      "duplicate_labels": [],
+      "undefined_citations": [],
+      "figures": 7,
+      "tables": 13,
+      "bibliography_entries": 20
+    },
+    "new_training": false,
+    "new_inference": false,
+    "terminal_commands_executed": false,
+    "full_pdf_visual_review": false
+  },
+  "current_abstract_words": 209,
+  "positive_tone_revision": {
+    "date": "2026-10-22",
+    "report": "paper/revision/eight_requested_changes_audit.md",
+    "blanket_material_fact_removal": false,
+    "qualified_requests": [
+      1,
+      5,
+      6
+    ],
+    "completed_requests": [
+      2,
+      3,
+      4,
+      7,
+      8
+    ],
+    "abstract_words": 176,
+    "abstract_unconfirmed_line_removed": true,
+    "abstract_remain_necessary_line_removed": true,
+    "pipeline_parts": 7,
+    "future_opening": "This work can be extended using multiple levels.",
+    "essential_study_facts": {
+      "weak_labels_and_AI_mapping": true,
+      "adaptation_membership": true,
+      "human_rating_source_and_blinding": true,
+      "development_and_AI_reference": true,
+      "language_only_detector_metrics": true,
+      "fact_selection_rules": true
+    },
+    "numeric_table_entries_unchanged": true,
+    "equation_blocks_unchanged": true,
+    "source_checks": {
+      "included_manuscript_files": 16,
+      "language_violations": [],
+      "undefined_references": [],
+      "duplicate_labels": [],
+      "undefined_citations": [],
+      "figures": 7,
+      "tables": 13,
+      "bibliography_entries": 20
+    },
+    "methodology_start_page": 6,
+    "compact_tables_one_page": "PASS",
+    "new_training": false,
+    "new_model_inference": false,
+    "terminal_commands_executed": false
+  },
+  "proposed_solution_revision": {
+    "date": "2026-10-22",
+    "reference_pdf": "C:/Users/amitk/OneDrive/Desktop/temp/CAPSTONE_RESEARCH_PAPER_FINAL.pdf",
+    "reference_page": 2,
+    "section": "Proposed Solution",
+    "placement": "After Literature Review and before Methodology",
+    "methodology_figure_retained": true,
+    "introduction_roadmap_updated": true,
+    "current_implementation_description": true,
+    "metric_tables_changed": false,
+    "prohibited_word_matches": 0,
+    "compile": "PASS",
+    "terminal_commands_executed": false
+  },
+  "abstract_terminology_revision": {
+    "date": "2026-10-25",
+    "scope": "Abstract only",
+    "report": "Complete company BRSR document",
+    "text_segment": "Selected portion of report text used as a unit of text analysis",
+    "xbrl_removed_from_abstract": true,
+    "passage_and_sample_removed_from_abstract": true,
+    "main_results_unchanged": true,
+    "other_sections": "Terminology to be applied during the requested section-by-section rewrite",
+    "compile": "PASS"
+  },
+  "introduction_plain_language_revision": {
+    "date": "2026-10-25",
+    "scope": "Quoted introduction paragraphs, with terminology alignment in preceding paragraphs",
+    "three_design_questions_explained_separately": true,
+    "weak_labels_defined": true,
+    "concepts_defined": true,
+    "training_validation_test_roles_explained": true,
+    "report_and_text_segment_terms_consistent": true,
+    "passage_or_sample_matches": 0,
+    "prohibited_word_matches": 0,
+    "metric_values_changed": false,
+    "open_source_retained": true,
+    "compile": "PASS"
+  },
+  "proposed_solution_plain_language_revision": {
+    "date": "2026-10-26",
+    "scope": "Proposed Solution section only",
+    "seven_module_flow_preserved": true,
+    "technical_terms_explained": [
+      "weak labels",
+      "domain adaptation",
+      "masked language modelling",
+      "hedging lexicon",
+      "semantic similarity",
+      "principle probabilities",
+      "zero-shot",
+      "Transparency Score components",
+      "service layer",
+      "API"
+    ],
+    "passage_or_sample_matches": 0,
+    "prohibited_word_matches": 0,
+    "language_and_numerical_records_separate": true,
+    "ai_mapping_provenance_retained": true,
+    "classifier_reuse_retained": true,
+    "numeric_result_changes": false,
+    "methodology_titles_and_diagram_unchanged": true,
+    "compile": "PASS",
+    "new_training": false,
+    "new_inference": false,
+    "terminal_commands_executed": false,
+    "superseded_by": "proposed_solution_structure_revision"
+  },
+  "proposed_solution_structure_revision": {
+    "date": "2026-10-26",
+    "scope": "Proposed Solution only",
+    "module_walkthrough_removed": true,
+    "problem_statement_links": 3,
+    "architecture_rationale": true,
+    "resources_stated_without_unverified_cost_or_timing": true,
+    "supervised_and_zero_shot_training_requirements_distinguished": true,
+    "intended_benefits_not_claimed_as_measured_time_savings": true,
+    "text_segment_terminology_consistent": true,
+    "passage_or_sample_matches": 0,
+    "prohibited_word_matches": 0,
+    "method_details_referred_to_methodology": true,
+    "result_values_unchanged": true,
+    "compile": "PASS"
+  },
+  "proposed_solution_architecture_paragraph": {
+    "date": "2026-10-26",
+    "simple_sentences": true,
+    "semantic_similarity_parentheses_removed": true,
+    "technical_roles_preserved": true,
+    "text_segment_terminology_consistent": true,
+    "company_count_preserved": 1164,
+    "compile": "PASS"
+  },
+  "methodology_opening_plain_language_revision": {
+    "date": "2026-10-26",
+    "scope": "Opening paragraph and Figure 1 caption only",
+    "title_correspondence_sentence_removed": true,
+    "natural_data_analysis_outputs_flow": true,
+    "text_segment_terminology_consistent": true,
+    "score_components_retained": true,
+    "principle_probabilities_and_claim_figure_records_separate": true,
+    "diagram_dimensions_unchanged": true,
+    "overview_box_fits": true,
+    "later_subsections_changed": false,
+    "compile": "PASS"
+  },
+  "detector_reuse_diagram_revision": {
+    "date": "2026-10-26",
+    "mode": "built-in image_gen edit",
+    "original_preserved": true,
+    "installed_in_paper": true,
+    "caption_updated": true,
+    "clarity_explanation_updated": true,
+    "clarity_weight_unchanged": 0.2,
+    "scoring_code_changed": false,
+    "metric_values_changed": false,
+    "compile": "PASS",
+    "overview_page_box_fits": true,
+    "full_pdf_visual_review": false,
+    "terminal_commands_executed": false
+  },
+  "figure1_caption_revision": {
+    "date": "2026-10-26",
+    "focus": "Overall workflow and component connections",
+    "starts_with_this_figure_shows": true,
+    "output_list_removed": true,
+    "dashed_arrow_sentence_removed": true,
+    "diagram_asset_unchanged": true,
+    "compile": "PASS"
+  },
+  "discussion_removal": {
+    "date": "2026-10-26",
+    "section_removed": true,
+    "input_removed": true,
+    "source_file_removed": true,
+    "introduction_roadmap_updated": true,
+    "results_followed_by_conclusion": true,
+    "backup": "paper/revision/2026-10-26_before_discussion_removal",
+    "remaining_discussion_references": false,
+    "compile": "PASS"
+  }
+}

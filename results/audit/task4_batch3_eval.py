@@ -17,6 +17,7 @@ Outputs:
 from __future__ import annotations
 
 import json
+import hashlib
 import sys
 from pathlib import Path
 
@@ -38,6 +39,12 @@ BATCH12B_PATH = BASE / "data/validation/vagueness_validation_sample_batch2.csv"
 
 LOG_PATH = AUDIT_DIR / "task4_stage4_log.txt"
 RESULTS_JSON = AUDIT_DIR / "task4_stage4_results.json"
+FREEZE_PATH = BASE / "data/validation/stage4_detector_freeze.json"
+ENGINE_FILES = [
+    BASE / "src/analysis/vagueness/vagueness_combined.py",
+    BASE / "src/analysis/vagueness/vagueness_lexicon.py",
+    BASE / "src/analysis/vagueness/vagueness_semantic.py",
+]
 
 lines: list[str] = []
 
@@ -69,9 +76,25 @@ def cohen_kappa(a, b):
     return (p_o - p_a) / (1 - p_a + 1e-9)
 
 
+def verify_frozen_detector() -> None:
+    if not FREEZE_PATH.exists():
+        raise RuntimeError(
+            "Stage 4 detector freeze manifest is missing. Run the frozen N=80 development evaluation first."
+        )
+    manifest = json.loads(FREEZE_PATH.read_text(encoding="utf-8"))
+    current_hashes = {
+        str(path.relative_to(BASE)): hashlib.sha256(path.read_bytes()).hexdigest()
+        for path in ENGINE_FILES
+    }
+    if current_hashes != manifest.get("source_sha256"):
+        raise RuntimeError(
+            "Detector files differ from the frozen version. Do not evaluate Batch 3 until the change is reviewed."
+        )
+
+
 def main():
     log("=" * 80)
-    log("TASK 4 — STAGE 4 BATCH 3 HELD-OUT EVALUATION")
+    log("TASK 4 — STAGE 4 VAGUENESS SUBDETECTOR, BATCH 3 HELD-OUT EVALUATION")
     log("=" * 80)
     log()
 
@@ -82,6 +105,7 @@ def main():
         return
 
     labels_df = pd.read_csv(BATCH3_LABELS_PATH)
+    verify_frozen_detector()
     rater_a_filled = labels_df["human_label_rater_A"].notna() & (labels_df["human_label_rater_A"].astype(str).str.strip() != "")
     rater_b_filled = labels_df["human_label_rater_B"].notna() & (labels_df["human_label_rater_B"].astype(str).str.strip() != "")
 
@@ -99,6 +123,10 @@ def main():
         LOG_PATH.write_text("\n".join(lines), encoding="utf-8")
         return
 
+    for column in ["human_label_rater_A", "human_label_rater_B"]:
+        if not labels_df[column].astype(str).str.strip().isin(["0", "1"]).all():
+            raise ValueError(f"{column} must contain only binary 0/1 labels")
+
     # Cohen's kappa
     ra = labels_df["human_label_rater_A"].astype(int).tolist()
     rb = labels_df["human_label_rater_B"].astype(int).tolist()
@@ -111,16 +139,17 @@ def main():
         log("  WARNING: Kappa < 0.60 (fair-to-moderate agreement). Adjudication is especially important.")
     log()
 
-    # Use adjudicated labels if filled, else use Rater A (and log)
+    # Require adjudication before held-out scoring; do not silently fall back to one rater.
     adj_filled = labels_df["adjudicated_label"].notna() & (labels_df["adjudicated_label"].astype(str).str.strip() != "")
-    if adj_filled.sum() == len(labels_df):
-        y_true = labels_df["adjudicated_label"].astype(int).values
-        label_source = "adjudicated"
-    else:
-        log(f"WARNING: adjudicated_label not fully filled ({adj_filled.sum()}/{len(labels_df)}).")
-        log("  Using Rater A labels as fallback. Adjudicate disagreements for final results.")
-        y_true = labels_df["human_label_rater_A"].astype(int).values
-        label_source = "rater_A_only"
+    if adj_filled.sum() != len(labels_df):
+        log(f"BLOCKED: adjudicated_label is filled for only {adj_filled.sum()}/{len(labels_df)} rows.")
+        log("  Adjudicate all rows (including rater agreements) before held-out evaluation.")
+        LOG_PATH.write_text("\n".join(lines), encoding="utf-8")
+        return
+    if not labels_df["adjudicated_label"].astype(str).str.strip().isin(["0", "1"]).all():
+        raise ValueError("adjudicated_label must contain only binary 0/1 labels")
+    y_true = labels_df["adjudicated_label"].astype(int).values
+    label_source = "adjudicated"
     log(f"Label source: {label_source}")
     log(f"  Positive (vague): {y_true.sum()} ({y_true.sum()/len(y_true)*100:.1f}%)")
     log()
@@ -129,7 +158,8 @@ def main():
     batch3_orig = pd.read_csv(BATCH3_ORIG_PATH)
     # Align by id (labels_df has 1-indexed id matching batch3_orig index+1)
     texts = batch3_orig["text"].tolist()
-    if len(texts) != len(y_true):
+    expected_ids = list(range(1, len(texts) + 1))
+    if len(texts) != len(y_true) or labels_df["id"].astype(int).tolist() != expected_ids:
         log(f"ERROR: batch3 orig has {len(texts)} rows but label sheet has {len(y_true)} rows. Check alignment.")
         return
 
@@ -154,7 +184,7 @@ def main():
     auc = roc_auc_score(y_true, y_pred) if len(set(y_true)) == 2 else float("nan")
     f1_ci = bootstrap_f1_ci(y_true, y_pred)
 
-    log("## HELD-OUT BATCH 3 RESULTS (detector frozen before labeling)")
+    log("## HELD-OUT BATCH 3 RESULTS (text vagueness subdetector frozen before labeling)")
     log(f"  N = {len(y_true)}")
     log(f"  Precision: {prec:.4f}")
     log(f"  Recall:    {rec:.4f}")

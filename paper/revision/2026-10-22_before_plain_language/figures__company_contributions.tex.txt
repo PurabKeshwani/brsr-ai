@@ -1,0 +1,13 @@
+\begin{figure}[tbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[width=0.85\linewidth,height=6cm,xbar,bar width=17pt,
+  xlabel={Contribution to the composite score (points)},xmin=0,xmax=29,
+  symbolic y coords={SDG breadth,Clarity,Specificity,Completeness},ytick=data,xmajorgrids=true,
+  nodes near coords,nodes near coords style={font=\small,/pgf/number format/fixed,/pgf/number format/precision=3}]
+\addplot[fill=teal!65,draw=teal] coordinates {(7.059,SDG breadth)(19.616,Clarity)(19.038,Specificity)(23.196,Completeness)};
+\end{axis}
+\end{tikzpicture}
+\caption{Why Triveni Turbine receives a Transparency Score of 68.91. Each bar is a component percentage multiplied by the fixed weight, rather than the raw component percentage. Completeness contributes 23.196 points, Specificity 19.038, Clarity 19.616, and SDG breadth 7.059. The contributions sum to 68.909 and round to 68.91. High raw Clarity therefore does not mean that Clarity alone determines the final score.}
+\label{fig:company_contributions}
+\end{figure}

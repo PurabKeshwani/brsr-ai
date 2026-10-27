@@ -120,6 +120,7 @@ SECTION_C_CONCEPT_TO_LABEL: dict[str, int] = {
 
     # ── P2: Sustainable Products & Services ─────────────────────────
     "DescribeTheProcessesInPlaceToSafelyReclaimYourProductsForReusingRecyclingAndDisposingAtTheEndOfLifeForEWasteExplanatoryTextBlock": 1,
+    "DescribeTheProcessesInPlaceToSafelyReclaimYourProductsForReusingRecyclingAndDisposingAtTheEndOfLifeForPlasticsIncludingPackagingExplanatoryTextBlock": 1,
     "DescribeTheProcessesInPlaceToSafelyReclaimYourProductsForReusingRecyclingAndDisposingAtTheEndOfLifeForHazardousWasteExplanatoryTextBlock": 1,
     "DescribeTheProcessesInPlaceToSafelyReclaimYourProductsForReusingRecyclingAndDisposingAtTheEndOfLifeForOtherWasteExplanatoryTextBlock": 1,
     "DetailsOfProductInformationOnTheProductOverAndAboveWhatIsMandatedAsPerLocalLawsExplanatoryTextBlock": 1,
@@ -135,7 +136,9 @@ SECTION_C_CONCEPT_TO_LABEL: dict[str, int] = {
     "DetailsOfMechanismAvailableToReceiveAndRedressGrievancesForPermanentWorkersExplanatoryTextBlock": 2,
     "DetailsOfMechanismAvailableToReceiveAndRedressGrievancesForOtherThanPermanentWorkersExplanatoryTextBlock": 2,
     "DetailsOfAnyCorrectiveActionTakenOrUnderwayToAddressSafetyRelatedIncidentsOfYourPlantsAndOfficesThatWereAssessedExplanatoryTextBlock": 2,
+    "DetailsOfAnyCorrectiveActionTakenOrUnderwayToAddressSafetyRelatedIncidentsOnAssessmentOfValueChainPartnersExplanatoryTextBlock": 2,
     "DetailsOfAnyCorrectiveActionsTakenOrUnderwayToAddressSignificantRisksOrConcernsArisingFromTheAssessmentsOfPlantAndOfficeExplanatoryTextBlock": 2,
+    "DetailsOfAnyCorrectiveActionsTakenOrUnderwayToAddressSignificantRisksOrConcernsArisingFromTheAssessmentsOfValueChainPartnerExplanatoryTextBlock": 2,
     "MechanismsToPreventAdverseConsequencesToTheComplainantInDiscriminationAndHarassmentCasesExplanatoryTextBlock": 2,
 
     # ── P4: Stakeholder Engagement ──────────────────────────────────
@@ -156,8 +159,12 @@ SECTION_C_CONCEPT_TO_LABEL: dict[str, int] = {
     "DiscloseAnySignificantAdverseImpactToTheEnvironmentArisingFromTheValueChainOfTheEntityWhatMitigationOrAdaptationMeasuresHaveBeenTakenByTheEntityInThisRegardExplanatoryTextBlock": 5,
     "DiscloseWhetherTargetsSetUnderThePatSchemeHaveBeenAchievedInCaseTargetsHaveNotBeenAchievedThenProvideTheRemedialActionTakenExplanatoryTextBlock": 5,
 
-    # ── P7: Public Policy ───────────────────────────────────────────
-    "DetailsOfMeasuresUndertakenByTheEntityToEnsureThatStatutoryDuesHaveBeenDeductedAndDepositedByTheValueChainPartnersExplanatoryTextBlock": 6,
+    # ── P3: Employee Wellbeing & Safety ─────────────────────────────
+    # BRSR places this value-chain labour-compliance indicator under P3.
+    # Reference: ICAI/ICSI BRSR materials and issuer Section C P3 disclosure:
+    # https://www.icsi.edu/media/webmodules/CSJ/October/ICSI_October_2023.pdf
+    # https://hul-performance-highlights.hul.co.in/performance-highlights-fy-2024-2025/brsr/sectionc3.html
+    "DetailsOfMeasuresUndertakenByTheEntityToEnsureThatStatutoryDuesHaveBeenDeductedAndDepositedByTheValueChainPartnersExplanatoryTextBlock": 2,
 
     # ── P8: Inclusive Growth & Community ─────────────────────────────
     "DescribeTheMechanismsToReceiveAndRedressGrievancesOfTheCommunityExplanatoryTextBlock": 7,
@@ -170,6 +177,64 @@ SECTION_C_CONCEPT_TO_LABEL: dict[str, int] = {
     "DetailsOfImpactOfDataBreachesExplanatoryTextBlock": 8,
     "StepsTakenToInformAndEducateConsumersAboutSafeAndResponsibleUsageOfProductsAndOrServicesExplanatoryTextBlock": 8,
     "MechanismsInPlaceToInformConsumersOfAnyRiskOfDisruptionOrDiscontinuationOfEssentialServicesExplanatoryTextBlock": 8,
+}
+
+
+# AI-generated extensions to the concept map. These assignments use the
+# concept names, example facts in the local BRSR database, and the placement
+# of the corresponding questions in SEBI's BRSR format. They are weak labels,
+# not independent expert validation. See results/audit/stage2_ai_mapping_provenance.md.
+# SEBI source: https://www.sebi.gov.in/sebi_data/commondocs/jul-2023/Annexure_II-Updated-BRSR_p.PDF
+AI_SECTION_C_CONCEPT_TO_LABEL: dict[str, int] = {
+    # P1: ethics, anti-bribery, conflicts of interest, and sustainability oversight
+    "DetailsForTheEntityHaveNotApplicableAnAntiCorruptionOrAntiBriberyPolicyExplanatoryTextBlock": 0,
+    "DetailsOfTheEntityHaveNotApplicableProcessesInPlaceToAvoidOrManageConflictOfInterestsInvolvingMembersOfTheBoardExplanatoryTextBlock": 0,
+    "TheEntityHasNotApplicableASpecifiedCommitteeForDecisionMakingOnSustainabilityRelatedIssuesExplanatoryTextBlock": 0,
+
+    # P2: product information and product life-cycle assessments
+    "TheEntityHasNotApplicableConductedLifeCyclePerspectiveOrAssessmentsForAnyOfItsProductsOrForItsServicesExplanatoryTextBlock": 1,
+    "TheEntityHasNotApplicableProductInformationOnTheProductOverAndAboveWhatIsMandatedAsPerLocalLawsExplanatoryTextBlock": 1,
+
+    # P3: worker health, safety, benefits, accessibility, and equal opportunity
+    "AnOccupationalHealthAndSafetyManagementSystemHasBeenNotApplicableToTheEntityExplanatoryTextBlock": 2,
+    "DetailsIfTheEmployeesOrWorkerOfTheEntityHaveAccessToNonOccupationalMedicalAndHealthcareServicesIsNotApplicableExplanatoryTextBlock": 2,
+    "ProcessesForWorkersToReportTheWorkRelatedHazardsAndToRemoveThemselvesFromSuchRisksIsNotApplicableExplanatoryTextBlock": 2,
+    "TheEntityHasNotApplicableAnEqualOpportunityPolicyAsPerTheRightsOfPersonsWithDisabilitiesAct2016ExplanatoryTextBlock": 2,
+    "TheEntityHasNotApplicableTransitionAssistanceProgramsToFacilitateContinuedEmployabilityAndTheManagementOfCareerEndingsResultingFromRetirementOrTerminationOfEmploymentExplanatoryTextBlock": 2,
+    "ThePremisesOrOfficesOfTheEntityAccessibleToDifferentlyAbledEmployeesAndWorkersAreNotApplicableExplanatoryTextBlock": 2,
+    "WhetherAnyStepsAreBeingTakenByTheEntityIfThePremisesOrOfficesOfTheEntityNotAccessibleToDifferentlyAbledEmployeesAndWorkersExplanatoryTextBlock": 2,
+
+    # P5: human-rights requirements in business agreements and contracts
+    "HumanRightsRequirementsFormPartOfYourBusinessAgreementsAndContractsIsNotApplicableExplanatoryTextBlock": 4,
+
+    # P6: environmental compliance, energy, water, waste, emissions, and resilience
+    "AMechanismForZeroLiquidDischargeIsNotApplicableToTheEntityExplanatoryTextBlock": 5,
+    "NameOfTheExternalAgencyIfAnyIndependentAssessmentOrEvaluationOrAssuranceHasBeenCarriedOutByAnExternalAgencyForAirEmissionsOtherThanGHGEmissionsExplanatoryTextBlock": 5,
+    "NameOfTheExternalAgencyIfAnyIndependentAssessmentOrEvaluationOrAssuranceHasBeenCarriedOutByAnExternalAgencyForAreasOfWaterStressExplanatoryTextBlock": 5,
+    "NameOfTheExternalAgencyIfAnyIndependentAssessmentOrEvaluationOrAssuranceHasBeenCarriedOutByAnExternalAgencyForEnergyConsumptionExplanatoryTextBlock": 5,
+    "NameOfTheExternalAgencyInCaseAnyIndependentAssessmentOrEvaluationOrAssuranceHasBeenCarriedOutByAnExternalAgencyForWaterWithdrawalExplanatoryTextBlock": 5,
+    "NameOfTheExternalAgencyThatUndertookIndependentAssessmentOrEvaluationOrAssuranceForEnergyConsumptionExplanatoryTextBlock": 5,
+    "NameOfTheExternalAgencyThatUndertookIndependentAssessmentOrEvaluationOrAssuranceForGreenHouseGasEmissionsExplanatoryTextBlock": 5,
+    "NameOfTheExternalAgencyThatUndertookIndependentAssessmentOrEvaluationOrAssuranceForTotalScope3EmissionsExplanatoryTextBlock": 5,
+    "NameOfTheExternalAgencyThatUndertookIndependentAssessmentOrEvaluationOrAssuranceForWaterDischargedExplanatoryTextBlock": 5,
+    "NameOfTheExternalAgencyThatUndertookIndependentAssessmentOrEvaluationOrAssuranceRelatedToWasteManagementExplanatoryTextBlock": 5,
+    "ProjectRelatedToReducingGreenHouseGasEmissionIsNotApplicableToTheEntityExplanatoryTextBlock": 5,
+    "TheEntityHasNotApplicableEnvironmentalLawExplanatoryTextBlock": 5,
+    "TheEntityHasNotApplicableABusinessContinuityAndDisasterManagementPlanExplanatoryTextBlock": 5,
+
+    # P8: preferential procurement from marginalized or vulnerable groups
+    "TheEntityHasNotApplicableAPreferentialProcurementPolicyExplanatoryTextBlock": 7,
+
+    # P9: consumer satisfaction and customer data privacy/cybersecurity
+    "TheEntityHasNotApplicableAFrameworkOrPolicyOnCyberSecurityAndRisksRelatedToDataPrivacyExplanatoryTextBlock": 8,
+    "TheEntityHasNotApplicableCarryOutAnySurveyWithRegardToConsumerSatisfactionRelatingToTheMajorProductsOrServicesExplanatoryTextBlock": 8,
+}
+
+# Apply AI-generated assignments only when the older curated dictionary does
+# not already define the concept. This preserves existing mappings on overlap.
+SECTION_C_CONCEPT_TO_LABEL = {
+    **AI_SECTION_C_CONCEPT_TO_LABEL,
+    **SECTION_C_CONCEPT_TO_LABEL,
 }
 
 

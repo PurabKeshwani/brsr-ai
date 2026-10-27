@@ -1,0 +1,15 @@
+\begin{figure}[tbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[width=0.85\linewidth,height=6cm,ybar,bar width=24pt,
+  ylabel={Top-1 agreement (\%)},ymin=0,ymax=110,
+  symbolic x coords={B,C,Notes},xtick=data,
+  xticklabels={Section B ($n=352$),Section C ($n=5{,}364$),Notes ($n=485$)},
+  ymajorgrids=true,nodes near coords,nodes near coords style={font=\small},
+  point meta=explicit symbolic]
+\addplot[fill=teal!65,draw=teal] coordinates {(B,63.35) [63.35] (C,95.15) [95.15] (Notes,90.72) [90.72]};
+\end{axis}
+\end{tikzpicture}
+\caption{The overall classifier result hides a substantial source gap. Explicit principle-axis narratives have lower agreement than concept-mapped narratives and principle notes. Labels remain taxonomy-derived for all three groups. The corresponding CIN-bootstrap intervals appear in Table~\ref{tab:source}; the bars do not represent independent human semantic validation.}
+\label{fig:source}
+\end{figure}

@@ -1,0 +1,9 @@
+{
+  "run_id": "P1-TRAIN-ONLY-MLM-20261019T131236407517Z",
+  "status": "FAIL",
+  "error_type": "TypeError",
+  "error": "TrainingArguments.__init__() got an unexpected keyword argument 'warmup_ratio'",
+  "validation_performance": "NOT RUN",
+  "test_performance": "NOT RUN",
+  "completed_at_utc": "2026-10-19T13:13:30.251003+00:00"
+}

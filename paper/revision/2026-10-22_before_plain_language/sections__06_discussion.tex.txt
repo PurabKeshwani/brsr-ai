@@ -1,0 +1,30 @@
+\section{Discussion and Limitations}
+\label{sec:discussion}
+
+\subsection{What the results support}
+
+The recovered classifier provides useful agreement with the current regulatory weak labels on companies excluded from supervised fine-tuning. The source breakdown gives a more informative account than the overall value alone. Explicit principle-axis narratives remain difficult, and performance decreases when question concepts are excluded from fitting. A practical use is therefore assisted principle retrieval with visible uncertainty and source context, rather than automatic acceptance of the highest-ranked category.
+
+The frozen text detector identifies a substantial share of reference-vague development passages, while precision leaves room for unnecessary review flags. The 70-example AI comparison adds a clearly labelled exploratory check, without supplying independent human validation. The 20-company score comparison shows a moderate positive association with historical human ratings and wide intervals. The company and sector tables demonstrate interpretable arithmetic and report navigation; such descriptive usefulness does not establish predictive accuracy.
+
+\subsection{Limits of label and evaluation validity}
+
+Three limits affect the classifier evidence. First, taxonomy-derived labels, including AI-assisted concept assignments, have no completed independent semantic audit. Second, repeated concepts and corporate wording can create easy associations across companies even with zero CIN overlap. Third, the legacy adaptation corpus was built from narratives across the company database; strict exclusion of test-company language during pretraining is not established. Company separation should therefore be qualified as a supervised partition property. This reporting distinction follows the broader need to state what an evaluation split actually excludes \cite{kapoor2023}.
+
+The recovered results reuse an existing test population. Checkpoint repair improves fidelity to the selected model but does not create a fresh test. Concept-holdout runs and the multi-label diagnostic reuse companies from that population, and the Stage 5 comparison repeats the same classifier evaluation in another service context. The 93.00\% result must consequently appear once as the underlying model result, with explicit reuse rather than being counted as two independent successes.
+
+The source gap also prevents an easy causal interpretation. Section B is smaller and selected after conflict removal; Section C has different question structures and a missing P7 source category. The gap is evidence that source matters. Source differences alone do not quantify how much of the overall score comes from template learning. Concept-disjoint results provide additional evidence of reduced transfer, but the concept models also differ in the concepts and examples available during fitting.
+
+\subsection{Limits of filing-consistency checks and the score}
+
+The numerical branches require stronger context matching before a claim can be labelled unsupported or contradicted. Missing facts, valid zeros, changes in units, absolute versus intensity measures, and reporting-boundary changes need separate treatment. The current assurance-gap and omission implementations have zero-handling limitations, and the assurance-gap fact lookup is not fully context constrained. These issues affect implemented review signals rather than the reported language-only F1. No complete four-signal greenwashing precision or recall is available.
+
+The Transparency Score has a corpus-derived concept denominator, broad evidence markers, and partially dependent components. Specificity and SDG breadth share evidence-pattern logic; Clarity uses the same language detector. A high correlation between such components would not constitute independent validation. The fixed SDG correspondence also has a 14-goal ceiling and a deduplication-order limitation. Sector percentiles describe relative position under one formula and one saved group assignment. A common denominator can disadvantage service-sector companies when manufacturing-related concepts are not applicable, and business-code errors can change peer comparisons.
+
+Human-score validation remains limited by 20 companies, a single rater source, uncertain blinding, and an extraction artifact in one original narrative packet. AI annotations cannot resolve the missing independent human evidence. Post-hoc removal of difficult companies and synthetic weight calibration do not strengthen the headline result. The fixed coefficient allocation is an implementation choice rather than a verified SEBI prescription.
+
+\subsection{Practical use}
+
+The service is most useful as a review organiser. A data analyst can inspect the source passage, identify the relevant concept, check periods and units, compare score components, and then decide whether additional evidence is needed. Flag provenance should remain visible, and a low composite or a high probability should never be translated directly into a legal judgement. The framework can support triage without asserting that every flag represents misconduct.
+
+\FloatBarrier

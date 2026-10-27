@@ -1,0 +1,64 @@
+\documentclass[11pt,a4paper,onecolumn]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=23mm]{geometry}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{array,booktabs,tabularx,longtable}
+\usepackage{caption,subcaption}
+\usepackage{enumitem}
+\usepackage{placeins}
+\usepackage{tikz,pgfplots}
+\usetikzlibrary{arrows.meta,positioning,calc}
+\pgfplotsset{compat=1.17}
+\usepackage[hidelinks]{hyperref}
+\usepackage{url}
+\definecolor{ink}{HTML}{203447}
+\definecolor{teal}{HTML}{227C80}
+\definecolor{softgray}{HTML}{EDF1F4}
+\definecolor{warm}{HTML}{B56B42}
+\captionsetup{font=small,labelfont=bf,labelsep=period}
+\setlist[itemize]{leftmargin=1.5em,itemsep=3pt,topsep=4pt}
+\setlist[enumerate]{leftmargin=1.8em,itemsep=3pt,topsep=4pt}
+\setlength{\parskip}{5pt plus 1pt}
+\setlength{\parindent}{0pt}
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.17}
+\renewcommand{\topfraction}{0.90}
+\renewcommand{\textfraction}{0.08}
+\renewcommand{\floatpagefraction}{0.75}
+\setlength{\emergencystretch}{2em}
+\raggedbottom
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newcommand{\artifact}[1]{\nolinkurl{#1}}
+\newcommand{\na}{\textemdash}
+\newsavebox{\methodologyoverviewbox}
+\pgfplotsset{every axis/.append style={label style={font=\small},tick label style={font=\small},legend style={font=\small,draw=none},axis line style={black!55},grid style={black!12},major tick length=2pt}}
+\title{\textbf{GRASP: A Greenwashing Recognition and Scoring Pipeline\\for Structured BRSR Disclosures in India}}
+\author{\normalsize Yugchhaya Galphat, Purab Keshwani, Khushi Dayaramani,\\
+\normalsize Ronit Chugwani, and Karan Sarani\\[5pt]
+\small Computer Department, Vivekanand Education Society's Institute of Technology\\
+\small Mumbai, India\\[3pt]
+\footnotesize yugchhaya.dhote@ves.ac.in; 2023.purab.keshwani@ves.ac.in\\
+\footnotesize 2023.khushi.dayaramani@ves.ac.in; 2023.ronit.chugwani@ves.ac.in\\
+\footnotesize 2023.karan.sarani@ves.ac.in}
+\date{}
+\begin{document}
+\maketitle
+\begin{abstract}
+The Business Responsibility and Sustainability Report (BRSR) provides a common disclosure format for India's listed companies, but manual review still requires analysts to connect narrative claims, numerical tables, reporting periods, and industry context. Existing dictionary methods detect selected phrases, embedding methods compare semantic similarity, and retrieval-based language-model systems answer questions from reports. Such mechanisms reduce search effort, but linguistic confidence and topical relevance alone cannot establish that a claim is supported by a comparable filed value. GRASP connects seven modules: structured XBRL ingestion; taxonomy-derived label construction; domain-adapted BERT principle classification; rule-based vagueness and filing-consistency checks; principle mapping; a four-component Transparency Score; and an application programming interface. On an existing test partition containing 6,201 segments from 175 companies excluded from supervised training, the recovered classifier achieves 93.00\% Top-1 agreement with weak labels (95\% confidence interval: 92.04--93.89\%) and macro-F1 of 0.9158. Agreement varies substantially by label source: 63.35\% for explicit principle-axis narratives, 95.15\% for concept-mapped narratives, and 90.72\% for principle notes. The frozen text-vagueness component achieves F1 of 0.7436 on 80 development examples; comparison against 70 AI annotations remains exploratory. The fixed Transparency Score correlates with 20 historical human ratings at $r=0.6314$ (95\% confidence interval: 0.2683--0.8519), with rating blinding unconfirmed. A saved 1,164-company score snapshot supports company and sector comparisons; Wearing Apparel has the lowest mean among sectors containing at least five companies, at 42.33. The resulting workflow supports review prioritisation, while independent semantic labels, context-aware fact matching, and broader human assessment remain necessary for stronger validation.
+\end{abstract}
+\noindent\textbf{Keywords:} BRSR; sustainability disclosure; weak supervision; BERT; vagueness detection; transparency scoring; sector benchmarking.
+\input{sections/01_introduction}
+\input{sections/02_literature}
+\input{sections/03_methodology}
+\input{sections/04_evaluation}
+\input{sections/05_results}
+\input{sections/06_discussion}
+\input{sections/07_conclusion}
+\input{references}
+\end{document}

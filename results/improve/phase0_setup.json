@@ -1,0 +1,131 @@
+{
+  "schema_version": 1,
+  "run_id": "P0-20261019T125107652794Z",
+  "phase": "PHASE_0_METADATA_SETUP",
+  "status": "PASS",
+  "started_at_utc": "2026-10-19T12:51:07.652845+00:00",
+  "label_provenance": "agreement with taxonomy-derived weak labels (partly AI-assisted mapping)",
+  "seeds_for_future_runs": {
+    "training": 42,
+    "bootstrap": 4206,
+    "concept_holdouts": [
+      42,
+      17,
+      73
+    ]
+  },
+  "training": "NOT RUN",
+  "model_loading": "NOT RUN",
+  "inference": "NOT RUN",
+  "bootstrap_metrics": "NOT RUN",
+  "new_test_evaluations_in_this_run": 0,
+  "historical_test_evaluation_count": null,
+  "historical_test_count_note": "Already evaluated; exact lifetime count unknown",
+  "encoder_choice": "USER_SELECTED_TRAIN_COMPANY_ONLY_MLM_ADAPTATION",
+  "next_phase": "STOP_AFTER_PHASE_0_REVIEW",
+  "errors": [],
+  "environment": {
+    "python_executable": "D:\\brsr-ai-phase0-1\\brsr-ai\\.venv-ml\\Scripts\\python.exe",
+    "python_version": "3.13.14",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "package_versions": {
+      "torch": "2.13.0+cu126",
+      "transformers": "5.15.0",
+      "sentence-transformers": "5.7.0",
+      "datasets": "5.0.1",
+      "accelerate": "1.14.0",
+      "safetensors": "0.8.0",
+      "tokenizers": "0.22.2",
+      "numpy": "2.5.2",
+      "pandas": "3.0.5",
+      "scipy": "1.18.0",
+      "scikit-learn": "1.9.0",
+      "xgboost": "3.4.1"
+    },
+    "git_commit": "94fafa1bbdaf1c4801e2559136d18ec5c482d823",
+    "tracked_diff_sha256": "a148d488f3114dddfda8968fa53aa59a4a7988f7583e14c6c8a709984e930226",
+    "worktree_dirty": true,
+    "torch_device_query_status": "COMPLETED_NO_MODEL_LOAD",
+    "cuda_available": true,
+    "torch_cuda_version": "12.6",
+    "gpus": [
+      {
+        "index": 0,
+        "name": "NVIDIA GeForce RTX 2050",
+        "total_memory_bytes": 4294443008
+      }
+    ]
+  },
+  "script_sha256": "e3297e9a0bc6de739e05e8b19ab337d0895697ec97e7487b02fb2a053a13f35f",
+  "prereg_sha256": "270c3eca406fd7662a9b95d16b6fd75df8fad4280c35c2b2644a6edba624f895",
+  "baseline_snapshot_sha256": "723681d1fbef0c90b9468beefc03a3d7992667efe5347c7071b53e378c5cc114",
+  "source_hash_verification": {
+    "stage3_seed99_recovered_full_results.json": {
+      "expected_sha256": "f8ef77f6127fdca14f3cff741e1a757bdd72ecb6db3836b69c5e5f1125849f69",
+      "actual_sha256": "f8ef77f6127fdca14f3cff741e1a757bdd72ecb6db3836b69c5e5f1125849f69",
+      "matches": true
+    },
+    "stage5_company_disjoint_recovered_results.json": {
+      "expected_sha256": "dabdb8c4bb6498dbaebf868a62e6a688007013ca5c23f60aa8c66332ca5816aa",
+      "actual_sha256": "dabdb8c4bb6498dbaebf868a62e6a688007013ca5c23f60aa8c66332ca5816aa",
+      "matches": true
+    },
+    "stage2_concept_disjoint_repeats_results.json": {
+      "expected_sha256": "17d80b9b88914993d8686a125d1c791eb208fed235d7b47b3118e9bbf3db3160",
+      "actual_sha256": "17d80b9b88914993d8686a125d1c791eb208fed235d7b47b3118e9bbf3db3160",
+      "matches": true
+    },
+    "stage2_multilabel_results.json": {
+      "expected_sha256": "e48e3b448aa9a5ae7be57ca1d93050374d244a5312fe9ee0b4523496d95d3cf2",
+      "actual_sha256": "e48e3b448aa9a5ae7be57ca1d93050374d244a5312fe9ee0b4523496d95d3cf2",
+      "matches": true
+    },
+    "stage4_dev80_frozen_results.json": {
+      "expected_sha256": "1eb6f0b3a7e4724afc867c81009192e8215ee5978b496e8a417c5750bb0fd1e1",
+      "actual_sha256": "1eb6f0b3a7e4724afc867c81009192e8215ee5978b496e8a417c5750bb0fd1e1",
+      "matches": true
+    },
+    "stage4_batch3_ai_comparison.json": {
+      "expected_sha256": "964fecca266050b21043ba8a9ad129ee86ebf9297e13fe08b391eb349c9922e9",
+      "actual_sha256": "964fecca266050b21043ba8a9ad129ee86ebf9297e13fe08b391eb349c9922e9",
+      "matches": true
+    },
+    "task5_stage6_results.json": {
+      "expected_sha256": "30b18dd6d4e62ce31d2834bd281b1cf1380f5d5a1c9936150641616f08ebf88b",
+      "actual_sha256": "30b18dd6d4e62ce31d2834bd281b1cf1380f5d5a1c9936150641616f08ebf88b",
+      "matches": true
+    }
+  },
+  "dataset_metadata": {
+    "train": {
+      "path": "data/training_company_split/train.csv",
+      "sha256": "f06ed6bdbdaff411dab7147e134af8947fe1afde12fd37e44dd46184172a09fd",
+      "rows": 29834,
+      "unique_cins": 814,
+      "sorted_cin_set_sha256": "3f58765269091bcc58ecbb9c51df6362600f1dc481b5fd008d36912866909099",
+      "access_role": "METADATA_ONLY: SHA256 and CIN accounting; no metrics"
+    },
+    "val": {
+      "path": "data/training_company_split/val.csv",
+      "sha256": "6993e13669b379a1b3ba95c640baf1b75c45a52fb455225faa618d3731267380",
+      "rows": 6374,
+      "unique_cins": 175,
+      "sorted_cin_set_sha256": "5b0524005f6965c4e01cf1ed6c8fd61382f7bbd3dcf0dc4a5ebd7d6700498889",
+      "access_role": "METADATA_ONLY: SHA256 and CIN accounting; no metrics"
+    },
+    "test": {
+      "path": "data/training_company_split/test.csv",
+      "sha256": "079305b42510bed095c9bd937380a483951a76fbca42fb4ac10b55b4d829391d",
+      "rows": 6201,
+      "unique_cins": 175,
+      "sorted_cin_set_sha256": "14a77a6cf17cc1e607fe3cec4ca3c7f1c1d78ce44a2cbc1b85e81bbf703eef31",
+      "access_role": "METADATA_ONLY: SHA256 and CIN accounting; no metrics"
+    }
+  },
+  "pairwise_cin_overlap": {
+    "train_vs_val": 0,
+    "train_vs_test": 0,
+    "val_vs_test": 0
+  },
+  "finished_at_utc": "2026-10-19T12:51:31.378984+00:00"
+}

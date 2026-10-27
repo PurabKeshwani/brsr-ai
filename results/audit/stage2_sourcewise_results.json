@@ -1,0 +1,222 @@
+{
+  "purpose": "Stage 2 filter-count reconciliation and Stage 3 company-disjoint source-wise accuracy",
+  "data_root": "data/brsr.db (via configured BRSR_DB_URL)",
+  "filter_count_diagnostics": {
+    "explanatory_text_facts": 104061,
+    "clean_explanatory_facts": 67570,
+    "clean_labeled_candidates_section_c": 36597,
+    "raw_valid_principle_axis_facts_all_concepts": 149770,
+    "section_b_explanatory_facts": 41898,
+    "noise_filtered_explanatory_facts": 36491,
+    "section_b_noise_filtered": 16684,
+    "section_b_clean_candidates": 25214,
+    "clean_labeled_candidates_section_b": 25214,
+    "clean_labeled_candidates_notes_principle": 3421,
+    "duplicate_same_label_candidates_section_c": 84,
+    "duplicate_same_label_candidates_section_b": 18,
+    "duplicate_same_label_candidates_notes_principle": 4,
+    "unique_clean_labeled_dedup_groups_before_conflict_drop": 45049,
+    "contradictory_dedup_groups_dropped": 2640,
+    "contradictory_label_entries_in_dropped_groups": 22717,
+    "contradictory_label_entries_dropped_section_b": 22717,
+    "contradictory_label_entries_dropped_section_c": 0,
+    "contradictory_label_entries_dropped_notes_principle": 0,
+    "final_rows_section_b": 2479,
+    "final_rows_section_c": 36513,
+    "final_rows_notes_principle": 3417,
+    "historical_section_b_user_reported": 17219,
+    "historical_reference_delta_vs_current_final": 14740,
+    "historical_reference_exactly_matches_current_raw_axis_facts": false
+  },
+  "model": "data\\models\\brsr_company_split_classifier\\seed_99\\best_model",
+  "test_split": "data\\training_company_split\\test.csv",
+  "test_n": 6201,
+  "test_unique_cins": 175,
+  "company_disjoint_assertions": true,
+  "overall_top1_accuracy": 0.9298500241896468,
+  "overall_correct": 5766,
+  "source_metrics_note": "Source-wise results use source-derived labels, not independent human ground truth.",
+  "source_metrics": {
+    "section_b": {
+      "n": 352,
+      "unique_cins": 71,
+      "correct": 223,
+      "top1_accuracy": 0.6335227272727273,
+      "macro_f1": 0.6372503301542939,
+      "cin_cluster_bootstrap_ci95": [
+        0.5615007309379088,
+        0.6997365753256325
+      ],
+      "per_principle": {
+        "P1": {
+          "n": 69,
+          "correct": 42,
+          "accuracy": 0.6086956521739131
+        },
+        "P2": {
+          "n": 38,
+          "correct": 19,
+          "accuracy": 0.5
+        },
+        "P3": {
+          "n": 45,
+          "correct": 29,
+          "accuracy": 0.6444444444444445
+        },
+        "P4": {
+          "n": 30,
+          "correct": 15,
+          "accuracy": 0.5
+        },
+        "P5": {
+          "n": 32,
+          "correct": 19,
+          "accuracy": 0.59375
+        },
+        "P6": {
+          "n": 49,
+          "correct": 37,
+          "accuracy": 0.7551020408163265
+        },
+        "P7": {
+          "n": 26,
+          "correct": 18,
+          "accuracy": 0.6923076923076923
+        },
+        "P8": {
+          "n": 29,
+          "correct": 19,
+          "accuracy": 0.6551724137931034
+        },
+        "P9": {
+          "n": 34,
+          "correct": 25,
+          "accuracy": 0.7352941176470589
+        }
+      }
+    },
+    "section_c": {
+      "n": 5364,
+      "unique_cins": 174,
+      "correct": 5103,
+      "top1_accuracy": 0.9513422818791947,
+      "macro_f1": 0.8402127079559344,
+      "cin_cluster_bootstrap_ci95": [
+        0.9430330349297381,
+        0.958621089194418
+      ],
+      "per_principle": {
+        "P1": {
+          "n": 650,
+          "correct": 638,
+          "accuracy": 0.9815384615384616
+        },
+        "P2": {
+          "n": 711,
+          "correct": 641,
+          "accuracy": 0.9015471167369902
+        },
+        "P3": {
+          "n": 1605,
+          "correct": 1561,
+          "accuracy": 0.9725856697819315
+        },
+        "P4": {
+          "n": 426,
+          "correct": 422,
+          "accuracy": 0.9906103286384976
+        },
+        "P5": {
+          "n": 354,
+          "correct": 310,
+          "accuracy": 0.8757062146892656
+        },
+        "P6": {
+          "n": 707,
+          "correct": 667,
+          "accuracy": 0.9434229137199435
+        },
+        "P7": {
+          "n": 0,
+          "correct": 0,
+          "accuracy": null
+        },
+        "P8": {
+          "n": 277,
+          "correct": 264,
+          "accuracy": 0.9530685920577617
+        },
+        "P9": {
+          "n": 634,
+          "correct": 600,
+          "accuracy": 0.9463722397476341
+        }
+      }
+    },
+    "notes_principle": {
+      "n": 485,
+      "unique_cins": 103,
+      "correct": 440,
+      "top1_accuracy": 0.9072164948453608,
+      "macro_f1": 0.8915248023017069,
+      "cin_cluster_bootstrap_ci95": [
+        0.8635370939420545,
+        0.94156072800439
+      ],
+      "per_principle": {
+        "P1": {
+          "n": 54,
+          "correct": 49,
+          "accuracy": 0.9074074074074074
+        },
+        "P2": {
+          "n": 59,
+          "correct": 54,
+          "accuracy": 0.9152542372881356
+        },
+        "P3": {
+          "n": 65,
+          "correct": 63,
+          "accuracy": 0.9692307692307692
+        },
+        "P4": {
+          "n": 13,
+          "correct": 8,
+          "accuracy": 0.6153846153846154
+        },
+        "P5": {
+          "n": 63,
+          "correct": 53,
+          "accuracy": 0.8412698412698413
+        },
+        "P6": {
+          "n": 67,
+          "correct": 66,
+          "accuracy": 0.9850746268656716
+        },
+        "P7": {
+          "n": 43,
+          "correct": 41,
+          "accuracy": 0.9534883720930233
+        },
+        "P8": {
+          "n": 62,
+          "correct": 56,
+          "accuracy": 0.9032258064516129
+        },
+        "P9": {
+          "n": 59,
+          "correct": 50,
+          "accuracy": 0.847457627118644
+        }
+      }
+    }
+  },
+  "interpretation_limits": [
+    "Section B source labels come from PrincipleAxis; Section C labels come from concept-name mapping; Notes labels come from NotesPrinciple concept names.",
+    "Source-wise accuracy is measured against those source-derived labels, not independent human ground truth.",
+    "High Section B accuracy is informative but does not by itself eliminate template or taxonomy leakage concerns.",
+    "The user-reported historical 17,219 count has no generating query or dated source artifact in the current repository; compare it to the current DB filter funnel before asserting a definitive cause.",
+    "AI-assisted Section C mappings are weak labels and are not expert-verified."
+  ]
+}

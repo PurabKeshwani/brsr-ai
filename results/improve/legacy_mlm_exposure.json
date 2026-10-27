@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "run_id": "P1-MLM-AUDIT-20261019T130038766844Z",
+  "phase": "PHASE_1_LEGACY_MLM_EXPOSURE_AUDIT",
+  "status": "PASS",
+  "count_role": "Historical saved corpus attribution using current DB; not model inference",
+  "decision_rule_frozen_in": "results/improve/prereg.md",
+  "evidence_status": "VAL_TEST_ASSOCIATED_SENTENCES_FOUND",
+  "decision": "TRAIN_COMPANY_ONLY_MLM_REQUIRED_AS_LEAKAGE_CONTROL",
+  "decision_verdict_type": "LEAKAGE CONTROL; not an accuracy improvement",
+  "new_training": "NOT RUN",
+  "new_inference": "NOT RUN",
+  "new_test_performance": "NOT RUN",
+  "historical_checkpoint": {
+    "path": "data\\models\\domain_adapted_bert\\final_model\\config.json",
+    "config_exists": true,
+    "config_mtime_utc": "2026-08-15T23:42:52.047437+00:00",
+    "exact_corpus_to_checkpoint_link": "UNVERIFIED: config does not record corpus hash"
+  },
+  "saved_corpus": {
+    "path": "data\\training\\mlm_corpus.txt",
+    "sha256": "c615618ea9523707b899a9b0ea47c193659d79ab82f7088af2be4e2f912446c9",
+    "mtime_utc": "2026-08-15T10:58:45.934879+00:00",
+    "bytes": 33687125,
+    "unique_sentences": 50894,
+    "minimum_length": 20,
+    "attribution_denominator": "All unique saved corpus sentences"
+  },
+  "attribution": {
+    "matched_unique_sentences_in_current_db": 50894,
+    "unmatched_saved_sentences": 0,
+    "current_db_valid_unique_sentences_not_in_saved_corpus": 25,
+    "entire_saved_corpus_reconstructed_from_current_db": false,
+    "any_validation_cin_sentences": 7750,
+    "any_test_cin_sentences": 7467,
+    "validation_or_test_union_sentences": 15178,
+    "validation_or_test_union_percent_of_saved_corpus": 29.822768892207332,
+    "validation_or_test_without_train_sentences": 14960,
+    "validation_or_test_shared_with_train_sentences": 218,
+    "unmatched_percent_of_saved_corpus": 0.0,
+    "source_masks": {
+      "train": 35716,
+      "val": 7613,
+      "train+val": 98,
+      "test": 7325,
+      "train+test": 103,
+      "val+test": 22,
+      "train+val+test": 17
+    },
+    "current_db_valid_fact_rows": 86617,
+    "current_db_valid_unique_sentences": 50919,
+    "current_db_valid_fact_rows_by_cohort": {
+      "test": 12842,
+      "train": 60777,
+      "val": 12998
+    },
+    "saved_corpus_matched_fact_rows_by_cohort": {
+      "test": 12842,
+      "train": 60718,
+      "val": 12998
+    },
+    "saved_corpus_matched_unique_cins_by_cohort": {
+      "train": 814,
+      "val": 175,
+      "test": 175,
+      "outside_split": 0
+    }
+  },
+  "split_metadata": {
+    "train": {
+      "rows": 29834,
+      "unique_cins": 814,
+      "csv_sha256": "f06ed6bdbdaff411dab7147e134af8947fe1afde12fd37e44dd46184172a09fd",
+      "cin_set_sha256": "2943b2d8fb9be39830bc8cbe2162820fa0a3296758a28f93e73782922abe4e29"
+    },
+    "val": {
+      "rows": 6374,
+      "unique_cins": 175,
+      "csv_sha256": "6993e13669b379a1b3ba95c640baf1b75c45a52fb455225faa618d3731267380",
+      "cin_set_sha256": "af4012c900f5681594f5422a197b7228b8a03afd47796d927512873d81a49455"
+    },
+    "test": {
+      "rows": 6201,
+      "unique_cins": 175,
+      "csv_sha256": "079305b42510bed095c9bd937380a483951a76fbca42fb4ac10b55b4d829391d",
+      "cin_set_sha256": "8495ac7ffdfed51703b8267634f72e0ad44b492cd220e2f8579bc6ae4944b837"
+    }
+  },
+  "database": {
+    "path": "D:\\brsr-ai-phase0-1\\brsr-ai\\data\\brsr.db",
+    "bytes": 622899200,
+    "mtime_utc": "2026-09-03T08:32:51.216623+00:00",
+    "query": "Fact.concept LIKE '%ExplanatoryTextBlock%' joined to Filing and Company"
+  },
+  "method_limit": "Saved corpus has no CIN; shared text is counted in every contributing cohort. Current DB may differ from the historical ingestion snapshot. A corpus/config timestamp is not cryptographic proof of the checkpoint's training input.",
+  "environment": {
+    "python_executable": "D:\\brsr-ai-phase0-1\\brsr-ai\\.venv-ml\\Scripts\\python.exe",
+    "python_version": "3.13.14",
+    "git_commit": "94fafa1bbdaf1c4801e2559136d18ec5c482d823",
+    "tracked_diff_sha256": "a148d488f3114dddfda8968fa53aa59a4a7988f7583e14c6c8a709984e930226",
+    "worktree_dirty": true,
+    "package_versions": {
+      "torch": "2.13.0+cu126",
+      "transformers": "5.15.0",
+      "pandas": "3.0.5",
+      "SQLAlchemy": "2.0.52"
+    },
+    "gpu": "NOT USED: no model load or training"
+  },
+  "script_sha256": "c881817057a90aaf79d8b9f84eeb4b0f889919158fc7a49499c38b096ba2c700",
+  "prereg_sha256": "1bca9a50418b3f385d26d52bb76745105eb6753752c5050f26c9cd66fa493037",
+  "phase0_run_id": "P0-20261019T125107652794Z",
+  "finished_at_utc": "2026-10-19T13:00:48.031939+00:00"
+}

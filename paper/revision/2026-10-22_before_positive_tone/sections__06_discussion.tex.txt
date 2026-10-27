@@ -1,0 +1,30 @@
+\section{Discussion and Limitations}
+\label{sec:discussion}
+
+\subsection{What the results support}
+
+The recovered classifier often matches the filing-derived labels for companies excluded from supervised training. Results by label source explain more than the overall score alone. Passages with explicit principle tags remain difficult, and agreement falls when question concepts are removed from training. The classifier can help an analyst find likely principles, but the source passage and label type should remain visible before accepting a prediction.
+
+The frozen language detector finds many passages labelled vague in the development set. Some flagged passages do not match that label, creating extra review work. The comparison with 70 AI-labelled passages is an additional early check, not independent human validation. The 20-company score comparison shows a moderate positive relationship with human ratings, but the wide intervals leave considerable uncertainty. The company and sector tables explain score calculations and comparisons. These examples do not establish prediction accuracy.
+
+\subsection{Limits of labels and evaluation}
+
+Three issues limit the classifier evidence. First, filing-derived labels include AI-assisted concept mappings without a completed independent check of meaning. Second, companies can reuse similar wording and reporting questions even when company identifiers do not overlap. Third, the earlier adaptation corpus was built from text across the company database. Exclusion of test-company text during that pretraining has not been established. Company separation therefore applies to supervised training. The evaluation must state exactly which data were excluded at each training step \cite{kapoor2023}.
+
+The recovered results use an existing test set. Checkpoint repair restores the selected model correctly, but does not provide a new test group. Concept-exclusion and multi-label checks reuse companies from the same test set. Principle mapping also reuses the classifier result. The 93.00\% value is therefore one model result used in two parts of the workflow, not two independent findings.
+
+Differences between label sources also need care. Section B is small and contains only examples left after groups with several labels were removed. Section C uses different question wording and has no P7 source category. The source gap shows that label origin matters, but cannot alone measure how much accuracy comes from repeated templates. Tests on excluded concepts add evidence of weaker transfer. Those runs also use different training examples, concepts, and seeds, so the entire decrease cannot be assigned to one cause.
+
+\subsection{Limits of numerical checks and the score}
+
+A numerical check must match the claim's meaning before flagging a possible conflict. Missing values, valid zeros, changed units, total quantities versus quantities per unit of output, and changes in business coverage need separate treatment. The assurance-gap check does not fully match period, unit, and reporting group. That check and the omission check also have limits in handling zero values. The reported language-only F1 does not assess these numerical branches. No complete four-signal greenwashing accuracy estimate is available.
+
+The Transparency Score uses the concept list from the full database. Some items may not apply to a particular business. Evidence markers are broad, and some components share the same rules. Specificity and SDG breadth both use evidence patterns, while Clarity uses the language detector. Agreement between these components would therefore not provide independent validation. The SDG mapping covers at most 14 goals, and removing duplicate entries can retain a principle according to record order. Sector percentiles show relative standing under one formula and the saved sector labels. Manufacturing-related items or incorrect industry codes can affect comparisons with service companies.
+
+The human-rating comparison contains only 20 companies and one documented rating source. Whether the rater saw the automated score is unconfirmed. One original text packet also had an extraction problem. AI labels do not supply the missing independent human evidence. Removing difficult cases after inspecting score differences, or fitting weights to synthetic ratings, cannot strengthen the main result. The score weights are fixed choices in the implementation, not verified SEBI-prescribed weights.
+
+\subsection{Practical use}
+
+The service helps organise review. An analyst can inspect a passage, locate the filed item, check the period and unit, and compare the score components before seeking further evidence. Every flag should show the rule and source behind the decision. A low score or high model probability should not be treated as a legal finding. The workflow helps prioritise attention without claiming that every flagged passage is misleading.
+
+\FloatBarrier

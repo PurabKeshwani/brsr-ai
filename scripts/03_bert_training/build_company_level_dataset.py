@@ -1,7 +1,7 @@
 """
 Stage 2 & 3: Strict Company-Level Split (Zero Company Overlap)
 --------------------------------------------------------------
-Splits the 38,966 BRSR corporate disclosure segments by company (CIN)
+Splits all current clean BRSR training segments by company (CIN)
 using GroupShuffleSplit, guaranteeing that:
 1. NO company in the test set has ever been seen in the training or validation sets.
 2. Evaluates out-of-sample generalization to completely unseen corporate entities.
@@ -24,7 +24,7 @@ def main():
     print("  BUILDING STRICT COMPANY-LEVEL SPLIT (GroupShuffleSplit by CIN)")
     print("=================================================================")
 
-    # Combine existing clean splits to get the complete 38,966 segment corpus
+    # Combine existing clean splits to get the complete current corpus
     train_orig = pd.read_csv(DATA_DIR / "train.csv")
     val_orig = pd.read_csv(DATA_DIR / "val.csv")
     test_orig = pd.read_csv(DATA_DIR / "test.csv")

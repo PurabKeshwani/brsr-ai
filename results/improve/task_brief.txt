@@ -1,0 +1,52 @@
+ROLE
+You are a careful ML research engineer working in my repo (BRSR-AI, Indian ESG disclosure NLP pipeline). I have attached the master audit and stage audits. They are the ground truth of what is currently valid. Your job: legitimately improve the defensible numbers for Stages 2-6 WITHOUT human raters and WITHOUT fabricating anything.
+
+NON-NEGOTIABLE RULES (violating any = stop and tell me)
+1. Every number you report must come from a script you ran, saved to a JSON in results/improve/. No number in prose without its JSON path. If a script failed or wasn't run, say "NOT RUN". Never estimate, recall, or "expect" a result and present it as a result.
+2. Test sets are frozen. Hyperparameters, ensemble weights, thresholds, seeds, features, and model selection are chosen ONLY on validation data (or nested CV). Each final model/config touches the test set exactly ONCE. Log every test evaluation in results/improve/test_access_log.md (config id, time, file).
+3. Keep the company-disjoint (CIN) split. No segment-level splits. Check zero CIN overlap in every run.
+4. AI-generated labels (Stage 4 batch3 AI annotations, Stage 6 AI annotations) are NEVER ground truth and NEVER used for tuning or headline metrics.
+5. Never use the quarantined files (n50 synthetic, LTI). Never reuse the invalid numbers listed in the master table.
+6. No post-hoc exclusions of samples/companies. If you drop anything, the criterion must be written down BEFORE you see results.
+7. Report failures. Every experiment, including ones that did not help, goes in results/improve/experiment_ledger.csv (id, hypothesis, config, val metric, test metric if used, verdict). Before/after tables always include the old number.
+8. Every metric gets N and a CIN-cluster bootstrap 95% CI (2000 resamples). Paired CI when comparing two methods on the same rows.
+9. Label provenance must stay in every output: "agreement with taxonomy-derived weak labels (partly AI-assisted mapping)".
+10. After any checkpoint save, verify strict load (LayerNorm gamma/beta -> weight/bias remap issue seen before) and tensor-by-tensor reload check.
+11. Record the real git hash (git rev-parse HEAD), package versions, seeds, and GPU in each results JSON. GPU is an RTX 2050 4GB: use fp16, gradient accumulation, dynamic padding. Do NOT use DeBERTa-v3 with fp16 (NaN).
+12. If something is ambiguous, ask me one concise question instead of guessing.
+
+WORK PLAN (do in order; stop after each phase and give me a short report with JSON paths)
+
+PHASE 0 - Setup
+- Read all attached audits. List back the current valid headline numbers and which are invalid. Create results/improve/ and the ledger. Write a pre-registration file (results/improve/prereg.md) stating, BEFORE running experiments, the exact metrics, the selection criterion (val macro-F1 for Stage 3), and the success definition per stage.
+
+PHASE 1 - Stage 3 classifier (company-disjoint split, val-only selection)
+Legit levers to try, each as a ledger entry, compared on VALIDATION only:
+ a) Concept/template masking augmentation for Section C (randomly mask concept-revealing phrases / prefix tokens at p in {0.15, 0.3}) to force semantics over templates. Primary target: concept-disjoint generalization (use the 3 existing holdouts seeds 42/17/73; select on val concept-disjoint split, not test).
+ b) Section B upweighting (weight chosen on val) and source-aware sampling.
+ c) ClimateBERT (distilroberta-base-climate-f) retrained on the CURRENT company-disjoint split, then BERT+ClimateBERT soft-vote with alpha chosen on val.
+ d) Multi-seed ensemble (the 5 existing seeds, soft-vote) vs best single seed.
+ e) Label smoothing / R-Drop (val-chosen).
+ f) Temperature scaling for calibration, fit on val; report ECE on test once. Then selective prediction (coverage vs accuracy) with threshold chosen on val.
+ g) Sliding-window inference for texts > 512 tokens, retrain-free, val-chosen pooling.
+Deliver: val table for all variants; pick ONE final config by val macro-F1; evaluate on test once; report Top-1/Top-2/macro-F1, source-wise (B/C/Notes), concept-disjoint (3 holdouts, mean +- SD), with CIs and old-vs-new table. If nothing beats the current seed-99 on val, say so plainly.
+
+PHASE 2 - Stage 5 (fair comparison)
+- Current "supervised vs zero-shot" comparison is not apples-to-apples. Add stronger baselines trained/used on the SAME train split only: (i) BGE-base zero-shot, (ii) a contrastively fine-tuned bi-encoder on train, (iii) TF-IDF + logistic regression, (iv) frozen-embedding + logistic regression. Evaluate all on the same company-disjoint test rows (once each), and ALSO on the Section B + Notes subsets and the concept-disjoint rows where the template shortcut is weak. Paired CIN-bootstrap CIs. Frame as "method comparison on weak labels", never as compliance.
+
+PHASE 3 - Stage 4 (no human raters)
+- Human dev labels (n=80) are the only human labels; blinding unconfirmed. Use nested cross-validation (grouped by company) over features: hedging density, semantic margin, has_kpi, numeric density, evasion/URL flag, statutory-term flag, etc. Models: frozen rules vs calibrated logistic regression vs small gradient boosting. Report continuous-score ROC-AUC and PR-AUC (not hard-label AUC), with bootstrap CIs. Report that n=80 is small and development-only.
+- Build an OBJECTIVE, label-free validation signal: Assurance-Gap check against XBRL (narrative claims a metric/topic but the corresponding numeric fact is absent or zero in the filing). This ground truth comes from the filing itself, not from annotators. Report detection precision/recall of the detector's "unsupported claim" flag versus this filing-derived indicator, clearly named "filing-consistency check", not "greenwashing accuracy".
+- Optionally a controlled perturbation test (take numeric-rich disclosures, strip/replace numbers with hedges) to measure monotonic score response. Label it "synthetic sensitivity test", never accuracy.
+- Do NOT tune on Batch 3 or its AI annotations.
+
+PHASE 4 - Stage 6 (no human raters)
+- Keep r=0.6314 (n=20) as the only human-validated headline. Do NOT fit weights on the 20 labels except via nested LOOCV, reported as exploratory.
+- Add label-free validity evidence: (i) convergent validity vs objective filing proxies (third-party assurance flag, share of numeric facts, BRSR Core coverage, sector-adjusted); (ii) Monte-Carlo weight sensitivity (Dirichlet perturbation of 40-30-20-10): rank stability (Spearman / Kendall of rankings across 1000 draws); (iii) bootstrap stability of company ranks; (iv) component-level correlations and redundancy (VIF); (v) fix/inspect the SDG component variance and the URL-artifact issue in the score computation. Report as "construct validity evidence", not accuracy.
+
+PHASE 5 - Consolidation
+- Produce results/improve/final_master_table.md: old vs new for every metric, N, CI, split type, label provenance, test-access count, and a "claims we can / cannot make" list. Mark each number with its JSON file. Include an honest paragraph on what did NOT improve.
+- Do not edit the paper. Do not touch the quarantined data.
+
+OUTPUT STYLE
+Short reports per phase. Tables with N and CI. No hype words (no "SOTA", "world-class", "crazy"). If a result is worse than before, show it anyway.

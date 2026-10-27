@@ -1,0 +1,27 @@
+\begin{figure}[tbp]
+\centering
+\begin{subfigure}{0.48\linewidth}
+\centering
+\begin{tikzpicture}
+\begin{axis}[width=\linewidth,height=5.4cm,xlabel={Completed epoch},ylabel={Validation macro-F1},
+  xmin=0.7,xmax=5.3,ymin=0.895,ymax=0.925,xtick={1,2,3,4,5},ymajorgrids=true,
+  scaled y ticks=false,yticklabel style={/pgf/number format/fixed,/pgf/number format/precision=3}]
+\addplot[teal,thick,mark=*] coordinates {(1,0.904818)(2,0.907187)(3,0.913640)(4,0.919368)(5,0.918854)};
+\addplot[warm,only marks,mark=*,mark size=3.5pt] coordinates {(4,0.919368)};
+\end{axis}
+\end{tikzpicture}
+\caption{Category agreement is highest at epoch 4.}
+\end{subfigure}\hfill
+\begin{subfigure}{0.48\linewidth}
+\centering
+\begin{tikzpicture}
+\begin{axis}[width=\linewidth,height=5.4cm,xlabel={Completed epoch},ylabel={Validation loss},
+  xmin=0.7,xmax=5.3,ymin=0.25,ymax=0.50,xtick={1,2,3,4,5},ymajorgrids=true]
+\addplot[ink,thick,mark=square*] coordinates {(1,0.310062)(2,0.360093)(3,0.401145)(4,0.447556)(5,0.468024)};
+\end{axis}
+\end{tikzpicture}
+\caption{Loss, which also considers confidence, rises.}
+\end{subfigure}
+\caption{Five recorded training epochs for seed 99. The marked point is checkpoint 7,460, selected by validation macro-F1. Loss and F1 can move in different directions because confidence and category choice are different parts of a prediction. Only recorded epochs are shown; the curves do not establish that overfitting is absent.}
+\label{fig:training}
+\end{figure}

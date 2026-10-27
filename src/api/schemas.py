@@ -134,3 +134,19 @@ class SectorBenchmarkInfo(BaseModel):
     is_sector_leader: bool
     is_sector_laggard: bool
     benchmark_reliable: bool
+
+
+class CompliancePrincipleScore(BaseModel):
+    principle_num: int
+    mean_classifier_probability: float
+    segment_count: int
+    weakest_segment: Optional[str] = None
+    weakest_segment_probability: Optional[float] = None
+
+
+class ComplianceMappingSummary(BaseModel):
+    method: str
+    model_path: str
+    overall_mean_principle_probability_pct: float
+    per_principle: list[CompliancePrincipleScore]
+    interpretation: str

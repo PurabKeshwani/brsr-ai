@@ -2,6 +2,8 @@
 
 **Git HEAD**: `be9fdb9f6cbba33ca99729e3fcd61e76a37b7dc6`
 
+> **Historical snapshot note (2026-10-17):** This inventory was generated before the AI-generated Section C weak-label extension and before the latest dataset rebuild. Its row counts and “44 entries” mapping description are stale. Current mapping decisions and their provenance are documented in `results/audit/stage2_ai_mapping_provenance.md`. Rebuild the dataset and regenerate this inventory before using its counts.
+
 ## Dataset Inventory
 
 | Path | Rows | MD5 (12) | Label Source |
@@ -12,8 +14,8 @@
 | `data/training_company_split/train.csv` | 27422 | `fb0e54c6bb93` | XBRL-derived, company-disjoint GroupShuffleSplit by CIN |
 | `data/training_company_split/val.csv` | 5823 | `e76c077af370` | XBRL-derived, company-disjoint |
 | `data/training_company_split/test.csv` | 5721 | `89201b663012` | XBRL-derived, company-disjoint |
-| `data/validation/vagueness_validation_sample.csv` | 30 | `1962ea72c41b` | HUMAN — 30 rows, labeled blind to model (batch 1) |
-| `data/validation/vagueness_validation_sample_batch2.csv` | 50 | `9d3e8b99c815` | HUMAN — 50 rows, labeled blind to model (batch 2) |
+| `data/validation/vagueness_validation_sample.csv` | 30 | `1962ea72c41b` | HUMAN — blinding to model output unconfirmed (batch 1) |
+| `data/validation/vagueness_validation_sample_batch2.csv` | 50 | `9d3e8b99c815` | HUMAN — blinding to model output unconfirmed (batch 2) |
 | `data/validation/vagueness_validation_sample_batch3.csv` | 70 | `9eb49f1d5848` | BLOCKED: needs human — 70 rows, human_label column empty |
 | `data/validation/human_score_validation.csv` | 20 | `b4bcf1feb232` | HUMAN — 20 real human ratings (0-100) |
 | `data/validation/human_score_validation_n50.csv` | 50 | `20dc2f9e6db9` | SYNTHETIC CONTAMINATED — 30/50 rows assigned via formula 0.15*C+0.45*Sp+0.20*Cl+0.20*SDG |

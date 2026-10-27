@@ -1,0 +1,47 @@
+{
+  "date": "2026-10-22",
+  "report": "paper/revision/eight_requested_changes_audit.md",
+  "blanket_material_fact_removal": false,
+  "qualified_requests": [
+    1,
+    5,
+    6
+  ],
+  "completed_requests": [
+    2,
+    3,
+    4,
+    7,
+    8
+  ],
+  "abstract_words": 176,
+  "abstract_unconfirmed_line_removed": true,
+  "abstract_remain_necessary_line_removed": true,
+  "pipeline_parts": 7,
+  "future_opening": "This work can be extended using multiple levels.",
+  "essential_study_facts": {
+    "weak_labels_and_AI_mapping": true,
+    "adaptation_membership": true,
+    "human_rating_source_and_blinding": true,
+    "development_and_AI_reference": true,
+    "language_only_detector_metrics": true,
+    "fact_selection_rules": true
+  },
+  "numeric_table_entries_unchanged": true,
+  "equation_blocks_unchanged": true,
+  "source_checks": {
+    "included_manuscript_files": 16,
+    "language_violations": [],
+    "undefined_references": [],
+    "duplicate_labels": [],
+    "undefined_citations": [],
+    "figures": 7,
+    "tables": 13,
+    "bibliography_entries": 20
+  },
+  "methodology_start_page": 6,
+  "compact_tables_one_page": "PASS",
+  "new_training": false,
+  "new_model_inference": false,
+  "terminal_commands_executed": false
+}

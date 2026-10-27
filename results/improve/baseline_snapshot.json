@@ -1,0 +1,2290 @@
+{
+  "schema_version": 1,
+  "prepared_date": "2026-10-19",
+  "status": "IMPORTED_PRIOR_AUDIT_RESULTS_ONLY",
+  "new_experiments": "NOT RUN",
+  "new_model_or_dataset_evaluations": "NOT RUN",
+  "label_provenance": "agreement with taxonomy-derived weak labels (partly AI-assisted mapping)",
+  "provenance_scope": "Stage 2/3/5 only; Stage 4 human development labels and Stage 6 human ratings have separate provenance recorded in source records.",
+  "fresh_test": false,
+  "legacy_metadata_policy": "Historical git/package/GPU metadata are not inferred or retroactively replaced by current runtime values.",
+  "sources": {
+    "stage3_seed99_recovered_full_results.json": {
+      "original_path": "results/audit/stage3_seed99_recovered_full_results.json",
+      "sha256": "f8ef77f6127fdca14f3cff741e1a757bdd72ecb6db3836b69c5e5f1125849f69",
+      "execution_origin": "existing user-run audit; not re-executed in Phase 0",
+      "data": {
+        "evaluation": "Stage 3 seed-99 recovered checkpoint re-evaluation on the full company-disjoint test",
+        "fresh_test": false,
+        "test_dataset": "data\\training_company_split\\test.csv",
+        "test_sha256": "079305b42510bed095c9bd937380a483951a76fbca42fb4ac10b55b4d829391d",
+        "n_segments": 6201,
+        "n_company_clusters_cin": 175,
+        "company_disjoint_assertions": true,
+        "selected_checkpoint": "data/models/brsr_company_split_classifier/seed_99/checkpoints/checkpoint-7460",
+        "recovered_model": "data\\models\\brsr_company_split_classifier\\seed_99\\recovered_checkpoint_7460",
+        "checkpoint_recovery": "50 LayerNorm gamma/beta aliases strictly remapped; save/reload tensors verified exactly in the Stage 2 recovery step",
+        "metrics": {
+          "top1_correct": 5767,
+          "top1_accuracy": 0.9300112885018545,
+          "top1_cin_cluster_bootstrap_ci95": [
+            0.9203984326924053,
+            0.9388509085476517
+          ],
+          "top2_correct": 6057,
+          "top2_accuracy": 0.97677793904209,
+          "top2_cin_cluster_bootstrap_ci95": [
+            0.9709819114547733,
+            0.9820853007986767
+          ],
+          "macro_f1_top1": 0.9158240810346214,
+          "macro_f1_cin_cluster_bootstrap_ci95": [
+            0.9035670003570093,
+            0.9276792523619579
+          ],
+          "confusion_matrix": [
+            [
+              729,
+              4,
+              3,
+              5,
+              1,
+              13,
+              5,
+              4,
+              9
+            ],
+            [
+              3,
+              714,
+              5,
+              1,
+              2,
+              59,
+              1,
+              1,
+              22
+            ],
+            [
+              4,
+              0,
+              1654,
+              3,
+              33,
+              2,
+              1,
+              13,
+              5
+            ],
+            [
+              3,
+              2,
+              4,
+              445,
+              0,
+              2,
+              1,
+              9,
+              3
+            ],
+            [
+              6,
+              0,
+              48,
+              1,
+              382,
+              3,
+              2,
+              3,
+              4
+            ],
+            [
+              3,
+              34,
+              9,
+              1,
+              2,
+              770,
+              0,
+              2,
+              2
+            ],
+            [
+              3,
+              0,
+              1,
+              0,
+              0,
+              1,
+              59,
+              2,
+              3
+            ],
+            [
+              5,
+              4,
+              2,
+              4,
+              3,
+              5,
+              0,
+              339,
+              6
+            ],
+            [
+              4,
+              22,
+              9,
+              3,
+              1,
+              6,
+              0,
+              7,
+              675
+            ]
+          ],
+          "classification_report": {
+            "0": {
+              "precision": 0.9592105263157895,
+              "recall": 0.943078913324709,
+              "f1-score": 0.9510763209393346,
+              "support": 773
+            },
+            "1": {
+              "precision": 0.9153846153846154,
+              "recall": 0.8836633663366337,
+              "f1-score": 0.8992443324937027,
+              "support": 808
+            },
+            "2": {
+              "precision": 0.9533141210374639,
+              "recall": 0.9644314868804664,
+              "f1-score": 0.9588405797101449,
+              "support": 1715
+            },
+            "3": {
+              "precision": 0.9611231101511879,
+              "recall": 0.9488272921108742,
+              "f1-score": 0.9549356223175965,
+              "support": 469
+            },
+            "4": {
+              "precision": 0.9009433962264151,
+              "recall": 0.8507795100222717,
+              "f1-score": 0.8751431844215349,
+              "support": 449
+            },
+            "5": {
+              "precision": 0.8943089430894309,
+              "recall": 0.9356014580801945,
+              "f1-score": 0.9144893111638955,
+              "support": 823
+            },
+            "6": {
+              "precision": 0.855072463768116,
+              "recall": 0.855072463768116,
+              "f1-score": 0.855072463768116,
+              "support": 69
+            },
+            "7": {
+              "precision": 0.8921052631578947,
+              "recall": 0.9211956521739131,
+              "f1-score": 0.9064171122994652,
+              "support": 368
+            },
+            "8": {
+              "precision": 0.9259259259259259,
+              "recall": 0.9284731774415406,
+              "f1-score": 0.9271978021978022,
+              "support": 727
+            },
+            "accuracy": 0.9300112885018545,
+            "macro avg": {
+              "precision": 0.9174875961174265,
+              "recall": 0.914569257793191,
+              "f1-score": 0.9158240810346214,
+              "support": 6201
+            },
+            "weighted avg": {
+              "precision": 0.9301376701131346,
+              "recall": 0.9300112885018545,
+              "f1-score": 0.9298897129862973,
+              "support": 6201
+            }
+          },
+          "per_principle": {
+            "P1": {
+              "n": 773,
+              "top1_correct": 729,
+              "top1_accuracy": 0.943078913324709,
+              "top2_accuracy": 0.9767141009055628
+            },
+            "P2": {
+              "n": 808,
+              "top1_correct": 714,
+              "top1_accuracy": 0.8836633663366337,
+              "top2_accuracy": 0.9715346534653465
+            },
+            "P3": {
+              "n": 1715,
+              "top1_correct": 1654,
+              "top1_accuracy": 0.9644314868804664,
+              "top2_accuracy": 0.99067055393586
+            },
+            "P4": {
+              "n": 469,
+              "top1_correct": 445,
+              "top1_accuracy": 0.9488272921108742,
+              "top2_accuracy": 0.9637526652452025
+            },
+            "P5": {
+              "n": 449,
+              "top1_correct": 382,
+              "top1_accuracy": 0.8507795100222717,
+              "top2_accuracy": 0.9665924276169265
+            },
+            "P6": {
+              "n": 823,
+              "top1_correct": 770,
+              "top1_accuracy": 0.9356014580801945,
+              "top2_accuracy": 0.9842041312272175
+            },
+            "P7": {
+              "n": 69,
+              "top1_correct": 59,
+              "top1_accuracy": 0.855072463768116,
+              "top2_accuracy": 0.8695652173913043
+            },
+            "P8": {
+              "n": 368,
+              "top1_correct": 339,
+              "top1_accuracy": 0.9211956521739131,
+              "top2_accuracy": 0.9538043478260869
+            },
+            "P9": {
+              "n": 727,
+              "top1_correct": 675,
+              "top1_accuracy": 0.9284731774415406,
+              "top2_accuracy": 0.9779917469050894
+            }
+          }
+        },
+        "source_metrics": {
+          "section_b": {
+            "n": 352,
+            "unique_cins": 71,
+            "top1_correct": 223,
+            "top1_accuracy": 0.6335227272727273,
+            "top1_cin_cluster_bootstrap_ci95": [
+              0.5655378277153559,
+              0.6967318501170959
+            ],
+            "top2_correct": 283,
+            "top2_accuracy": 0.8039772727272727,
+            "macro_f1_top1": 0.6372503301542939,
+            "per_principle": {
+              "P1": {
+                "n": 69,
+                "top1_accuracy": 0.6086956521739131,
+                "top2_accuracy": 0.855072463768116
+              },
+              "P2": {
+                "n": 38,
+                "top1_accuracy": 0.5,
+                "top2_accuracy": 0.7105263157894737
+              },
+              "P3": {
+                "n": 45,
+                "top1_accuracy": 0.6444444444444445,
+                "top2_accuracy": 0.8222222222222222
+              },
+              "P4": {
+                "n": 30,
+                "top1_accuracy": 0.5,
+                "top2_accuracy": 0.5666666666666667
+              },
+              "P5": {
+                "n": 32,
+                "top1_accuracy": 0.59375,
+                "top2_accuracy": 0.84375
+              },
+              "P6": {
+                "n": 49,
+                "top1_accuracy": 0.7551020408163265,
+                "top2_accuracy": 0.9387755102040817
+              },
+              "P7": {
+                "n": 26,
+                "top1_accuracy": 0.6923076923076923,
+                "top2_accuracy": 0.7307692307692307
+              },
+              "P8": {
+                "n": 29,
+                "top1_accuracy": 0.6551724137931034,
+                "top2_accuracy": 0.7241379310344828
+              },
+              "P9": {
+                "n": 34,
+                "top1_accuracy": 0.7352941176470589,
+                "top2_accuracy": 0.8823529411764706
+              }
+            }
+          },
+          "section_c": {
+            "n": 5364,
+            "unique_cins": 174,
+            "top1_correct": 5104,
+            "top1_accuracy": 0.9515287099179717,
+            "top1_cin_cluster_bootstrap_ci95": [
+              0.9441178663384706,
+              0.9591951577944401
+            ],
+            "top2_correct": 5311,
+            "top2_accuracy": 0.9901193139448173,
+            "macro_f1_top1": 0.8403205857051167,
+            "per_principle": {
+              "P1": {
+                "n": 650,
+                "top1_accuracy": 0.9815384615384616,
+                "top2_accuracy": 0.9923076923076923
+              },
+              "P2": {
+                "n": 711,
+                "top1_accuracy": 0.9015471167369902,
+                "top2_accuracy": 0.9873417721518988
+              },
+              "P3": {
+                "n": 1605,
+                "top1_accuracy": 0.973208722741433,
+                "top2_accuracy": 0.9950155763239875
+              },
+              "P4": {
+                "n": 426,
+                "top1_accuracy": 0.9906103286384976,
+                "top2_accuracy": 0.9929577464788732
+              },
+              "P5": {
+                "n": 354,
+                "top1_accuracy": 0.8757062146892656,
+                "top2_accuracy": 0.9858757062146892
+              },
+              "P6": {
+                "n": 707,
+                "top1_accuracy": 0.9434229137199435,
+                "top2_accuracy": 0.9872701555869873
+              },
+              "P7": {
+                "n": 0,
+                "top1_accuracy": null,
+                "top2_accuracy": null
+              },
+              "P8": {
+                "n": 277,
+                "top1_accuracy": 0.9530685920577617,
+                "top2_accuracy": 0.9819494584837545
+              },
+              "P9": {
+                "n": 634,
+                "top1_accuracy": 0.9463722397476341,
+                "top2_accuracy": 0.9858044164037855
+              }
+            }
+          },
+          "notes_principle": {
+            "n": 485,
+            "unique_cins": 103,
+            "top1_correct": 440,
+            "top1_accuracy": 0.9072164948453608,
+            "top1_cin_cluster_bootstrap_ci95": [
+              0.8654588552887045,
+              0.9409397577446671
+            ],
+            "top2_correct": 463,
+            "top2_accuracy": 0.954639175257732,
+            "macro_f1_top1": 0.8915248023017069,
+            "per_principle": {
+              "P1": {
+                "n": 54,
+                "top1_accuracy": 0.9074074074074074,
+                "top2_accuracy": 0.9444444444444444
+              },
+              "P2": {
+                "n": 59,
+                "top1_accuracy": 0.9152542372881356,
+                "top2_accuracy": 0.9491525423728814
+              },
+              "P3": {
+                "n": 65,
+                "top1_accuracy": 0.9692307692307692,
+                "top2_accuracy": 1
+              },
+              "P4": {
+                "n": 13,
+                "top1_accuracy": 0.6153846153846154,
+                "top2_accuracy": 0.9230769230769231
+              },
+              "P5": {
+                "n": 63,
+                "top1_accuracy": 0.8412698412698413,
+                "top2_accuracy": 0.9206349206349206
+              },
+              "P6": {
+                "n": 67,
+                "top1_accuracy": 0.9850746268656716,
+                "top2_accuracy": 0.9850746268656716
+              },
+              "P7": {
+                "n": 43,
+                "top1_accuracy": 0.9534883720930233,
+                "top2_accuracy": 0.9534883720930233
+              },
+              "P8": {
+                "n": 62,
+                "top1_accuracy": 0.9032258064516129,
+                "top2_accuracy": 0.9354838709677419
+              },
+              "P9": {
+                "n": 59,
+                "top1_accuracy": 0.847457627118644,
+                "top2_accuracy": 0.9491525423728814
+              }
+            }
+          }
+        },
+        "interpretation": "Re-evaluation of a previously used test set; labels are taxonomy-derived weak labels, not independent human ground truth."
+      }
+    },
+    "stage5_company_disjoint_recovered_results.json": {
+      "original_path": "results/audit/stage5_company_disjoint_recovered_results.json",
+      "sha256": "dabdb8c4bb6498dbaebf868a62e6a688007013ca5c23f60aa8c66332ca5816aa",
+      "execution_origin": "existing user-run audit; not re-executed in Phase 0",
+      "data": {
+        "evaluation": "Stage 5 supervised transfer vs zero-shot MPNet hybrid, with recovered Stage 3 seed-99 model",
+        "fresh_test": false,
+        "test_dataset": "data\\training_company_split\\test.csv",
+        "test_sha256": "079305b42510bed095c9bd937380a483951a76fbca42fb4ac10b55b4d829391d",
+        "n_segments": 6201,
+        "n_company_clusters_cin": 175,
+        "stage3_company_disjoint_assertions": true,
+        "supervised_model": "data\\models\\brsr_company_split_classifier\\seed_99\\recovered_checkpoint_7460",
+        "supervised_model_selection": "seed 99, selected on Stage 3 validation macro-F1; selected checkpoint-7460 recovered with strict LayerNorm key remapping",
+        "comparison_framing": "supervised transfer vs zero-shot embedding on identical company-disjoint test segments; not an isolated alignment-scoring gain",
+        "bootstrap": {
+          "method": "CIN cluster bootstrap, paired between methods",
+          "replicates": 2000,
+          "seed": 4206,
+          "ci_level": 0.95
+        },
+        "metrics": {
+          "zero_shot": {
+            "top1_correct": 4194,
+            "top1_accuracy": 0.6763425253991292,
+            "top1_cin_cluster_bootstrap_ci95": [
+              0.6645060022241471,
+              0.6893022121774881
+            ],
+            "top2_correct": 5168,
+            "top2_accuracy": 0.8334139654894371,
+            "top2_cin_cluster_bootstrap_ci95": [
+              0.8230682558795467,
+              0.8438053024079636
+            ],
+            "macro_f1_top1": 0.6405388392551368,
+            "macro_f1_cin_cluster_bootstrap_ci95": [
+              0.6247560655127622,
+              0.6566695347004462
+            ],
+            "confusion_matrix": [
+              [
+                533,
+                50,
+                8,
+                47,
+                0,
+                74,
+                25,
+                26,
+                10
+              ],
+              [
+                7,
+                448,
+                2,
+                12,
+                1,
+                193,
+                3,
+                4,
+                138
+              ],
+              [
+                180,
+                58,
+                1220,
+                167,
+                28,
+                6,
+                4,
+                5,
+                47
+              ],
+              [
+                10,
+                8,
+                1,
+                426,
+                2,
+                5,
+                1,
+                12,
+                4
+              ],
+              [
+                32,
+                4,
+                99,
+                14,
+                288,
+                1,
+                2,
+                4,
+                5
+              ],
+              [
+                79,
+                149,
+                0,
+                4,
+                1,
+                579,
+                4,
+                3,
+                4
+              ],
+              [
+                14,
+                4,
+                2,
+                3,
+                0,
+                1,
+                39,
+                2,
+                4
+              ],
+              [
+                10,
+                22,
+                6,
+                146,
+                2,
+                3,
+                3,
+                170,
+                6
+              ],
+              [
+                32,
+                86,
+                6,
+                75,
+                2,
+                7,
+                10,
+                18,
+                491
+              ]
+            ],
+            "classification_report": {
+              "0": {
+                "precision": 0.5942028985507246,
+                "recall": 0.6895213454075032,
+                "f1-score": 0.6383233532934132,
+                "support": 773
+              },
+              "1": {
+                "precision": 0.5404101326899879,
+                "recall": 0.5544554455445545,
+                "f1-score": 0.5473427000610873,
+                "support": 808
+              },
+              "2": {
+                "precision": 0.9077380952380952,
+                "recall": 0.7113702623906706,
+                "f1-score": 0.7976462896371364,
+                "support": 1715
+              },
+              "3": {
+                "precision": 0.47651006711409394,
+                "recall": 0.908315565031983,
+                "f1-score": 0.6250917094644167,
+                "support": 469
+              },
+              "4": {
+                "precision": 0.8888888888888888,
+                "recall": 0.6414253897550112,
+                "f1-score": 0.7451487710219923,
+                "support": 449
+              },
+              "5": {
+                "precision": 0.666283084004603,
+                "recall": 0.7035236938031592,
+                "f1-score": 0.6843971631205674,
+                "support": 823
+              },
+              "6": {
+                "precision": 0.42857142857142855,
+                "recall": 0.5652173913043478,
+                "f1-score": 0.4875,
+                "support": 69
+              },
+              "7": {
+                "precision": 0.6967213114754098,
+                "recall": 0.46195652173913043,
+                "f1-score": 0.5555555555555556,
+                "support": 368
+              },
+              "8": {
+                "precision": 0.692524682651622,
+                "recall": 0.6753782668500687,
+                "f1-score": 0.6838440111420613,
+                "support": 727
+              },
+              "accuracy": 0.6763425253991292,
+              "macro avg": {
+                "precision": 0.6546500654649838,
+                "recall": 0.6567959868696032,
+                "f1-score": 0.6405388392551368,
+                "support": 6201
+              },
+              "weighted avg": {
+                "precision": 0.7116782272749672,
+                "recall": 0.6763425253991292,
+                "f1-score": 0.6821279561673105,
+                "support": 6201
+              }
+            },
+            "per_principle": {
+              "P1": {
+                "n": 773,
+                "top1_correct": 533,
+                "top1_accuracy": 0.6895213454075032,
+                "top2_accuracy": 0.741267787839586
+              },
+              "P2": {
+                "n": 808,
+                "top1_correct": 448,
+                "top1_accuracy": 0.5544554455445545,
+                "top2_accuracy": 0.8849009900990099
+              },
+              "P3": {
+                "n": 1715,
+                "top1_correct": 1220,
+                "top1_accuracy": 0.7113702623906706,
+                "top2_accuracy": 0.8664723032069971
+              },
+              "P4": {
+                "n": 469,
+                "top1_correct": 426,
+                "top1_accuracy": 0.908315565031983,
+                "top2_accuracy": 0.9424307036247335
+              },
+              "P5": {
+                "n": 449,
+                "top1_correct": 288,
+                "top1_accuracy": 0.6414253897550112,
+                "top2_accuracy": 0.7750556792873051
+              },
+              "P6": {
+                "n": 823,
+                "top1_correct": 579,
+                "top1_accuracy": 0.7035236938031592,
+                "top2_accuracy": 0.8699878493317132
+              },
+              "P7": {
+                "n": 69,
+                "top1_correct": 39,
+                "top1_accuracy": 0.5652173913043478,
+                "top2_accuracy": 0.7246376811594203
+              },
+              "P8": {
+                "n": 368,
+                "top1_correct": 170,
+                "top1_accuracy": 0.46195652173913043,
+                "top2_accuracy": 0.6358695652173914
+              },
+              "P9": {
+                "n": 727,
+                "top1_correct": 491,
+                "top1_accuracy": 0.6753782668500687,
+                "top2_accuracy": 0.8308115543328748
+              }
+            }
+          },
+          "supervised_transfer": {
+            "top1_correct": 5767,
+            "top1_accuracy": 0.9300112885018545,
+            "top1_cin_cluster_bootstrap_ci95": [
+              0.9203984326924053,
+              0.9388509085476517
+            ],
+            "top2_correct": 6057,
+            "top2_accuracy": 0.97677793904209,
+            "top2_cin_cluster_bootstrap_ci95": [
+              0.9709819114547733,
+              0.9820853007986767
+            ],
+            "macro_f1_top1": 0.9158240810346214,
+            "macro_f1_cin_cluster_bootstrap_ci95": [
+              0.9035670003570093,
+              0.9276792523619579
+            ],
+            "confusion_matrix": [
+              [
+                729,
+                4,
+                3,
+                5,
+                1,
+                13,
+                5,
+                4,
+                9
+              ],
+              [
+                3,
+                714,
+                5,
+                1,
+                2,
+                59,
+                1,
+                1,
+                22
+              ],
+              [
+                4,
+                0,
+                1654,
+                3,
+                33,
+                2,
+                1,
+                13,
+                5
+              ],
+              [
+                3,
+                2,
+                4,
+                445,
+                0,
+                2,
+                1,
+                9,
+                3
+              ],
+              [
+                6,
+                0,
+                48,
+                1,
+                382,
+                3,
+                2,
+                3,
+                4
+              ],
+              [
+                3,
+                34,
+                9,
+                1,
+                2,
+                770,
+                0,
+                2,
+                2
+              ],
+              [
+                3,
+                0,
+                1,
+                0,
+                0,
+                1,
+                59,
+                2,
+                3
+              ],
+              [
+                5,
+                4,
+                2,
+                4,
+                3,
+                5,
+                0,
+                339,
+                6
+              ],
+              [
+                4,
+                22,
+                9,
+                3,
+                1,
+                6,
+                0,
+                7,
+                675
+              ]
+            ],
+            "classification_report": {
+              "0": {
+                "precision": 0.9592105263157895,
+                "recall": 0.943078913324709,
+                "f1-score": 0.9510763209393346,
+                "support": 773
+              },
+              "1": {
+                "precision": 0.9153846153846154,
+                "recall": 0.8836633663366337,
+                "f1-score": 0.8992443324937027,
+                "support": 808
+              },
+              "2": {
+                "precision": 0.9533141210374639,
+                "recall": 0.9644314868804664,
+                "f1-score": 0.9588405797101449,
+                "support": 1715
+              },
+              "3": {
+                "precision": 0.9611231101511879,
+                "recall": 0.9488272921108742,
+                "f1-score": 0.9549356223175965,
+                "support": 469
+              },
+              "4": {
+                "precision": 0.9009433962264151,
+                "recall": 0.8507795100222717,
+                "f1-score": 0.8751431844215349,
+                "support": 449
+              },
+              "5": {
+                "precision": 0.8943089430894309,
+                "recall": 0.9356014580801945,
+                "f1-score": 0.9144893111638955,
+                "support": 823
+              },
+              "6": {
+                "precision": 0.855072463768116,
+                "recall": 0.855072463768116,
+                "f1-score": 0.855072463768116,
+                "support": 69
+              },
+              "7": {
+                "precision": 0.8921052631578947,
+                "recall": 0.9211956521739131,
+                "f1-score": 0.9064171122994652,
+                "support": 368
+              },
+              "8": {
+                "precision": 0.9259259259259259,
+                "recall": 0.9284731774415406,
+                "f1-score": 0.9271978021978022,
+                "support": 727
+              },
+              "accuracy": 0.9300112885018545,
+              "macro avg": {
+                "precision": 0.9174875961174265,
+                "recall": 0.914569257793191,
+                "f1-score": 0.9158240810346214,
+                "support": 6201
+              },
+              "weighted avg": {
+                "precision": 0.9301376701131346,
+                "recall": 0.9300112885018545,
+                "f1-score": 0.9298897129862973,
+                "support": 6201
+              }
+            },
+            "per_principle": {
+              "P1": {
+                "n": 773,
+                "top1_correct": 729,
+                "top1_accuracy": 0.943078913324709,
+                "top2_accuracy": 0.9767141009055628
+              },
+              "P2": {
+                "n": 808,
+                "top1_correct": 714,
+                "top1_accuracy": 0.8836633663366337,
+                "top2_accuracy": 0.9715346534653465
+              },
+              "P3": {
+                "n": 1715,
+                "top1_correct": 1654,
+                "top1_accuracy": 0.9644314868804664,
+                "top2_accuracy": 0.99067055393586
+              },
+              "P4": {
+                "n": 469,
+                "top1_correct": 445,
+                "top1_accuracy": 0.9488272921108742,
+                "top2_accuracy": 0.9637526652452025
+              },
+              "P5": {
+                "n": 449,
+                "top1_correct": 382,
+                "top1_accuracy": 0.8507795100222717,
+                "top2_accuracy": 0.9665924276169265
+              },
+              "P6": {
+                "n": 823,
+                "top1_correct": 770,
+                "top1_accuracy": 0.9356014580801945,
+                "top2_accuracy": 0.9842041312272175
+              },
+              "P7": {
+                "n": 69,
+                "top1_correct": 59,
+                "top1_accuracy": 0.855072463768116,
+                "top2_accuracy": 0.8695652173913043
+              },
+              "P8": {
+                "n": 368,
+                "top1_correct": 339,
+                "top1_accuracy": 0.9211956521739131,
+                "top2_accuracy": 0.9538043478260869
+              },
+              "P9": {
+                "n": 727,
+                "top1_correct": 675,
+                "top1_accuracy": 0.9284731774415406,
+                "top2_accuracy": 0.9779917469050894
+              }
+            }
+          },
+          "paired_delta_supervised_minus_zero_shot": {
+            "top1": 0.25366876310272535,
+            "top1_ci95": [
+              0.24021529418385157,
+              0.2670555368926639
+            ],
+            "top2": 0.14336397355265285,
+            "top2_ci95": [
+              0.13344839312207066,
+              0.1541608221198864
+            ]
+          }
+        },
+        "per_principle_top1": {
+          "P1": {
+            "support": 773,
+            "zero_shot_top1_accuracy": 0.6895213454075032,
+            "supervised_top1_accuracy": 0.943078913324709
+          },
+          "P2": {
+            "support": 808,
+            "zero_shot_top1_accuracy": 0.5544554455445545,
+            "supervised_top1_accuracy": 0.8836633663366337
+          },
+          "P3": {
+            "support": 1715,
+            "zero_shot_top1_accuracy": 0.7113702623906706,
+            "supervised_top1_accuracy": 0.9644314868804664
+          },
+          "P4": {
+            "support": 469,
+            "zero_shot_top1_accuracy": 0.908315565031983,
+            "supervised_top1_accuracy": 0.9488272921108742
+          },
+          "P5": {
+            "support": 449,
+            "zero_shot_top1_accuracy": 0.6414253897550112,
+            "supervised_top1_accuracy": 0.8507795100222717
+          },
+          "P6": {
+            "support": 823,
+            "zero_shot_top1_accuracy": 0.7035236938031592,
+            "supervised_top1_accuracy": 0.9356014580801945
+          },
+          "P7": {
+            "support": 69,
+            "zero_shot_top1_accuracy": 0.5652173913043478,
+            "supervised_top1_accuracy": 0.855072463768116
+          },
+          "P8": {
+            "support": 368,
+            "zero_shot_top1_accuracy": 0.46195652173913043,
+            "supervised_top1_accuracy": 0.9211956521739131
+          },
+          "P9": {
+            "support": 727,
+            "zero_shot_top1_accuracy": 0.6753782668500687,
+            "supervised_top1_accuracy": 0.9284731774415406
+          }
+        },
+        "limitations": [
+          "This reuses the previously evaluated company-disjoint test set; it is a checkpoint-correctness re-evaluation, not a fresh test.",
+          "Stage 3 labels are taxonomy-derived weak labels, including AI-assisted mappings, not independent human ground truth.",
+          "The comparison is supervised transfer vs zero-shot embedding, not an isolated causal effect of domain adaptation or alignment scoring.",
+          "Top-k principle classification does not by itself establish regulatory compliance."
+        ]
+      }
+    },
+    "stage2_concept_disjoint_repeats_results.json": {
+      "original_path": "results/audit/stage2_concept_disjoint_repeats_results.json",
+      "sha256": "17d80b9b88914993d8686a125d1c791eb208fed235d7b47b3118e9bbf3db3160",
+      "execution_origin": "existing user-run audit; not re-executed in Phase 0",
+      "data": {
+        "evaluation": "Three concept-disjoint hold-out stability runs on Stage 3 company-disjoint test companies",
+        "fresh_test": false,
+        "holdout_seeds": [
+          42,
+          17,
+          73
+        ],
+        "holdout_design": "20% of test-present Section C concepts, stratified by weak-label principle where multiple concepts exist; selected concepts purged from all unique train/validation rows",
+        "run_42_reused": true,
+        "additional_training_runs": 2,
+        "concept_link_coverage": {
+          "train": {
+            "rows": 29834,
+            "unique_concept_match": 25655,
+            "ambiguous_concept_match": 4179,
+            "unmatched_concept": 0
+          },
+          "val": {
+            "rows": 6374,
+            "unique_concept_match": 5497,
+            "ambiguous_concept_match": 877,
+            "unmatched_concept": 0
+          },
+          "test": {
+            "rows": 6201,
+            "unique_concept_match": 5321,
+            "ambiguous_concept_match": 880,
+            "unmatched_concept": 0
+          }
+        },
+        "metrics_mean_sd_across_holdouts": {
+          "concept_disjoint_top1_accuracy": {
+            "mean": 0.8164380534474461,
+            "sample_sd": 0.04921581502117967,
+            "per_holdout": [
+              0.873109243697479,
+              0.7917737789203085,
+              0.7844311377245509
+            ]
+          },
+          "concept_disjoint_top2_accuracy": {
+            "mean": 0.9534112738425419,
+            "sample_sd": 0.01313625216416872,
+            "per_holdout": [
+              0.9663865546218487,
+              0.9537275064267352,
+              0.9401197604790419
+            ]
+          },
+          "concept_disjoint_macro_f1": {
+            "mean": 0.6751680929126876,
+            "sample_sd": 0.01703182880230053,
+            "per_holdout": [
+              0.6857920143026888,
+              0.6841890458459479,
+              0.6555232185894264
+            ]
+          },
+          "full_concept_baseline_top1_accuracy": {
+            "mean": 0.9707284558862517,
+            "sample_sd": 0.009666855963611472,
+            "per_holdout": [
+              0.9798319327731092,
+              0.9605826906598115,
+              0.9717707442258341
+            ]
+          },
+          "paired_top1_delta_model_minus_baseline": {
+            "mean": -0.15429040243880546,
+            "sample_sd": 0.04222395265769733,
+            "per_holdout": [
+              -0.10672268907563025,
+              -0.168808911739503,
+              -0.18733960650128315
+            ]
+          }
+        },
+        "runs": [
+          {
+            "holdout_seed": 42,
+            "n_heldout_concepts": 17,
+            "heldout_concepts": [
+              "AntiCorruptionOrAntiBriberyPolicyExplanatoryTextBlock",
+              "DesclosureOfTheProcessesUsedToIdentifyWorkRelatedHazardsAndAssessRisksOnARoutineAndNonRoutineBasisByTheEntityExplanatoryTextBlock",
+              "DescribeTheMechanismsToReceiveAndRedressGrievancesOfTheCommunityExplanatoryTextBlock",
+              "DescribeTheProcessesInPlaceToSafelyReclaimYourProductsForReusingRecyclingAndDisposingAtTheEndOfLifeForPlasticsIncludingPackagingExplanatoryTextBlock",
+              "DetailsIfTheEmployeesOrWorkerOfTheEntityHaveAccessToNonOccupationalMedicalAndHealthcareServicesIsNotApplicableExplanatoryTextBlock",
+              "DetailsOfMechanismAvailableToReceiveAndRedressGrievancesForPermanentWorkersExplanatoryTextBlock",
+              "DetailsOfProjectRelatedToReducingGreenHouseGasEmissionExplanatoryTextBlock",
+              "DetailsOfTheEntityHaveProcessesInPlaceToAvoidOrManageConflictOfInterestsInvolvingMembersOfTheBoardExplanatoryTextBlock",
+              "DetailsOfTheScopeAndCoverageOfAnyHumanRightsDueDiligenceConductedExplanatoryTextBlock",
+              "NameOfTheExternalAgencyIfAnyIndependentAssessmentOrEvaluationOrAssuranceHasBeenCarriedOutByAnExternalAgencyForAreasOfWaterStressExplanatoryTextBlock",
+              "NameOfTheExternalAgencyThatUndertookIndependentAssessmentOrEvaluationOrAssuranceForGreenHouseGasEmissionsExplanatoryTextBlock",
+              "NameOfTheExternalAgencyThatUndertookIndependentAssessmentOrEvaluationOrAssuranceRelatedToWasteManagementExplanatoryTextBlock",
+              "ProvideTheProcessesForConsultationBetweenStakeholdersAndTheBoardOnEconomicEnvironmentalAndSocialTopicsOrIfConsultationIsDelegatedHowIsFeedbackFromSuchConsultationsProvidedToTheBoardExplanatoryTextBlock",
+              "TheEntityHasNotApplicableAFrameworkOrPolicyOnCyberSecurityAndRisksRelatedToDataPrivacyExplanatoryTextBlock",
+              "TheEntityHasNotApplicableCarryOutAnySurveyWithRegardToConsumerSatisfactionRelatingToTheMajorProductsOrServicesExplanatoryTextBlock",
+              "WeblinkWhereInformationOnProductsAndServicesOfTheEntityCanBeAccessedExplanatoryTextBlock",
+              "WhetherAnyStepsAreBeingTakenByTheEntityIfThePremisesOrOfficesOfTheEntityNotAccessibleToDifferentlyAbledEmployeesAndWorkersExplanatoryTextBlock"
+            ],
+            "n_train": 20054,
+            "n_validation": 4280,
+            "n_test": 1190,
+            "n_test_cins": 174,
+            "model": "data\\models\\brsr_concept_disjoint_classifier\\seed_42\\recovered_checkpoint_6270",
+            "baseline_recovered": {
+              "n": 1190,
+              "unique_cins": 174,
+              "unique_concepts": 17,
+              "top1_correct": 1166,
+              "top1_accuracy": 0.9798319327731092,
+              "top1_cin_cluster_bootstrap_ci95": [
+                0.9715188813264636,
+                0.9876434427123396
+              ],
+              "top2_correct": 1183,
+              "top2_accuracy": 0.9941176470588236,
+              "macro_f1": 0.7870178741057533,
+              "per_principle": {
+                "P1": {
+                  "n": 293,
+                  "top1_accuracy": 1,
+                  "top2_accuracy": 1
+                },
+                "P2": {
+                  "n": 151,
+                  "top1_accuracy": 0.9668874172185431,
+                  "top2_accuracy": 1
+                },
+                "P3": {
+                  "n": 188,
+                  "top1_accuracy": 0.9893617021276596,
+                  "top2_accuracy": 1
+                },
+                "P4": {
+                  "n": 131,
+                  "top1_accuracy": 1,
+                  "top2_accuracy": 1
+                },
+                "P5": {
+                  "n": 96,
+                  "top1_accuracy": 0.96875,
+                  "top2_accuracy": 0.9791666666666666
+                },
+                "P6": {
+                  "n": 163,
+                  "top1_accuracy": 0.9815950920245399,
+                  "top2_accuracy": 0.9938650306748467
+                },
+                "P7": {
+                  "n": 0,
+                  "top1_accuracy": null,
+                  "top2_accuracy": null
+                },
+                "P8": {
+                  "n": 166,
+                  "top1_accuracy": 0.9397590361445783,
+                  "top2_accuracy": 0.9759036144578314
+                },
+                "P9": {
+                  "n": 2,
+                  "top1_accuracy": 0.5,
+                  "top2_accuracy": 1
+                }
+              }
+            },
+            "concept_disjoint_recovered": {
+              "n": 1190,
+              "unique_cins": 174,
+              "unique_concepts": 17,
+              "top1_correct": 1039,
+              "top1_accuracy": 0.873109243697479,
+              "top1_cin_cluster_bootstrap_ci95": [
+                0.8549551331983175,
+                0.8921653072018216
+              ],
+              "top2_correct": 1150,
+              "top2_accuracy": 0.9663865546218487,
+              "macro_f1": 0.6857920143026888,
+              "per_principle": {
+                "P1": {
+                  "n": 293,
+                  "top1_accuracy": 0.9453924914675768,
+                  "top2_accuracy": 0.9795221843003413
+                },
+                "P2": {
+                  "n": 151,
+                  "top1_accuracy": 0.7615894039735099,
+                  "top2_accuracy": 0.9735099337748344
+                },
+                "P3": {
+                  "n": 188,
+                  "top1_accuracy": 0.9574468085106383,
+                  "top2_accuracy": 0.9787234042553191
+                },
+                "P4": {
+                  "n": 131,
+                  "top1_accuracy": 0.8854961832061069,
+                  "top2_accuracy": 1
+                },
+                "P5": {
+                  "n": 96,
+                  "top1_accuracy": 0.7291666666666666,
+                  "top2_accuracy": 0.9791666666666666
+                },
+                "P6": {
+                  "n": 163,
+                  "top1_accuracy": 0.9815950920245399,
+                  "top2_accuracy": 0.9938650306748467
+                },
+                "P7": {
+                  "n": 0,
+                  "top1_accuracy": null,
+                  "top2_accuracy": null
+                },
+                "P8": {
+                  "n": 166,
+                  "top1_accuracy": 0.7228915662650602,
+                  "top2_accuracy": 0.8614457831325302
+                },
+                "P9": {
+                  "n": 2,
+                  "top1_accuracy": 0.5,
+                  "top2_accuracy": 1
+                }
+              }
+            },
+            "paired_top1_delta_model_minus_baseline": {
+              "estimate": -0.10672268907563025,
+              "cin_cluster_bootstrap_ci95": [
+                -0.12363096821442077,
+                -0.08964275267326083
+              ]
+            }
+          },
+          {
+            "holdout_seed": 17,
+            "n_heldout_concepts": 17,
+            "heldout_concepts": [
+              "AMechanismForZeroLiquidDischargeIsNotApplicableToTheEntityExplanatoryTextBlock",
+              "AnOccupationalHealthAndSafetyManagementSystemHasBeenNotApplicableToTheEntityExplanatoryTextBlock",
+              "DescribeTheMechanismsInPlaceToReceiveAndRespondToConsumerComplaintsAndFeedbackExplanatoryTextBlock",
+              "DescribeTheProcessesInPlaceToSafelyReclaimYourProductsForReusingRecyclingAndDisposingAtTheEndOfLifeForHazardousWasteExplanatoryTextBlock",
+              "DetailsOfAnyCorrectiveActionTakenOrUnderwayToAddressSafetyRelatedIncidentsOfYourPlantsAndOfficesThatWereAssessedExplanatoryTextBlock",
+              "DetailsOfAnyCorrectiveActionsTakenOrUnderwayToAddressSignificantRisksOrConcernsArisingFromTheAssessmentsOfPlantAndOfficeExplanatoryTextBlock",
+              "DetailsOfCoverageAndImplementationIfForZeroLiquidDischargeExplanatoryTextBlock",
+              "DetailsOfInstancesAsToHowTheInputsReceivedFromStakeholdersOnTheseTopicsWereIncorporatedIntoPoliciesAndActivitiesOfTheEntityExplanatoryTextBlock",
+              "DetailsOfInstancesOfEngagementWithAndActionsTakenToAddressTheConcernsOfVulnerableMarginalizedStakeholderGroupsExplanatoryTextBlock",
+              "DetailsOfMechanismAvailableToReceiveAndRedressGrievancesForPermanentWorkersExplanatoryTextBlock",
+              "DetailsOfProductInformationOnTheProductOverAndAboveWhatIsMandatedAsPerLocalLawsExplanatoryTextBlock",
+              "DetailsOfTheEntityHaveNotApplicableProcessesInPlaceToAvoidOrManageConflictOfInterestsInvolvingMembersOfTheBoardExplanatoryTextBlock",
+              "DetailsOfTheEntityHaveProcessesInPlaceToAvoidOrManageConflictOfInterestsInvolvingMembersOfTheBoardExplanatoryTextBlock",
+              "DetailsOfTheScopeAndCoverageOfAnyHumanRightsDueDiligenceConductedExplanatoryTextBlock",
+              "MechanismsInPlaceToInformConsumersOfAnyRiskOfDisruptionOrDiscontinuationOfEssentialServicesExplanatoryTextBlock",
+              "NameOfTheExternalAgencyIfAnyIndependentAssessmentOrEvaluationOrAssuranceHasBeenCarriedOutByAnExternalAgencyForEnergyConsumptionExplanatoryTextBlock",
+              "NameOfTheExternalAgencyThatUndertookIndependentAssessmentOrEvaluationOrAssuranceForTotalScope3EmissionsExplanatoryTextBlock"
+            ],
+            "n_train": 20005,
+            "n_validation": 4250,
+            "n_test": 1167,
+            "n_test_cins": 173,
+            "model": "data\\models\\brsr_concept_disjoint_repeats\\seed_17\\best_model",
+            "baseline_recovered": {
+              "n": 1167,
+              "unique_cins": 173,
+              "unique_concepts": 17,
+              "top1_correct": 1121,
+              "top1_accuracy": 0.9605826906598115,
+              "top1_cin_cluster_bootstrap_ci95": [
+                0.950168035215759,
+                0.9711624276364768
+              ],
+              "top2_correct": 1149,
+              "top2_accuracy": 0.9845758354755784,
+              "macro_f1": 0.8547292967906279,
+              "per_principle": {
+                "P1": {
+                  "n": 137,
+                  "top1_accuracy": 1,
+                  "top2_accuracy": 1
+                },
+                "P2": {
+                  "n": 138,
+                  "top1_accuracy": 0.8768115942028986,
+                  "top2_accuracy": 0.9782608695652174
+                },
+                "P3": {
+                  "n": 185,
+                  "top1_accuracy": 0.9567567567567568,
+                  "top2_accuracy": 0.9891891891891892
+                },
+                "P4": {
+                  "n": 122,
+                  "top1_accuracy": 0.9754098360655737,
+                  "top2_accuracy": 0.9754098360655737
+                },
+                "P5": {
+                  "n": 96,
+                  "top1_accuracy": 0.96875,
+                  "top2_accuracy": 0.9791666666666666
+                },
+                "P6": {
+                  "n": 123,
+                  "top1_accuracy": 1,
+                  "top2_accuracy": 1
+                },
+                "P7": {
+                  "n": 0,
+                  "top1_accuracy": null,
+                  "top2_accuracy": null
+                },
+                "P8": {
+                  "n": 107,
+                  "top1_accuracy": 0.9719626168224299,
+                  "top2_accuracy": 0.9906542056074766
+                },
+                "P9": {
+                  "n": 259,
+                  "top1_accuracy": 0.9536679536679536,
+                  "top2_accuracy": 0.972972972972973
+                }
+              }
+            },
+            "concept_disjoint_recovered": {
+              "n": 1167,
+              "unique_cins": 173,
+              "unique_concepts": 17,
+              "top1_correct": 924,
+              "top1_accuracy": 0.7917737789203085,
+              "top1_cin_cluster_bootstrap_ci95": [
+                0.7715541877459247,
+                0.8122811275762221
+              ],
+              "top2_correct": 1113,
+              "top2_accuracy": 0.9537275064267352,
+              "macro_f1": 0.6841890458459479,
+              "per_principle": {
+                "P1": {
+                  "n": 137,
+                  "top1_accuracy": 0.9781021897810219,
+                  "top2_accuracy": 0.9854014598540146
+                },
+                "P2": {
+                  "n": 138,
+                  "top1_accuracy": 0.2028985507246377,
+                  "top2_accuracy": 0.8695652173913043
+                },
+                "P3": {
+                  "n": 185,
+                  "top1_accuracy": 0.9135135135135135,
+                  "top2_accuracy": 0.9783783783783784
+                },
+                "P4": {
+                  "n": 122,
+                  "top1_accuracy": 0.9508196721311475,
+                  "top2_accuracy": 0.9754098360655737
+                },
+                "P5": {
+                  "n": 96,
+                  "top1_accuracy": 0.9270833333333334,
+                  "top2_accuracy": 0.96875
+                },
+                "P6": {
+                  "n": 123,
+                  "top1_accuracy": 0.975609756097561,
+                  "top2_accuracy": 1
+                },
+                "P7": {
+                  "n": 0,
+                  "top1_accuracy": null,
+                  "top2_accuracy": null
+                },
+                "P8": {
+                  "n": 107,
+                  "top1_accuracy": 0.6635514018691588,
+                  "top2_accuracy": 0.9252336448598131
+                },
+                "P9": {
+                  "n": 259,
+                  "top1_accuracy": 0.7606177606177607,
+                  "top2_accuracy": 0.9382239382239382
+                }
+              }
+            },
+            "paired_top1_delta_model_minus_baseline": {
+              "estimate": -0.168808911739503,
+              "cin_cluster_bootstrap_ci95": [
+                -0.18926216022154618,
+                -0.14811188141244902
+              ]
+            }
+          },
+          {
+            "holdout_seed": 73,
+            "n_heldout_concepts": 17,
+            "heldout_concepts": [
+              "ABriefOnTypesOfCustomersExplanatoryTextBlock",
+              "DescribeTheMechanismsToReceiveAndRedressGrievancesOfTheCommunityExplanatoryTextBlock",
+              "DescribeTheProcessesInPlaceToSafelyReclaimYourProductsForReusingRecyclingAndDisposingAtTheEndOfLifeForEWasteExplanatoryTextBlock",
+              "DescribeTheProcessesInPlaceToSafelyReclaimYourProductsForReusingRecyclingAndDisposingAtTheEndOfLifeForOtherWasteExplanatoryTextBlock",
+              "DetailsOfAnyCorrectiveActionTakenOrUnderwayOnIssuesRelatedToFinesOrPenaltiesOrActionTakenByRegulatorsOrLawEnforcementAgenciesOrJudicialInstitutionsOnCasesOfCorruptionAndConflictsOfInterestExplanatoryTextBlock",
+              "DetailsOfAnyCorrectiveActionTakenOrUnderwayToAddressSafetyRelatedIncidentsOfYourPlantsAndOfficesThatWereAssessedExplanatoryTextBlock",
+              "DetailsOfOccupationalHealthAndSafetyManagementSystemExplanatoryTextBlock",
+              "DetailsOfProjectRelatedToReducingGreenHouseGasEmissionExplanatoryTextBlock",
+              "DetailsOfSignificantDirectAndIndirectImpactOfTheEntityOnBiodiversityInSuchAreasAlongWithPreventionAndRemediationActivitiesExplanatoryTextBlock",
+              "DetailsOfTheEntityHaveNotApplicableProcessesInPlaceToAvoidOrManageConflictOfInterestsInvolvingMembersOfTheBoardExplanatoryTextBlock",
+              "DetailsOfTheScopeAndCoverageOfAnyHumanRightsDueDiligenceConductedExplanatoryTextBlock",
+              "NameOfTheExternalAgencyThatUndertookIndependentAssessmentOrEvaluationOrAssuranceForWaterDischargedExplanatoryTextBlock",
+              "NameOfTheExternalAgencyThatUndertookIndependentAssessmentOrEvaluationOrAssuranceRelatedToWasteManagementExplanatoryTextBlock",
+              "ProvideTheProcessesForConsultationBetweenStakeholdersAndTheBoardOnEconomicEnvironmentalAndSocialTopicsOrIfConsultationIsDelegatedHowIsFeedbackFromSuchConsultationsProvidedToTheBoardExplanatoryTextBlock",
+              "TheEntityHasNotApplicableAFrameworkOrPolicyOnCyberSecurityAndRisksRelatedToDataPrivacyExplanatoryTextBlock",
+              "TheEntityHasNotApplicableAnEqualOpportunityPolicyAsPerTheRightsOfPersonsWithDisabilitiesAct2016ExplanatoryTextBlock",
+              "TheEntityHasNotApplicableTransitionAssistanceProgramsToFacilitateContinuedEmployabilityAndTheManagementOfCareerEndingsResultingFromRetirementOrTerminationOfEmploymentExplanatoryTextBlock"
+            ],
+            "n_train": 20146,
+            "n_validation": 4308,
+            "n_test": 1169,
+            "n_test_cins": 174,
+            "model": "data\\models\\brsr_concept_disjoint_repeats\\seed_73\\best_model",
+            "baseline_recovered": {
+              "n": 1169,
+              "unique_cins": 174,
+              "unique_concepts": 17,
+              "top1_correct": 1136,
+              "top1_accuracy": 0.9717707442258341,
+              "top1_cin_cluster_bootstrap_ci95": [
+                0.9610916462925683,
+                0.9806173148518964
+              ],
+              "top2_correct": 1155,
+              "top2_accuracy": 0.9880239520958084,
+              "macro_f1": 0.8581950247177573,
+              "per_principle": {
+                "P1": {
+                  "n": 44,
+                  "top1_accuracy": 0.8863636363636364,
+                  "top2_accuracy": 0.9090909090909091
+                },
+                "P2": {
+                  "n": 92,
+                  "top1_accuracy": 0.9130434782608695,
+                  "top2_accuracy": 0.9891304347826086
+                },
+                "P3": {
+                  "n": 282,
+                  "top1_accuracy": 0.9929078014184397,
+                  "top2_accuracy": 1
+                },
+                "P4": {
+                  "n": 131,
+                  "top1_accuracy": 1,
+                  "top2_accuracy": 1
+                },
+                "P5": {
+                  "n": 96,
+                  "top1_accuracy": 0.96875,
+                  "top2_accuracy": 0.9791666666666666
+                },
+                "P6": {
+                  "n": 193,
+                  "top1_accuracy": 0.9740932642487047,
+                  "top2_accuracy": 0.9844559585492227
+                },
+                "P7": {
+                  "n": 0,
+                  "top1_accuracy": null,
+                  "top2_accuracy": null
+                },
+                "P8": {
+                  "n": 166,
+                  "top1_accuracy": 0.9397590361445783,
+                  "top2_accuracy": 0.9759036144578314
+                },
+                "P9": {
+                  "n": 165,
+                  "top1_accuracy": 1,
+                  "top2_accuracy": 1
+                }
+              }
+            },
+            "concept_disjoint_recovered": {
+              "n": 1169,
+              "unique_cins": 174,
+              "unique_concepts": 17,
+              "top1_correct": 917,
+              "top1_accuracy": 0.7844311377245509,
+              "top1_cin_cluster_bootstrap_ci95": [
+                0.7614979702838364,
+                0.8076306127383255
+              ],
+              "top2_correct": 1099,
+              "top2_accuracy": 0.9401197604790419,
+              "macro_f1": 0.6555232185894264,
+              "per_principle": {
+                "P1": {
+                  "n": 44,
+                  "top1_accuracy": 0.8636363636363636,
+                  "top2_accuracy": 0.8636363636363636
+                },
+                "P2": {
+                  "n": 92,
+                  "top1_accuracy": 0.30434782608695654,
+                  "top2_accuracy": 1
+                },
+                "P3": {
+                  "n": 282,
+                  "top1_accuracy": 0.9893617021276596,
+                  "top2_accuracy": 0.9964539007092199
+                },
+                "P4": {
+                  "n": 131,
+                  "top1_accuracy": 0.8931297709923665,
+                  "top2_accuracy": 0.9923664122137404
+                },
+                "P5": {
+                  "n": 96,
+                  "top1_accuracy": 0.7708333333333334,
+                  "top2_accuracy": 0.9583333333333334
+                },
+                "P6": {
+                  "n": 193,
+                  "top1_accuracy": 0.9740932642487047,
+                  "top2_accuracy": 0.9896373056994818
+                },
+                "P7": {
+                  "n": 0,
+                  "top1_accuracy": null,
+                  "top2_accuracy": null
+                },
+                "P8": {
+                  "n": 166,
+                  "top1_accuracy": 0.6746987951807228,
+                  "top2_accuracy": 0.8433734939759037
+                },
+                "P9": {
+                  "n": 165,
+                  "top1_accuracy": 0.4909090909090909,
+                  "top2_accuracy": 0.8181818181818182
+                }
+              }
+            },
+            "paired_top1_delta_model_minus_baseline": {
+              "estimate": -0.18733960650128315,
+              "cin_cluster_bootstrap_ci95": [
+                -0.2084754840187879,
+                -0.16638509928646805
+              ]
+            }
+          }
+        ],
+        "limitations": [
+          "All hold-outs reuse companies and rows from the same established company-disjoint test partition; they are not independent test cohorts.",
+          "Seed 42 uses an already-observed hold-out and recovered checkpoint; this is a stability diagnostic, not fresh independent confirmation.",
+          "One training seed per concept hold-out; between-run standard deviation mixes concept-split and training-seed variation.",
+          "Labels remain taxonomy-derived weak labels, so scores measure agreement and do not establish human-ground-truth semantic understanding.",
+          "P7/P9 may have sparse or absent held-out-concept examples; report support and avoid unqualified macro-F1 interpretation."
+        ]
+      }
+    },
+    "stage2_multilabel_results.json": {
+      "original_path": "results/audit/stage2_multilabel_results.json",
+      "sha256": "e48e3b448aa9a5ae7be57ca1d93050374d244a5312fe9ee0b4523496d95d3cf2",
+      "execution_origin": "existing user-run audit; not re-executed in Phase 0",
+      "data": {
+        "evaluation": "Exploratory multi-label Stage 2 classifier on the existing company-disjoint partition",
+        "fresh_test": false,
+        "task": "company + cleaned narrative -> set of all observed taxonomy/source principle labels",
+        "split": {
+          "dataset_dir": "data\\training_multilabel_company_split",
+          "train_rows": 28590,
+          "val_rows": 6119,
+          "test_rows": 5934,
+          "train_cins": 814,
+          "val_cins": 175,
+          "test_cins": 175,
+          "pairwise_cin_overlap": 0
+        },
+        "collection": {
+          "labeled_fact_candidates": 65232,
+          "candidate_labels_section_c": 36597,
+          "noise_filtered_facts": 36491,
+          "candidate_labels_section_b": 25214,
+          "clean_but_unlabeled_facts": 2338,
+          "candidate_labels_notes_principle": 3421,
+          "unique_company_text_groups": 40643,
+          "multilabel_groups": 2644,
+          "unseen_company_cins_assigned_train_only": 0,
+          "label_cardinality_distribution": {
+            "1": 37999,
+            "2": 154,
+            "3": 30,
+            "4": 8,
+            "5": 5,
+            "6": 16,
+            "7": 27,
+            "8": 138,
+            "9": 2266
+          }
+        },
+        "training_label_support": {
+          "P1": 5176,
+          "P2": 4570,
+          "P3": 8614,
+          "P4": 3891,
+          "P5": 3899,
+          "P6": 5419,
+          "P7": 2037,
+          "P8": 3449,
+          "P9": 5236
+        },
+        "training": {
+          "encoder": "data\\models\\domain_adapted_bert\\final_model",
+          "loss": "BCEWithLogitsLoss with capped sqrt(negative/positive) pos_weight",
+          "validation_selection": "macro-F1 at fixed sigmoid threshold 0.5",
+          "test_threshold_tuning": false,
+          "epochs": 5,
+          "learning_rate": 0.00002,
+          "seed": 42,
+          "selected_checkpoint": "data\\models\\brsr_multilabel_classifier\\seed_42\\checkpoints\\checkpoint-8935",
+          "final_model": "data\\models\\brsr_multilabel_classifier\\seed_42\\best_model",
+          "layernorm_aliases_strictly_restored": 50,
+          "save_reload_tensor_check": "passed"
+        },
+        "evaluation_threshold": 0.5,
+        "metrics": {
+          "multi_label_model": {
+            "n": 5934,
+            "gold_label_assignments": 8888,
+            "mean_gold_labels_per_text": 1.497809234917425,
+            "mean_predicted_labels_per_text_at_0_5": 1.5448264239973037,
+            "hit_at_1": 0.933602965958881,
+            "hit_at_1_correct_rows": 5540,
+            "hit_at_2": 0.9738793394000674,
+            "hit_at_2_correct_rows": 5779,
+            "micro_precision_at_0_5": 0.8762954074397294,
+            "micro_recall_at_0_5": 0.9038028802880288,
+            "micro_f1_at_0_5": 0.8898366103572417,
+            "macro_f1_at_0_5": 0.8782003739595585,
+            "exact_set_match_at_0_5": 0.9025952140208965,
+            "per_principle": {
+              "P1": {
+                "support_positive_rows": 1133,
+                "precision": 0.9218612818261633,
+                "recall": 0.9267431597528685,
+                "f1": 0.9242957746478874
+              },
+              "P2": {
+                "support_positive_rows": 947,
+                "precision": 0.8414141414141414,
+                "recall": 0.8796198521647307,
+                "f1": 0.8600929272070211
+              },
+              "P3": {
+                "support_positive_rows": 1752,
+                "precision": 0.913552704963748,
+                "recall": 0.934931506849315,
+                "f1": 0.9241184767277856
+              },
+              "P4": {
+                "support_positive_rows": 841,
+                "precision": 0.8758700696055685,
+                "recall": 0.8977407847800237,
+                "f1": 0.8866705813270699
+              },
+              "P5": {
+                "support_positive_rows": 819,
+                "precision": 0.8315412186379928,
+                "recall": 0.8498168498168498,
+                "f1": 0.8405797101449275
+              },
+              "P6": {
+                "support_positive_rows": 1133,
+                "precision": 0.8901927912824812,
+                "recall": 0.9373345101500441,
+                "f1": 0.9131556319862425
+              },
+              "P7": {
+                "support_positive_rows": 427,
+                "precision": 0.7736263736263737,
+                "recall": 0.8243559718969555,
+                "f1": 0.7981859410430839
+              },
+              "P8": {
+                "support_positive_rows": 737,
+                "precision": 0.8431372549019608,
+                "recall": 0.8751696065128901,
+                "f1": 0.8588548601864181
+              },
+              "P9": {
+                "support_positive_rows": 1099,
+                "precision": 0.884377758164166,
+                "recall": 0.9117379435850773,
+                "f1": 0.8978494623655914
+              }
+            },
+            "cin_cluster_bootstrap_ci95": {
+              "hit_at_1": [
+                0.925374125245445,
+                0.941050428706391
+              ],
+              "hit_at_2": [
+                0.967747607292129,
+                0.979220006958652
+              ],
+              "micro_f1_at_0_5": [
+                0.8742645221988424,
+                0.9035241667080233
+              ],
+              "macro_f1_at_0_5": [
+                0.8605583391386128,
+                0.8942381877822719
+              ]
+            }
+          },
+          "single_label_recovered_seed99_baseline_scored_against_same_label_sets": {
+            "n": 5934,
+            "gold_label_assignments": 8888,
+            "mean_gold_labels_per_text": 1.497809234917425,
+            "mean_predicted_labels_per_text_at_0_5": 1,
+            "hit_at_1": 0.9354566902595214,
+            "hit_at_1_correct_rows": 5551,
+            "hit_at_2": 0.97809234917425,
+            "hit_at_2_correct_rows": 5804,
+            "micro_precision_at_0_5": 0.9354566902595214,
+            "micro_recall_at_0_5": 0.6245499549954996,
+            "micro_f1_at_0_5": 0.7490217244636351,
+            "macro_f1_at_0_5": 0.6914686130370135,
+            "exact_set_match_at_0_5": 0.8714189416919447,
+            "per_principle": {
+              "P1": {
+                "support_positive_rows": 1133,
+                "precision": 0.9567099567099567,
+                "recall": 0.7802294792586054,
+                "f1": 0.859504132231405
+              },
+              "P2": {
+                "support_positive_rows": 947,
+                "precision": 0.8934426229508197,
+                "recall": 0.5755015839493136,
+                "f1": 0.7000642260757868
+              },
+              "P3": {
+                "support_positive_rows": 1752,
+                "precision": 0.9447552447552447,
+                "recall": 0.7711187214611872,
+                "f1": 0.8491514770584538
+              },
+              "P4": {
+                "support_positive_rows": 841,
+                "precision": 0.9619450317124736,
+                "recall": 0.5410225921521997,
+                "f1": 0.6925418569254186
+              },
+              "P5": {
+                "support_positive_rows": 819,
+                "precision": 0.9250585480093677,
+                "recall": 0.4822954822954823,
+                "f1": 0.6340288924558587
+              },
+              "P6": {
+                "support_positive_rows": 1133,
+                "precision": 0.9324009324009324,
+                "recall": 0.706090026478376,
+                "f1": 0.8036162732295329
+              },
+              "P7": {
+                "support_positive_rows": 427,
+                "precision": 0.8888888888888888,
+                "recall": 0.1873536299765808,
+                "f1": 0.30947775628626695
+              },
+              "P8": {
+                "support_positive_rows": 737,
+                "precision": 0.9153439153439153,
+                "recall": 0.4694708276797829,
+                "f1": 0.6206278026905829
+              },
+              "P9": {
+                "support_positive_rows": 1099,
+                "precision": 0.9341397849462365,
+                "recall": 0.632393084622384,
+                "f1": 0.7542051003798155
+              }
+            },
+            "decision_rule": "single-label argmax converted to one predicted label per text",
+            "cin_cluster_bootstrap_ci95": {
+              "hit_at_1": [
+                0.9273817035734863,
+                0.9423720978295671
+              ],
+              "hit_at_2": [
+                0.9729498327767544,
+                0.9826314031064816
+              ],
+              "micro_f1_at_0_5": [
+                0.7357667045598081,
+                0.7615878668151316
+              ],
+              "macro_f1_at_0_5": [
+                0.6765173444242186,
+                0.7062285516085833
+              ]
+            }
+          }
+        },
+        "sourcewise_multi_label_metrics": {
+          "section_b": {
+            "n_rows": 730,
+            "cin_count": 166,
+            "n": 730,
+            "gold_label_assignments": 3665,
+            "mean_gold_labels_per_text": 5.02054794520548,
+            "mean_predicted_labels_per_text_at_0_5": 5.2095890410958905,
+            "hit_at_1": 0.8027397260273973,
+            "hit_at_1_correct_rows": 586,
+            "hit_at_2": 0.873972602739726,
+            "hit_at_2_correct_rows": 638,
+            "micro_precision_at_0_5": 0.8025243229029714,
+            "micro_recall_at_0_5": 0.8327421555252388,
+            "micro_f1_at_0_5": 0.8173540439207284,
+            "macro_f1_at_0_5": 0.8167355087154609,
+            "exact_set_match_at_0_5": 0.6123287671232877,
+            "per_principle": {
+              "P1": {
+                "support_positive_rows": 434,
+                "precision": 0.8449074074074074,
+                "recall": 0.8410138248847926,
+                "f1": 0.8429561200923787
+              },
+              "P2": {
+                "support_positive_rows": 399,
+                "precision": 0.7783018867924528,
+                "recall": 0.8270676691729323,
+                "f1": 0.8019441069258809
+              },
+              "P3": {
+                "support_positive_rows": 418,
+                "precision": 0.7929411764705883,
+                "recall": 0.80622009569378,
+                "f1": 0.7995255041518387
+              },
+              "P4": {
+                "support_positive_rows": 402,
+                "precision": 0.8058968058968059,
+                "recall": 0.8159203980099502,
+                "f1": 0.8108776266996292
+              },
+              "P5": {
+                "support_positive_rows": 403,
+                "precision": 0.7825059101654847,
+                "recall": 0.8213399503722084,
+                "f1": 0.801452784503632
+              },
+              "P6": {
+                "support_positive_rows": 419,
+                "precision": 0.8197424892703863,
+                "recall": 0.9116945107398569,
+                "f1": 0.8632768361581921
+              },
+              "P7": {
+                "support_positive_rows": 384,
+                "precision": 0.7858942065491183,
+                "recall": 0.8125,
+                "f1": 0.7989756722151088
+              },
+              "P8": {
+                "support_positive_rows": 399,
+                "precision": 0.800982800982801,
+                "recall": 0.8170426065162907,
+                "f1": 0.8089330024813896
+              },
+              "P9": {
+                "support_positive_rows": 407,
+                "precision": 0.8080568720379147,
+                "recall": 0.8378378378378378,
+                "f1": 0.8226779252110977
+              }
+            }
+          },
+          "section_c": {
+            "n_rows": 4732,
+            "cin_count": 174,
+            "n": 4732,
+            "gold_label_assignments": 4743,
+            "mean_gold_labels_per_text": 1.0023245984784446,
+            "mean_predicted_labels_per_text_at_0_5": 1.02916314454776,
+            "hit_at_1": 0.9539306846999155,
+            "hit_at_1_correct_rows": 4514,
+            "hit_at_2": 0.9900676246830094,
+            "hit_at_2_correct_rows": 4685,
+            "micro_precision_at_0_5": 0.9316221765913758,
+            "micro_recall_at_0_5": 0.9565675732658655,
+            "micro_f1_at_0_5": 0.9439300946634765,
+            "macro_f1_at_0_5": 0.8328245113922049,
+            "exact_set_match_at_0_5": 0.9456889264581573,
+            "per_principle": {
+              "P1": {
+                "support_positive_rows": 645,
+                "precision": 0.9724349157733537,
+                "recall": 0.9844961240310077,
+                "f1": 0.9784283513097073
+              },
+              "P2": {
+                "support_positive_rows": 489,
+                "precision": 0.8884462151394422,
+                "recall": 0.9120654396728016,
+                "f1": 0.900100908173562
+              },
+              "P3": {
+                "support_positive_rows": 1270,
+                "precision": 0.9545454545454546,
+                "recall": 0.9755905511811024,
+                "f1": 0.9649532710280374
+              },
+              "P4": {
+                "support_positive_rows": 426,
+                "precision": 0.9436936936936937,
+                "recall": 0.9835680751173709,
+                "f1": 0.9632183908045977
+              },
+              "P5": {
+                "support_positive_rows": 354,
+                "precision": 0.8687150837988827,
+                "recall": 0.8785310734463276,
+                "f1": 0.8735955056179775
+              },
+              "P6": {
+                "support_positive_rows": 647,
+                "precision": 0.9375,
+                "recall": 0.9505409582689336,
+                "f1": 0.9439754412893323
+              },
+              "P7": {
+                "support_positive_rows": 0,
+                "precision": 0,
+                "recall": 0,
+                "f1": 0
+              },
+              "P8": {
+                "support_positive_rows": 277,
+                "precision": 0.9010238907849829,
+                "recall": 0.9530685920577617,
+                "f1": 0.9263157894736842
+              },
+              "P9": {
+                "support_positive_rows": 635,
+                "precision": 0.9325153374233128,
+                "recall": 0.9574803149606299,
+                "f1": 0.9448329448329449
+              }
+            }
+          },
+          "notes_principle": {
+            "n_rows": 477,
+            "cin_count": 103,
+            "n": 477,
+            "gold_label_assignments": 489,
+            "mean_gold_labels_per_text": 1.0251572327044025,
+            "mean_predicted_labels_per_text_at_0_5": 1.0461215932914045,
+            "hit_at_1": 0.9329140461215933,
+            "hit_at_1_correct_rows": 445,
+            "hit_at_2": 0.9664570230607966,
+            "hit_at_2_correct_rows": 461,
+            "micro_precision_at_0_5": 0.8997995991983968,
+            "micro_recall_at_0_5": 0.918200408997955,
+            "micro_f1_at_0_5": 0.9089068825910931,
+            "macro_f1_at_0_5": 0.887127913985307,
+            "exact_set_match_at_0_5": 0.9119496855345912,
+            "per_principle": {
+              "P1": {
+                "support_positive_rows": 54,
+                "precision": 0.9259259259259259,
+                "recall": 0.9259259259259259,
+                "f1": 0.9259259259259259
+              },
+              "P2": {
+                "support_positive_rows": 61,
+                "precision": 0.8939393939393939,
+                "recall": 0.9672131147540983,
+                "f1": 0.9291338582677166
+              },
+              "P3": {
+                "support_positive_rows": 66,
+                "precision": 0.8888888888888888,
+                "recall": 0.9696969696969697,
+                "f1": 0.927536231884058
+              },
+              "P4": {
+                "support_positive_rows": 13,
+                "precision": 0.7272727272727273,
+                "recall": 0.6153846153846154,
+                "f1": 0.6666666666666666
+              },
+              "P5": {
+                "support_positive_rows": 63,
+                "precision": 0.9642857142857143,
+                "recall": 0.8571428571428571,
+                "f1": 0.907563025210084
+              },
+              "P6": {
+                "support_positive_rows": 67,
+                "precision": 0.9154929577464789,
+                "recall": 0.9701492537313433,
+                "f1": 0.9420289855072463
+              },
+              "P7": {
+                "support_positive_rows": 43,
+                "precision": 0.9090909090909091,
+                "recall": 0.9302325581395349,
+                "f1": 0.9195402298850575
+              },
+              "P8": {
+                "support_positive_rows": 62,
+                "precision": 0.8484848484848485,
+                "recall": 0.9032258064516129,
+                "f1": 0.875
+              },
+              "P9": {
+                "support_positive_rows": 60,
+                "precision": 0.8983050847457628,
+                "recall": 0.8833333333333333,
+                "f1": 0.8907563025210085
+              }
+            }
+          }
+        },
+        "limitations": [
+          "This is a new multi-label target definition; results are not directly comparable to single-label accuracy.",
+          "All observed labels attached to the same company and cleaned narrative are unioned; this may preserve genuine cross-cutting tags but can also combine tags from reused boilerplate.",
+          "Labels remain taxonomy-derived weak labels, including AI-assisted concept mappings; no independent human ground truth is available.",
+          "The company-disjoint test partition has already been used in previous work; this is a re-evaluation on that established test, not a fresh external cohort.",
+          "Source subsets can overlap when one company-text group aggregates labels from multiple sources.",
+          "Hit@k ranking metrics and fixed-threshold F1 answer different questions; report both with their definitions."
+        ]
+      }
+    },
+    "stage4_dev80_frozen_results.json": {
+      "original_path": "results/audit/stage4_dev80_frozen_results.json",
+      "sha256": "1eb6f0b3a7e4724afc867c81009192e8215ee5978b496e8a417c5750bb0fd1e1",
+      "execution_origin": "existing user-run audit; not re-executed in Phase 0",
+      "data": {
+        "freeze_id": "stage4-rule-detector-2026-10-18",
+        "freeze_source_sha256": {
+          "src\\analysis\\vagueness\\vagueness_combined.py": "f03db049d3332f34e2d0c43ff182e59fe8ccebc6cb9b302c435ec6e413bb12a4",
+          "src\\analysis\\vagueness\\vagueness_lexicon.py": "169d7d6e596bd00eac8cb2f1c4ff6b175e74b30f0e66fdb2d0ff7833ae630ba3",
+          "src\\analysis\\vagueness\\vagueness_semantic.py": "cef54a6864071d960803e25bb4755256e056ed5b8b17aac3294f7478fb0cc2c1"
+        },
+        "n": 80,
+        "n_by_batch": {
+          "1": 30,
+          "2": 50
+        },
+        "label_blinding": "unconfirmed; source CSVs contain model_flagged and flag_source",
+        "evaluation_role": "development only; batches 1+2 informed engine development",
+        "accuracy": 0.75,
+        "precision": 0.7073170731707317,
+        "recall": 0.7837837837837838,
+        "f1": 0.7435897435897436,
+        "auc_roc_binary_predictions": 0.7523570081709616,
+        "auc_interpretation": "computed from hard 0/1 decisions; equals balanced accuracy and is not a continuous-score ROC AUC",
+        "confusion_matrix_labels_0_1": [
+          [
+            31,
+            12
+          ],
+          [
+            8,
+            29
+          ]
+        ],
+        "classification_report": {
+          "not_vague": {
+            "precision": 0.7948717948717948,
+            "recall": 0.7209302325581395,
+            "f1-score": 0.7560975609756098,
+            "support": 43
+          },
+          "vague": {
+            "precision": 0.7073170731707317,
+            "recall": 0.7837837837837838,
+            "f1-score": 0.7435897435897436,
+            "support": 37
+          },
+          "accuracy": 0.75,
+          "macro avg": {
+            "precision": 0.7510944340212633,
+            "recall": 0.7523570081709616,
+            "f1-score": 0.7498436522826767,
+            "support": 80
+          },
+          "weighted avg": {
+            "precision": 0.754377736085053,
+            "recall": 0.75,
+            "f1-score": 0.7503126954346466,
+            "support": 80
+          }
+        }
+      }
+    },
+    "stage4_batch3_ai_comparison.json": {
+      "original_path": "results/audit/stage4_batch3_ai_comparison.json",
+      "sha256": "964fecca266050b21043ba8a9ad129ee86ebf9297e13fe08b391eb349c9922e9",
+      "execution_origin": "existing user-run audit; not re-executed in Phase 0",
+      "data": {
+        "freeze_id": "stage4-rule-detector-2026-10-18",
+        "freeze_source_sha256": {
+          "src\\analysis\\vagueness\\vagueness_combined.py": "f03db049d3332f34e2d0c43ff182e59fe8ccebc6cb9b302c435ec6e413bb12a4",
+          "src\\analysis\\vagueness\\vagueness_lexicon.py": "169d7d6e596bd00eac8cb2f1c4ff6b175e74b30f0e66fdb2d0ff7833ae630ba3",
+          "src\\analysis\\vagueness\\vagueness_semantic.py": "cef54a6864071d960803e25bb4755256e056ed5b8b17aac3294f7478fb0cc2c1"
+        },
+        "dataset": "data\\labeling_sheets\\stage4_batch3_ai_annotations.csv",
+        "n": 70,
+        "label_source": "AI-generated text-only annotations; not human raters or adjudicated ground truth",
+        "evaluation_role": "exploratory AI-label comparison only; not held-out human evaluation",
+        "cohen_kappa": null,
+        "accuracy": 0.7285714285714285,
+        "precision": 0.6,
+        "recall": 0.8076923076923077,
+        "f1": 0.6885245901639344,
+        "auc_roc_binary_predictions": 0.7447552447552448,
+        "auc_interpretation": "hard 0/1 prediction AUC equals balanced accuracy; not continuous-score ROC AUC",
+        "confusion_matrix_labels_0_1": [
+          [
+            30,
+            14
+          ],
+          [
+            5,
+            21
+          ]
+        ],
+        "classification_report": {
+          "not_vague": {
+            "precision": 0.8571428571428571,
+            "recall": 0.6818181818181818,
+            "f1-score": 0.759493670886076,
+            "support": 44
+          },
+          "vague": {
+            "precision": 0.6,
+            "recall": 0.8076923076923077,
+            "f1-score": 0.6885245901639344,
+            "support": 26
+          },
+          "accuracy": 0.7285714285714285,
+          "macro avg": {
+            "precision": 0.7285714285714285,
+            "recall": 0.7447552447552448,
+            "f1-score": 0.7240091305250052,
+            "support": 70
+          },
+          "weighted avg": {
+            "precision": 0.7616326530612245,
+            "recall": 0.7285714285714285,
+            "f1-score": 0.733133726617852,
+            "support": 70
+          }
+        },
+        "limitations": [
+          "AI labels are not human labels and do not establish human inter-rater reliability.",
+          "Do not report these metrics as human-held-out or gold-standard performance.",
+          "The evaluated system is the text-vagueness subdetector, not the complete four-signal auditor."
+        ]
+      }
+    },
+    "task5_stage6_results.json": {
+      "original_path": "results/audit/task5_stage6_results.json",
+      "sha256": "30b18dd6d4e62ce31d2834bd281b1cf1380f5d5a1c9936150641616f08ebf88b",
+      "execution_origin": "existing user-run audit; not re-executed in Phase 0",
+      "data": {
+        "headline_n20": {
+          "label": "N=20 Full (Headline)",
+          "n": 20,
+          "pearson_r": 0.631362197674746,
+          "pearson_p": 0.0028306442938339916,
+          "pearson_ci_lo": 0.2682684036697897,
+          "pearson_ci_hi": 0.8519411221104822,
+          "spearman_rho": 0.6284869112807583,
+          "spearman_p": 0.002998882026976411,
+          "spearman_ci_lo": 0.23208340556730248,
+          "spearman_ci_hi": 0.8539945595416983,
+          "kendall_tau": 0.4533736350032652,
+          "kendall_p": 0.005674400185015506,
+          "mae": 12.164000000000001,
+          "rmse": 15.188966390113583,
+          "r_squared": 0.39861822465268504
+        },
+        "sensitivity_n18_geojit": {
+          "label": "N=18 ex-Geojit (BFSI sector)",
+          "n": 19,
+          "pearson_r": 0.673510404217469,
+          "pearson_p": 0.0015714945687485648,
+          "pearson_ci_lo": 0.29660914254320914,
+          "pearson_ci_hi": 0.8830029662098519,
+          "spearman_rho": 0.6496718987385177,
+          "spearman_p": 0.0026073511322862236,
+          "spearman_ci_lo": 0.21301064039862064,
+          "spearman_ci_hi": 0.8848253687373979,
+          "kendall_tau": 0.4793235069003553,
+          "kendall_p": 0.0044837189791294635,
+          "mae": 11.116315789473683,
+          "rmse": 13.737403991331572,
+          "r_squared": 0.4536162645891785
+        },
+        "sensitivity_n19_zensar": {
+          "label": "N=19 ex-Zensar (URL-redirect extraction bug)",
+          "n": 19,
+          "pearson_r": 0.7378731201999725,
+          "pearson_p": 0.00031068890857623404,
+          "pearson_ci_lo": 0.5157567456770141,
+          "pearson_ci_hi": 0.8860518928602763,
+          "spearman_rho": 0.7431864040247241,
+          "spearman_p": 0.0002663114051185553,
+          "spearman_ci_lo": 0.45548231973860864,
+          "spearman_ci_hi": 0.8920570025272798,
+          "kendall_tau": 0.5460541701767514,
+          "kendall_p": 0.001238364498765986,
+          "mae": 11.188421052631577,
+          "rmse": 13.90116238986775,
+          "r_squared": 0.5444567415136431
+        },
+        "sensitivity_n18_both": {
+          "label": "N=18 ex-Geojit and ex-Zensar",
+          "n": 18,
+          "pearson_r": 0.7846740248963591,
+          "pearson_p": 0.0001152413817847553,
+          "pearson_ci_lo": 0.56668472220606,
+          "pearson_ci_hi": 0.9089694966617688,
+          "spearman_rho": 0.7615131528368833,
+          "spearman_p": 0.00024103983355099892,
+          "spearman_ci_lo": 0.4249712153759274,
+          "spearman_ci_hi": 0.9144116905884832,
+          "kendall_tau": 0.5762094850891228,
+          "kendall_p": 0.0009448705382915374,
+          "mae": 10.028333333333336,
+          "rmse": 12.11775350467239,
+          "r_squared": 0.6157133253470519
+        },
+        "exploratory_loocv_n20": {
+          "pearson_r": 0.4993121381121469,
+          "pearson_p": 0.02500030359119467,
+          "spearman_rho": 0.4242663441859316
+        },
+        "anchoring_status": "UNVERIFIABLE — needs team confirmation whether rater saw ai_transparency_score",
+        "zensar_status": "URL-redirect extraction bug diagnosed; fix implemented in export script; re-rating needed"
+      }
+    }
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "git_head": "be9fdb9f6cbba33ca99729e3fcd61e76a37b7dc6",
+  "data_dir": "d:\\brsr-ai-phase0-1\\brsr-ai\\data\\training_company_split",
+  "model": "d:\\brsr-ai-phase0-1\\brsr-ai\\data\\models\\domain_adapted_bert\\final_model",
+  "seeds": [
+    42,
+    1,
+    7,
+    99,
+    2024
+  ],
+  "best_seed": 99,
+  "val_f1_per_seed": [
+    0.9191197749479731,
+    0.913065161336629,
+    0.9192386002437549,
+    0.9195055020682159,
+    0.9163407815817501
+  ],
+  "val_f1_mean": 0.9174539640356645,
+  "val_f1_std": 0.0024766681245804107,
+  "test_top1": 0.9298500241896468,
+  "test_top2": 0.97677793904209,
+  "test_macro_f1": 0.9157302369829112,
+  "test_top1_ci_lo": 0.9204378755438041,
+  "test_top1_ci_hi": 0.9385741037870879,
+  "test_f1_ci_lo": 0.9032524238962275,
+  "test_f1_ci_hi": 0.927594088977789,
+  "strict_subset": null,
+  "per_principle": {
+    "Principle1": {
+      "precision": 0.9592105263157895,
+      "recall": 0.943078913324709,
+      "f1-score": 0.9510763209393346,
+      "support": 773.0
+    },
+    "Principle2": {
+      "precision": 0.9153846153846154,
+      "recall": 0.8836633663366337,
+      "f1-score": 0.8992443324937027,
+      "support": 808.0
+    },
+    "Principle3": {
+      "precision": 0.9532871972318339,
+      "recall": 0.9638483965014577,
+      "f1-score": 0.958538706871557,
+      "support": 1715.0
+    },
+    "Principle4": {
+      "precision": 0.9611231101511879,
+      "recall": 0.9488272921108742,
+      "f1-score": 0.9549356223175965,
+      "support": 469.0
+    },
+    "Principle5": {
+      "precision": 0.9009433962264151,
+      "recall": 0.8507795100222717,
+      "f1-score": 0.8751431844215349,
+      "support": 449.0
+    },
+    "Principle6": {
+      "precision": 0.8932714617169374,
+      "recall": 0.9356014580801945,
+      "f1-score": 0.913946587537092,
+      "support": 823.0
+    },
+    "Principle7": {
+      "precision": 0.855072463768116,
+      "recall": 0.855072463768116,
+      "f1-score": 0.855072463768116,
+      "support": 69.0
+    },
+    "Principle8": {
+      "precision": 0.8921052631578947,
+      "recall": 0.9211956521739131,
+      "f1-score": 0.9064171122994652,
+      "support": 368.0
+    },
+    "Principle9": {
+      "precision": 0.9259259259259259,
+      "recall": 0.9284731774415406,
+      "f1-score": 0.9271978021978022,
+      "support": 727.0
+    },
+    "accuracy": 0.9298500241896468,
+    "macro avg": {
+      "precision": 0.9173693288754128,
+      "recall": 0.9145044699733013,
+      "f1-score": 0.9157302369829112,
+      "support": 6201.0
+    },
+    "weighted avg": {
+      "precision": 0.9299925287655748,
+      "recall": 0.9298500241896468,
+      "f1-score": 0.9297341939630692,
+      "support": 6201.0
+    }
+  },
+  "comparison": {
+    "old_segment_split_top1": 0.9383,
+    "old_segment_split_top2": 0.9807,
+    "old_dedup_top1": 0.9313,
+    "new_company_disjoint_top1": 0.9298500241896468
+  }
+}

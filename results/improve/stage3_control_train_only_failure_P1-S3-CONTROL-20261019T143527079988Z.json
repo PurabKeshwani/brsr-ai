@@ -1,0 +1,9 @@
+{
+  "run_id": "P1-S3-CONTROL-20261019T143527079988Z",
+  "encoder": "train-only",
+  "status": "FAIL",
+  "error_type": "RuntimeError",
+  "error": "Expected 50 selected-checkpoint LayerNorm aliases; got 0",
+  "test_performance": "NOT RUN",
+  "completed_at_utc": "2026-10-19T16:38:03.719586+00:00"
+}

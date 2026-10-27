@@ -1,0 +1,1322 @@
+{
+  "prepared_date": "2026-10-21",
+  "rule": "latest financial_year_end per CIN; corroborated by bulk scorer code; original CSV omitted filing_id",
+  "rows": [
+    {
+      "cin": "L40101DL1969GOI005095",
+      "company_name": "REC Limited",
+      "score": 67.56,
+      "latest_recorded_filing": {
+        "cin": "L40101DL1969GOI005095",
+        "name": "REC Limited",
+        "nic_code": "641906",
+        "filing_id": 344,
+        "financial_year_start": "2025-04-01",
+        "financial_year_end": "2026-03-31",
+        "raw_fact_count": 2235
+      }
+    },
+    {
+      "cin": "L65921MH1991PLC059642",
+      "company_name": "Mahindra & Mahindra Financial Services Limited",
+      "score": 64.48,
+      "latest_recorded_filing": {
+        "cin": "L65921MH1991PLC059642",
+        "name": "Mahindra & Mahindra Financial Services Limited",
+        "nic_code": "64920",
+        "filing_id": 761,
+        "financial_year_start": "2025-04-01",
+        "financial_year_end": "2026-03-31",
+        "raw_fact_count": 2144
+      }
+    },
+    {
+      "cin": "L65190MH2003PLC143249",
+      "company_name": "YES BANK LIMITED",
+      "score": 63.64,
+      "latest_recorded_filing": {
+        "cin": "L65190MH2003PLC143249",
+        "name": "YES BANK LIMITED",
+        "nic_code": "64191",
+        "filing_id": 400,
+        "financial_year_start": "2025-04-01",
+        "financial_year_end": "2026-03-31",
+        "raw_fact_count": 1954
+      }
+    },
+    {
+      "cin": "L65110MH1985PLC038137",
+      "company_name": "KOTAK MAHINDRA BANK LIMITED",
+      "score": 63.21,
+      "latest_recorded_filing": {
+        "cin": "L65110MH1985PLC038137",
+        "name": "KOTAK MAHINDRA BANK LIMITED",
+        "nic_code": "64191",
+        "filing_id": 412,
+        "financial_year_start": "2025-04-01",
+        "financial_year_end": "2026-03-31",
+        "raw_fact_count": 2054
+      }
+    },
+    {
+      "cin": "L65190GJ1994PLC021012",
+      "company_name": "ICICI Bank Limited",
+      "score": 62.05,
+      "latest_recorded_filing": {
+        "cin": "L65190GJ1994PLC021012",
+        "name": "ICICI Bank Limited",
+        "nic_code": "64191",
+        "filing_id": 464,
+        "financial_year_start": "2025-04-01",
+        "financial_year_end": "2026-03-31",
+        "raw_fact_count": 2069
+      }
+    },
+    {
+      "cin": "L65922DL1988PLC033856",
+      "company_name": "PNB Housing Finance Limited",
+      "score": 61.75,
+      "latest_recorded_filing": {
+        "cin": "L65922DL1988PLC033856",
+        "name": "PNB Housing Finance Limited",
+        "nic_code": "64192",
+        "filing_id": 425,
+        "financial_year_start": "2025-04-01",
+        "financial_year_end": "2026-03-31",
+        "raw_fact_count": 2240
+      }
+    },
+    {
+      "cin": "L65110TN1916PLC001295",
+      "company_name": "KARUR VYSYA BANK LIMITED",
+      "score": 61.32,
+      "latest_recorded_filing": {
+        "cin": "L65110TN1916PLC001295",
+        "name": "KARUR VYSYA BANK LIMITED",
+        "nic_code": "64191",
+        "filing_id": 545,
+        "financial_year_start": "2025-04-01",
+        "financial_year_end": "2026-03-31",
+        "raw_fact_count": 2048
+      }
+    },
+    {
+      "cin": "X00000XX0000XXX000000",
+      "company_name": "Punjab National Bank",
+      "score": 61.15,
+      "latest_recorded_filing": {
+        "cin": "X00000XX0000XXX000000",
+        "name": "Punjab National Bank",
+        "nic_code": "64191",
+        "filing_id": 856,
+        "financial_year_start": "2025-04-01",
+        "financial_year_end": "2026-03-31",
+        "raw_fact_count": 1924
+      }
+    },
+    {
+      "cin": "L65999DL1998PLC093849",
+      "company_name": "SBI Cards and Payment Services Limited",
+      "score": 61.02,
+      "latest_recorded_filing": {
+        "cin": "L65999DL1998PLC093849",
+        "name": "SBI Cards and Payment Services Limited",
+        "nic_code": "64",
+        "filing_id": 296,
+        "financial_year_start": "2025-04-01",
+        "financial_year_end": "2026-03-31",
+        "raw_fact_count": 2075
+      }
+    },
+    {
+      "cin": "L65110TN2014PLC097792",
+      "company_name": "IDFC FIRST Bank Limited",
+      "score": 60.15,
+      "latest_recorded_filing": {
+        "cin": "L65110TN2014PLC097792",
+        "name": "IDFC FIRST Bank Limited",
+        "nic_code": "64191",
+        "filing_id": 234,
+        "financial_year_start": "2025-04-01",
+        "financial_year_end": "2026-03-31",
+        "raw_fact_count": 1828
+      }
+    },
+    {
+      "cin": "L65990MH1991PLC060670",
+      "company_name": "Tata Capital Limited",
+      "score": 60.01,
+      "latest_recorded_filing": {
+        "cin": "L65990MH1991PLC060670",
+        "name": "Tata Capital Limited",
+        "nic_code": "641906",
+        "filing_id": 423,
+        "financial_year_start": "2025-04-01",
+        "financial_year_end": "2026-03-31",
+        "raw_fact_count": 2330
+      }
+    },
+    {
+      "cin": "L65110GJ1993PLC020769",
+      "company_name": "Axis Bank Limited",
+      "score": 59.84,
+      "latest_recorded_filing": {
+        "cin": "L65110GJ1993PLC020769",
+        "name": "Axis Bank Limited",
+        "nic_code": "64191",
+        "filing_id": 768,
+        "financial_year_start": "2025-04-01",
+        "financial_year_end": "2026-03-31",
+        "raw_fact_count": 2089
+      }
+    },
+    {
+      "cin": "L65100TN1949PLC002905",
+      "company_name": "Cholamandalam Financial Holdings Limited",
+      "score": 59.8,
+      "latest_recorded_filing": {
+        "cin": "L65100TN1949PLC002905",
+        "name": "Cholamandalam Financial Holdings Limited",
+        "nic_code": "649",
+        "filing_id": 432,
+        "financial_year_start": "2025-04-01",
+        "financial_year_end": "2026-03-31",
+        "raw_fact_count": 2350
+      }
+    },
+    {
+      "cin": "L65993GJ2007PLC051028",
+      "company_name": "HDB Financial Services Limited",
+      "score": 58.75,
+      "latest_recorded_filing": {
+        "cin": "L65993GJ2007PLC051028",
+        "name": "HDB Financial Services Limited",
+        "nic_code": "64990",
+        "filing_id": 885,
+        "financial_year_start": "2025-04-01",
+        "financial_year_end": "2026-03-31",
+        "raw_fact_count": 1955
+      }
+    },
+    {
+      "cin": "A00000AA0000AAA000000",
+      "company_name": "State Bank of India (“SBI/the Bank/Bank”)",
+      "score": 58.69,
+      "latest_recorded_filing": {
+        "cin": "A00000AA0000AAA000000",
+        "name": "State Bank of India (“SBI/the Bank/Bank”)",
+        "nic_code": "64191",
+        "filing_id": 857,
+        "financial_year_start": "2025-04-01",
+        "financial_year_end": "2026-03-31",
+        "raw_fact_count": 2275
+      }
+    },
+    {
+      "cin": "L65990MH2010PLC240703",
+      "company_name": "Home First Finance Company India Limited",
+      "score": 58.57,
+      "latest_recorded_filing": {
+        "cin": "L65990MH2010PLC240703",
+        "name": "Home First Finance Company India Limited",
+        "nic_code": "64910",
+        "filing_id": 906,
+        "financial_year_start": "2025-04-01",
+        "financial_year_end": "2026-03-31",
+        "raw_fact_count": 1966
+      }
+    },
+    {
+      "cin": "L85110KA1924PLC001128",
+      "company_name": "THE KARNATAKA BANK LIMITED",
+      "score": 58.21,
+      "latest_recorded_filing": {
+        "cin": "L85110KA1924PLC001128",
+        "name": "THE KARNATAKA BANK LIMITED",
+        "nic_code": "64191",
+        "filing_id": 1198,
+        "financial_year_start": "2024-04-01",
+        "financial_year_end": "2025-03-31",
+        "raw_fact_count": 1837
+      }
+    },
+    {
+      "cin": "L65191PN1994PLC076333",
+      "company_name": "IndusInd Bank",
+      "score": 58.08,
+      "latest_recorded_filing": {
+        "cin": "L65191PN1994PLC076333",
+        "name": "IndusInd Bank",
+        "nic_code": "64191",
+        "filing_id": 268,
+        "financial_year_start": "2025-04-01",
+        "financial_year_end": "2026-03-31",
+        "raw_fact_count": 2007
+      }
+    },
+    {
+      "cin": "L67120MH2008PLC181833",
+      "company_name": "L&T Finance Limited",
+      "score": 58.05,
+      "latest_recorded_filing": {
+        "cin": "L67120MH2008PLC181833",
+        "name": "L&T Finance Limited",
+        "nic_code": "64200",
+        "filing_id": 880,
+        "financial_year_start": "2025-04-01",
+        "financial_year_end": "2026-03-31",
+        "raw_fact_count": 2006
+      }
+    },
+    {
+      "cin": "L65910KL1997PLC011300",
+      "company_name": "MUTHOOT FINANCE LIMITED",
+      "score": 57.35,
+      "latest_recorded_filing": {
+        "cin": "L65910KL1997PLC011300",
+        "name": "MUTHOOT FINANCE LIMITED",
+        "nic_code": "64990",
+        "filing_id": 244,
+        "financial_year_start": "2025-04-01",
+        "financial_year_end": "2026-03-31",
+        "raw_fact_count": 1939
+      }
+    },
+    {
+      "cin": "L65191KL1931PLC000368",
+      "company_name": "THE FEDERAL BANK LIMITED",
+      "score": 56.82,
+      "latest_recorded_filing": {
+        "cin": "L65191KL1931PLC000368",
+        "name": "THE FEDERAL BANK LIMITED",
+        "nic_code": "64191",
+        "filing_id": 343,
+        "financial_year_start": "2025-04-01",
+        "financial_year_end": "2026-03-31",
+        "raw_fact_count": 2046
+      }
+    },
+    {
+      "cin": "L65910DL1986GOI024862",
+      "company_name": "Power Finance Corporation Limited (PFC)",
+      "score": 56.77,
+      "latest_recorded_filing": {
+        "cin": "L65910DL1986GOI024862",
+        "name": "Power Finance Corporation Limited (PFC)",
+        "nic_code": "641906",
+        "filing_id": 237,
+        "financial_year_start": "2025-04-01",
+        "financial_year_end": "2026-03-31",
+        "raw_fact_count": 2323
+      }
+    },
+    {
+      "cin": "L36911RJ1996PLC011381",
+      "company_name": "AU Small Finance Bank Limited",
+      "score": 56.68,
+      "latest_recorded_filing": {
+        "cin": "L36911RJ1996PLC011381",
+        "name": "AU Small Finance Bank Limited",
+        "nic_code": "64191",
+        "filing_id": 203,
+        "financial_year_start": "2025-04-01",
+        "financial_year_end": "2026-03-31",
+        "raw_fact_count": 1889
+      }
+    },
+    {
+      "cin": "L67100MH1995PLC093797",
+      "company_name": "IIFL Finance Limited",
+      "score": 56.67,
+      "latest_recorded_filing": {
+        "cin": "L67100MH1995PLC093797",
+        "name": "IIFL Finance Limited",
+        "nic_code": "64920",
+        "filing_id": 718,
+        "financial_year_start": "2025-04-01",
+        "financial_year_end": "2026-03-31",
+        "raw_fact_count": 1929
+      }
+    },
+    {
+      "cin": "L65993TN1978PLC007576",
+      "company_name": "Cholamandalam Investment and Finance Company Limited",
+      "score": 56.17,
+      "latest_recorded_filing": {
+        "cin": "L65993TN1978PLC007576",
+        "name": "Cholamandalam Investment and Finance Company Limited",
+        "nic_code": "649",
+        "filing_id": 661,
+        "financial_year_start": "2025-04-01",
+        "financial_year_end": "2026-03-31",
+        "raw_fact_count": 2307
+      }
+    },
+    {
+      "cin": "L67190WB2014PLC204622",
+      "company_name": "Bandhan Bank Limited",
+      "score": 55.65,
+      "latest_recorded_filing": {
+        "cin": "L67190WB2014PLC204622",
+        "name": "Bandhan Bank Limited",
+        "nic_code": "641901",
+        "filing_id": 341,
+        "financial_year_start": "2025-04-01",
+        "financial_year_end": "2026-03-31",
+        "raw_fact_count": 1809
+      }
+    },
+    {
+      "cin": "L66010KA1990PLC011409",
+      "company_name": "Aadhar Housing Finance Limited",
+      "score": 55.5,
+      "latest_recorded_filing": {
+        "cin": "L66010KA1990PLC011409",
+        "name": "Aadhar Housing Finance Limited",
+        "nic_code": "64910",
+        "filing_id": 589,
+        "financial_year_start": "2025-04-01",
+        "financial_year_end": "2026-03-31",
+        "raw_fact_count": 1783
+      }
+    },
+    {
+      "cin": "L74899DL1970GOI005276",
+      "company_name": "Housing & Urban Development Corporation Limited",
+      "score": 54.86,
+      "latest_recorded_filing": {
+        "cin": "L74899DL1970GOI005276",
+        "name": "Housing & Urban Development Corporation Limited",
+        "nic_code": "64920",
+        "filing_id": 347,
+        "financial_year_start": "2025-04-01",
+        "financial_year_end": "2026-03-31",
+        "raw_fact_count": 2103
+      }
+    },
+    {
+      "cin": "L65110MH1919GOI000606",
+      "company_name": "Union Bank of India",
+      "score": 54.41,
+      "latest_recorded_filing": {
+        "cin": "L65110MH1919GOI000606",
+        "name": "Union Bank of India",
+        "nic_code": "64191",
+        "filing_id": 1170,
+        "financial_year_start": "2025-04-01",
+        "financial_year_end": "2026-03-31",
+        "raw_fact_count": 2277
+      }
+    },
+    {
+      "cin": "L65191TN1979PLC007874",
+      "company_name": "Shriram Finance Limited (SFL)",
+      "score": 53.83,
+      "latest_recorded_filing": {
+        "cin": "L65191TN1979PLC007874",
+        "name": "Shriram Finance Limited (SFL)",
+        "nic_code": "64920",
+        "filing_id": 808,
+        "financial_year_start": "2025-04-01",
+        "financial_year_end": "2026-03-31",
+        "raw_fact_count": 1889
+      }
+    },
+    {
+      "cin": "L65910KL1992PLC006623",
+      "company_name": "Manappuram Finance Limited",
+      "score": 53.78,
+      "latest_recorded_filing": {
+        "cin": "L65910KL1992PLC006623",
+        "name": "Manappuram Finance Limited",
+        "nic_code": "64990",
+        "filing_id": 454,
+        "financial_year_start": "2025-04-01",
+        "financial_year_end": "2026-03-31",
+        "raw_fact_count": 1814
+      }
+    },
+    {
+      "cin": "L74140MH2008PLC177884",
+      "company_name": "360 ONE WAM LIMITED",
+      "score": 53.64,
+      "latest_recorded_filing": {
+        "cin": "L74140MH2008PLC177884",
+        "name": "360 ONE WAM LIMITED",
+        "nic_code": "64990",
+        "filing_id": 222,
+        "financial_year_start": "2025-04-01",
+        "financial_year_end": "2026-03-31",
+        "raw_fact_count": 2130
+      }
+    },
+    {
+      "cin": "L64920GJ2007PLC058890",
+      "company_name": "Aditya Birla Capital Limited",
+      "score": 53.48,
+      "latest_recorded_filing": {
+        "cin": "L64920GJ2007PLC058890",
+        "name": "Aditya Birla Capital Limited",
+        "nic_code": "6492",
+        "filing_id": 493,
+        "financial_year_start": "2025-04-01",
+        "financial_year_end": "2026-03-31",
+        "raw_fact_count": 1916
+      }
+    },
+    {
+      "cin": "N00000NA0000PLC000000",
+      "company_name": "CANARA BANK",
+      "score": 53.14,
+      "latest_recorded_filing": {
+        "cin": "N00000NA0000PLC000000",
+        "name": "CANARA BANK",
+        "nic_code": "64191",
+        "filing_id": 855,
+        "financial_year_start": "2025-04-01",
+        "financial_year_end": "2026-03-31",
+        "raw_fact_count": 2211
+      }
+    },
+    {
+      "cin": "L65110TN1904PLC001287",
+      "company_name": "CITY UNION BANK LIMITED",
+      "score": 52.91,
+      "latest_recorded_filing": {
+        "cin": "L65110TN1904PLC001287",
+        "name": "CITY UNION BANK LIMITED",
+        "nic_code": "64191",
+        "filing_id": 452,
+        "financial_year_start": "2025-04-01",
+        "financial_year_end": "2026-03-31",
+        "raw_fact_count": 1712
+      }
+    },
+    {
+      "cin": "L65922TN2009PLC073881",
+      "company_name": "Aptus Value Housing Finance India Limited",
+      "score": 52.87,
+      "latest_recorded_filing": {
+        "cin": "L65922TN2009PLC073881",
+        "name": "Aptus Value Housing Finance India Limited",
+        "nic_code": "64910",
+        "filing_id": 548,
+        "financial_year_start": "2025-04-01",
+        "financial_year_end": "2026-03-31",
+        "raw_fact_count": 1862
+      }
+    },
+    {
+      "cin": "L65922RJ2011PLC034297",
+      "company_name": "Aavas Financiers Limited",
+      "score": 52.19,
+      "latest_recorded_filing": {
+        "cin": "L65922RJ2011PLC034297",
+        "name": "Aavas Financiers Limited",
+        "nic_code": "64910",
+        "filing_id": 1321,
+        "financial_year_start": "2024-04-01",
+        "financial_year_end": "2025-03-31",
+        "raw_fact_count": 1927
+      }
+    },
+    {
+      "cin": "L65910DL1986GOI026363",
+      "company_name": "INDIAN RAILWAY FINANCE CORPORATION LIMITED",
+      "score": 52.03,
+      "latest_recorded_filing": {
+        "cin": "L65910DL1986GOI026363",
+        "name": "INDIAN RAILWAY FINANCE CORPORATION LIMITED",
+        "nic_code": "64910",
+        "filing_id": 312,
+        "financial_year_start": "2025-04-01",
+        "financial_year_end": "2026-03-31",
+        "raw_fact_count": 1959
+      }
+    },
+    {
+      "cin": "L65990MH1982PLC028593",
+      "company_name": "Westlife Foodworld Limited",
+      "score": 51.95,
+      "latest_recorded_filing": {
+        "cin": "L65990MH1982PLC028593",
+        "name": "Westlife Foodworld Limited",
+        "nic_code": "64200",
+        "filing_id": 290,
+        "financial_year_start": "2025-04-01",
+        "financial_year_end": "2026-03-31",
+        "raw_fact_count": 1761
+      }
+    },
+    {
+      "cin": "U99999MH1906PLC000243",
+      "company_name": "BANK OF INDIA",
+      "score": 51.92,
+      "latest_recorded_filing": {
+        "cin": "U99999MH1906PLC000243",
+        "name": "BANK OF INDIA",
+        "nic_code": "64191",
+        "filing_id": 815,
+        "financial_year_start": "2025-04-01",
+        "financial_year_end": "2026-03-31",
+        "raw_fact_count": 1830
+      }
+    },
+    {
+      "cin": "U12345BC6789DEF012345",
+      "company_name": "Punjab & Sind Bank",
+      "score": 51.48,
+      "latest_recorded_filing": {
+        "cin": "U12345BC6789DEF012345",
+        "name": "Punjab & Sind Bank",
+        "nic_code": "64191",
+        "filing_id": 668,
+        "financial_year_start": "2025-04-01",
+        "financial_year_end": "2026-03-31",
+        "raw_fact_count": 1962
+      }
+    },
+    {
+      "cin": "L65190MH2004GOI148838",
+      "company_name": "IDBI Bank Limited",
+      "score": 51.16,
+      "latest_recorded_filing": {
+        "cin": "L65190MH2004GOI148838",
+        "name": "IDBI Bank Limited",
+        "nic_code": "641901",
+        "filing_id": 764,
+        "financial_year_start": "2025-04-01",
+        "financial_year_end": "2026-03-31",
+        "raw_fact_count": 1925
+      }
+    },
+    {
+      "cin": "L01234KA2023PTC567891",
+      "company_name": "BANK OF BARODA",
+      "score": 50.69,
+      "latest_recorded_filing": {
+        "cin": "L01234KA2023PTC567891",
+        "name": "BANK OF BARODA",
+        "nic_code": "64191",
+        "filing_id": 876,
+        "financial_year_start": "2025-04-01",
+        "financial_year_end": "2026-03-31",
+        "raw_fact_count": 1909
+      }
+    },
+    {
+      "cin": "L51504PN1978PLC209007",
+      "company_name": "POONAWALLA FINCORP LIMITED",
+      "score": 50.59,
+      "latest_recorded_filing": {
+        "cin": "L51504PN1978PLC209007",
+        "name": "POONAWALLA FINCORP LIMITED",
+        "nic_code": "649",
+        "filing_id": 707,
+        "financial_year_start": "2025-04-01",
+        "financial_year_end": "2026-03-31",
+        "raw_fact_count": 1772
+      }
+    },
+    {
+      "cin": "L99999WB1943PSU999999",
+      "company_name": "UCO BANK",
+      "score": 50.25,
+      "latest_recorded_filing": {
+        "cin": "L99999WB1943PSU999999",
+        "name": "UCO BANK",
+        "nic_code": "64191",
+        "filing_id": 824,
+        "financial_year_start": "2025-04-01",
+        "financial_year_end": "2026-03-31",
+        "raw_fact_count": 1793
+      }
+    },
+    {
+      "cin": "L67120MH1995PLC086696",
+      "company_name": "ANAND RATHI WEALTH LIMITED",
+      "score": 50.23,
+      "latest_recorded_filing": {
+        "cin": "L67120MH1995PLC086696",
+        "name": "ANAND RATHI WEALTH LIMITED",
+        "nic_code": "64990",
+        "filing_id": 924,
+        "financial_year_start": "2025-04-01",
+        "financial_year_end": "2026-03-31",
+        "raw_fact_count": 1921
+      }
+    },
+    {
+      "cin": "L65990MH1999PLC120918",
+      "company_name": "Jio Financial Services Limited",
+      "score": 49.96,
+      "latest_recorded_filing": {
+        "cin": "L65990MH1999PLC120918",
+        "name": "Jio Financial Services Limited",
+        "nic_code": "64200",
+        "filing_id": 303,
+        "financial_year_start": "2025-04-01",
+        "financial_year_end": "2026-03-31",
+        "raw_fact_count": 1886
+      }
+    },
+    {
+      "cin": "L65191TN1954PLC002429",
+      "company_name": "SUNDARAM FINANCE LIMITED",
+      "score": 49.62,
+      "latest_recorded_filing": {
+        "cin": "L65191TN1954PLC002429",
+        "name": "SUNDARAM FINANCE LIMITED",
+        "nic_code": "6499",
+        "filing_id": 740,
+        "financial_year_start": "2025-04-01",
+        "financial_year_end": "2026-03-31",
+        "raw_fact_count": 1983
+      }
+    },
+    {
+      "cin": "U99999MH1935PTC002399",
+      "company_name": "BANK OF MAHARASHTRA",
+      "score": 49.29,
+      "latest_recorded_filing": {
+        "cin": "U99999MH1935PTC002399",
+        "name": "BANK OF MAHARASHTRA",
+        "nic_code": "64191",
+        "filing_id": 843,
+        "financial_year_start": "2025-04-01",
+        "financial_year_end": "2026-03-31",
+        "raw_fact_count": 2106
+      }
+    },
+    {
+      "cin": "L65922MH1989PLC054583",
+      "company_name": "GIC Housing Finance Limited",
+      "score": 48.49,
+      "latest_recorded_filing": {
+        "cin": "L65922MH1989PLC054583",
+        "name": "GIC Housing Finance Limited",
+        "nic_code": "64192",
+        "filing_id": 729,
+        "financial_year_start": "2025-04-01",
+        "financial_year_end": "2026-03-31",
+        "raw_fact_count": 1800
+      }
+    },
+    {
+      "cin": "L65910TN1989PLC017021",
+      "company_name": "NORTHERN ARC CAPITAL LIMITED",
+      "score": 48.28,
+      "latest_recorded_filing": {
+        "cin": "L65910TN1989PLC017021",
+        "name": "NORTHERN ARC CAPITAL LIMITED",
+        "nic_code": "64990",
+        "filing_id": 394,
+        "financial_year_start": "2025-04-01",
+        "financial_year_end": "2026-03-31",
+        "raw_fact_count": 1533
+      }
+    },
+    {
+      "cin": "L85110KA1987PLC008699",
+      "company_name": "Can Fin Homes Limited",
+      "score": 48.06,
+      "latest_recorded_filing": {
+        "cin": "L85110KA1987PLC008699",
+        "name": "Can Fin Homes Limited",
+        "nic_code": "64192",
+        "filing_id": 663,
+        "financial_year_start": "2025-04-01",
+        "financial_year_end": "2026-03-31",
+        "raw_fact_count": 1590
+      }
+    },
+    {
+      "cin": "L65191PN1943PLC007308",
+      "company_name": "RBL Bank Limited",
+      "score": 47.71,
+      "latest_recorded_filing": {
+        "cin": "L65191PN1943PLC007308",
+        "name": "RBL Bank Limited",
+        "nic_code": "64191",
+        "filing_id": 247,
+        "financial_year_start": "2025-04-01",
+        "financial_year_end": "2026-03-31",
+        "raw_fact_count": 1668
+      }
+    },
+    {
+      "cin": "L65991TN1984PLC010844",
+      "company_name": "FIVE-STAR BUSINESS FINANCE LIMITED",
+      "score": 47.4,
+      "latest_recorded_filing": {
+        "cin": "L65991TN1984PLC010844",
+        "name": "FIVE-STAR BUSINESS FINANCE LIMITED",
+        "nic_code": "64920",
+        "filing_id": 1369,
+        "financial_year_start": "2025-04-01",
+        "financial_year_end": "2026-03-31",
+        "raw_fact_count": 1825
+      }
+    },
+    {
+      "cin": "L65991DL1990PLC041796",
+      "company_name": "Satin Creditcare Network Limited",
+      "score": 46.94,
+      "latest_recorded_filing": {
+        "cin": "L65991DL1990PLC041796",
+        "name": "Satin Creditcare Network Limited",
+        "nic_code": "649999",
+        "filing_id": 595,
+        "financial_year_start": "2025-04-01",
+        "financial_year_end": "2026-03-31",
+        "raw_fact_count": 1631
+      }
+    },
+    {
+      "cin": "U12345KA1234KAA123456",
+      "company_name": "INDIAN OVERSEAS BANK",
+      "score": 46.41,
+      "latest_recorded_filing": {
+        "cin": "U12345KA1234KAA123456",
+        "name": "INDIAN OVERSEAS BANK",
+        "nic_code": "64191",
+        "filing_id": 829,
+        "financial_year_start": "2025-04-01",
+        "financial_year_end": "2026-03-31",
+        "raw_fact_count": 2397
+      }
+    },
+    {
+      "cin": "L12121TN1907PLC001111",
+      "company_name": "Indian Bank",
+      "score": 46.15,
+      "latest_recorded_filing": {
+        "cin": "L12121TN1907PLC001111",
+        "name": "Indian Bank",
+        "nic_code": "64191",
+        "filing_id": 911,
+        "financial_year_start": "2025-04-01",
+        "financial_year_end": "2026-03-31",
+        "raw_fact_count": 1871
+      }
+    },
+    {
+      "cin": "L65992UP2016PLC082804",
+      "company_name": "UTKARSH SMALL FINANCE BANK LIMITED",
+      "score": 45.5,
+      "latest_recorded_filing": {
+        "cin": "L65992UP2016PLC082804",
+        "name": "UTKARSH SMALL FINANCE BANK LIMITED",
+        "nic_code": "64191",
+        "filing_id": 586,
+        "financial_year_start": "2025-04-01",
+        "financial_year_end": "2026-03-31",
+        "raw_fact_count": 1548
+      }
+    },
+    {
+      "cin": "L65190MH1992PLC066228",
+      "company_name": "Muthoot Microfin Limited",
+      "score": 45.47,
+      "latest_recorded_filing": {
+        "cin": "L65190MH1992PLC066228",
+        "name": "Muthoot Microfin Limited",
+        "nic_code": "64990",
+        "filing_id": 511,
+        "financial_year_start": "2025-04-01",
+        "financial_year_end": "2026-03-31",
+        "raw_fact_count": 1660
+      }
+    },
+    {
+      "cin": "L65921MH1994PLC173469",
+      "company_name": "Capri Global Capital Limited",
+      "score": 44.95,
+      "latest_recorded_filing": {
+        "cin": "L65921MH1994PLC173469",
+        "name": "Capri Global Capital Limited",
+        "nic_code": "64920",
+        "filing_id": 1074,
+        "financial_year_start": "2024-04-01",
+        "financial_year_end": "2025-03-31",
+        "raw_fact_count": 1454
+      }
+    },
+    {
+      "cin": "L67200MH1937PLC002622",
+      "company_name": "Tata Investment Corporation Limited",
+      "score": 44.72,
+      "latest_recorded_filing": {
+        "cin": "L67200MH1937PLC002622",
+        "name": "Tata Investment Corporation Limited",
+        "nic_code": "6430",
+        "filing_id": 871,
+        "financial_year_start": "2025-04-01",
+        "financial_year_end": "2026-03-31",
+        "raw_fact_count": 1851
+      }
+    },
+    {
+      "cin": "L65191KL1929PLC001017",
+      "company_name": "The South Indian Bank Limited",
+      "score": 44.4,
+      "latest_recorded_filing": {
+        "cin": "L65191KL1929PLC001017",
+        "name": "The South Indian Bank Limited",
+        "nic_code": "64191",
+        "filing_id": 382,
+        "financial_year_start": "2025-04-01",
+        "financial_year_end": "2026-03-31",
+        "raw_fact_count": 1696
+      }
+    },
+    {
+      "cin": "A99999AA9999AAA999999",
+      "company_name": "Central Bank of India",
+      "score": 44.4,
+      "latest_recorded_filing": {
+        "cin": "A99999AA9999AAA999999",
+        "name": "Central Bank of India",
+        "nic_code": "64191",
+        "filing_id": 607,
+        "financial_year_start": "2025-04-01",
+        "financial_year_end": "2026-03-31",
+        "raw_fact_count": 1831
+      }
+    },
+    {
+      "cin": "L65100DL1994PLC061287",
+      "company_name": "Fusion Finance Limited",
+      "score": 43.68,
+      "latest_recorded_filing": {
+        "cin": "L65100DL1994PLC061287",
+        "name": "Fusion Finance Limited",
+        "nic_code": "64990",
+        "filing_id": 720,
+        "financial_year_start": "2025-04-01",
+        "financial_year_end": "2026-03-31",
+        "raw_fact_count": 1656
+      }
+    },
+    {
+      "cin": "L65929TG2003PLC040648",
+      "company_name": "Spandana Sphoorty Financial Limited",
+      "score": 43.11,
+      "latest_recorded_filing": {
+        "cin": "L65929TG2003PLC040648",
+        "name": "Spandana Sphoorty Financial Limited",
+        "nic_code": "64990",
+        "filing_id": 404,
+        "financial_year_start": "2025-04-01",
+        "financial_year_end": "2026-03-31",
+        "raw_fact_count": 1506
+      }
+    },
+    {
+      "cin": "L65191KL1920PLC000175",
+      "company_name": "CSB BANK LIMITED",
+      "score": 42.12,
+      "latest_recorded_filing": {
+        "cin": "L65191KL1920PLC000175",
+        "name": "CSB BANK LIMITED",
+        "nic_code": "64191",
+        "filing_id": 377,
+        "financial_year_start": "2025-04-01",
+        "financial_year_end": "2026-03-31",
+        "raw_fact_count": 1561
+      }
+    },
+    {
+      "cin": "L67120MH2001PLC217751",
+      "company_name": "JSW HOLDINGS LIMITED",
+      "score": 42.12,
+      "latest_recorded_filing": {
+        "cin": "L67120MH2001PLC217751",
+        "name": "JSW HOLDINGS LIMITED",
+        "nic_code": "64200",
+        "filing_id": 514,
+        "financial_year_start": "2025-04-01",
+        "financial_year_end": "2026-03-31",
+        "raw_fact_count": 1969
+      }
+    },
+    {
+      "cin": "L64200TN1962PLC004792",
+      "company_name": "TVS Holdings Limited",
+      "score": 42.11,
+      "latest_recorded_filing": {
+        "cin": "L64200TN1962PLC004792",
+        "name": "TVS Holdings Limited",
+        "nic_code": "64200",
+        "filing_id": 739,
+        "financial_year_start": "2025-04-01",
+        "financial_year_end": "2026-03-31",
+        "raw_fact_count": 1842
+      }
+    },
+    {
+      "cin": "L65922DL2005PLC136029",
+      "company_name": "Sammaan Capital Limited",
+      "score": 41.59,
+      "latest_recorded_filing": {
+        "cin": "L65922DL2005PLC136029",
+        "name": "Sammaan Capital Limited",
+        "nic_code": "64192",
+        "filing_id": 975,
+        "financial_year_start": "2024-04-01",
+        "financial_year_end": "2025-03-31",
+        "raw_fact_count": 1538
+      }
+    },
+    {
+      "cin": "L65100PN1945PLC004656",
+      "company_name": "Bajaj Holdings & Investment Limited",
+      "score": 41.49,
+      "latest_recorded_filing": {
+        "cin": "L65100PN1945PLC004656",
+        "name": "Bajaj Holdings & Investment Limited",
+        "nic_code": "6420",
+        "filing_id": 644,
+        "financial_year_start": "2025-04-01",
+        "financial_year_end": "2026-03-31",
+        "raw_fact_count": 1689
+      }
+    },
+    {
+      "cin": "L74899DL1996PLC077120",
+      "company_name": "PNB Gilts Ltd.",
+      "score": 41.29,
+      "latest_recorded_filing": {
+        "cin": "L74899DL1996PLC077120",
+        "name": "PNB Gilts Ltd.",
+        "nic_code": "6499",
+        "filing_id": 1327,
+        "financial_year_start": "2024-04-01",
+        "financial_year_end": "2025-03-31",
+        "raw_fact_count": 1590
+      }
+    },
+    {
+      "cin": "L67190MH2008PLC178270",
+      "company_name": "SBFC Finance Limited",
+      "score": 40.57,
+      "latest_recorded_filing": {
+        "cin": "L67190MH2008PLC178270",
+        "name": "SBFC Finance Limited",
+        "nic_code": "64920",
+        "filing_id": 804,
+        "financial_year_start": "2025-04-01",
+        "financial_year_end": "2026-03-31",
+        "raw_fact_count": 1459
+      }
+    },
+    {
+      "cin": "L65990MH1990PLC056669",
+      "company_name": "Vakrangee Limited",
+      "score": 39.8,
+      "latest_recorded_filing": {
+        "cin": "L65990MH1990PLC056669",
+        "name": "Vakrangee Limited",
+        "nic_code": "649",
+        "filing_id": 1148,
+        "financial_year_start": "2024-04-01",
+        "financial_year_end": "2025-03-31",
+        "raw_fact_count": 1638
+      }
+    },
+    {
+      "cin": "L74899DL1993GOI053677",
+      "company_name": "IFCI Limited",
+      "score": 39.4,
+      "latest_recorded_filing": {
+        "cin": "L74899DL1993GOI053677",
+        "name": "IFCI Limited",
+        "nic_code": "64920",
+        "filing_id": 943,
+        "financial_year_start": "2024-04-01",
+        "financial_year_end": "2025-03-31",
+        "raw_fact_count": 1504
+      }
+    },
+    {
+      "cin": "L99999MH1995PLC089008",
+      "company_name": "DCB Bank Limited",
+      "score": 39.22,
+      "latest_recorded_filing": {
+        "cin": "L99999MH1995PLC089008",
+        "name": "DCB Bank Limited",
+        "nic_code": "64191",
+        "filing_id": 1135,
+        "financial_year_start": "2025-04-01",
+        "financial_year_end": "2026-03-31",
+        "raw_fact_count": 1713
+      }
+    },
+    {
+      "cin": "L65191TN1993PLC025280",
+      "company_name": "EQUITAS SMALL FINANCE BANK LIMITED",
+      "score": 36.69,
+      "latest_recorded_filing": {
+        "cin": "L65191TN1993PLC025280",
+        "name": "EQUITAS SMALL FINANCE BANK LIMITED",
+        "nic_code": "64191",
+        "filing_id": 230,
+        "financial_year_start": "2025-04-01",
+        "financial_year_end": "2026-03-31",
+        "raw_fact_count": 1575
+      }
+    },
+    {
+      "cin": "L65922HR1998PLC042782",
+      "company_name": "INDIA SHELTER FINANCE CORPORATION LIMITED",
+      "score": 36.53,
+      "latest_recorded_filing": {
+        "cin": "L65922HR1998PLC042782",
+        "name": "INDIA SHELTER FINANCE CORPORATION LIMITED",
+        "nic_code": "64910",
+        "filing_id": 786,
+        "financial_year_start": "2025-04-01",
+        "financial_year_end": "2026-03-31",
+        "raw_fact_count": 1588
+      }
+    },
+    {
+      "cin": "L17117MH1925PLC001208",
+      "company_name": "Raymond Limited",
+      "score": 36.11,
+      "latest_recorded_filing": {
+        "cin": "L17117MH1925PLC001208",
+        "name": "Raymond Limited",
+        "nic_code": "64200",
+        "filing_id": 780,
+        "financial_year_start": "2025-04-01",
+        "financial_year_end": "2026-03-31",
+        "raw_fact_count": 1532
+      }
+    },
+    {
+      "cin": "L65923MH2008PLC261472",
+      "company_name": "SURYODAY SMALL FINANCE BANK LIMITED",
+      "score": 35.15,
+      "latest_recorded_filing": {
+        "cin": "L65923MH2008PLC261472",
+        "name": "SURYODAY SMALL FINANCE BANK LIMITED",
+        "nic_code": "64191",
+        "filing_id": 523,
+        "financial_year_start": "2025-04-01",
+        "financial_year_end": "2026-03-31",
+        "raw_fact_count": 1523
+      }
+    },
+    {
+      "cin": "L65921MH1997PLC194571",
+      "company_name": "SUMMIT SECURITIES LIMITED",
+      "score": 34.14,
+      "latest_recorded_filing": {
+        "cin": "L65921MH1997PLC194571",
+        "name": "SUMMIT SECURITIES LIMITED",
+        "nic_code": "6499",
+        "filing_id": 703,
+        "financial_year_start": "2025-04-01",
+        "financial_year_end": "2026-03-31",
+        "raw_fact_count": 1286
+      }
+    },
+    {
+      "cin": "L55910GJ1992PLC018623",
+      "company_name": "Arman Financial Services Limited",
+      "score": 33.81,
+      "latest_recorded_filing": {
+        "cin": "L55910GJ1992PLC018623",
+        "name": "Arman Financial Services Limited",
+        "nic_code": "64990",
+        "filing_id": 1063,
+        "financial_year_start": "2024-04-01",
+        "financial_year_end": "2025-03-31",
+        "raw_fact_count": 1462
+      }
+    },
+    {
+      "cin": "L67120MH1993PLC070739",
+      "company_name": "Ugro Capital Limited",
+      "score": 33.67,
+      "latest_recorded_filing": {
+        "cin": "L67120MH1993PLC070739",
+        "name": "Ugro Capital Limited",
+        "nic_code": "64990",
+        "filing_id": 919,
+        "financial_year_start": "2025-04-01",
+        "financial_year_end": "2026-03-31",
+        "raw_fact_count": 1444
+      }
+    },
+    {
+      "cin": "L65100MH2009PLC268160",
+      "company_name": "IndoStar Capital Finance Limited",
+      "score": 33.41,
+      "latest_recorded_filing": {
+        "cin": "L65100MH2009PLC268160",
+        "name": "IndoStar Capital Finance Limited",
+        "nic_code": "649",
+        "filing_id": 1147,
+        "financial_year_start": "2024-04-01",
+        "financial_year_end": "2025-03-31",
+        "raw_fact_count": 1468
+      }
+    },
+    {
+      "cin": "L64990DL1994PLC057941",
+      "company_name": "SG Finserve Limited",
+      "score": 33.39,
+      "latest_recorded_filing": {
+        "cin": "L64990DL1994PLC057941",
+        "name": "SG Finserve Limited",
+        "nic_code": "64920",
+        "filing_id": 1247,
+        "financial_year_start": "2025-04-01",
+        "financial_year_end": "2026-03-31",
+        "raw_fact_count": 1431
+      }
+    },
+    {
+      "cin": "L67100GJ1983PLC126089",
+      "company_name": "Dolat Algotech Limited",
+      "score": 33.36,
+      "latest_recorded_filing": {
+        "cin": "L67100GJ1983PLC126089",
+        "name": "Dolat Algotech Limited",
+        "nic_code": "6499",
+        "filing_id": 1012,
+        "financial_year_start": "2024-04-01",
+        "financial_year_end": "2025-03-31",
+        "raw_fact_count": 1353
+      }
+    },
+    {
+      "cin": "L74899DL1984PLC146935",
+      "company_name": "Religare Enterprises Limited",
+      "score": 32.99,
+      "latest_recorded_filing": {
+        "cin": "L74899DL1984PLC146935",
+        "name": "Religare Enterprises Limited",
+        "nic_code": "64200",
+        "filing_id": 976,
+        "financial_year_start": "2024-04-01",
+        "financial_year_end": "2025-03-31",
+        "raw_fact_count": 1764
+      }
+    },
+    {
+      "cin": "L65910GJ1995PLC026064",
+      "company_name": "MAS FINANCIAL SERVICES LIMITED",
+      "score": 32.69,
+      "latest_recorded_filing": {
+        "cin": "L65910GJ1995PLC026064",
+        "name": "MAS FINANCIAL SERVICES LIMITED",
+        "nic_code": "649990",
+        "filing_id": 252,
+        "financial_year_start": "2025-04-01",
+        "financial_year_end": "2026-03-31",
+        "raw_fact_count": 1567
+      }
+    },
+    {
+      "cin": "L45202PB2006PLC029968",
+      "company_name": "Nahar Capital and Financial Services Limited",
+      "score": 32.09,
+      "latest_recorded_filing": {
+        "cin": "L45202PB2006PLC029968",
+        "name": "Nahar Capital and Financial Services Limited",
+        "nic_code": "6430",
+        "filing_id": 1260,
+        "financial_year_start": "2024-04-01",
+        "financial_year_end": "2025-03-31",
+        "raw_fact_count": 1348
+      }
+    },
+    {
+      "cin": "L74110HR1995PLC121209",
+      "company_name": "Dhani Services Limited",
+      "score": 31.69,
+      "latest_recorded_filing": {
+        "cin": "L74110HR1995PLC121209",
+        "name": "Dhani Services Limited",
+        "nic_code": "6499",
+        "filing_id": 1228,
+        "financial_year_start": "2024-04-01",
+        "financial_year_end": "2025-03-31",
+        "raw_fact_count": 1560
+      }
+    },
+    {
+      "cin": "L74899DL1994PLC128577",
+      "company_name": "Capital India Finance Limited",
+      "score": 31.62,
+      "latest_recorded_filing": {
+        "cin": "L74899DL1994PLC128577",
+        "name": "Capital India Finance Limited",
+        "nic_code": "649",
+        "filing_id": 1096,
+        "financial_year_start": "2024-04-01",
+        "financial_year_end": "2025-03-31",
+        "raw_fact_count": 1344
+      }
+    },
+    {
+      "cin": "L24131WB1948PLC095302",
+      "company_name": "PILANI INVESTMENT AND INDUSTRIES CORPORATION LIMITED",
+      "score": 31.59,
+      "latest_recorded_filing": {
+        "cin": "L24131WB1948PLC095302",
+        "name": "PILANI INVESTMENT AND INDUSTRIES CORPORATION LIMITED",
+        "nic_code": "64200",
+        "filing_id": 799,
+        "financial_year_start": "2025-04-01",
+        "financial_year_end": "2026-03-31",
+        "raw_fact_count": 1375
+      }
+    },
+    {
+      "cin": "L65910MH1995PLC364635",
+      "company_name": "Fedbank Financial Services Limited",
+      "score": 31.58,
+      "latest_recorded_filing": {
+        "cin": "L65910MH1995PLC364635",
+        "name": "Fedbank Financial Services Limited",
+        "nic_code": "64920",
+        "filing_id": 1011,
+        "financial_year_start": "2024-04-01",
+        "financial_year_end": "2025-03-31",
+        "raw_fact_count": 1522
+      }
+    },
+    {
+      "cin": "L65993DL1970PLC146414",
+      "company_name": "Nalwa Sons Investments Limited",
+      "score": 30.4,
+      "latest_recorded_filing": {
+        "cin": "L65993DL1970PLC146414",
+        "name": "Nalwa Sons Investments Limited",
+        "nic_code": "642",
+        "filing_id": 1069,
+        "financial_year_start": "2024-04-01",
+        "financial_year_end": "2025-03-31",
+        "raw_fact_count": 1483
+      }
+    },
+    {
+      "cin": "L17111PB1962PLC002463",
+      "company_name": "Vardhman Holdings Limited",
+      "score": 29.83,
+      "latest_recorded_filing": {
+        "cin": "L17111PB1962PLC002463",
+        "name": "Vardhman Holdings Limited",
+        "nic_code": "6430",
+        "filing_id": 1126,
+        "financial_year_start": "2024-04-01",
+        "financial_year_end": "2025-03-31",
+        "raw_fact_count": 1580
+      }
+    }
+  ]
+}

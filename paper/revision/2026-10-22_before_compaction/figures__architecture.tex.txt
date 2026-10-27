@@ -1,0 +1,45 @@
+\begin{figure}[p]
+\centering
+\begin{tikzpicture}[
+  font=\footnotesize,
+  input/.style={draw=ink!55,fill=softgray,rounded corners=2pt,text width=2.9cm,minimum height=2.1cm,align=left,inner sep=6pt},
+  process/.style={draw=teal,fill=teal!5,rounded corners=2pt,text width=6.35cm,minimum height=2.1cm,align=left,inner sep=6pt},
+  output/.style={draw=ink!55,fill=white,rounded corners=2pt,text width=2.9cm,minimum height=2.1cm,align=left,inner sep=6pt},
+  arr/.style={-{Stealth[length=2mm]},thick,ink!70}
+]
+\node[font=\small\bfseries,text=ink] at (0,1.5) {INPUT};
+\node[font=\small\bfseries,text=ink] at (5.4,1.5) {PROCESSING MODULE};
+\node[font=\small\bfseries,text=ink] at (10.8,1.5) {OUTPUT};
+
+\node[input] (a1) at (0,0) {XBRL filings\\Company identifiers\\Period and industry metadata};
+\node[process] (b1) at (5.4,0) {\textbf{1. Filing acquisition and structured storage}\\Read concepts, raw values, units, periods, and dimensions; link company, filing, and fact records.};
+\node[output] (c1) at (10.8,0) {Traceable fact database\\Narratives and numerical values};
+
+\node[input] (a2) at (0,-2.55) {Narrative facts\\Explicit principle tags\\Concept and note names};
+\node[process] (b2) at (5.4,-2.55) {\textbf{2. Narrative selection and weak-label construction}\\Filter short/link-only content; map three label sources; deduplicate; partition companies by CIN.};
+\node[output] (c2) at (10.8,-2.55) {42,409 labelled samples\\Train / validation / test\\Source provenance};
+
+\node[input] (a3) at (0,-5.1) {Training narratives\\Legacy adapted BERT\\Validation labels};
+\node[process] (b3) at (5.4,-5.1) {\textbf{3. Domain adaptation and principle classification}\\Nine-principle BERT fine-tuning; validation checkpoint selection; strict LayerNorm recovery and reload check.};
+\node[output] (c3) at (10.8,-5.1) {Recovered seed-99 model\\Nine principle probabilities\\Top-ranked candidates};
+
+\node[input] (a4) at (0,-7.65) {Narratives\\Comparative filed facts\\Assurance topics};
+\node[process] (b4) at (5.4,-7.65) {\textbf{4. Vagueness and filing-consistency checks}\\Lexicon and MPNet vagueness checks; claim--figure and assurance-gap heuristics; auxiliary omission check.};
+\node[output] (c4) at (10.8,-7.65) {Vagueness flags\\Linked review records\\Only text branch evaluated};
+
+\node[input] (a5) at (0,-10.2) {Narratives\\Recovered classifier\\Definitions and anchors};
+\node[process] (b5) at (5.4,-10.2) {\textbf{5. Principle mapping and the zero-shot comparator}\\Use supervised probabilities; compare with MPNet zero-shot ranking on identical evaluation rows.};
+\node[output] (c5) at (10.8,-10.2) {Principle-level summaries\\Weakest passages\\Method-specific scores};
+
+\node[input] (a6) at (0,-12.75) {Filed concepts\\Scoring narratives\\Saved sector labels};
+\node[process] (b6) at (5.4,-12.75) {\textbf{6. Transparency Score and peer comparison}\\Completeness + Specificity + Clarity + SDG breadth; fixed 40/30/20/10 weights; sector percentiles.};
+\node[output] (c6) at (10.8,-12.75) {Transparency Score\\Component breakdown\\Sector comparisons};
+
+\node[input] (a7) at (0,-15.3) {Company lookup\\Analytical outputs\\Verified model location};
+\node[process] (b7) at (5.4,-15.3) {\textbf{7. Service layer and runtime traceability}\\Typed API responses; expose method and model path; return review records and score components.};
+\node[output] (c7) at (10.8,-15.3) {Company report\\Peer comparison\\Auditable runtime response};
+\foreach \rowindex in {1,...,7} {\draw[arr] (a\rowindex.east)--(b\rowindex.west);\draw[arr] (b\rowindex.east)--(c\rowindex.west);}
+\end{tikzpicture}
+\caption{GRASP from inputs to review outputs. Each row states a module's actual inputs, internal operations, and output. Horizontal arrows represent processing within a module; numbered rows show the workflow without implying that every earlier output enters every later formula. The classifier and mapping outputs support principle review. The Transparency Score separately uses concept coverage, evidence patterns, vagueness flags, and SDG breadth. Numerical and assurance checks remain unvalidated review heuristics.}
+\label{fig:architecture}
+\end{figure}

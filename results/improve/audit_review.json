@@ -1,0 +1,308 @@
+{
+  "schema_version": 1,
+  "prepared_date": "2026-10-19",
+  "status": "STATIC_AUDIT_REVIEW_AND_PHASE0_PREPARATION",
+  "label_provenance": "agreement with taxonomy-derived weak labels (partly AI-assisted mapping)",
+  "baseline_source": "results/improve/baseline_snapshot.json",
+  "baseline_rows": [
+    {
+      "stage": "2",
+      "metric": "section_b Top-1",
+      "value": 0.6335227272727273,
+      "n": 352,
+      "cins": 71,
+      "ci95": [
+        0.5655378277153559,
+        0.6967318501170959
+      ],
+      "role": "historical weak-label agreement",
+      "source": "sources.stage3_seed99_recovered_full_results.json.data.source_metrics.section_b"
+    },
+    {
+      "stage": "2",
+      "metric": "section_c Top-1",
+      "value": 0.9515287099179717,
+      "n": 5364,
+      "cins": 174,
+      "ci95": [
+        0.9441178663384706,
+        0.9591951577944401
+      ],
+      "role": "historical weak-label agreement",
+      "source": "sources.stage3_seed99_recovered_full_results.json.data.source_metrics.section_c"
+    },
+    {
+      "stage": "2",
+      "metric": "notes_principle Top-1",
+      "value": 0.9072164948453608,
+      "n": 485,
+      "cins": 103,
+      "ci95": [
+        0.8654588552887045,
+        0.9409397577446671
+      ],
+      "role": "historical weak-label agreement",
+      "source": "sources.stage3_seed99_recovered_full_results.json.data.source_metrics.notes_principle"
+    },
+    {
+      "stage": "3",
+      "metric": "Top-1",
+      "value": 0.9300112885018545,
+      "n": 6201,
+      "cins": 175,
+      "ci95": [
+        0.9203984326924053,
+        0.9388509085476517
+      ],
+      "role": "historical weak-label agreement; existing test reused",
+      "source": "sources.stage3_seed99_recovered_full_results.json.data.metrics"
+    },
+    {
+      "stage": "3",
+      "metric": "Top-2",
+      "value": 0.97677793904209,
+      "n": 6201,
+      "cins": 175,
+      "ci95": [
+        0.9709819114547733,
+        0.9820853007986767
+      ],
+      "role": "historical weak-label agreement; existing test reused",
+      "source": "sources.stage3_seed99_recovered_full_results.json.data.metrics"
+    },
+    {
+      "stage": "3",
+      "metric": "macro-F1",
+      "value": 0.9158240810346214,
+      "n": 6201,
+      "cins": 175,
+      "ci95": [
+        0.9035670003570093,
+        0.9276792523619579
+      ],
+      "role": "historical weak-label agreement; existing test reused",
+      "source": "sources.stage3_seed99_recovered_full_results.json.data.metrics"
+    },
+    {
+      "stage": "3 diagnostic",
+      "metric": "concept-disjoint Top-1 mean",
+      "value": 0.8164380534474461,
+      "sample_sd": 0.04921581502117967,
+      "n": [
+        1190,
+        1167,
+        1169
+      ],
+      "ci95": null,
+      "ci_note": "No CI of cross-holdout mean; sample SD is not a CI",
+      "role": "historical repeated concept holdout; existing test reused",
+      "source": "sources.stage2_concept_disjoint_repeats_results.json.data.metrics_mean_sd_across_holdouts"
+    },
+    {
+      "stage": "4",
+      "metric": "F1",
+      "value": 0.7435897435897436,
+      "n": 80,
+      "cins": null,
+      "ci95": null,
+      "ci_note": "NOT COMPUTED in the existing source",
+      "role": "human-development only; blinding unconfirmed",
+      "source": "sources.stage4_dev80_frozen_results.json.data.f1"
+    },
+    {
+      "stage": "4 AI comparison",
+      "metric": "F1",
+      "value": 0.6885245901639344,
+      "n": 70,
+      "cins": null,
+      "ci95": null,
+      "ci_note": "NOT COMPUTED in the existing source",
+      "role": "historical AI-label comparison only; excluded from tuning and headline claims",
+      "source": "sources.stage4_batch3_ai_comparison.json.data.f1"
+    },
+    {
+      "stage": "5",
+      "metric": "zero-shot Top-1",
+      "value": 0.6763425253991292,
+      "n": 6201,
+      "cins": 175,
+      "ci95": [
+        0.6645060022241471,
+        0.6893022121774881
+      ],
+      "role": "historical method comparison on weak labels",
+      "source": "sources.stage5_company_disjoint_recovered_results.json.data.metrics.zero_shot"
+    },
+    {
+      "stage": "5",
+      "metric": "paired supervised minus zero-shot Top-1",
+      "value": 0.25366876310272535,
+      "n": 6201,
+      "cins": 175,
+      "ci95": [
+        0.24021529418385157,
+        0.2670555368926639
+      ],
+      "role": "historical paired comparison; not causal compliance gain",
+      "source": "sources.stage5_company_disjoint_recovered_results.json.data.metrics.paired_delta_supervised_minus_zero_shot"
+    },
+    {
+      "stage": "6",
+      "metric": "Pearson r",
+      "value": 0.631362197674746,
+      "n": 20,
+      "cins": 20,
+      "ci95": [
+        0.2682684036697897,
+        0.8519411221104822
+      ],
+      "ci_note": "Original company-level resampling interval; not re-estimated",
+      "role": "historical human ratings; blinding unconfirmed",
+      "source": "sources.task5_stage6_results.json.data.headline_n20"
+    },
+    {
+      "stage": "6",
+      "metric": "Spearman rho",
+      "value": 0.6284869112807583,
+      "n": 20,
+      "cins": 20,
+      "ci95": [
+        0.23208340556730248,
+        0.8539945595416983
+      ],
+      "ci_note": "Original company-level resampling interval; not re-estimated",
+      "role": "historical human ratings; blinding unconfirmed",
+      "source": "sources.task5_stage6_results.json.data.headline_n20"
+    }
+  ],
+  "findings": [
+    {
+      "id": "F01",
+      "severity": "high",
+      "issue": "Legacy MLM corpus is not shown to be train-company-only",
+      "evidence": [
+        "scripts/03_bert_training/build_mlm_corpus.py: all Fact narratives selected without CIN restriction",
+        "scripts/03_bert_training/domain_pretrain_bert.py: CORPUS_PATH data/training/mlm_corpus.txt"
+      ],
+      "conclusion": "Risk of unsupervised validation/test-company wording exposure; checkpoint-specific actual membership unverified, not proven leakage.",
+      "action": "User chose new MLM adaptation on train-company narratives only; documented as a prerequisite for newly trained candidates.",
+      "status": "DESIGN_DECIDED_IMPLEMENTATION_NOT_RUN"
+    },
+    {
+      "id": "F02",
+      "severity": "high",
+      "issue": "Existing test is already observed",
+      "evidence": [
+        "results/audit/stage3_seed99_recovered_full_results.json: fresh_test false",
+        "results/audit/stage2_concept_disjoint_repeats_results.json: fresh_test false"
+      ],
+      "action": "Prospective exactly-once rule for new configs only; lifetime prior access count/time unknown. Frozen test cannot become fresh again.",
+      "status": "RECORDED_IN_PREREG"
+    },
+    {
+      "id": "F03",
+      "severity": "high",
+      "issue": "Old row-level prediction cache not located",
+      "evidence": [
+        "Inspected results/ and data/models/ names up to bounded depth; skipped checkpoints; no filename-matched prediction/logit caches found",
+        "Recovered evaluation script saves aggregate JSON, not row-level logits"
+      ],
+      "action": "Do not calculate paired old-vs-new CIs from aggregate metrics. Recover a verifiable cache or amend protocol before additional legacy baseline inference.",
+      "status": "UNRESOLVED_INPUT_REQUIREMENT"
+    },
+    {
+      "id": "F04",
+      "severity": "high",
+      "issue": "Absence or zero value is not independent unsupported-claim ground truth",
+      "evidence": [
+        "Attached Phase 3 proposal treats absent/zero facts as objective reference"
+      ],
+      "action": "Require context/unit/year/applicability/link matching; zero is a valid numeric observation. Name filing-derived proxy agreement and avoid circular detector/reference rules.",
+      "status": "CORRECTED_DESIGN"
+    },
+    {
+      "id": "F05",
+      "severity": "medium",
+      "issue": "Stage 6 proxy correlations may overlap score construction",
+      "evidence": [
+        "src/analysis/scoring/specificity_clarity_score.py: specificity is KPI-presence rate; clarity reuses vagueness detector",
+        "src/analysis/scoring/transparency_score.py: deterministic component-weight formula"
+      ],
+      "action": "Report construct/internal-consistency evidence with explicit overlap and leave-one-component-out sensitivities; no independent accuracy claim.",
+      "status": "CORRECTED_DESIGN"
+    },
+    {
+      "id": "F06",
+      "severity": "medium",
+      "issue": "Recovered JSON and prose differ in Notes CI / class metrics",
+      "evidence": [
+        "stage3_seed99_recovered_full_results.json.source_metrics.notes_principle",
+        "stage3_seed99_recovered_full_results.json.metrics.classification_report",
+        "stage5_company_disjoint_recovered_results.json.per_principle_top1.P3"
+      ],
+      "action": "Corrected Notes CI in master/Stage 2/summary, P3/P6 F1 in Stage 3 audit, and supervised P3 Top-1 plus result link in Stage 5 audit using existing recovered JSON only.",
+      "status": "DOCS_CORRECTED_NO_REEVALUATION"
+    },
+    {
+      "id": "F07",
+      "severity": "medium",
+      "issue": "Existing scripts do not satisfy all new provenance/CI requirements",
+      "evidence": [
+        "Recovered sourcewise outputs store Top-1 CI but omit some other computed CIs",
+        "Historic Stage 4 source JSONs have no company bootstrap CI",
+        "Historic Stage 6 intervals use original resampling count; do not relabel"
+      ],
+      "action": "Import old data unchanged, mark absent fields as missing, require actual environment/worktree metadata and complete cached metrics in new scripts.",
+      "status": "RECORDED_IN_PREREG"
+    },
+    {
+      "id": "F08",
+      "severity": "medium",
+      "issue": "Claim that fixed transparency weights are SEBI-prescribed has no exact source established by this local audit",
+      "evidence": [
+        "src/analysis/scoring/transparency_score.py attributes formula to the project report"
+      ],
+      "action": "Use fixed project heuristic in improvement reports; regulatory attribution requires an exact authoritative citation.",
+      "status": "ATTRIBUTION_UNVERIFIED"
+    },
+    {
+      "id": "F09",
+      "severity": "medium",
+      "issue": "Original concept holdout scripts remove held-out concepts from validation as well as train",
+      "evidence": [
+        "results/audit/stage2_concept_disjoint_eval.py: filtered train/val exclude heldout; eval test includes heldout"
+      ],
+      "action": "For new concept-generalization tuning, keep held-out-concept rows in validation companies and exclude them from supervised train; same frozen test subsets remain diagnostics.",
+      "status": "CORRECTED_DESIGN"
+    }
+  ],
+  "new_training": "NOT RUN",
+  "new_evaluation": "NOT RUN",
+  "runtime_metadata_verification": "NOT RUN",
+  "split_metadata_verification": "NOT RUN",
+  "new_test_evaluations": 0,
+  "historical_test_evaluation_count": null,
+  "encoder_choice": {
+    "decision": "train-company-only MLM adaptation",
+    "decided_by": "human user in this chat",
+    "date": "2026-10-19",
+    "status": "NOT RUN"
+  },
+  "saved_prediction_cache_search": {
+    "scope": "Filename search under results and data/models at bounded depth, checkpoint dirs skipped; absence is not proof no artifact exists elsewhere",
+    "candidates": []
+  },
+  "source_document_sha256_at_start": {
+    "audit_summary.md": "dabacd8b74e937b86a197752e24d4939bef6e735351cb099ba92135efacd5fc9",
+    "label_provenance.md": "9a27b3db784fec2bc1f8efd53f55a070b3b702d0ddb9dc942f940f8aae246c04",
+    "stage1_7_final_master_table.md": "0015da8c64ce5bcf2e0d81d45f4e169519e04bdcdd96380086e9dac671985cad",
+    "stage2_ai_mapping_provenance.md": "a104ef672a182e4e48e891792d7c7e8371b3f00b1c7bdacf4a7625245e664f1a",
+    "stage2_final_audit.md": "d0760a3df3bb6f527e8f4edc1504eabe6cd33f6398264f57ce22325b57900c7a",
+    "stage3_company_retrain_audit.md": "b3fafd2eb94f1700dc20954e4dff849983e7f05f588153a172095e81095dbc19",
+    "stage4_final_audit.md": "3c3fa1734461efc693c780c92a5057224dde7846fac8de80811db98c6a23e437",
+    "stage4_threshold_freeze.md": "c60f638b20194f0c139a18da6ab48e9994d4cc08e27064f4eb7f51000cfa5868",
+    "stage5_final_audit.md": "5dd8ef02e01b6466069f68a12be780d55c7fae0ef117f0deff0548c05fa441fa",
+    "stage6_audit.md": "6694f12f499050d3630b4d5fa1b8c54df2aabf2ef527117e7e822be0105a7b03"
+  },
+  "excluded_claims_text": "Do not report these as final validated results: 93.83%, 98.07%, 0.9341, 96.66% calibration, 98–99% sliding-window results, legacy Stage 5 74.55%/84.99%, Stage 4 F1 0.923 or in-sample F1 1.000, Stage 6 r=0.9482, “Completeness Fallacy” weights, historical Section B count 17,219, or the unachieved XGBoost F1 target 0.94–0.96. They are stale, compromised, in-sample, synthetic, or otherwise unsupported for the paper claims."
+}

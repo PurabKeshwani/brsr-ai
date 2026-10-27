@@ -1,0 +1,150 @@
+{
+  "prepared_date": "2026-10-21",
+  "purpose": "Manuscript revision using frozen audit results and descriptive saved-score tables; no training or model inference run",
+  "primary_results_directory": "results/audit",
+  "original_manuscript_backup": "paper/revision/main_before_journal.tex.txt",
+  "source_sha256": {
+    "paper/main.tex": "d4d520e1b637432fd4126e3bd0d90ae7807793b7f251edbf1b1f1527459e708e",
+    "results/audit/stage1_7_final_master_table.md": "ac36adbde6e2d282be916dc9fc571790cf92f33d04db5ab6d84872e51e782f17",
+    "results/audit/stage3_seed99_recovered_full_results.json": "f8ef77f6127fdca14f3cff741e1a757bdd72ecb6db3836b69c5e5f1125849f69",
+    "results/audit/stage5_company_disjoint_recovered_results.json": "dabdb8c4bb6498dbaebf868a62e6a688007013ca5c23f60aa8c66332ca5816aa",
+    "results/audit/task5_stage6_results.json": "30b18dd6d4e62ce31d2834bd281b1cf1380f5d5a1c9936150641616f08ebf88b",
+    "results/audit/stage2_concept_disjoint_repeats_results.json": "17d80b9b88914993d8686a125d1c791eb208fed235d7b47b3118e9bbf3db3160",
+    "results/audit/stage2_multilabel_results.json": "e48e3b448aa9a5ae7be57ca1d93050374d244a5312fe9ee0b4523496d95d3cf2",
+    "data/analysis/paper_company_breakdown.csv": "93f41057730a3904f84050ae30cfecd83d58b51247bfbce8527ede9323c040c7",
+    "data/analysis/paper_intrasector.csv": "9bc2169886df75b18d67562ab58411d58cf006681621542608bfb6877cde4ce8",
+    "data/analysis/paper_sector_comparison.csv": "514e1f4b8506e740487f4433fc318f4be7e7715a6953207d8265f7a6fa7b8c20",
+    "data/analysis/sector_benchmarks.csv": "0e302d41a6d321419834fc97324857f048c1fcd7ca72190d382f18d132d60ec7",
+    "data/analysis/sector_summary.csv": "8adda551770d61b15b5e6c5a384abc736a47b7d613b8cc2eb3704c2810578730",
+    "data/analysis/transparency_scores.csv": "adc5a01c30950f155ff82b22bd8e5cee076232b5bc6caa9c1b70de4a97c76f6f",
+    "data/analysis/year_wise_scores.csv": "1d27971c0a18e3824e7e366e1621cdc1f09f18d96635168894873d764cd98f9d",
+    "data/analysis/log_classifier.json": "74abe5751b18663ca6d2fff6dfe2827fcca71ce35d7e936df0a4099b839f6e32",
+    "data/analysis/log_pretrain.json": "9874891c4d15fb75ddac6a10a8b03ed77de6065f2d76d90b3c61f36710904232",
+    "src/analysis/scoring/transparency_score.py": "182a7eedc3260865007fe4db36983b64f3d4b6d7e0d52d00a4162d16d81c5a43",
+    "src/analysis/scoring/completeness_score.py": "fd86a57ba520bbf11ef724cc68a37f3828f737f4160bb4b57dbe846148144dbb",
+    "src/analysis/scoring/specificity_clarity_score.py": "4f235807637fa5999c9206cd815bb8c123052b2c9cff699d8fef7fd037fb8281",
+    "src/analysis/scoring/sdg_alignment.py": "9892b470119cb8629d6bb061c442e41afab346916b62ca5d3cbc3549a053dcfb",
+    "src/analysis/scoring/peer_benchmarking.py": "7cf13065de4de5b9f5bd2a40f968b4c9527183d6f706f8bab64b9749cc6a7045",
+    "results/audit/task2_company_level_retrain.py": "63d13dc1e4e9c746da11189798c95d231522a0fc8fc6146e3d16796d8658dff9",
+    "src/analysis/vagueness/vagueness_combined.py": "f03db049d3332f34e2d0c43ff182e59fe8ccebc6cb9b302c435ec6e413bb12a4",
+    "src/analysis/vagueness/vagueness_lexicon.py": "169d7d6e596bd00eac8cb2f1c4ff6b175e74b30f0e66fdb2d0ff7833ae630ba3",
+    "src/analysis/truth_auditor.py": "ca403b9cc2bd92e8717e52ae3a902394350dec7f23c74c207fb29d336cbcf216",
+    "src/analysis/compliance/compliance_mapper.py": "8d6443c56486a612887941a71188ca3a42a9df4b61bd50ac2da4aa37e628e85a",
+    "src/db/models.py": "ed2584d69865eaa6f89e0de887bc2066705a6ee84fa051919cda62b5ac90f6ac",
+    "src/analysis/vagueness/vagueness_semantic.py": "cef54a6864071d960803e25bb4755256e056ed5b8b17aac3294f7478fb0cc2c1",
+    "src/analysis/audit_checks/greenwashing.py": "619a9d6456e68a59f7cb101e0a1e10f9c75b2285c6e457a01b1d11df86761bd6",
+    "src/analysis/audit_checks/assurance_gap.py": "befb8c50867c98030ef835daabcd57585c66400c7bf3d5a5123c196a6e7bf2b0",
+    "src/analysis/audit_checks/silent_removal.py": "32fc5b6c9135b74d07efb27ad1f8775e901087a741619eda35c0e19c2ac6dfe5",
+    "src/analysis/compliance/sector_classification.py": "5b2159f8a762125cb7249eca116805f492b534bb23142df3ee29081209eddacf",
+    "scripts/06_transparency_score/bulk_transparency_scoring.py": "c1e14b67f9c67d54e730841e517019e36fdd944e14d882a3427728ba647bf309",
+    "scripts/06_transparency_score/year_wise_scores.py": "5b7e90f65778fcc5c5350c3c88e31d66b092e1ed7d14a8dfcd9099e266822402",
+    "data/models/brsr_company_split_classifier/seed_99/checkpoints/checkpoint-9325/trainer_state.json": "409c760c21d8755088e5f7b673190672d6187aecd4fe82c8a8e45765831de228",
+    "results/audit/stage2_concept_disjoint_recovered_results.json": "72943a08674c704ccab361b0690de2f00935f31a096300821cc05b6eb68bbd56",
+    "scripts/03_bert_training/domain_pretrain_bert.py": "49e2df1a75b59e8bbf6125347491e586b538510e7448735a9814b4614c43f266"
+  },
+  "snapshot": {
+    "companies": 1164,
+    "filing_records": 1172,
+    "concept_universe": 1057,
+    "score_rows": 1164,
+    "sectors": 72,
+    "comparison_eligible_sectors": 47,
+    "comparison_eligible_company_rows": 1109,
+    "small_sectors": 25,
+    "small_sector_company_rows": 55,
+    "financial_companies": 94,
+    "financial_year_end_counts": {
+      "2026-03-31": 77,
+      "2025-03-31": 17
+    },
+    "financial_scores": {
+      "mean": 48.17,
+      "median": 49.79,
+      "min": 29.83,
+      "max": 67.56,
+      "sd": 9.88
+    },
+    "triveni": {
+      "filing_id": 197,
+      "year_end": "2026-03-31",
+      "raw_facts": 1862,
+      "filed_nontrivial_concepts": 613,
+      "universe": 1057,
+      "narrative_pairs": 52
+    }
+  },
+  "provenance_notes": [
+    "Saved score CSVs contain no filing_id; year labels join the most recent database filing by CIN under the bulk scorer selection rule. Export-to-filing linkage was reconstructed, not recorded at original export.",
+    "Score values are reproduced from saved CSVs; aggregate arithmetic is descriptive.",
+    "No result from results/improve enters the manuscript.",
+    "The pasted assessment contains superseded numerical recommendations; the consolidated audit is authoritative."
+  ],
+  "derived_financial_linkage_sha256": "69bf2be7395574c1be5980ff721455ce8859be8c0c00dfc5d8fb4d9334793a26",
+  "manuscript_sha256": {
+    "main.tex": "cb4eafd6b660a2b08f05514aab6bc74deada0e7aaf71319d9da0cc9afb58bc20",
+    "sections/01_introduction.tex": "27db0733eb8b92b636d67a2c48acba920d9052ce1827837f378e4d180bc3da4d",
+    "sections/02_literature.tex": "5f33ae36233444dd53b6481bfe097bcb493bff19746e78dcbbdc160e2e522a66",
+    "sections/02a_proposed_solution.tex": "080e072d290a805e0b0f0420b4e11b5a58a24785665dab149a3bd3044986c0b0",
+    "sections/03_methodology.tex": "5404cb28602ecdea16e8e89d1d0b9aded8ad3945223d8181ff787513d49129ad",
+    "figures/architecture.tex": "d34d78177c556cb379a3ba7fea6cee62dc7d245815c648d70a613fe685552d93",
+    "sections/04_evaluation.tex": "34c1bc3eed593d03646a49cbf73d837d495b2907411509fcbd30b15435f7f442",
+    "figures/source_results.tex": "b17af726705970c5fbfc3232df709d44951009a97654e0d7467d0c95e207e1c8",
+    "figures/training_history.tex": "40da701a32ff17fc231869d5ffb58101f2125555622c4c55e368ba5d6905b891",
+    "figures/principle_f1.tex": "61f7b9583e0012e4051e7f059a360d05e461e3b847ad80b5ff8cb5c3ebf1c607",
+    "figures/concept_holdouts.tex": "75af22c1c7c886f2e21a3b796ae35ed3e560693299fb5a60bf98b3f5732ea2c1",
+    "figures/detector_results.tex": "2861bbbce80ac9284532d62a3fd360e161593c53a17726eac21f3fb4310e2c09",
+    "sections/05_results.tex": "358160c962ba6bd18c5d2d7b46bc00b27bd60fbd715f7b47071d7014c9e5000c",
+    "figures/company_contributions.tex": "bb32cb8b82fb0c7f0381785e0eb0fc449b7a7400b7183d95df195b36b69e6e09",
+    "sections/07_conclusion.tex": "466cf2025562a26326fba7d53efd115054627bab84696db8576314b012a67ab1",
+    "references.tex": "d06fefa594426874df9ed4ac125b41ebcf42839db12c375ee5ef6cd440a054bd"
+  },
+  "generated_table_row_files": [
+    "tables/principle_metrics_rows.tex",
+    "tables/financial_selected_rows.tex",
+    "tables/financial_all_rows.tex",
+    "tables/sector_all_rows.tex"
+  ],
+  "generated_table_note": "Earlier complete TeX row files preserve the first revision. The main manuscript now uses compact summaries for Tables 12 and 13; supplementary CSVs S1 and S2 retain the complete current listings. S3 and S4 retain paired-year components and Pharmaceuticals examples.",
+  "diagram_prompt_sha256": "41286f281b33c956f29ebef5a15a13f01270001615e89b46f0f5d29d117116d6",
+  "manuscript_bundle_sha256": "9f6c61df82ed25ed887b88caa50f5ab31ef33890d6ab0077caea5775cddd158b",
+  "latest_revision": {
+    "date": "2026-10-26",
+    "scope": "Removed Discussion and Practical Use completely from the manuscript and source inputs; updated the introduction roadmap so Results is followed by Conclusion",
+    "new_training": false,
+    "new_inference": false
+  },
+  "image_sha256": {
+    "figures/grasp_pipeline.png": "204c21fecbf7b818eb5b41fd09deca6715964d39fbbf8e97b5d8ee949fbbd284"
+  },
+  "supplementary_sha256": {
+    "supplementary/README.md": "58040bc087fc938b734637eb15871d192d0c8f93eb22f70598cc9d1591321f73",
+    "supplementary/table_S1_financial_companies.csv": "7488da16de6c33fd15099546cb11ae06ace12fe332168091b975d6197edf40ba",
+    "supplementary/table_S2_all_sectors.csv": "8adda551770d61b15b5e6c5a384abc736a47b7d613b8cc2eb3704c2810578730",
+    "supplementary/table_S3_paired_year_components.csv": "1d27971c0a18e3824e7e366e1621cdc1f09f18d96635168894873d764cd98f9d",
+    "supplementary/table_S4_pharmaceutical_examples.csv": "0b086def6556310d3766360adca6c52568c742955f6bc1196d4d88a24e3fd4b0"
+  },
+  "external_reference": {
+    "path": "C:/Users/amitk/OneDrive/Desktop/temp/CAPSTONE_RESEARCH_PAPER_FINAL.pdf",
+    "sha256": "913e99e3b6103b4e812f8827f861466d772375f02a5cbed395e6db8f88365e49",
+    "pages": 9,
+    "role": "Historical comparison only; final predictive metrics remain sourced from results/audit"
+  },
+  "result_compaction_sha256": "a5722329d373e8325a7fe8bdc49eeee974f443a6c357e3333ce0cf93ff93bc7c",
+  "request_audit_sha256": "93737a4d54fe90dd694a2a93d2742e66aa4a03aa10e1ea621c1151f4db1e6b03",
+  "plain_language_revision_sha256": "86fc5e77ea86b021b48271d2b170a10a3b3446b693fe6cfeb56b557f35a14551",
+  "eight_request_audit_sha256": "2c38765b0234b8c594aecf1295f366c66a7e7de6467e754dbb3adbb9a02e7a2c",
+  "positive_tone_revision_sha256": "1a0d35b3e100bb366f51564aecf95862098273b63d965a2766c273a68ea81894",
+  "manuscript_bundle_hash_convention": "SHA256 of JSON.stringify(manuscript_sha256), using manuscript input traversal order",
+  "diagram_generation": {
+    "mode": "built-in image_gen",
+    "input_backup": "paper/revision/2026-10-26_before_detector_reuse/grasp_pipeline.png",
+    "input_sha256": "5d3fa6bcfb9e4ff183c9e72a0b64bbdbf157eab8699ee991bb4d6cefeb41b879",
+    "selected_generation": "C:/Users/amitk/.codex/generated_images/01a14a9f-e271-74f3-a3db-dc0e797e9a28/exec-0ee42d4f-709c-4ebd-8482-692206d1560b.png",
+    "final_asset": "paper/figures/grasp_pipeline.png",
+    "output_sha256": "204c21fecbf7b818eb5b41fd09deca6715964d39fbbf8e97b5d8ee949fbbd284",
+    "prompt": "paper/diagram_generation_prompt.md",
+    "new_dependency": "4 -> 6; detector reuse for Clarity (20%)",
+    "source_code_changed": false,
+    "metric_values_changed": false
+  }
+}

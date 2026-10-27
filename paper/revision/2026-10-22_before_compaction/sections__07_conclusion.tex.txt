@@ -1,0 +1,8 @@
+\section{Conclusion}
+\label{sec:conclusion}
+
+GRASP connects structured BRSR filings, weak-label principle classification, language-based review signals, filing-consistency heuristics, and a decomposed Transparency Score. The recovered classifier achieves 93.00\% Top-1 agreement and macro-F1 of 0.9158 on 6,201 segments from 175 companies excluded from supervised training. The same evaluation shows an important source gap: agreement is 63.35\% for explicit principle-axis narratives and 95.15\% for concept-mapped narratives. Concept holdouts further reduce performance, supporting caution about template-dependent transfer.
+
+The frozen text-vagueness component reaches F1 of 0.7436 on 80 development examples. A separate AI-label comparison remains exploratory, and no complete numerical-verification accuracy is established. The fixed Transparency Score shows a moderate association with 20 historical human ratings, with Pearson correlation 0.6314 and wide uncertainty. The saved 1,164-company snapshot supports an interpretable progression from one company's component calculation to the complete financial-sector group and all recorded sectors. Wearing Apparel has the lowest descriptive mean among groups containing at least five companies, while substantial within-sector variation limits simple sector judgements.
+
+The supported contribution is a traceable workflow with explicit boundaries between label agreement, language screening, numerical review, and score interpretation. Independent semantic labels, stronger context matching, complete score-version metadata, and broader blind human assessment would provide the next basis for reliable improvement.

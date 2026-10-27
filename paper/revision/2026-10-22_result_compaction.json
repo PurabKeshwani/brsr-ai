@@ -1,0 +1,284 @@
+{
+  "prepared_date": "2026-10-22",
+  "operation": "Descriptive compression of saved outputs and restoration of old-paper result presentation",
+  "source_sha256": {
+    "data/analysis/transparency_scores.csv": "adc5a01c30950f155ff82b22bd8e5cee076232b5bc6caa9c1b70de4a97c76f6f",
+    "data/analysis/sector_benchmarks.csv": "0e302d41a6d321419834fc97324857f048c1fcd7ca72190d382f18d132d60ec7",
+    "data/analysis/sector_summary.csv": "8adda551770d61b15b5e6c5a384abc736a47b7d613b8cc2eb3704c2810578730",
+    "data/analysis/year_wise_scores.csv": "1d27971c0a18e3824e7e366e1621cdc1f09f18d96635168894873d764cd98f9d",
+    "paper/revision/financial_period_linkage.json": "69bf2be7395574c1be5980ff721455ce8859be8c0c00dfc5d8fb4d9334793a26"
+  },
+  "old_pdf": {
+    "path": "C:/Users/amitk/OneDrive/Desktop/temp/CAPSTONE_RESEARCH_PAPER_FINAL.pdf",
+    "sha256": "913e99e3b6103b4e812f8827f861466d772375f02a5cbed395e6db8f88365e49",
+    "pages": 9,
+    "all_pages_text_read": true,
+    "visually_rendered_pages": [
+      7,
+      8
+    ]
+  },
+  "diagram": {
+    "path": "paper/figures/grasp_pipeline.png",
+    "sha256": "5d3fa6bcfb9e4ff183c9e72a0b64bbdbf157eab8699ee991bb4d6cefeb41b879",
+    "pixels": [
+      1122,
+      1402
+    ],
+    "seven_titles_match": true,
+    "caption_discloses_omitted_dependencies": true
+  },
+  "financial_bands": [
+    {
+      "label": "60.00--69.99",
+      "n": 11,
+      "mean": 62.394545454545465,
+      "median": 61.75,
+      "min": 60.01,
+      "max": 67.56,
+      "sd": 2.2158130049097733,
+      "components": {
+        "completeness_pct": 61.16727272727273,
+        "specificity_pct": 47.23636363636364,
+        "clarity_pct": 95.25363636363636,
+        "sdg_alignment_pct": 47.058181818181815
+      }
+    },
+    {
+      "label": "50.00--59.99",
+      "n": 35,
+      "mean": 54.77171428571428,
+      "median": 54.41,
+      "min": 50.23,
+      "max": 59.84,
+      "sd": 2.968014275487198,
+      "components": {
+        "completeness_pct": 60.689428571428564,
+        "specificity_pct": 32.94457142857143,
+        "clarity_pct": 94.07228571428573,
+        "sdg_alignment_pct": 17.98028571428571
+      }
+    },
+    {
+      "label": "40.00--49.99",
+      "n": 26,
+      "mean": 45.224230769230765,
+      "median": 45.21,
+      "min": 40.57,
+      "max": 49.96,
+      "sd": 2.859284068541527,
+      "components": {
+        "completeness_pct": 45.85499999999999,
+        "specificity_pct": 26.052307692307686,
+        "clarity_pct": 89.79192307692307,
+        "sdg_alignment_pct": 11.083846153846151
+      }
+    },
+    {
+      "label": "Below 40.00",
+      "n": 22,
+      "mean": 34.052727272727275,
+      "median": 33.4,
+      "min": 29.83,
+      "max": 39.8,
+      "sd": 2.845978251461561,
+      "components": {
+        "completeness_pct": 31.328181818181825,
+        "specificity_pct": 14.296363636363635,
+        "clarity_pct": 84.02363636363637,
+        "sdg_alignment_pct": 4.277272727272727
+      }
+    }
+  ],
+  "financial_total": {
+    "n": 94,
+    "mean": 48.17382978723406,
+    "median": 49.79,
+    "min": 29.83,
+    "max": 67.56,
+    "sd": 9.883379891425957,
+    "components": {
+      "completeness_pct": 49.77042553191487,
+      "specificity_pct": 28.346170212765962,
+      "clarity_pct": 90.67478723404254,
+      "sdg_alignment_pct": 16.268404255319147
+    }
+  },
+  "individual_eligible_sectors": 47,
+  "pooled_small_sectors": 25,
+  "pooled_small_companies": {
+    "n": 55,
+    "mean": 44.084545454545456,
+    "median": 42.42,
+    "min": 27.56,
+    "max": 70.97,
+    "sd": 8.945627075339312,
+    "components": {
+      "completeness_pct": 39.07472727272727,
+      "specificity_pct": 28.276909090909097,
+      "clarity_pct": 89.27000000000001,
+      "sdg_alignment_pct": 21.174545454545452
+    }
+  },
+  "all_companies": {
+    "n": 1164,
+    "mean": 48.726254295532684,
+    "median": 47.25,
+    "min": 26.88,
+    "max": 75.58,
+    "sd": 9.982664461002042,
+    "components": {
+      "completeness_pct": 45.65466494845364,
+      "specificity_pct": 33.19457903780075,
+      "clarity_pct": 90.56570446735402,
+      "sdg_alignment_pct": 23.92621993127112
+    }
+  },
+  "paired_year_companies": [
+    {
+      "name": "Praj Industries Ltd.",
+      "cin": "L27101PN1985PLC038031",
+      "first": 38.55,
+      "last": 50.3,
+      "change": 11.75,
+      "driver": {
+        "key": "completeness_pct",
+        "raw": 24.779999999999998,
+        "weighted": 9.911999999999999
+      }
+    },
+    {
+      "name": "ESAF Small Finance Bank Ltd.",
+      "cin": "L65990KL2016PLC045669",
+      "first": 42.59,
+      "last": 54.1,
+      "change": 11.509999999999998,
+      "driver": {
+        "key": "completeness_pct",
+        "raw": 20.25,
+        "weighted": 8.1
+      }
+    },
+    {
+      "name": "Sudarshan Colorants India Limited",
+      "cin": "L24110MH1956PLC010806",
+      "first": 49.74,
+      "last": 58.78,
+      "change": 9.04,
+      "driver": {
+        "key": "specificity_pct",
+        "raw": 23.33,
+        "weighted": 6.999
+      }
+    },
+    {
+      "name": "GOPAL SNACKS LIMITED",
+      "cin": "L15400GJ2009PLC058781",
+      "first": 41.3,
+      "last": 47.29,
+      "change": 5.990000000000002,
+      "driver": {
+        "key": "specificity_pct",
+        "raw": 28.42,
+        "weighted": 8.526
+      }
+    },
+    {
+      "name": "G R Infraprojects Limited (GRIL)",
+      "cin": "L45201GJ1995PLC098652",
+      "first": 35.94,
+      "last": 38.87,
+      "change": 2.9299999999999997,
+      "driver": {
+        "key": "specificity_pct",
+        "raw": 10.219999999999999,
+        "weighted": 3.0659999999999994
+      }
+    },
+    {
+      "name": "Sudarshan Chemical Industries Limited (\"Sudarshan/the Company\")",
+      "cin": "L24119PN1951PLC008409",
+      "first": 62.95,
+      "last": 65.32,
+      "change": 2.3699999999999903,
+      "driver": {
+        "key": "sdg_alignment_pct",
+        "raw": 23.529999999999998,
+        "weighted": 2.3529999999999998
+      }
+    },
+    {
+      "name": "V.I.P INDUSTRIES LIMITED",
+      "cin": "L25200MH1968PLC013914",
+      "first": 45.91,
+      "last": 45.56,
+      "change": -0.3499999999999943,
+      "driver": {
+        "key": "clarity_pct",
+        "raw": -11.820000000000007,
+        "weighted": -2.3640000000000017
+      }
+    },
+    {
+      "name": "SML MAHINDRA LIMITED",
+      "cin": "L50101PB1983PLC005516",
+      "first": 44.38,
+      "last": 42.98,
+      "change": -1.4000000000000057,
+      "driver": {
+        "key": "clarity_pct",
+        "raw": -5.840000000000003,
+        "weighted": -1.1680000000000008
+      }
+    }
+  ],
+  "paired_mean_first": 45.17,
+  "paired_mean_last": 50.4,
+  "paired_mean_change": 5.229999999999999,
+  "pharmaceutical_examples": [
+    {
+      "name": "Dabur India Limited",
+      "cin": "L24230DL1975PLC007908",
+      "score": 73.72
+    },
+    {
+      "name": "Lupin Limited",
+      "cin": "L24100MH1983PLC029442",
+      "score": 69.63
+    },
+    {
+      "name": "Dr. Reddy's Laboratories Limited",
+      "cin": "L85195TG1984PLC004507",
+      "score": 67.76
+    },
+    {
+      "name": "Ipca Laboratories Limited",
+      "cin": "L24239MH1949PLC007837",
+      "score": 66.26
+    },
+    {
+      "name": "Syncom Formulations (India) Limited",
+      "cin": "L24239MH1988PLC047759",
+      "score": 35.67
+    },
+    {
+      "name": "Jagsonpal Pharmaceuticals Limited",
+      "cin": "L74899DL1978PLC009181",
+      "score": 33.27
+    },
+    {
+      "name": "Kopran Limited",
+      "cin": "L24230MH1958PLC011078",
+      "score": 32.38
+    }
+  ],
+  "table_layout_bounds": {
+    "status": "PASS",
+    "check_file": "paper/revision/single_page_table_check.tex",
+    "compiler": "Codex built-in LaTeX compiler",
+    "conditions": "Each caption+table box must fit textheight and textwidth under the manuscript preamble."
+  },
+  "new_training": false,
+  "new_model_inference": false,
+  "terminal_commands_executed": false
+}

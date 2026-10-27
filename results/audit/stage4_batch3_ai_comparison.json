@@ -1,0 +1,61 @@
+{
+  "freeze_id": "stage4-rule-detector-2026-10-18",
+  "freeze_source_sha256": {
+    "src\\analysis\\vagueness\\vagueness_combined.py": "f03db049d3332f34e2d0c43ff182e59fe8ccebc6cb9b302c435ec6e413bb12a4",
+    "src\\analysis\\vagueness\\vagueness_lexicon.py": "169d7d6e596bd00eac8cb2f1c4ff6b175e74b30f0e66fdb2d0ff7833ae630ba3",
+    "src\\analysis\\vagueness\\vagueness_semantic.py": "cef54a6864071d960803e25bb4755256e056ed5b8b17aac3294f7478fb0cc2c1"
+  },
+  "dataset": "data\\labeling_sheets\\stage4_batch3_ai_annotations.csv",
+  "n": 70,
+  "label_source": "AI-generated text-only annotations; not human raters or adjudicated ground truth",
+  "evaluation_role": "exploratory AI-label comparison only; not held-out human evaluation",
+  "cohen_kappa": null,
+  "accuracy": 0.7285714285714285,
+  "precision": 0.6,
+  "recall": 0.8076923076923077,
+  "f1": 0.6885245901639344,
+  "auc_roc_binary_predictions": 0.7447552447552448,
+  "auc_interpretation": "hard 0/1 prediction AUC equals balanced accuracy; not continuous-score ROC AUC",
+  "confusion_matrix_labels_0_1": [
+    [
+      30,
+      14
+    ],
+    [
+      5,
+      21
+    ]
+  ],
+  "classification_report": {
+    "not_vague": {
+      "precision": 0.8571428571428571,
+      "recall": 0.6818181818181818,
+      "f1-score": 0.759493670886076,
+      "support": 44.0
+    },
+    "vague": {
+      "precision": 0.6,
+      "recall": 0.8076923076923077,
+      "f1-score": 0.6885245901639344,
+      "support": 26.0
+    },
+    "accuracy": 0.7285714285714285,
+    "macro avg": {
+      "precision": 0.7285714285714285,
+      "recall": 0.7447552447552448,
+      "f1-score": 0.7240091305250052,
+      "support": 70.0
+    },
+    "weighted avg": {
+      "precision": 0.7616326530612245,
+      "recall": 0.7285714285714285,
+      "f1-score": 0.733133726617852,
+      "support": 70.0
+    }
+  },
+  "limitations": [
+    "AI labels are not human labels and do not establish human inter-rater reliability.",
+    "Do not report these metrics as human-held-out or gold-standard performance.",
+    "The evaluated system is the text-vagueness subdetector, not the complete four-signal auditor."
+  ]
+}

@@ -1,0 +1,575 @@
+{
+  "evaluation": "Stage 5 supervised transfer vs zero-shot MPNet hybrid, with recovered Stage 3 seed-99 model",
+  "fresh_test": false,
+  "test_dataset": "data\\training_company_split\\test.csv",
+  "test_sha256": "079305b42510bed095c9bd937380a483951a76fbca42fb4ac10b55b4d829391d",
+  "n_segments": 6201,
+  "n_company_clusters_cin": 175,
+  "stage3_company_disjoint_assertions": true,
+  "supervised_model": "data\\models\\brsr_company_split_classifier\\seed_99\\recovered_checkpoint_7460",
+  "supervised_model_selection": "seed 99, selected on Stage 3 validation macro-F1; selected checkpoint-7460 recovered with strict LayerNorm key remapping",
+  "comparison_framing": "supervised transfer vs zero-shot embedding on identical company-disjoint test segments; not an isolated alignment-scoring gain",
+  "bootstrap": {
+    "method": "CIN cluster bootstrap, paired between methods",
+    "replicates": 2000,
+    "seed": 4206,
+    "ci_level": 0.95
+  },
+  "metrics": {
+    "zero_shot": {
+      "top1_correct": 4194,
+      "top1_accuracy": 0.6763425253991292,
+      "top1_cin_cluster_bootstrap_ci95": [
+        0.6645060022241471,
+        0.6893022121774881
+      ],
+      "top2_correct": 5168,
+      "top2_accuracy": 0.8334139654894371,
+      "top2_cin_cluster_bootstrap_ci95": [
+        0.8230682558795467,
+        0.8438053024079636
+      ],
+      "macro_f1_top1": 0.6405388392551368,
+      "macro_f1_cin_cluster_bootstrap_ci95": [
+        0.6247560655127622,
+        0.6566695347004462
+      ],
+      "confusion_matrix": [
+        [
+          533,
+          50,
+          8,
+          47,
+          0,
+          74,
+          25,
+          26,
+          10
+        ],
+        [
+          7,
+          448,
+          2,
+          12,
+          1,
+          193,
+          3,
+          4,
+          138
+        ],
+        [
+          180,
+          58,
+          1220,
+          167,
+          28,
+          6,
+          4,
+          5,
+          47
+        ],
+        [
+          10,
+          8,
+          1,
+          426,
+          2,
+          5,
+          1,
+          12,
+          4
+        ],
+        [
+          32,
+          4,
+          99,
+          14,
+          288,
+          1,
+          2,
+          4,
+          5
+        ],
+        [
+          79,
+          149,
+          0,
+          4,
+          1,
+          579,
+          4,
+          3,
+          4
+        ],
+        [
+          14,
+          4,
+          2,
+          3,
+          0,
+          1,
+          39,
+          2,
+          4
+        ],
+        [
+          10,
+          22,
+          6,
+          146,
+          2,
+          3,
+          3,
+          170,
+          6
+        ],
+        [
+          32,
+          86,
+          6,
+          75,
+          2,
+          7,
+          10,
+          18,
+          491
+        ]
+      ],
+      "classification_report": {
+        "0": {
+          "precision": 0.5942028985507246,
+          "recall": 0.6895213454075032,
+          "f1-score": 0.6383233532934132,
+          "support": 773.0
+        },
+        "1": {
+          "precision": 0.5404101326899879,
+          "recall": 0.5544554455445545,
+          "f1-score": 0.5473427000610873,
+          "support": 808.0
+        },
+        "2": {
+          "precision": 0.9077380952380952,
+          "recall": 0.7113702623906706,
+          "f1-score": 0.7976462896371364,
+          "support": 1715.0
+        },
+        "3": {
+          "precision": 0.47651006711409394,
+          "recall": 0.908315565031983,
+          "f1-score": 0.6250917094644167,
+          "support": 469.0
+        },
+        "4": {
+          "precision": 0.8888888888888888,
+          "recall": 0.6414253897550112,
+          "f1-score": 0.7451487710219923,
+          "support": 449.0
+        },
+        "5": {
+          "precision": 0.666283084004603,
+          "recall": 0.7035236938031592,
+          "f1-score": 0.6843971631205674,
+          "support": 823.0
+        },
+        "6": {
+          "precision": 0.42857142857142855,
+          "recall": 0.5652173913043478,
+          "f1-score": 0.4875,
+          "support": 69.0
+        },
+        "7": {
+          "precision": 0.6967213114754098,
+          "recall": 0.46195652173913043,
+          "f1-score": 0.5555555555555556,
+          "support": 368.0
+        },
+        "8": {
+          "precision": 0.692524682651622,
+          "recall": 0.6753782668500687,
+          "f1-score": 0.6838440111420613,
+          "support": 727.0
+        },
+        "accuracy": 0.6763425253991292,
+        "macro avg": {
+          "precision": 0.6546500654649838,
+          "recall": 0.6567959868696032,
+          "f1-score": 0.6405388392551368,
+          "support": 6201.0
+        },
+        "weighted avg": {
+          "precision": 0.7116782272749672,
+          "recall": 0.6763425253991292,
+          "f1-score": 0.6821279561673105,
+          "support": 6201.0
+        }
+      },
+      "per_principle": {
+        "P1": {
+          "n": 773,
+          "top1_correct": 533,
+          "top1_accuracy": 0.6895213454075032,
+          "top2_accuracy": 0.741267787839586
+        },
+        "P2": {
+          "n": 808,
+          "top1_correct": 448,
+          "top1_accuracy": 0.5544554455445545,
+          "top2_accuracy": 0.8849009900990099
+        },
+        "P3": {
+          "n": 1715,
+          "top1_correct": 1220,
+          "top1_accuracy": 0.7113702623906706,
+          "top2_accuracy": 0.8664723032069971
+        },
+        "P4": {
+          "n": 469,
+          "top1_correct": 426,
+          "top1_accuracy": 0.908315565031983,
+          "top2_accuracy": 0.9424307036247335
+        },
+        "P5": {
+          "n": 449,
+          "top1_correct": 288,
+          "top1_accuracy": 0.6414253897550112,
+          "top2_accuracy": 0.7750556792873051
+        },
+        "P6": {
+          "n": 823,
+          "top1_correct": 579,
+          "top1_accuracy": 0.7035236938031592,
+          "top2_accuracy": 0.8699878493317132
+        },
+        "P7": {
+          "n": 69,
+          "top1_correct": 39,
+          "top1_accuracy": 0.5652173913043478,
+          "top2_accuracy": 0.7246376811594203
+        },
+        "P8": {
+          "n": 368,
+          "top1_correct": 170,
+          "top1_accuracy": 0.46195652173913043,
+          "top2_accuracy": 0.6358695652173914
+        },
+        "P9": {
+          "n": 727,
+          "top1_correct": 491,
+          "top1_accuracy": 0.6753782668500687,
+          "top2_accuracy": 0.8308115543328748
+        }
+      }
+    },
+    "supervised_transfer": {
+      "top1_correct": 5767,
+      "top1_accuracy": 0.9300112885018545,
+      "top1_cin_cluster_bootstrap_ci95": [
+        0.9203984326924053,
+        0.9388509085476517
+      ],
+      "top2_correct": 6057,
+      "top2_accuracy": 0.97677793904209,
+      "top2_cin_cluster_bootstrap_ci95": [
+        0.9709819114547733,
+        0.9820853007986767
+      ],
+      "macro_f1_top1": 0.9158240810346214,
+      "macro_f1_cin_cluster_bootstrap_ci95": [
+        0.9035670003570093,
+        0.9276792523619579
+      ],
+      "confusion_matrix": [
+        [
+          729,
+          4,
+          3,
+          5,
+          1,
+          13,
+          5,
+          4,
+          9
+        ],
+        [
+          3,
+          714,
+          5,
+          1,
+          2,
+          59,
+          1,
+          1,
+          22
+        ],
+        [
+          4,
+          0,
+          1654,
+          3,
+          33,
+          2,
+          1,
+          13,
+          5
+        ],
+        [
+          3,
+          2,
+          4,
+          445,
+          0,
+          2,
+          1,
+          9,
+          3
+        ],
+        [
+          6,
+          0,
+          48,
+          1,
+          382,
+          3,
+          2,
+          3,
+          4
+        ],
+        [
+          3,
+          34,
+          9,
+          1,
+          2,
+          770,
+          0,
+          2,
+          2
+        ],
+        [
+          3,
+          0,
+          1,
+          0,
+          0,
+          1,
+          59,
+          2,
+          3
+        ],
+        [
+          5,
+          4,
+          2,
+          4,
+          3,
+          5,
+          0,
+          339,
+          6
+        ],
+        [
+          4,
+          22,
+          9,
+          3,
+          1,
+          6,
+          0,
+          7,
+          675
+        ]
+      ],
+      "classification_report": {
+        "0": {
+          "precision": 0.9592105263157895,
+          "recall": 0.943078913324709,
+          "f1-score": 0.9510763209393346,
+          "support": 773.0
+        },
+        "1": {
+          "precision": 0.9153846153846154,
+          "recall": 0.8836633663366337,
+          "f1-score": 0.8992443324937027,
+          "support": 808.0
+        },
+        "2": {
+          "precision": 0.9533141210374639,
+          "recall": 0.9644314868804664,
+          "f1-score": 0.9588405797101449,
+          "support": 1715.0
+        },
+        "3": {
+          "precision": 0.9611231101511879,
+          "recall": 0.9488272921108742,
+          "f1-score": 0.9549356223175965,
+          "support": 469.0
+        },
+        "4": {
+          "precision": 0.9009433962264151,
+          "recall": 0.8507795100222717,
+          "f1-score": 0.8751431844215349,
+          "support": 449.0
+        },
+        "5": {
+          "precision": 0.8943089430894309,
+          "recall": 0.9356014580801945,
+          "f1-score": 0.9144893111638955,
+          "support": 823.0
+        },
+        "6": {
+          "precision": 0.855072463768116,
+          "recall": 0.855072463768116,
+          "f1-score": 0.855072463768116,
+          "support": 69.0
+        },
+        "7": {
+          "precision": 0.8921052631578947,
+          "recall": 0.9211956521739131,
+          "f1-score": 0.9064171122994652,
+          "support": 368.0
+        },
+        "8": {
+          "precision": 0.9259259259259259,
+          "recall": 0.9284731774415406,
+          "f1-score": 0.9271978021978022,
+          "support": 727.0
+        },
+        "accuracy": 0.9300112885018545,
+        "macro avg": {
+          "precision": 0.9174875961174265,
+          "recall": 0.914569257793191,
+          "f1-score": 0.9158240810346214,
+          "support": 6201.0
+        },
+        "weighted avg": {
+          "precision": 0.9301376701131346,
+          "recall": 0.9300112885018545,
+          "f1-score": 0.9298897129862973,
+          "support": 6201.0
+        }
+      },
+      "per_principle": {
+        "P1": {
+          "n": 773,
+          "top1_correct": 729,
+          "top1_accuracy": 0.943078913324709,
+          "top2_accuracy": 0.9767141009055628
+        },
+        "P2": {
+          "n": 808,
+          "top1_correct": 714,
+          "top1_accuracy": 0.8836633663366337,
+          "top2_accuracy": 0.9715346534653465
+        },
+        "P3": {
+          "n": 1715,
+          "top1_correct": 1654,
+          "top1_accuracy": 0.9644314868804664,
+          "top2_accuracy": 0.99067055393586
+        },
+        "P4": {
+          "n": 469,
+          "top1_correct": 445,
+          "top1_accuracy": 0.9488272921108742,
+          "top2_accuracy": 0.9637526652452025
+        },
+        "P5": {
+          "n": 449,
+          "top1_correct": 382,
+          "top1_accuracy": 0.8507795100222717,
+          "top2_accuracy": 0.9665924276169265
+        },
+        "P6": {
+          "n": 823,
+          "top1_correct": 770,
+          "top1_accuracy": 0.9356014580801945,
+          "top2_accuracy": 0.9842041312272175
+        },
+        "P7": {
+          "n": 69,
+          "top1_correct": 59,
+          "top1_accuracy": 0.855072463768116,
+          "top2_accuracy": 0.8695652173913043
+        },
+        "P8": {
+          "n": 368,
+          "top1_correct": 339,
+          "top1_accuracy": 0.9211956521739131,
+          "top2_accuracy": 0.9538043478260869
+        },
+        "P9": {
+          "n": 727,
+          "top1_correct": 675,
+          "top1_accuracy": 0.9284731774415406,
+          "top2_accuracy": 0.9779917469050894
+        }
+      }
+    },
+    "paired_delta_supervised_minus_zero_shot": {
+      "top1": 0.25366876310272535,
+      "top1_ci95": [
+        0.24021529418385157,
+        0.2670555368926639
+      ],
+      "top2": 0.14336397355265285,
+      "top2_ci95": [
+        0.13344839312207066,
+        0.1541608221198864
+      ]
+    }
+  },
+  "per_principle_top1": {
+    "P1": {
+      "support": 773,
+      "zero_shot_top1_accuracy": 0.6895213454075032,
+      "supervised_top1_accuracy": 0.943078913324709
+    },
+    "P2": {
+      "support": 808,
+      "zero_shot_top1_accuracy": 0.5544554455445545,
+      "supervised_top1_accuracy": 0.8836633663366337
+    },
+    "P3": {
+      "support": 1715,
+      "zero_shot_top1_accuracy": 0.7113702623906706,
+      "supervised_top1_accuracy": 0.9644314868804664
+    },
+    "P4": {
+      "support": 469,
+      "zero_shot_top1_accuracy": 0.908315565031983,
+      "supervised_top1_accuracy": 0.9488272921108742
+    },
+    "P5": {
+      "support": 449,
+      "zero_shot_top1_accuracy": 0.6414253897550112,
+      "supervised_top1_accuracy": 0.8507795100222717
+    },
+    "P6": {
+      "support": 823,
+      "zero_shot_top1_accuracy": 0.7035236938031592,
+      "supervised_top1_accuracy": 0.9356014580801945
+    },
+    "P7": {
+      "support": 69,
+      "zero_shot_top1_accuracy": 0.5652173913043478,
+      "supervised_top1_accuracy": 0.855072463768116
+    },
+    "P8": {
+      "support": 368,
+      "zero_shot_top1_accuracy": 0.46195652173913043,
+      "supervised_top1_accuracy": 0.9211956521739131
+    },
+    "P9": {
+      "support": 727,
+      "zero_shot_top1_accuracy": 0.6753782668500687,
+      "supervised_top1_accuracy": 0.9284731774415406
+    }
+  },
+  "limitations": [
+    "This reuses the previously evaluated company-disjoint test set; it is a checkpoint-correctness re-evaluation, not a fresh test.",
+    "Stage 3 labels are taxonomy-derived weak labels, including AI-assisted mappings, not independent human ground truth.",
+    "The comparison is supervised transfer vs zero-shot embedding, not an isolated causal effect of domain adaptation or alignment scoring.",
+    "Top-k principle classification does not by itself establish regulatory compliance."
+  ]
+}

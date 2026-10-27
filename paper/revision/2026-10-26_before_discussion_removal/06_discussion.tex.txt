@@ -1,0 +1,28 @@
+\section{Discussion and Practical Use}
+\label{sec:discussion}
+
+\subsection{How the outputs work together}
+
+GRASP connects three levels of analysis. Passage-level outputs identify likely principles and language flags. Filing-level outputs organise reported figures and calculate the four score components. Company and sector views then place those outputs within a broader reporting context. This structure lets an analyst move from a summary score to the underlying passage or filed item.
+
+The classifier, language detector, and Transparency Score serve different purposes. The classifier ranks regulatory principles against filing-derived labels. The language detector selects passages for wording review. The score combines reported-item coverage, evidence markers, language flags, and mapped SDG breadth. The evaluation in Section~\ref{sec:evaluation} reports the data group and reference source for each output.
+
+\subsection{Reading the evaluation results}
+
+Source-wise results show how the classifier responds to explicitly tagged passages, concept-mapped passages, and principle notes. Tests on excluded concepts add a second view by changing which reporting questions appear in labelled training. Together, these comparisons describe model behaviour beyond the overall agreement value.
+
+The company-separated split defines the labelled training and test groups. The checkpoint checks establish which saved parameters produced the reported results. Bootstrap intervals describe variation under company resampling, and paired comparisons evaluate both methods on the same selected companies. These recorded conditions make the comparisons clear and repeatable \cite{kapoor2023}. The principle-mapping result reuses the classifier evaluation, while the API check records successful model loading for one company.
+
+\subsection{Reading company and sector scores}
+
+The component breakdown explains how each company reaches the combined score. Completeness describes accepted responses across the fixed concept list. Specificity records evidence-marker presence. Clarity records passages without a vagueness flag, and SDG breadth counts goals linked through the configured principle map. Showing all four components lets an analyst identify the part of the disclosure that drives a score difference.
+
+Sector comparisons use the saved industry groups and latest available filings. Year-wise comparisons use the eight companies with paired reports. These views describe the available company records under the same scoring rules. Detailed filing context, component values, and year labels support direct inspection of each comparison.
+
+\subsection{Use by analysts}
+
+An analyst can begin with a company or sector summary, select a component, inspect the source passage, and check the reported measure, period, and unit. Every flag retains the rule and source behind the decision. The service therefore supports a complete path from review priority to supporting material.
+
+The four reporting levels also support different review tasks. A worked company example explains the calculation. Comparisons within a sector reveal different component patterns. The full financial group shows the score distribution, and the all-sector summary supports wider comparison. The numerical and assurance branches supply records for context review, while the reported evaluation identifies the specific component measured by each metric.
+
+\FloatBarrier

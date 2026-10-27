@@ -5,8 +5,8 @@ Outputs: results/audit/label_provenance.md  (human-readable report)
          data/quarantine/*                  (synthetic files moved here)
          results/audit/task0_log.txt        (console log)
 
-Rules (from global audit spec):
-  - Never create / infer / simulate labels.
+Rules (updated for Stage 2 weak supervision):
+  - Preserve label provenance; never present AI-generated concept mappings as human gold.
   - Any file that assigns human_score or class label via formula / heuristic
     is quarantined and removed from active pipelines.
   - Report exactly what was checked; do not claim "100% verified".
@@ -89,17 +89,19 @@ exclusive sources:
      Maps directly to label 0-8.
      Script: scripts/03_bert_training/build_training_dataset.py, line 228-231.
 
-  2. Section C (section_c): Concept name unambiguously encodes the principle.
-     Rule: fact.concept in SECTION_C_CONCEPT_TO_LABEL dict (44 entries).
-     Mapping verified against SEBI BRSR Annexure I, Circular SEBI/HO/CFD/CMD-2/P/CIR/2021/562.
-     Script: build_training_dataset.py, line 112-173 (SECTION_C_CONCEPT_TO_LABEL dict).
+  2. Section C (section_c): Concept name maps to a principle.
+     Rule: fact.concept in SECTION_C_CONCEPT_TO_LABEL.
+     This includes the original curated map and a documented AI-generated
+     weak-label extension. Neither portion has independent expert verification.
+     See results/audit/stage2_ai_mapping_provenance.md.
 
   3. NotesPrincipleX (notes_principle): Concept is NotesPrinciple{N}ExplanatoryTextBlock.
      Rule: principle index N is encoded in concept name itself.
      Script: build_training_dataset.py, line 177-179.
 
 Deduplication: (company_id, concept, clean_text) key; contradictory labels dropped.
-No synthetic fill, no LLM-generated label, no human manual annotation.
+Section C labels are concept-derived weak labels, including AI-generated
+taxonomy assignments; they are not human annotations or verified ground truth.
 
 NOISE FILTERING: URL stripping, MIN_WORD_COUNT=15, boilerplate phrase removal.
 Cross-source dedup: text appearing in both Section B and C with same label → kept once;
@@ -107,10 +109,11 @@ contradictory-label across sources → dropped.
 
 WHAT IS NOT VERIFIED:
   - Whether the XBRL filings themselves are accurate (companies self-report).
-  - The 44-concept SECTION_C mapping was reviewed by the project team but not
-    independently validated by a second expert against the SEBI circular.
-  - Section C concept-name mapping: a 200-row stratified sample is being
-    prepared for human spot-check (see BLOCKED items below).
+  - The Section C concept-to-principle mapping has not been independently
+    reviewed by a domain expert. AI-generated weak-label decisions and
+    exclusions are documented in results/audit/stage2_ai_mapping_provenance.md.
+  - The optional concept review sheet is not evidence of human validation
+    until a reviewer completes it.
 """
 
 
@@ -349,19 +352,18 @@ def main():
     log("    Need: 30+ additional companies rated INDEPENDENTLY (rater sees only disclosure text,")
     log("          never the AI score). See data/labeling_sheets/stage6_new_ratings.csv.")
     log()
-    log("  BLOCKED-4 (Stage 3 Section C): 200-row spot-check sample")
-    log("    Need: Human expert to verify whether SECTION_C_CONCEPT_TO_LABEL mapping (44 concepts)")
-    log("          assigns the correct principle to each text. Random 200 rows stratified by principle.")
-    log("    File: data/labeling_sheets/stage3_section_c_spot_check.csv")
+    log("  OPTIONAL (Stage 3 Section C): concept-level independent review")
+    log("    AI-generated mapping decisions are not expert-validated.")
+    log("    File: data/labeling_sheets/stage2_concept_review/rater_sheet.csv")
     log()
 
     # 9. Claims we can/cannot make
     log("## SECTION 9 — CLAIMS TABLE")
     log()
     log("  CAN CLAIM:")
-    log("    - 38,966 labeled training segments; labels derived from BRSR XBRL taxonomy.")
+    log("    - Current training labels derive from BRSR XBRL taxonomy plus documented AI-generated concept weak labels.")
     log("    - Label sources: Section B PrincipleAxis dimension (verified SEBI taxonomy rule),")
-    log("      Section C concept-name mapping (44 concepts; team-reviewed, not expert-validated),")
+    log("      Section C concept-name mapping (curated plus AI-generated; not expert-validated),")
     log("      NotesPrincipleX (principle index baked into concept name).")
     log("    - N=20 real human-rated companies for Stage 6 (human_score_validation.csv).")
     log("    - Stage 4 dev set: 80 segments (batch 1+2) with human labels.")
@@ -372,13 +374,13 @@ def main():
     log("    - Any number from n50 (LTI calibration) — synthetic labels, quarantined.")
     log("    - F1=0.923 as a held-out test result for Stage 4 — it is a dev-set number.")
     log("    - That anchoring bias is absent in Stage 6 human ratings — unverifiable.")
-    log("    - That Section C 44-concept mapping is error-free — needs spot-check.")
+    log("    - That Section C concept mapping is error-free — AI decisions are not expert-validated.")
     log("    - Company-level out-of-sample accuracy for Stage 3 — retrain pending (TASK 2).")
     log()
     log("  PENDING (blocked on human input):")
     log("    - Stage 4 held-out F1 (Batch 3, 70 segments).")
     log("    - Stage 6 N=50+ real human ratings for tighter CI.")
-    log("    - Stage 3 Section C 200-row spot-check.")
+    log("    - Optional independent review of AI-generated Stage 3 Section C concept mappings.")
     log()
 
     # Save log
@@ -427,31 +429,9 @@ def _write_labeling_sheets():
     except Exception as e:
         print(f"  Could not build stage6 rating sheet: {e}")
 
-    # Stage 3 Section C spot check
-    try:
-        all_data = pd.concat([
-            pd.read_csv(BASE / "data/training/train.csv"),
-            pd.read_csv(BASE / "data/training/val.csv"),
-            pd.read_csv(BASE / "data/training/test.csv"),
-        ])
-        sec_c = all_data[all_data["source"] == "section_c"].copy()
-        import random
-        rng = random.Random(42)
-        by_principle = {}
-        for p in sec_c["principle_id"].unique():
-            sub = sec_c[sec_c["principle_id"] == p]
-            k = min(23, len(sub))  # ~200 total / 9 principles ≈ 22-23 each
-            by_principle[p] = sub.sample(k, random_state=42)
-        spot = pd.concat(list(by_principle.values())).sample(frac=1, random_state=42)
-        spot_clean = spot[["principle_id", "text"]].copy()
-        spot_clean["system_label"] = spot["label"].values
-        spot_clean["human_label"] = ""
-        spot_clean["notes"] = ""
-        out3 = sheets_dir / "stage3_section_c_spot_check.csv"
-        spot_clean.to_csv(out3, index=False)
-        print(f"Written: {out3}  ({len(spot_clean)} rows — spot check of Section C concept mapping)")
-    except Exception as e:
-        print(f"  Could not build stage3 spot-check sheet: {e}")
+    # Stage 3 weak-label decisions are documented separately. Do not generate
+    # or imply human-review artifacts as part of this provenance inventory.
+    print("Stage 3 AI mapping provenance: results/audit/stage2_ai_mapping_provenance.md")
 
 
 def _write_markdown(rows, hits):

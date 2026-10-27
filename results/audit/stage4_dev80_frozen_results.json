@@ -1,0 +1,58 @@
+{
+  "freeze_id": "stage4-rule-detector-2026-10-18",
+  "freeze_source_sha256": {
+    "src\\analysis\\vagueness\\vagueness_combined.py": "f03db049d3332f34e2d0c43ff182e59fe8ccebc6cb9b302c435ec6e413bb12a4",
+    "src\\analysis\\vagueness\\vagueness_lexicon.py": "169d7d6e596bd00eac8cb2f1c4ff6b175e74b30f0e66fdb2d0ff7833ae630ba3",
+    "src\\analysis\\vagueness\\vagueness_semantic.py": "cef54a6864071d960803e25bb4755256e056ed5b8b17aac3294f7478fb0cc2c1"
+  },
+  "n": 80,
+  "n_by_batch": {
+    "1": 30,
+    "2": 50
+  },
+  "label_blinding": "unconfirmed; source CSVs contain model_flagged and flag_source",
+  "evaluation_role": "development only; batches 1+2 informed engine development",
+  "accuracy": 0.75,
+  "precision": 0.7073170731707317,
+  "recall": 0.7837837837837838,
+  "f1": 0.7435897435897436,
+  "auc_roc_binary_predictions": 0.7523570081709616,
+  "auc_interpretation": "computed from hard 0/1 decisions; equals balanced accuracy and is not a continuous-score ROC AUC",
+  "confusion_matrix_labels_0_1": [
+    [
+      31,
+      12
+    ],
+    [
+      8,
+      29
+    ]
+  ],
+  "classification_report": {
+    "not_vague": {
+      "precision": 0.7948717948717948,
+      "recall": 0.7209302325581395,
+      "f1-score": 0.7560975609756098,
+      "support": 43.0
+    },
+    "vague": {
+      "precision": 0.7073170731707317,
+      "recall": 0.7837837837837838,
+      "f1-score": 0.7435897435897436,
+      "support": 37.0
+    },
+    "accuracy": 0.75,
+    "macro avg": {
+      "precision": 0.7510944340212633,
+      "recall": 0.7523570081709616,
+      "f1-score": 0.7498436522826767,
+      "support": 80.0
+    },
+    "weighted avg": {
+      "precision": 0.754377736085053,
+      "recall": 0.75,
+      "f1-score": 0.7503126954346466,
+      "support": 80.0
+    }
+  }
+}

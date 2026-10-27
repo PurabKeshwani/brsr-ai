@@ -1,0 +1,199 @@
+\section{Results Across Four Reporting Levels}
+\label{sec:results}
+
+The preceding section evaluates analytical components. The following results instead show how saved outputs support review at four levels: one company, selected companies within one sector, the complete financial-sector group, and the full sector collection. This progression keeps a company-specific output separate from a validated model metric. All company scores below come from the saved score exports; no classifier retraining or new detector inference was performed for the manuscript revision.
+
+The inspected database contains 1,164 company records and 1,172 filing records. The score export contains one row for each of 1,164 unique CINs, using the most recent available filing selected by the scoring script. These record counts describe the available snapshot and do not establish collection completeness against a national source index. The historical report of 1,164 out of 1,276 companies, or 91.2\%, is retained only as acquisition history, with no current audited source-coverage claim.
+
+\subsection{One company: from filed facts to an interpretable outcome}
+\label{sec:case}
+
+Triveni Turbine Limited provides a worked example because the saved export includes all four score components and a sector benchmark. The corresponding database filing ends on 31 March 2026 and contains 1,862 raw facts. Table~\ref{tab:case_facts} shows three pairs of values stored with matching concept names, units, and periods. Scope 1 emissions rise, Scope 2 emissions fall, and water withdrawal falls. Different directions within one filing illustrate why a generic statement about ``environmental improvement'' cannot safely be matched to every environmental number.
+
+\begin{table}[tbp]
+\centering\small
+\caption{Stored numerical context for the Triveni Turbine example. Values are reproduced from filing record 197 without numerical correction. The pairs illustrate data traceability and do not independently verify corporate performance.}
+\label{tab:case_facts}
+\begin{tabularx}{\linewidth}{@{}Yrrl@{}}
+\toprule\textbf{Filed measure} & \textbf{FY2024--25} & \textbf{FY2025--26} & \textbf{Filed unit}\\\midrule
+Scope 1 emissions & 4,142.84 & 5,177.03 & tCO2e\\
+Scope 2 emissions & 3,353.61 & 3,169.15 & tCO2e\\
+Total water withdrawal & 88,662.28 & 85,611.54 & Kilolitres\\\bottomrule
+\end{tabularx}
+\end{table}
+
+The workflow begins by retaining those facts alongside narrative concepts and dimensions. Label construction can assign an eligible narrative to a principle using an axis tag, mapped concept, or principle note. The classifier can then rank the nine principles for an eligible passage. The language detector searches for evidence markers and vague phrasing, while numerical review routines can retrieve the comparative values shown in Table~\ref{tab:case_facts}. The saved case export does not contain a passage-level classifier prediction or a complete validated claim-verification outcome, so no new company-specific prediction is inferred from the overall model accuracy.
+
+The scoring branch is fully decomposable. The filing contains 613 concepts accepted by the Completeness rule out of the 1,057-concept snapshot universe, giving $100(613/1057)=57.99\%$ after rounding. The scoring narrative selection yields 52 concept--text pairs. The saved Specificity of 63.46\% corresponds to 33 of 52 segments containing a recognised evidence pattern. The saved Clarity of 98.08\% corresponds to one flagged segment and 51 segments without a flag. The SDG component of 70.59\% corresponds to 12 of the 17 goals under the fixed correspondence. The segment counts are consistent with the saved percentages; the counts do not establish that every detected marker is externally substantiated.
+
+\begin{table}[tbp]
+\centering\small
+\caption{Worked Transparency Score for Triveni Turbine. Percentage values enter the weighted sum directly. The final column gives score points before composite rounding.}
+\label{tab:case_score}
+\begin{tabularx}{\linewidth}{@{}Yrrr@{}}
+\toprule\textbf{Component} & \textbf{Percentage} & \textbf{Weight} & \textbf{Contribution}\\\midrule
+Completeness & 57.99 & 0.40 & 23.196\\
+Specificity & 63.46 & 0.30 & 19.038\\
+Clarity & 98.08 & 0.20 & 19.616\\
+SDG breadth & 70.59 & 0.10 & 7.059\\\midrule
+\textbf{Transparency Score} & & & \textbf{68.91}\\\bottomrule
+\end{tabularx}
+\end{table}
+
+Equation~\eqref{eq:ts} therefore gives $23.196+19.038+19.616+7.059=68.909$, rounded to 68.91. Figure~\ref{fig:company_contributions} shows contributions rather than raw percentages, making the effect of each weight visible. Within the saved Machinery and Equipment group, the sector mean is 49.46 across 36 companies and the company's percentile is 94.4. The outcome indicates a comparatively high score under this implementation. The outcome does not establish comprehensive reporting, verified SDG delivery, or absence of misleading claims.
+
+\input{figures/company_contributions}
+\FloatBarrier
+
+\subsection{Selected financial companies: component differences and available years}
+\label{sec:selected_finance}
+
+The second reporting level fixes a common peer group and compares several companies. The saved ``Financial Services (excl. Insurance)'' group contains 94 companies. Table~\ref{tab:financial_selected} shows the four highest and three lowest scores in that group. The selection rule is explicit, so the table illustrates the range rather than a representative random sample. All 94 observations appear in the next reporting level.
+
+\begin{table}[tbp]
+\centering\small
+\caption{Selected financial-sector score extremes. FY end 2026 denotes the year ending 31 March 2026; FY end 2025 denotes the year ending 31 March 2025. $C$, $Sp$, $Cl$, and $G$ are the four percentages; TS is the composite. Period labels are reconstructed from the latest filing by CIN under the export script's selection rule.}
+\label{tab:financial_selected}
+\begin{tabularx}{\linewidth}{@{}Yrrrrrr@{}}
+\toprule\textbf{Company} & \textbf{FY end} & \textbf{$C$} & \textbf{$Sp$} & \textbf{$Cl$} & \textbf{$G$} & \textbf{TS}\\\midrule
+REC & 2026 & 56.01 & 57.69 & 98.08 & 82.35 & 67.56 \\
+Mahindra \& Mahindra Financial Services & 2026 & 67.83 & 49.15 & 98.31 & 29.41 & 64.48 \\
+YES BANK & 2026 & 60.45 & 46.67 & 92.00 & 70.59 & 63.64 \\
+KOTAK MAHINDRA BANK & 2026 & 61.21 & 59.42 & 95.65 & 17.65 & 63.21 \\
+Fedbank Financial Services & 2025 & 31.98 & 12.12 & 75.76 & 0.00 & 31.58 \\
+Nalwa Sons Investments & 2025 & 31.13 & 10.26 & 74.36 & 0.00 & 30.40 \\
+Vardhman Holdings & 2025 & 35.00 & 2.78 & 75.00 & 0.00 & 29.83 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+REC Limited has a saved composite of 67.56, compared with 29.83 for Vardhman Holdings. REC's Specificity is 57.69\%, whereas Vardhman's is 2.78\%; the corresponding Completeness values are 56.01\% and 35.00\%. The contrast identifies differences in detected disclosure content under one formula. Different financial business models, period availability, sector coding, and indicator applicability can also influence the comparison. A low score is a prompt to inspect missing or weakly evidenced content, rather than an allegation about business conduct.
+
+Time comparison requires repeated filings for the same company. ESAF Small Finance Bank provides a financial-sector illustration: Completeness rises from 34.34\% to 54.59\%, Specificity from 30.23\% to 41.30\%, and Clarity from 93.02\% to 93.48\%, while SDG breadth remains 11.76\%. The composite rises from 42.59 to 54.10, a change of 11.51 points. Completeness contributes approximately 8.10 points to the change, Specificity 3.32 points, and Clarity 0.09 points. This decomposition explains the score arithmetic without treating a higher disclosure score as proof of improved sustainability performance.
+
+Table~\ref{tab:esaf} expands the time comparison to all eight companies available in the paired-year export. Six scores rise and two fall; the mean changes from 45.17 to 50.40, an increase of 5.23 points. The final column identifies the largest absolute weighted component change. Other components can offset that contribution, so the column is an arithmetic explanation rather than a causal attribution. Supplementary Table S3 retains both filings and every component for all eight companies. The paired-year file contains reporting labels and filing identifiers, but no independent period audit was completed. This available-case group does not establish a market-wide trend.
+
+\begin{table}[tbp]
+\centering\small
+\caption{Paired-year Transparency Scores for all eight available companies. The two financial-year columns give composite scores; changes and weighted contributions are score points. $C$, $Sp$, $Cl$, and $G$ denote the four components from Eq.~\eqref{eq:ts}.}
+\label{tab:esaf}
+\begin{tabularx}{\linewidth}{@{}Yrrrr@{}}
+\toprule\textbf{Company} & \textbf{FY2024--25} & \textbf{FY2025--26} & \textbf{Change} & \textbf{Largest weighted shift}\\\midrule
+Praj Industries & 38.55 & 50.30 & +11.75 & $C$: +9.91 \\
+ESAF Small Finance Bank & 42.59 & 54.10 & +11.51 & $C$: +8.10 \\
+Sudarshan Colorants & 49.74 & 58.78 & +9.04 & $Sp$: +7.00 \\
+Gopal Snacks & 41.30 & 47.29 & +5.99 & $Sp$: +8.53 \\
+G R Infraprojects & 35.94 & 38.87 & +2.93 & $Sp$: +3.07 \\
+Sudarshan Chemical & 62.95 & 65.32 & +2.37 & $G$: +2.35 \\
+VIP Industries & 45.91 & 45.56 & -0.35 & $Cl$: -2.36 \\
+SML Mahindra & 44.38 & 42.98 & -1.40 & $Cl$: -1.17 \\
+\midrule
+Cohort mean & 45.17 & 50.40 & +5.23 & \na\\\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{The complete financial-sector group}
+\label{sec:all_finance}
+
+Across all 94 saved financial-sector companies, the mean score is 48.17, the median is 49.79, and the standard deviation is 9.88. The range is 29.83--67.56, a spread of 37.73 points. Average Completeness is 49.77\%, Specificity 28.35\%, Clarity 90.67\%, and SDG breadth 16.27\%. High Clarity alongside much lower Specificity shows why an absence of vague phrases cannot substitute for concrete disclosure content.
+
+The snapshot includes 77 companies whose latest recorded filing ends in March 2026 and 17 whose latest recorded filing ends in March 2025. The score CSV omits a filing identifier, so the year linkage is reconstructed from the current database and the latest-filing rule in the export script. This reconstruction is an explicit provenance limitation. The group is a latest-available snapshot, not a balanced annual panel. Apparent high-versus-low differences therefore cannot be interpreted as year effects.
+
+\begin{table}[tbp]
+\centering\small
+\caption{All 94 financial-sector companies summarised by score band. Component columns are group means in percent; TS is the mean composite. The four disjoint bands retain every company. Supplementary Table S1 provides the complete company listing, reconstructed filing years, and sector percentiles.}
+\label{tab:all_financial}
+\begin{tabularx}{\linewidth}{@{}Yrrrrrrr@{}}
+\toprule\textbf{Score band} & \textbf{N} & \textbf{Mean TS} & \textbf{Range} & \textbf{$C$} & \textbf{$Sp$} & \textbf{$Cl$} & \textbf{$G$}\\\midrule
+60.00--69.99 & 11 & 62.39 & 60.01--67.56 & 61.17 & 47.24 & 95.25 & 47.06 \\
+50.00--59.99 & 35 & 54.77 & 50.23--59.84 & 60.69 & 32.94 & 94.07 & 17.98 \\
+40.00--49.99 & 26 & 45.22 & 40.57--49.96 & 45.85 & 26.05 & 89.79 & 11.08 \\
+Below 40.00 & 22 & 34.05 & 29.83--39.80 & 31.33 & 14.30 & 84.02 & 4.28 \\
+\midrule
+All financial companies & 94 & 48.17 & 29.83--67.56 & 49.77 & 28.35 & 90.67 & 16.27\\\bottomrule
+\end{tabularx}
+\end{table}
+
+The four bands in Table~\ref{tab:all_financial} show the distribution without a long company listing: 11 companies score at least 60, 35 score from 50 to below 60, 26 score from 40 to below 50, and 22 score below 40. Mean Specificity ranges from 14.30\% in the lowest band to 47.24\% in the highest. These are descriptive groups formed from the composite score, so component differences across the bands are not independent validation of the formula.
+
+
+The group-level outcome is a reviewable distribution with a visible score breakdown for every included company. The 94 observations do not provide an accuracy estimate because no independent 94-company human reference is available. The financial-sector mean is 0.56 points below the complete snapshot mean of 48.73; the difference is descriptive and small compared with within-sector variation.
+
+\subsection{All sectors: coverage, score distribution, and interpretation}
+\label{sec:all_sectors}
+
+The final reporting level covers the 1,164 saved company scores across 72 recorded sector groups. Scores range from 26.88 to 75.58, with mean 48.73 and median 47.25. Forty-seven groups contain at least five companies and account for 1,109 scores. The remaining 25 groups contain 55 companies. Table~\ref{tab:all_sectors} lists all 47 comparison-eligible sectors and pools the 25 smaller groups in one clearly labelled row. Supplementary Table S2 retains every individual group, including the smaller sectors.
+
+Among the 47 comparison-eligible groups, Warehousing and Transport Support has the highest saved mean, 54.55 across six companies. Wearing Apparel has the lowest mean, 42.33 across six companies, followed by Education at 42.43 across six companies. The difference between the highest and lowest means is 12.22 points. Both extreme groups are small, and no inferential sector-difference test or sector-mean confidence interval was calculated. The results therefore identify descriptive contrasts for inspection, not a verified ordering of sector sustainability quality.
+
+Larger groups help place the extremes in context. Chemicals Manufacturing includes 101 companies with mean 49.56; Financial Services includes 94 with mean 48.17; Pharmaceuticals includes 65 with mean 51.18. Variation within such groups is substantial. For example, the Pharmaceuticals range is 32.38--73.72 and the Chemicals range is 32.18--75.34. Such ranges show that a sector mean alone cannot describe every company in the group. Sector coding and the common concept denominator also limit cross-sector fairness.
+
+\begin{table}[p]
+\centering
+\begingroup
+\footnotesize
+\setlength{\tabcolsep}{5pt}
+\renewcommand{\arraystretch}{1.00}
+\caption{Sector summary on one page. All 47 sectors containing at least five companies are listed individually; 25 smaller sectors are pooled below the rule. Counts cover all 1,164 companies. SD describes company-score spread, not uncertainty in the mean. The five-company threshold controls presentation rather than statistical reliability. Supplementary Table S2 retains all 72 sectors and medians.}
+\label{tab:all_sectors}
+\begin{tabularx}{\linewidth}{@{}Yrrrr@{}}
+\toprule\textbf{Sector or reporting group} & \textbf{N} & \textbf{Mean TS} & \textbf{Range} & \textbf{SD}\\\midrule
+Chemicals Manufacturing & 101 & 49.56 & 32.18--75.34 & 9.32 \\
+Financial Services (excl. Insurance) & 94 & 48.17 & 29.83--67.56 & 9.88 \\
+Pharmaceuticals & 65 & 51.18 & 32.38--73.72 & 10.06 \\
+Basic Metals & 60 & 50.80 & 34.61--75.58 & 10.87 \\
+Electrical Equipment & 51 & 48.80 & 26.88--67.03 & 9.56 \\
+Computer Programming and Information Technology Services & 49 & 50.24 & 32.89--73.98 & 12.25 \\
+Non-Metallic Mineral Products & 40 & 50.36 & 35.66--69.20 & 8.69 \\
+Food Products Manufacturing & 38 & 47.57 & 30.04--69.86 & 9.60 \\
+Motor Vehicles & 37 & 51.76 & 33.29--70.12 & 9.98 \\
+Machinery and Equipment & 36 & 49.46 & 35.61--69.67 & 10.06 \\
+Rubber and Plastics & 36 & 49.22 & 35.44--73.87 & 9.90 \\
+Auxiliary Financial Services & 31 & 47.26 & 27.67--61.39 & 9.08 \\
+Electricity, Gas, Steam and AC Supply & 31 & 53.67 & 31.95--74.23 & 11.49 \\
+Fabricated Metal Products & 27 & 50.29 & 35.03--65.72 & 8.66 \\
+Textiles & 26 & 47.44 & 31.77--67.65 & 10.16 \\
+Wholesale Trade & 24 & 45.46 & 28.05--64.86 & 12.39 \\
+Civil Engineering & 23 & 48.31 & 31.99--66.15 & 10.84 \\
+Retail Trade & 21 & 43.06 & 34.22--56.45 & 6.12 \\
+Construction & 20 & 48.73 & 36.58--63.25 & 8.32 \\
+Insurance and Pension Funding & 20 & 51.52 & 29.92--64.17 & 10.12 \\
+Real Estate Activities & 19 & 47.90 & 35.17--63.42 & 8.78 \\
+Human Health Activities & 18 & 46.37 & 33.92--62.86 & 8.12 \\
+Information Service Activities & 18 & 47.39 & 33.97--64.19 & 9.71 \\
+Computer, Electronic and Optical Products & 17 & 47.46 & 32.93--65.45 & 7.59 \\
+Other Transport Equipment & 17 & 50.83 & 37.67--66.89 & 9.39 \\
+Other Manufacturing & 16 & 46.11 & 30.59--63.81 & 10.19 \\
+Telecommunications & 15 & 50.63 & 36.57--69.19 & 11.43 \\
+Accommodation & 14 & 48.67 & 31.28--67.57 & 10.06 \\
+Mining and Quarrying & 13 & 47.40 & 29.01--73.16 & 13.27 \\
+Beverages Manufacturing & 10 & 47.30 & 34.70--67.71 & 13.18 \\
+Other (Division 99) & 10 & 48.39 & 34.80--73.44 & 12.12 \\
+Wholesale/Retail Trade - Motor Vehicles & 10 & 49.25 & 37.40--67.92 & 11.47 \\
+Architecture and Engineering & 9 & 48.50 & 37.49--64.86 & 10.06 \\
+Coke and Refined Petroleum & 9 & 52.32 & 38.20--69.63 & 11.13 \\
+Paper Products & 9 & 43.27 & 33.42--48.93 & 4.88 \\
+Broadcasting & 8 & 43.65 & 31.66--52.74 & 7.64 \\
+Land Transport & 7 & 47.42 & 34.72--63.63 & 10.11 \\
+Water Supply and Waste Management & 7 & 43.33 & 36.73--56.76 & 8.29 \\
+Wood Products & 7 & 46.18 & 36.16--64.51 & 9.72 \\
+Education & 6 & 42.43 & 33.28--55.70 & 7.74 \\
+Furniture & 6 & 51.28 & 36.17--65.29 & 9.25 \\
+Other Professional/Technical Activities & 6 & 48.43 & 38.73--57.90 & 8.70 \\
+Scientific R\&D & 6 & 44.90 & 38.95--52.11 & 5.71 \\
+Warehousing and Transport Support & 6 & 54.55 & 37.82--67.03 & 10.34 \\
+Wearing Apparel & 6 & 42.33 & 37.17--48.78 & 4.50 \\
+Leather Products & 5 & 50.00 & 42.14--58.86 & 7.80 \\
+Water Transport & 5 & 48.37 & 38.70--61.22 & 9.75 \\
+\midrule
+Other 25 small sectors (pooled) & 55 & 44.08 & 27.56--70.97 & 8.95\\
+\textbf{All 72 sectors} & \textbf{1,164} & \textbf{48.73} & \textbf{26.88--75.58} & \textbf{9.98}\\\bottomrule
+\end{tabularx}
+\endgroup
+\end{table}
+
+The earlier Pharmaceuticals example provides a second check on within-sector variation. Dabur India scores 73.72 and Kopran scores 32.38, a difference of 41.34 points within the same recorded group. Corresponding Completeness values are 73.13\% and 32.92\%, and Specificity values are 57.38\% and 23.68\%. Clarity exceeds 85\% for 58 of the 65 companies, so a high language-clarity value alone does not guarantee a high composite. Supplementary Table S4 preserves the earlier top-four and bottom-three company comparison with every component. This example describes variation under the saved sector assignments and does not establish the cause of the differences.
+
+The four reporting levels lead to one practical outcome: an analyst can move from an individual component to a company score, from the company to a sector comparison, and from that sector to the full saved population. Every transition retains the denominator and the meaning of the output. No level converts a descriptive score into a verified greenwashing judgement.
+
+\FloatBarrier

@@ -1,0 +1,559 @@
+{
+  "evaluation": "Three concept-disjoint hold-out stability runs on Stage 3 company-disjoint test companies",
+  "fresh_test": false,
+  "holdout_seeds": [
+    42,
+    17,
+    73
+  ],
+  "holdout_design": "20% of test-present Section C concepts, stratified by weak-label principle where multiple concepts exist; selected concepts purged from all unique train/validation rows",
+  "run_42_reused": true,
+  "additional_training_runs": 2,
+  "concept_link_coverage": {
+    "train": {
+      "rows": 29834,
+      "unique_concept_match": 25655,
+      "ambiguous_concept_match": 4179,
+      "unmatched_concept": 0
+    },
+    "val": {
+      "rows": 6374,
+      "unique_concept_match": 5497,
+      "ambiguous_concept_match": 877,
+      "unmatched_concept": 0
+    },
+    "test": {
+      "rows": 6201,
+      "unique_concept_match": 5321,
+      "ambiguous_concept_match": 880,
+      "unmatched_concept": 0
+    }
+  },
+  "metrics_mean_sd_across_holdouts": {
+    "concept_disjoint_top1_accuracy": {
+      "mean": 0.8164380534474461,
+      "sample_sd": 0.04921581502117967,
+      "per_holdout": [
+        0.873109243697479,
+        0.7917737789203085,
+        0.7844311377245509
+      ]
+    },
+    "concept_disjoint_top2_accuracy": {
+      "mean": 0.9534112738425419,
+      "sample_sd": 0.01313625216416872,
+      "per_holdout": [
+        0.9663865546218487,
+        0.9537275064267352,
+        0.9401197604790419
+      ]
+    },
+    "concept_disjoint_macro_f1": {
+      "mean": 0.6751680929126876,
+      "sample_sd": 0.01703182880230053,
+      "per_holdout": [
+        0.6857920143026888,
+        0.6841890458459479,
+        0.6555232185894264
+      ]
+    },
+    "full_concept_baseline_top1_accuracy": {
+      "mean": 0.9707284558862517,
+      "sample_sd": 0.009666855963611472,
+      "per_holdout": [
+        0.9798319327731092,
+        0.9605826906598115,
+        0.9717707442258341
+      ]
+    },
+    "paired_top1_delta_model_minus_baseline": {
+      "mean": -0.15429040243880546,
+      "sample_sd": 0.04222395265769733,
+      "per_holdout": [
+        -0.10672268907563025,
+        -0.168808911739503,
+        -0.18733960650128315
+      ]
+    }
+  },
+  "runs": [
+    {
+      "holdout_seed": 42,
+      "n_heldout_concepts": 17,
+      "heldout_concepts": [
+        "AntiCorruptionOrAntiBriberyPolicyExplanatoryTextBlock",
+        "DesclosureOfTheProcessesUsedToIdentifyWorkRelatedHazardsAndAssessRisksOnARoutineAndNonRoutineBasisByTheEntityExplanatoryTextBlock",
+        "DescribeTheMechanismsToReceiveAndRedressGrievancesOfTheCommunityExplanatoryTextBlock",
+        "DescribeTheProcessesInPlaceToSafelyReclaimYourProductsForReusingRecyclingAndDisposingAtTheEndOfLifeForPlasticsIncludingPackagingExplanatoryTextBlock",
+        "DetailsIfTheEmployeesOrWorkerOfTheEntityHaveAccessToNonOccupationalMedicalAndHealthcareServicesIsNotApplicableExplanatoryTextBlock",
+        "DetailsOfMechanismAvailableToReceiveAndRedressGrievancesForPermanentWorkersExplanatoryTextBlock",
+        "DetailsOfProjectRelatedToReducingGreenHouseGasEmissionExplanatoryTextBlock",
+        "DetailsOfTheEntityHaveProcessesInPlaceToAvoidOrManageConflictOfInterestsInvolvingMembersOfTheBoardExplanatoryTextBlock",
+        "DetailsOfTheScopeAndCoverageOfAnyHumanRightsDueDiligenceConductedExplanatoryTextBlock",
+        "NameOfTheExternalAgencyIfAnyIndependentAssessmentOrEvaluationOrAssuranceHasBeenCarriedOutByAnExternalAgencyForAreasOfWaterStressExplanatoryTextBlock",
+        "NameOfTheExternalAgencyThatUndertookIndependentAssessmentOrEvaluationOrAssuranceForGreenHouseGasEmissionsExplanatoryTextBlock",
+        "NameOfTheExternalAgencyThatUndertookIndependentAssessmentOrEvaluationOrAssuranceRelatedToWasteManagementExplanatoryTextBlock",
+        "ProvideTheProcessesForConsultationBetweenStakeholdersAndTheBoardOnEconomicEnvironmentalAndSocialTopicsOrIfConsultationIsDelegatedHowIsFeedbackFromSuchConsultationsProvidedToTheBoardExplanatoryTextBlock",
+        "TheEntityHasNotApplicableAFrameworkOrPolicyOnCyberSecurityAndRisksRelatedToDataPrivacyExplanatoryTextBlock",
+        "TheEntityHasNotApplicableCarryOutAnySurveyWithRegardToConsumerSatisfactionRelatingToTheMajorProductsOrServicesExplanatoryTextBlock",
+        "WeblinkWhereInformationOnProductsAndServicesOfTheEntityCanBeAccessedExplanatoryTextBlock",
+        "WhetherAnyStepsAreBeingTakenByTheEntityIfThePremisesOrOfficesOfTheEntityNotAccessibleToDifferentlyAbledEmployeesAndWorkersExplanatoryTextBlock"
+      ],
+      "n_train": 20054,
+      "n_validation": 4280,
+      "n_test": 1190,
+      "n_test_cins": 174,
+      "model": "data\\models\\brsr_concept_disjoint_classifier\\seed_42\\recovered_checkpoint_6270",
+      "baseline_recovered": {
+        "n": 1190,
+        "unique_cins": 174,
+        "unique_concepts": 17,
+        "top1_correct": 1166,
+        "top1_accuracy": 0.9798319327731092,
+        "top1_cin_cluster_bootstrap_ci95": [
+          0.9715188813264636,
+          0.9876434427123396
+        ],
+        "top2_correct": 1183,
+        "top2_accuracy": 0.9941176470588236,
+        "macro_f1": 0.7870178741057533,
+        "per_principle": {
+          "P1": {
+            "n": 293,
+            "top1_accuracy": 1.0,
+            "top2_accuracy": 1.0
+          },
+          "P2": {
+            "n": 151,
+            "top1_accuracy": 0.9668874172185431,
+            "top2_accuracy": 1.0
+          },
+          "P3": {
+            "n": 188,
+            "top1_accuracy": 0.9893617021276596,
+            "top2_accuracy": 1.0
+          },
+          "P4": {
+            "n": 131,
+            "top1_accuracy": 1.0,
+            "top2_accuracy": 1.0
+          },
+          "P5": {
+            "n": 96,
+            "top1_accuracy": 0.96875,
+            "top2_accuracy": 0.9791666666666666
+          },
+          "P6": {
+            "n": 163,
+            "top1_accuracy": 0.9815950920245399,
+            "top2_accuracy": 0.9938650306748467
+          },
+          "P7": {
+            "n": 0,
+            "top1_accuracy": null,
+            "top2_accuracy": null
+          },
+          "P8": {
+            "n": 166,
+            "top1_accuracy": 0.9397590361445783,
+            "top2_accuracy": 0.9759036144578314
+          },
+          "P9": {
+            "n": 2,
+            "top1_accuracy": 0.5,
+            "top2_accuracy": 1.0
+          }
+        }
+      },
+      "concept_disjoint_recovered": {
+        "n": 1190,
+        "unique_cins": 174,
+        "unique_concepts": 17,
+        "top1_correct": 1039,
+        "top1_accuracy": 0.873109243697479,
+        "top1_cin_cluster_bootstrap_ci95": [
+          0.8549551331983175,
+          0.8921653072018216
+        ],
+        "top2_correct": 1150,
+        "top2_accuracy": 0.9663865546218487,
+        "macro_f1": 0.6857920143026888,
+        "per_principle": {
+          "P1": {
+            "n": 293,
+            "top1_accuracy": 0.9453924914675768,
+            "top2_accuracy": 0.9795221843003413
+          },
+          "P2": {
+            "n": 151,
+            "top1_accuracy": 0.7615894039735099,
+            "top2_accuracy": 0.9735099337748344
+          },
+          "P3": {
+            "n": 188,
+            "top1_accuracy": 0.9574468085106383,
+            "top2_accuracy": 0.9787234042553191
+          },
+          "P4": {
+            "n": 131,
+            "top1_accuracy": 0.8854961832061069,
+            "top2_accuracy": 1.0
+          },
+          "P5": {
+            "n": 96,
+            "top1_accuracy": 0.7291666666666666,
+            "top2_accuracy": 0.9791666666666666
+          },
+          "P6": {
+            "n": 163,
+            "top1_accuracy": 0.9815950920245399,
+            "top2_accuracy": 0.9938650306748467
+          },
+          "P7": {
+            "n": 0,
+            "top1_accuracy": null,
+            "top2_accuracy": null
+          },
+          "P8": {
+            "n": 166,
+            "top1_accuracy": 0.7228915662650602,
+            "top2_accuracy": 0.8614457831325302
+          },
+          "P9": {
+            "n": 2,
+            "top1_accuracy": 0.5,
+            "top2_accuracy": 1.0
+          }
+        }
+      },
+      "paired_top1_delta_model_minus_baseline": {
+        "estimate": -0.10672268907563025,
+        "cin_cluster_bootstrap_ci95": [
+          -0.12363096821442077,
+          -0.08964275267326083
+        ]
+      }
+    },
+    {
+      "holdout_seed": 17,
+      "n_heldout_concepts": 17,
+      "heldout_concepts": [
+        "AMechanismForZeroLiquidDischargeIsNotApplicableToTheEntityExplanatoryTextBlock",
+        "AnOccupationalHealthAndSafetyManagementSystemHasBeenNotApplicableToTheEntityExplanatoryTextBlock",
+        "DescribeTheMechanismsInPlaceToReceiveAndRespondToConsumerComplaintsAndFeedbackExplanatoryTextBlock",
+        "DescribeTheProcessesInPlaceToSafelyReclaimYourProductsForReusingRecyclingAndDisposingAtTheEndOfLifeForHazardousWasteExplanatoryTextBlock",
+        "DetailsOfAnyCorrectiveActionTakenOrUnderwayToAddressSafetyRelatedIncidentsOfYourPlantsAndOfficesThatWereAssessedExplanatoryTextBlock",
+        "DetailsOfAnyCorrectiveActionsTakenOrUnderwayToAddressSignificantRisksOrConcernsArisingFromTheAssessmentsOfPlantAndOfficeExplanatoryTextBlock",
+        "DetailsOfCoverageAndImplementationIfForZeroLiquidDischargeExplanatoryTextBlock",
+        "DetailsOfInstancesAsToHowTheInputsReceivedFromStakeholdersOnTheseTopicsWereIncorporatedIntoPoliciesAndActivitiesOfTheEntityExplanatoryTextBlock",
+        "DetailsOfInstancesOfEngagementWithAndActionsTakenToAddressTheConcernsOfVulnerableMarginalizedStakeholderGroupsExplanatoryTextBlock",
+        "DetailsOfMechanismAvailableToReceiveAndRedressGrievancesForPermanentWorkersExplanatoryTextBlock",
+        "DetailsOfProductInformationOnTheProductOverAndAboveWhatIsMandatedAsPerLocalLawsExplanatoryTextBlock",
+        "DetailsOfTheEntityHaveNotApplicableProcessesInPlaceToAvoidOrManageConflictOfInterestsInvolvingMembersOfTheBoardExplanatoryTextBlock",
+        "DetailsOfTheEntityHaveProcessesInPlaceToAvoidOrManageConflictOfInterestsInvolvingMembersOfTheBoardExplanatoryTextBlock",
+        "DetailsOfTheScopeAndCoverageOfAnyHumanRightsDueDiligenceConductedExplanatoryTextBlock",
+        "MechanismsInPlaceToInformConsumersOfAnyRiskOfDisruptionOrDiscontinuationOfEssentialServicesExplanatoryTextBlock",
+        "NameOfTheExternalAgencyIfAnyIndependentAssessmentOrEvaluationOrAssuranceHasBeenCarriedOutByAnExternalAgencyForEnergyConsumptionExplanatoryTextBlock",
+        "NameOfTheExternalAgencyThatUndertookIndependentAssessmentOrEvaluationOrAssuranceForTotalScope3EmissionsExplanatoryTextBlock"
+      ],
+      "n_train": 20005,
+      "n_validation": 4250,
+      "n_test": 1167,
+      "n_test_cins": 173,
+      "model": "data\\models\\brsr_concept_disjoint_repeats\\seed_17\\best_model",
+      "baseline_recovered": {
+        "n": 1167,
+        "unique_cins": 173,
+        "unique_concepts": 17,
+        "top1_correct": 1121,
+        "top1_accuracy": 0.9605826906598115,
+        "top1_cin_cluster_bootstrap_ci95": [
+          0.950168035215759,
+          0.9711624276364768
+        ],
+        "top2_correct": 1149,
+        "top2_accuracy": 0.9845758354755784,
+        "macro_f1": 0.8547292967906279,
+        "per_principle": {
+          "P1": {
+            "n": 137,
+            "top1_accuracy": 1.0,
+            "top2_accuracy": 1.0
+          },
+          "P2": {
+            "n": 138,
+            "top1_accuracy": 0.8768115942028986,
+            "top2_accuracy": 0.9782608695652174
+          },
+          "P3": {
+            "n": 185,
+            "top1_accuracy": 0.9567567567567568,
+            "top2_accuracy": 0.9891891891891892
+          },
+          "P4": {
+            "n": 122,
+            "top1_accuracy": 0.9754098360655737,
+            "top2_accuracy": 0.9754098360655737
+          },
+          "P5": {
+            "n": 96,
+            "top1_accuracy": 0.96875,
+            "top2_accuracy": 0.9791666666666666
+          },
+          "P6": {
+            "n": 123,
+            "top1_accuracy": 1.0,
+            "top2_accuracy": 1.0
+          },
+          "P7": {
+            "n": 0,
+            "top1_accuracy": null,
+            "top2_accuracy": null
+          },
+          "P8": {
+            "n": 107,
+            "top1_accuracy": 0.9719626168224299,
+            "top2_accuracy": 0.9906542056074766
+          },
+          "P9": {
+            "n": 259,
+            "top1_accuracy": 0.9536679536679536,
+            "top2_accuracy": 0.972972972972973
+          }
+        }
+      },
+      "concept_disjoint_recovered": {
+        "n": 1167,
+        "unique_cins": 173,
+        "unique_concepts": 17,
+        "top1_correct": 924,
+        "top1_accuracy": 0.7917737789203085,
+        "top1_cin_cluster_bootstrap_ci95": [
+          0.7715541877459247,
+          0.8122811275762221
+        ],
+        "top2_correct": 1113,
+        "top2_accuracy": 0.9537275064267352,
+        "macro_f1": 0.6841890458459479,
+        "per_principle": {
+          "P1": {
+            "n": 137,
+            "top1_accuracy": 0.9781021897810219,
+            "top2_accuracy": 0.9854014598540146
+          },
+          "P2": {
+            "n": 138,
+            "top1_accuracy": 0.2028985507246377,
+            "top2_accuracy": 0.8695652173913043
+          },
+          "P3": {
+            "n": 185,
+            "top1_accuracy": 0.9135135135135135,
+            "top2_accuracy": 0.9783783783783784
+          },
+          "P4": {
+            "n": 122,
+            "top1_accuracy": 0.9508196721311475,
+            "top2_accuracy": 0.9754098360655737
+          },
+          "P5": {
+            "n": 96,
+            "top1_accuracy": 0.9270833333333334,
+            "top2_accuracy": 0.96875
+          },
+          "P6": {
+            "n": 123,
+            "top1_accuracy": 0.975609756097561,
+            "top2_accuracy": 1.0
+          },
+          "P7": {
+            "n": 0,
+            "top1_accuracy": null,
+            "top2_accuracy": null
+          },
+          "P8": {
+            "n": 107,
+            "top1_accuracy": 0.6635514018691588,
+            "top2_accuracy": 0.9252336448598131
+          },
+          "P9": {
+            "n": 259,
+            "top1_accuracy": 0.7606177606177607,
+            "top2_accuracy": 0.9382239382239382
+          }
+        }
+      },
+      "paired_top1_delta_model_minus_baseline": {
+        "estimate": -0.168808911739503,
+        "cin_cluster_bootstrap_ci95": [
+          -0.18926216022154618,
+          -0.14811188141244902
+        ]
+      }
+    },
+    {
+      "holdout_seed": 73,
+      "n_heldout_concepts": 17,
+      "heldout_concepts": [
+        "ABriefOnTypesOfCustomersExplanatoryTextBlock",
+        "DescribeTheMechanismsToReceiveAndRedressGrievancesOfTheCommunityExplanatoryTextBlock",
+        "DescribeTheProcessesInPlaceToSafelyReclaimYourProductsForReusingRecyclingAndDisposingAtTheEndOfLifeForEWasteExplanatoryTextBlock",
+        "DescribeTheProcessesInPlaceToSafelyReclaimYourProductsForReusingRecyclingAndDisposingAtTheEndOfLifeForOtherWasteExplanatoryTextBlock",
+        "DetailsOfAnyCorrectiveActionTakenOrUnderwayOnIssuesRelatedToFinesOrPenaltiesOrActionTakenByRegulatorsOrLawEnforcementAgenciesOrJudicialInstitutionsOnCasesOfCorruptionAndConflictsOfInterestExplanatoryTextBlock",
+        "DetailsOfAnyCorrectiveActionTakenOrUnderwayToAddressSafetyRelatedIncidentsOfYourPlantsAndOfficesThatWereAssessedExplanatoryTextBlock",
+        "DetailsOfOccupationalHealthAndSafetyManagementSystemExplanatoryTextBlock",
+        "DetailsOfProjectRelatedToReducingGreenHouseGasEmissionExplanatoryTextBlock",
+        "DetailsOfSignificantDirectAndIndirectImpactOfTheEntityOnBiodiversityInSuchAreasAlongWithPreventionAndRemediationActivitiesExplanatoryTextBlock",
+        "DetailsOfTheEntityHaveNotApplicableProcessesInPlaceToAvoidOrManageConflictOfInterestsInvolvingMembersOfTheBoardExplanatoryTextBlock",
+        "DetailsOfTheScopeAndCoverageOfAnyHumanRightsDueDiligenceConductedExplanatoryTextBlock",
+        "NameOfTheExternalAgencyThatUndertookIndependentAssessmentOrEvaluationOrAssuranceForWaterDischargedExplanatoryTextBlock",
+        "NameOfTheExternalAgencyThatUndertookIndependentAssessmentOrEvaluationOrAssuranceRelatedToWasteManagementExplanatoryTextBlock",
+        "ProvideTheProcessesForConsultationBetweenStakeholdersAndTheBoardOnEconomicEnvironmentalAndSocialTopicsOrIfConsultationIsDelegatedHowIsFeedbackFromSuchConsultationsProvidedToTheBoardExplanatoryTextBlock",
+        "TheEntityHasNotApplicableAFrameworkOrPolicyOnCyberSecurityAndRisksRelatedToDataPrivacyExplanatoryTextBlock",
+        "TheEntityHasNotApplicableAnEqualOpportunityPolicyAsPerTheRightsOfPersonsWithDisabilitiesAct2016ExplanatoryTextBlock",
+        "TheEntityHasNotApplicableTransitionAssistanceProgramsToFacilitateContinuedEmployabilityAndTheManagementOfCareerEndingsResultingFromRetirementOrTerminationOfEmploymentExplanatoryTextBlock"
+      ],
+      "n_train": 20146,
+      "n_validation": 4308,
+      "n_test": 1169,
+      "n_test_cins": 174,
+      "model": "data\\models\\brsr_concept_disjoint_repeats\\seed_73\\best_model",
+      "baseline_recovered": {
+        "n": 1169,
+        "unique_cins": 174,
+        "unique_concepts": 17,
+        "top1_correct": 1136,
+        "top1_accuracy": 0.9717707442258341,
+        "top1_cin_cluster_bootstrap_ci95": [
+          0.9610916462925683,
+          0.9806173148518964
+        ],
+        "top2_correct": 1155,
+        "top2_accuracy": 0.9880239520958084,
+        "macro_f1": 0.8581950247177573,
+        "per_principle": {
+          "P1": {
+            "n": 44,
+            "top1_accuracy": 0.8863636363636364,
+            "top2_accuracy": 0.9090909090909091
+          },
+          "P2": {
+            "n": 92,
+            "top1_accuracy": 0.9130434782608695,
+            "top2_accuracy": 0.9891304347826086
+          },
+          "P3": {
+            "n": 282,
+            "top1_accuracy": 0.9929078014184397,
+            "top2_accuracy": 1.0
+          },
+          "P4": {
+            "n": 131,
+            "top1_accuracy": 1.0,
+            "top2_accuracy": 1.0
+          },
+          "P5": {
+            "n": 96,
+            "top1_accuracy": 0.96875,
+            "top2_accuracy": 0.9791666666666666
+          },
+          "P6": {
+            "n": 193,
+            "top1_accuracy": 0.9740932642487047,
+            "top2_accuracy": 0.9844559585492227
+          },
+          "P7": {
+            "n": 0,
+            "top1_accuracy": null,
+            "top2_accuracy": null
+          },
+          "P8": {
+            "n": 166,
+            "top1_accuracy": 0.9397590361445783,
+            "top2_accuracy": 0.9759036144578314
+          },
+          "P9": {
+            "n": 165,
+            "top1_accuracy": 1.0,
+            "top2_accuracy": 1.0
+          }
+        }
+      },
+      "concept_disjoint_recovered": {
+        "n": 1169,
+        "unique_cins": 174,
+        "unique_concepts": 17,
+        "top1_correct": 917,
+        "top1_accuracy": 0.7844311377245509,
+        "top1_cin_cluster_bootstrap_ci95": [
+          0.7614979702838364,
+          0.8076306127383255
+        ],
+        "top2_correct": 1099,
+        "top2_accuracy": 0.9401197604790419,
+        "macro_f1": 0.6555232185894264,
+        "per_principle": {
+          "P1": {
+            "n": 44,
+            "top1_accuracy": 0.8636363636363636,
+            "top2_accuracy": 0.8636363636363636
+          },
+          "P2": {
+            "n": 92,
+            "top1_accuracy": 0.30434782608695654,
+            "top2_accuracy": 1.0
+          },
+          "P3": {
+            "n": 282,
+            "top1_accuracy": 0.9893617021276596,
+            "top2_accuracy": 0.9964539007092199
+          },
+          "P4": {
+            "n": 131,
+            "top1_accuracy": 0.8931297709923665,
+            "top2_accuracy": 0.9923664122137404
+          },
+          "P5": {
+            "n": 96,
+            "top1_accuracy": 0.7708333333333334,
+            "top2_accuracy": 0.9583333333333334
+          },
+          "P6": {
+            "n": 193,
+            "top1_accuracy": 0.9740932642487047,
+            "top2_accuracy": 0.9896373056994818
+          },
+          "P7": {
+            "n": 0,
+            "top1_accuracy": null,
+            "top2_accuracy": null
+          },
+          "P8": {
+            "n": 166,
+            "top1_accuracy": 0.6746987951807228,
+            "top2_accuracy": 0.8433734939759037
+          },
+          "P9": {
+            "n": 165,
+            "top1_accuracy": 0.4909090909090909,
+            "top2_accuracy": 0.8181818181818182
+          }
+        }
+      },
+      "paired_top1_delta_model_minus_baseline": {
+        "estimate": -0.18733960650128315,
+        "cin_cluster_bootstrap_ci95": [
+          -0.2084754840187879,
+          -0.16638509928646805
+        ]
+      }
+    }
+  ],
+  "limitations": [
+    "All hold-outs reuse companies and rows from the same established company-disjoint test partition; they are not independent test cohorts.",
+    "Seed 42 uses an already-observed hold-out and recovered checkpoint; this is a stability diagnostic, not fresh independent confirmation.",
+    "One training seed per concept hold-out; between-run standard deviation mixes concept-split and training-seed variation.",
+    "Labels remain taxonomy-derived weak labels, so scores measure agreement and do not establish human-ground-truth semantic understanding.",
+    "P7/P9 may have sparse or absent held-out-concept examples; report support and avoid unqualified macro-F1 interpretation."
+  ]
+}

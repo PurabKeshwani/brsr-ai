@@ -1,0 +1,65 @@
+\documentclass[11pt,a4paper,onecolumn]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=23mm]{geometry}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{array,booktabs,tabularx,longtable}
+\usepackage{caption,subcaption}
+\usepackage{enumitem}
+\usepackage{placeins}
+\usepackage{tikz,pgfplots}
+\usetikzlibrary{arrows.meta,positioning,calc}
+\pgfplotsset{compat=1.17}
+\usepackage[hidelinks]{hyperref}
+\usepackage{url}
+\definecolor{ink}{HTML}{203447}
+\definecolor{teal}{HTML}{227C80}
+\definecolor{softgray}{HTML}{EDF1F4}
+\definecolor{warm}{HTML}{B56B42}
+\captionsetup{font=small,labelfont=bf,labelsep=period}
+\setlist[itemize]{leftmargin=1.5em,itemsep=3pt,topsep=4pt}
+\setlist[enumerate]{leftmargin=1.8em,itemsep=3pt,topsep=4pt}
+\setlength{\parskip}{5pt plus 1pt}
+\setlength{\parindent}{0pt}
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.17}
+\renewcommand{\topfraction}{0.90}
+\renewcommand{\textfraction}{0.08}
+\renewcommand{\floatpagefraction}{0.75}
+\setlength{\emergencystretch}{2em}
+\raggedbottom
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newcommand{\artifact}[1]{\nolinkurl{#1}}
+\newcommand{\na}{\textemdash}
+\newsavebox{\methodologyoverviewbox}
+\pgfplotsset{every axis/.append style={label style={font=\small},tick label style={font=\small},legend style={font=\small,draw=none},axis line style={black!55},grid style={black!12},major tick length=2pt}}
+\title{\textbf{GRASP: A Greenwashing Recognition and Scoring Pipeline\\for Structured BRSR Disclosures in India}}
+\author{\normalsize Yugchhaya Galphat, Purab Keshwani, Khushi Dayaramani,\\
+\normalsize Ronit Chugwani, and Karan Sarani\\[5pt]
+\small Computer Department, Vivekanand Education Society's Institute of Technology\\
+\small Mumbai, India\\[3pt]
+\footnotesize yugchhaya.dhote@ves.ac.in; 2023.purab.keshwani@ves.ac.in\\
+\footnotesize 2023.khushi.dayaramani@ves.ac.in; 2023.ronit.chugwani@ves.ac.in\\
+\footnotesize 2023.karan.sarani@ves.ac.in}
+\date{}
+\begin{document}
+\maketitle
+\begin{abstract}
+The Business Responsibility and Sustainability Report (BRSR) provides a common format for sustainability reporting by listed companies in India. Reviewing a report requires checking written claims against reported figures and the reporting year. GRASP supports this task through a seven-part pipeline. Reports are collected and stored with company and year details. Selected portions of report text, called text segments, form the units of text analysis. Reporting tags and question mappings provide training labels for these text segments. A BERT language model adapted to BRSR text assigns text segments to nine reporting principles. Word lists and similarity in sentence meaning identify vague wording. Numerical and assurance checks produce review records linking claims, reported figures, and assurance information. Principle mapping summarises the classifier's support for each principle. A Transparency Score combines Completeness, Specificity, Clarity, and coverage of mapped Sustainable Development Goals for company and sector comparisons. An application programming interface provides access to these outputs. The analysis covers 1,164 companies. On 6,201 test text segments from companies excluded from supervised training, the classifier matches labels derived from reporting tags and question mappings in 93.00\% of cases. The Transparency Score has a correlation of $r=0.6314$ with 20 historical human ratings. Linked evidence and score breakdowns help analysts identify disclosures requiring closer review.
+\end{abstract}
+\noindent\textbf{Keywords:} BRSR; sustainability disclosure; weak supervision; BERT; vagueness detection; transparency scoring; sector benchmarking.
+\input{sections/01_introduction}
+\input{sections/02_literature}
+\input{sections/02a_proposed_solution}
+\input{sections/03_methodology}
+\input{sections/04_evaluation}
+\input{sections/05_results}
+\input{sections/06_discussion}
+\input{sections/07_conclusion}
+\input{references}
+\end{document}

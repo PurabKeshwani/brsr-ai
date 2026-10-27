@@ -1,0 +1,17 @@
+\begin{figure}[tbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[width=0.90\linewidth,height=6.2cm,ybar,bar width=17pt,ymin=0,ymax=112,
+  ylabel={Top-1 agreement (\%)},symbolic x coords={H42,H17,H73},xtick=data,
+  xticklabels={Test 42 ($n=1{,}190$),Test 17 ($n=1{,}167$),Test 73 ($n=1{,}169$)},
+  ymajorgrids=true,legend style={at={(0.5,1.04)},anchor=south,legend columns=2},
+  nodes near coords,nodes near coords style={font=\scriptsize,/pgf/number format/fixed,/pgf/number format/precision=2}]
+\addplot[fill=ink!35,draw=ink] coordinates {(H42,97.98)(H17,96.06)(H73,97.18)};
+\addlegendentry{Full-concept model}
+\addplot[fill=teal!65,draw=teal] coordinates {(H42,87.31)(H17,79.18)(H73,78.44)};
+\addlegendentry{Excluded-concept model}
+\end{axis}
+\end{tikzpicture}
+\caption{Agreement falls when selected question concepts are removed from labelled training. The full-concept model saw the relevant concepts; the excluded-concept model did not. The three tests contain 174, 173, and 174 companies from the original test split. Excluded-concept mean agreement is 81.64\%, with sample standard deviation 4.92 percentage points across runs. This spread is not a confidence interval.}
+\label{fig:concept}
+\end{figure}

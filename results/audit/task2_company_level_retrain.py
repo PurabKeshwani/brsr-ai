@@ -399,7 +399,12 @@ def main():
     train_df = pd.read_csv(DATA_DIR / "train.csv")
     test_df = pd.read_csv(DATA_DIR / "test.csv")
     val_df = pd.read_csv(DATA_DIR / "val.csv")
-    assert len(set(train_df["cin"]).intersection(test_df["cin"])) == 0, "Company overlap detected!"
+    train_cins = set(train_df["cin"])
+    val_cins = set(val_df["cin"])
+    test_cins = set(test_df["cin"])
+    assert not train_cins.intersection(val_cins), "Company overlap detected between train and validation!"
+    assert not train_cins.intersection(test_cins), "Company overlap detected between train and test!"
+    assert not val_cins.intersection(test_cins), "Company overlap detected between validation and test!"
     log(f"\nVerified: train={len(train_df)}, val={len(val_df)}, test={len(test_df)}")
     log(f"CIN overlap train∩test: 0 [PASS]")
     log()
@@ -413,11 +418,13 @@ def main():
     # Train all seeds
     trial_rows = []
     seed_val_f1s = []
+    successful_seeds = []
 
     for seed in SEEDS:
         try:
             trial = train_one_seed(seed, trial_rows)
             seed_val_f1s.append(trial["val_macro_f1"])
+            successful_seeds.append(seed)
         except torch.cuda.OutOfMemoryError:
             log(f"  OOM on seed {seed} — skipping")
             torch.cuda.empty_cache()
@@ -429,9 +436,12 @@ def main():
         pd.DataFrame(trial_rows).to_csv(TRIALS_CSV, index=False)
         log(f"\nTrials saved to {TRIALS_CSV}")
 
-    # Pick best seed by val macro-F1
+    if not seed_val_f1s:
+        raise RuntimeError("No training seed completed successfully; no model can be selected.")
+
+    # Pick best completed seed by validation macro-F1
     best_idx = int(np.argmax(seed_val_f1s))
-    best_seed = SEEDS[best_idx]
+    best_seed = successful_seeds[best_idx]
     best_val_f1 = seed_val_f1s[best_idx]
     log(f"\nBest seed: {best_seed} (val macro-F1={best_val_f1:.4f})")
     log(f"Val macro-F1 across seeds: {[f'{x:.4f}' for x in seed_val_f1s]}")
@@ -486,7 +496,7 @@ def main():
     log(f"  Top-1 Accuracy: {test_results['top1']*100:.2f}% (95% CI: [{ci['top1_ci_lo']*100:.2f}%, {ci['top1_ci_hi']*100:.2f}%])")
     log(f"  Top-2 Accuracy: {test_results['top2']*100:.2f}%")
     log(f"  Macro-F1:       {test_results['macro_f1']:.4f} (95% CI: [{ci['f1_ci_lo']:.4f}, {ci['f1_ci_hi']:.4f}])")
-    log(f"  Val F1 (5 seeds): {np.mean(seed_val_f1s):.4f} ± {np.std(seed_val_f1s):.4f}")
+    log(f"  Val F1 ({len(seed_val_f1s)} completed seeds): {np.mean(seed_val_f1s):.4f} ± {np.std(seed_val_f1s):.4f}")
     log()
     log("  Compare to segment-split:")
     log(f"    Old Top-1 (segment-split):        93.83%")

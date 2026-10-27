@@ -1,7 +1,6 @@
 """
-Batch 3 of the vagueness-validation sample — 100 NEW segments
-(excluding any text already labeled in batch 1 or batch 2)
-to expand the total human validation set to 180 samples.
+Batch 3 of the vagueness-validation sample. The checked-in export contains
+70 new segments, excluding texts already present in batches 1 and 2.
 """
 from __future__ import annotations
 

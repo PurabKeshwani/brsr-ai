@@ -1,0 +1,16 @@
+\begin{figure}[tbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[width=0.85\linewidth,height=6cm,ybar,bar width=17pt,ymin=0,ymax=1.12,
+  ylabel={Decision measure},symbolic x coords={Precision,Recall,F1},xtick=data,
+  ymajorgrids=true,legend style={at={(0.5,1.03)},anchor=south,legend columns=1},
+  nodes near coords,nodes near coords style={font=\scriptsize,/pgf/number format/fixed,/pgf/number format/precision=3}]
+\addplot[fill=ink!35,draw=ink] coordinates {(Precision,0.7073)(Recall,0.7838)(F1,0.7436)};
+\addlegendentry{Development reference ($n=80$)}
+\addplot[fill=teal!65,draw=teal] coordinates {(Precision,0.6000)(Recall,0.8077)(F1,0.6885)};
+\addlegendentry{AI reference ($n=70$, exploratory)}
+\end{axis}
+\end{tikzpicture}
+\caption{Precision shows how often a flag matches the reference vagueness label. Recall shows how many reference-vague passages are found. F1 balances both. The two groups contain different passages and label sources, so the bars cannot establish a controlled model improvement or decline. Numerical and assurance checks are outside this evaluation.}
+\label{fig:detector}
+\end{figure}

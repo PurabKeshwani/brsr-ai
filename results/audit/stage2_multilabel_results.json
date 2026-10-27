@@ -1,0 +1,472 @@
+{
+  "evaluation": "Exploratory multi-label Stage 2 classifier on the existing company-disjoint partition",
+  "fresh_test": false,
+  "task": "company + cleaned narrative -> set of all observed taxonomy/source principle labels",
+  "split": {
+    "dataset_dir": "data\\training_multilabel_company_split",
+    "train_rows": 28590,
+    "val_rows": 6119,
+    "test_rows": 5934,
+    "train_cins": 814,
+    "val_cins": 175,
+    "test_cins": 175,
+    "pairwise_cin_overlap": 0
+  },
+  "collection": {
+    "labeled_fact_candidates": 65232,
+    "candidate_labels_section_c": 36597,
+    "noise_filtered_facts": 36491,
+    "candidate_labels_section_b": 25214,
+    "clean_but_unlabeled_facts": 2338,
+    "candidate_labels_notes_principle": 3421,
+    "unique_company_text_groups": 40643,
+    "multilabel_groups": 2644,
+    "unseen_company_cins_assigned_train_only": 0,
+    "label_cardinality_distribution": {
+      "1": 37999,
+      "8": 138,
+      "9": 2266,
+      "7": 27,
+      "2": 154,
+      "6": 16,
+      "3": 30,
+      "4": 8,
+      "5": 5
+    }
+  },
+  "training_label_support": {
+    "P1": 5176,
+    "P2": 4570,
+    "P3": 8614,
+    "P4": 3891,
+    "P5": 3899,
+    "P6": 5419,
+    "P7": 2037,
+    "P8": 3449,
+    "P9": 5236
+  },
+  "training": {
+    "encoder": "data\\models\\domain_adapted_bert\\final_model",
+    "loss": "BCEWithLogitsLoss with capped sqrt(negative/positive) pos_weight",
+    "validation_selection": "macro-F1 at fixed sigmoid threshold 0.5",
+    "test_threshold_tuning": false,
+    "epochs": 5,
+    "learning_rate": 2e-05,
+    "seed": 42,
+    "selected_checkpoint": "data\\models\\brsr_multilabel_classifier\\seed_42\\checkpoints\\checkpoint-8935",
+    "final_model": "data\\models\\brsr_multilabel_classifier\\seed_42\\best_model",
+    "layernorm_aliases_strictly_restored": 50,
+    "save_reload_tensor_check": "passed"
+  },
+  "evaluation_threshold": 0.5,
+  "metrics": {
+    "multi_label_model": {
+      "n": 5934,
+      "gold_label_assignments": 8888,
+      "mean_gold_labels_per_text": 1.497809234917425,
+      "mean_predicted_labels_per_text_at_0_5": 1.5448264239973037,
+      "hit_at_1": 0.933602965958881,
+      "hit_at_1_correct_rows": 5540,
+      "hit_at_2": 0.9738793394000674,
+      "hit_at_2_correct_rows": 5779,
+      "micro_precision_at_0_5": 0.8762954074397294,
+      "micro_recall_at_0_5": 0.9038028802880288,
+      "micro_f1_at_0_5": 0.8898366103572417,
+      "macro_f1_at_0_5": 0.8782003739595585,
+      "exact_set_match_at_0_5": 0.9025952140208965,
+      "per_principle": {
+        "P1": {
+          "support_positive_rows": 1133,
+          "precision": 0.9218612818261633,
+          "recall": 0.9267431597528685,
+          "f1": 0.9242957746478874
+        },
+        "P2": {
+          "support_positive_rows": 947,
+          "precision": 0.8414141414141414,
+          "recall": 0.8796198521647307,
+          "f1": 0.8600929272070211
+        },
+        "P3": {
+          "support_positive_rows": 1752,
+          "precision": 0.913552704963748,
+          "recall": 0.934931506849315,
+          "f1": 0.9241184767277856
+        },
+        "P4": {
+          "support_positive_rows": 841,
+          "precision": 0.8758700696055685,
+          "recall": 0.8977407847800237,
+          "f1": 0.8866705813270699
+        },
+        "P5": {
+          "support_positive_rows": 819,
+          "precision": 0.8315412186379928,
+          "recall": 0.8498168498168498,
+          "f1": 0.8405797101449275
+        },
+        "P6": {
+          "support_positive_rows": 1133,
+          "precision": 0.8901927912824812,
+          "recall": 0.9373345101500441,
+          "f1": 0.9131556319862425
+        },
+        "P7": {
+          "support_positive_rows": 427,
+          "precision": 0.7736263736263737,
+          "recall": 0.8243559718969555,
+          "f1": 0.7981859410430839
+        },
+        "P8": {
+          "support_positive_rows": 737,
+          "precision": 0.8431372549019608,
+          "recall": 0.8751696065128901,
+          "f1": 0.8588548601864181
+        },
+        "P9": {
+          "support_positive_rows": 1099,
+          "precision": 0.884377758164166,
+          "recall": 0.9117379435850773,
+          "f1": 0.8978494623655914
+        }
+      },
+      "cin_cluster_bootstrap_ci95": {
+        "hit_at_1": [
+          0.925374125245445,
+          0.941050428706391
+        ],
+        "hit_at_2": [
+          0.967747607292129,
+          0.979220006958652
+        ],
+        "micro_f1_at_0_5": [
+          0.8742645221988424,
+          0.9035241667080233
+        ],
+        "macro_f1_at_0_5": [
+          0.8605583391386128,
+          0.8942381877822719
+        ]
+      }
+    },
+    "single_label_recovered_seed99_baseline_scored_against_same_label_sets": {
+      "n": 5934,
+      "gold_label_assignments": 8888,
+      "mean_gold_labels_per_text": 1.497809234917425,
+      "mean_predicted_labels_per_text_at_0_5": 1.0,
+      "hit_at_1": 0.9354566902595214,
+      "hit_at_1_correct_rows": 5551,
+      "hit_at_2": 0.97809234917425,
+      "hit_at_2_correct_rows": 5804,
+      "micro_precision_at_0_5": 0.9354566902595214,
+      "micro_recall_at_0_5": 0.6245499549954996,
+      "micro_f1_at_0_5": 0.7490217244636351,
+      "macro_f1_at_0_5": 0.6914686130370135,
+      "exact_set_match_at_0_5": 0.8714189416919447,
+      "per_principle": {
+        "P1": {
+          "support_positive_rows": 1133,
+          "precision": 0.9567099567099567,
+          "recall": 0.7802294792586054,
+          "f1": 0.859504132231405
+        },
+        "P2": {
+          "support_positive_rows": 947,
+          "precision": 0.8934426229508197,
+          "recall": 0.5755015839493136,
+          "f1": 0.7000642260757868
+        },
+        "P3": {
+          "support_positive_rows": 1752,
+          "precision": 0.9447552447552447,
+          "recall": 0.7711187214611872,
+          "f1": 0.8491514770584538
+        },
+        "P4": {
+          "support_positive_rows": 841,
+          "precision": 0.9619450317124736,
+          "recall": 0.5410225921521997,
+          "f1": 0.6925418569254186
+        },
+        "P5": {
+          "support_positive_rows": 819,
+          "precision": 0.9250585480093677,
+          "recall": 0.4822954822954823,
+          "f1": 0.6340288924558587
+        },
+        "P6": {
+          "support_positive_rows": 1133,
+          "precision": 0.9324009324009324,
+          "recall": 0.706090026478376,
+          "f1": 0.8036162732295329
+        },
+        "P7": {
+          "support_positive_rows": 427,
+          "precision": 0.8888888888888888,
+          "recall": 0.1873536299765808,
+          "f1": 0.30947775628626695
+        },
+        "P8": {
+          "support_positive_rows": 737,
+          "precision": 0.9153439153439153,
+          "recall": 0.4694708276797829,
+          "f1": 0.6206278026905829
+        },
+        "P9": {
+          "support_positive_rows": 1099,
+          "precision": 0.9341397849462365,
+          "recall": 0.632393084622384,
+          "f1": 0.7542051003798155
+        }
+      },
+      "decision_rule": "single-label argmax converted to one predicted label per text",
+      "cin_cluster_bootstrap_ci95": {
+        "hit_at_1": [
+          0.9273817035734863,
+          0.9423720978295671
+        ],
+        "hit_at_2": [
+          0.9729498327767544,
+          0.9826314031064816
+        ],
+        "micro_f1_at_0_5": [
+          0.7357667045598081,
+          0.7615878668151316
+        ],
+        "macro_f1_at_0_5": [
+          0.6765173444242186,
+          0.7062285516085833
+        ]
+      }
+    }
+  },
+  "sourcewise_multi_label_metrics": {
+    "section_b": {
+      "n_rows": 730,
+      "cin_count": 166,
+      "n": 730,
+      "gold_label_assignments": 3665,
+      "mean_gold_labels_per_text": 5.02054794520548,
+      "mean_predicted_labels_per_text_at_0_5": 5.2095890410958905,
+      "hit_at_1": 0.8027397260273973,
+      "hit_at_1_correct_rows": 586,
+      "hit_at_2": 0.873972602739726,
+      "hit_at_2_correct_rows": 638,
+      "micro_precision_at_0_5": 0.8025243229029714,
+      "micro_recall_at_0_5": 0.8327421555252388,
+      "micro_f1_at_0_5": 0.8173540439207284,
+      "macro_f1_at_0_5": 0.8167355087154609,
+      "exact_set_match_at_0_5": 0.6123287671232877,
+      "per_principle": {
+        "P1": {
+          "support_positive_rows": 434,
+          "precision": 0.8449074074074074,
+          "recall": 0.8410138248847926,
+          "f1": 0.8429561200923787
+        },
+        "P2": {
+          "support_positive_rows": 399,
+          "precision": 0.7783018867924528,
+          "recall": 0.8270676691729323,
+          "f1": 0.8019441069258809
+        },
+        "P3": {
+          "support_positive_rows": 418,
+          "precision": 0.7929411764705883,
+          "recall": 0.80622009569378,
+          "f1": 0.7995255041518387
+        },
+        "P4": {
+          "support_positive_rows": 402,
+          "precision": 0.8058968058968059,
+          "recall": 0.8159203980099502,
+          "f1": 0.8108776266996292
+        },
+        "P5": {
+          "support_positive_rows": 403,
+          "precision": 0.7825059101654847,
+          "recall": 0.8213399503722084,
+          "f1": 0.801452784503632
+        },
+        "P6": {
+          "support_positive_rows": 419,
+          "precision": 0.8197424892703863,
+          "recall": 0.9116945107398569,
+          "f1": 0.8632768361581921
+        },
+        "P7": {
+          "support_positive_rows": 384,
+          "precision": 0.7858942065491183,
+          "recall": 0.8125,
+          "f1": 0.7989756722151088
+        },
+        "P8": {
+          "support_positive_rows": 399,
+          "precision": 0.800982800982801,
+          "recall": 0.8170426065162907,
+          "f1": 0.8089330024813896
+        },
+        "P9": {
+          "support_positive_rows": 407,
+          "precision": 0.8080568720379147,
+          "recall": 0.8378378378378378,
+          "f1": 0.8226779252110977
+        }
+      }
+    },
+    "section_c": {
+      "n_rows": 4732,
+      "cin_count": 174,
+      "n": 4732,
+      "gold_label_assignments": 4743,
+      "mean_gold_labels_per_text": 1.0023245984784446,
+      "mean_predicted_labels_per_text_at_0_5": 1.02916314454776,
+      "hit_at_1": 0.9539306846999155,
+      "hit_at_1_correct_rows": 4514,
+      "hit_at_2": 0.9900676246830094,
+      "hit_at_2_correct_rows": 4685,
+      "micro_precision_at_0_5": 0.9316221765913758,
+      "micro_recall_at_0_5": 0.9565675732658655,
+      "micro_f1_at_0_5": 0.9439300946634765,
+      "macro_f1_at_0_5": 0.8328245113922049,
+      "exact_set_match_at_0_5": 0.9456889264581573,
+      "per_principle": {
+        "P1": {
+          "support_positive_rows": 645,
+          "precision": 0.9724349157733537,
+          "recall": 0.9844961240310077,
+          "f1": 0.9784283513097073
+        },
+        "P2": {
+          "support_positive_rows": 489,
+          "precision": 0.8884462151394422,
+          "recall": 0.9120654396728016,
+          "f1": 0.900100908173562
+        },
+        "P3": {
+          "support_positive_rows": 1270,
+          "precision": 0.9545454545454546,
+          "recall": 0.9755905511811024,
+          "f1": 0.9649532710280374
+        },
+        "P4": {
+          "support_positive_rows": 426,
+          "precision": 0.9436936936936937,
+          "recall": 0.9835680751173709,
+          "f1": 0.9632183908045977
+        },
+        "P5": {
+          "support_positive_rows": 354,
+          "precision": 0.8687150837988827,
+          "recall": 0.8785310734463276,
+          "f1": 0.8735955056179775
+        },
+        "P6": {
+          "support_positive_rows": 647,
+          "precision": 0.9375,
+          "recall": 0.9505409582689336,
+          "f1": 0.9439754412893323
+        },
+        "P7": {
+          "support_positive_rows": 0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "P8": {
+          "support_positive_rows": 277,
+          "precision": 0.9010238907849829,
+          "recall": 0.9530685920577617,
+          "f1": 0.9263157894736842
+        },
+        "P9": {
+          "support_positive_rows": 635,
+          "precision": 0.9325153374233128,
+          "recall": 0.9574803149606299,
+          "f1": 0.9448329448329449
+        }
+      }
+    },
+    "notes_principle": {
+      "n_rows": 477,
+      "cin_count": 103,
+      "n": 477,
+      "gold_label_assignments": 489,
+      "mean_gold_labels_per_text": 1.0251572327044025,
+      "mean_predicted_labels_per_text_at_0_5": 1.0461215932914045,
+      "hit_at_1": 0.9329140461215933,
+      "hit_at_1_correct_rows": 445,
+      "hit_at_2": 0.9664570230607966,
+      "hit_at_2_correct_rows": 461,
+      "micro_precision_at_0_5": 0.8997995991983968,
+      "micro_recall_at_0_5": 0.918200408997955,
+      "micro_f1_at_0_5": 0.9089068825910931,
+      "macro_f1_at_0_5": 0.887127913985307,
+      "exact_set_match_at_0_5": 0.9119496855345912,
+      "per_principle": {
+        "P1": {
+          "support_positive_rows": 54,
+          "precision": 0.9259259259259259,
+          "recall": 0.9259259259259259,
+          "f1": 0.9259259259259259
+        },
+        "P2": {
+          "support_positive_rows": 61,
+          "precision": 0.8939393939393939,
+          "recall": 0.9672131147540983,
+          "f1": 0.9291338582677166
+        },
+        "P3": {
+          "support_positive_rows": 66,
+          "precision": 0.8888888888888888,
+          "recall": 0.9696969696969697,
+          "f1": 0.927536231884058
+        },
+        "P4": {
+          "support_positive_rows": 13,
+          "precision": 0.7272727272727273,
+          "recall": 0.6153846153846154,
+          "f1": 0.6666666666666666
+        },
+        "P5": {
+          "support_positive_rows": 63,
+          "precision": 0.9642857142857143,
+          "recall": 0.8571428571428571,
+          "f1": 0.907563025210084
+        },
+        "P6": {
+          "support_positive_rows": 67,
+          "precision": 0.9154929577464789,
+          "recall": 0.9701492537313433,
+          "f1": 0.9420289855072463
+        },
+        "P7": {
+          "support_positive_rows": 43,
+          "precision": 0.9090909090909091,
+          "recall": 0.9302325581395349,
+          "f1": 0.9195402298850575
+        },
+        "P8": {
+          "support_positive_rows": 62,
+          "precision": 0.8484848484848485,
+          "recall": 0.9032258064516129,
+          "f1": 0.875
+        },
+        "P9": {
+          "support_positive_rows": 60,
+          "precision": 0.8983050847457628,
+          "recall": 0.8833333333333333,
+          "f1": 0.8907563025210085
+        }
+      }
+    }
+  },
+  "limitations": [
+    "This is a new multi-label target definition; results are not directly comparable to single-label accuracy.",
+    "All observed labels attached to the same company and cleaned narrative are unioned; this may preserve genuine cross-cutting tags but can also combine tags from reused boilerplate.",
+    "Labels remain taxonomy-derived weak labels, including AI-assisted concept mappings; no independent human ground truth is available.",
+    "The company-disjoint test partition has already been used in previous work; this is a re-evaluation on that established test, not a fresh external cohort.",
+    "Source subsets can overlap when one company-text group aggregates labels from multiple sources.",
+    "Hit@k ranking metrics and fixed-threshold F1 answer different questions; report both with their definitions."
+  ]
+}

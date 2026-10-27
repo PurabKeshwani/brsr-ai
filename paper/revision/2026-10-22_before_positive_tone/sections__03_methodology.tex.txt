@@ -1,0 +1,155 @@
+\clearpage
+\begin{lrbox}{\methodologyoverviewbox}
+\begin{minipage}{\linewidth}
+\section{Methodology}
+\label{sec:methodology}
+
+GRASP connects seven modules through a shared filing record. Figure~\ref{fig:architecture} uses the same titles as the following subsections. Filing collection supplies the data, model training produces the classifier, and three analysis branches provide service outputs. The arrows show the main routes; the module descriptions explain other database inputs and shared calculations. The Transparency Score uses reported-item coverage, evidence markers, vagueness flags, and a fixed SDG mapping. Principle probabilities and claim--figure flags remain separate outputs.
+
+\input{figures/architecture}
+\end{minipage}
+\end{lrbox}
+\ifdim\dimexpr\ht\methodologyoverviewbox+\dp\methodologyoverviewbox\relax>\textheight
+\PackageError{GRASP-layout}{Methodology overview exceeds one page}{Reduce the diagram height.}
+\fi
+\noindent\usebox{\methodologyoverviewbox}
+\par\clearpage
+
+\subsection{Filing acquisition and structured storage}
+\label{sec:ingestion}
+
+The input consists of BRSR filings in eXtensible Business Reporting Language (XBRL), together with company identifiers. A download log records completed and failed files so collection can resume after an interruption. The parser reads structured filing data directly. A concept names a reporting item, such as water withdrawal. The context records the company, period, and any reporting categories, while the unit records how a numerical value is measured \cite{xbrl2013}. This structure keeps a figure linked to the information needed for comparison.
+
+The database has three linked record types. A company record stores the Corporate Identity Number (CIN), name, and industry code. A filing record stores the company link, reporting dates, and source location. A fact record stores the concept, original value, unit, stated precision when available, period, and dimensions. Dimensions are categories such as gender or employment type. A workforce count can therefore retain these categories instead of becoming one combined number. Values are stored as text and converted to numbers only when a calculation requires arithmetic. A company--year uniqueness rule limits duplicate ingestion of the same filing.
+
+The output is a searchable database of reported facts. Links to the original filing help an analyst check each value, but successful parsing does not confirm that the company reported correctly. The earlier PDF pilot and collection counts do not provide a current extraction-accuracy estimate. No audited ingestion accuracy is therefore claimed.
+
+\subsection{Narrative selection and weak-label construction}
+\label{sec:labels}
+
+Text candidates come from concepts containing \artifact{ExplanatoryTextBlock}. Before counting words, the dataset builder removes URLs. At least 15 words of useful content must remain. Bare links, short fragments, and listed non-answers are removed. These rules define the classifier dataset. The company-scoring modules use different text-length rules, explained in Section~\ref{sec:score}. Classifier passages and scoring passages are therefore different groups of text.
+
+Principle labels come from three sources, checked in order. First, an explicit \artifact{PrincipleAxis} tag supplies a Section B label. If that tag is unavailable, a configured Section C concept-to-principle map supplies the label. A numbered \artifact{NotesPrincipleX} concept supplies the third source. The mapping extension contains 29 AI-assisted assignments. Existing configured assignments take priority when the maps overlap. No independent expert review checked the meaning of every assignment. These filing-derived assignments are called weak labels because the labels are not independent human judgements of every passage.
+
+Candidates are grouped by company, concept, and cleaned text. Repeated entries with the same label produce one row. A group with several labels is removed from the single-label dataset. Several labels may reflect a passage that covers more than one principle, or generic text repeated under different questions. Removal does not establish an error in the original filing. The final dataset contains 42,409 samples. The CSV keeps the label source for analysis. Only the passage text enters the classifier; the source name and concept name are not model inputs.
+
+The labelled dataset is split by CIN. Training contains 29,834 passages from 814 companies, validation contains 6,374 passages from 175 companies, and test contains 6,201 passages from 175 companies. No company appears in more than one split. The older random passage split remains part of the build history and is excluded from the main evaluation. Separation prevents supervised training on a test company, although different companies may still use identical wording.
+
+\subsection{Domain adaptation and principle classification}
+\label{sec:classifier}
+
+The encoder starts from \artifact{bert-base-uncased}. Masked language modelling adapts BERT to sustainability text: selected word pieces are hidden, and the model learns to predict the missing text. A nine-output classification layer is then added, and labelled training adjusts the model for the nine principles. For a passage $x$, the model returns a probability $p_k(x)$ for each principle $k$. The largest probability gives the Top-1 prediction. The two largest probabilities give the Top-2 candidate list \cite{devlin2019,gururangan2020}.
+
+\paragraph{Model development and component roles.}
+The final model follows four steps: base BERT, adaptation to BRSR text, supervised training for nine principles, and recovery of the selected seed-99 checkpoint. A checkpoint is a saved set of model parameters. Adaptation changes the parameters while keeping the BERT structure. Fine-tuning adds the classification output layer and updates the encoder. Recovery corrects saved parameter names and verifies loading without further training. MPNet has a separate role: sentence similarity for vagueness checks and the zero-shot mapping comparison. Earlier ClimateBERT and ensemble experiments used a different passage-level split. Those results do not establish better performance on the final company-separated test.
+
+The classifier accepts at most 512 tokens, meaning word pieces produced by the tokenizer. Dynamic padding adds only the padding needed within a batch. Training processes four passages at a time and combines gradients across four such microbatches before updating the model. An epoch is one pass through the training set. Fine-tuning runs for five epochs with learning rate $2\times10^{-5}$, weight decay 0.01, 300 warmup steps, and cosine learning-rate decay. The learning rate controls update size, warmup raises the rate gradually, and cosine decay then lowers the rate along a smooth curve. Weight decay limits parameter growth.
+
+Cross-entropy loss penalises low probability for the reference label. Class weights use the square root of inverse training frequency. Less common classes receive more weight, but the square root limits the increase. A random seed makes the training choices repeatable. Five seeds, 42, 1, 7, 99, and 2024, were compared using validation macro-F1. Seed 99 and checkpoint 7,460 form the audited final classifier.
+
+A saved checkpoint must be checked because a loader may leave parameters unrestored. The selected checkpoint contained 50 LayerNorm parameters with older \artifact{gamma}/\artifact{beta} names. Recovery changed these names to \artifact{weight}/\artifact{bias}, required every parameter to load, and checked that every tensor remained identical after saving and reloading. The reported test result uses this recovered checkpoint. Training, validation, and test companies are separate during supervised fitting. However, the earlier masked-language-model corpus builder reads text across the company database. Exclusion of validation/test-company text during that adaptation has not been established. The result supports separation during labelled training, with this pretraining limit stated.
+
+\subsection{Vagueness and filing-consistency checks}
+\label{sec:detector}
+
+The risk module separates wording checks from checks against filed figures. A vague sentence can need clarification without being wrong. A sentence with a number can still use a measure that does not match the claim. The evaluated language component combines a hedging word list with sentence-similarity checks. Claim--figure, assurance-gap, and omission checks are also implemented, but no complete accuracy estimate is available for those branches.
+
+\subsubsection{Hedging words and evidence markers}
+
+A hedging word list identifies promises, conditional commitments, unclear time expressions, and claims of progress without a measure. Evidence patterns look for percentages, currency amounts, physical quantities, workforce or incident counts, reporting years, named standards, and selected formal governance systems. The code names this marker \artifact{has_kpi}. The marker covers more than numerical key performance indicators: a named policy or standard may also match. A detected marker therefore indicates a specific textual detail, not independently verified evidence.
+
+The word-list rule flags a passage containing hedging without an evidence marker. For passages longer than 80 words, hedging density, calculated as the number of matches divided by the word count, must also reach 0.005. A separate rule flags bare URLs and listed website redirects. Code corrections require digits in currency matches, add MW/GW unit patterns and statutory terms, and handle URL redirects explicitly. These changes fix known pattern errors. The audit does not measure the separate performance gain from each change.
+
+\subsubsection{Comparing sentence meanings}
+
+The similarity check uses the \artifact{all-mpnet-base-v2} sentence encoder \cite{reimers2019,song2020}. Each passage is split into sentences. Sentence vectors are compared with two fixed reference sets: vague statements and specific statements. Cosine similarity measures how close two vectors are. Let $v_j$ be the largest similarity between sentence $j$ and a vague reference, and $q_j$ the largest similarity to a specific reference. The rule selects the sentence with the largest $q_j-v_j$, treating that sentence as the most specific part of the passage.
+
+The decision uses that selected sentence. Without an evidence marker, the similarity rule requires $v_j\geq0.42$ and $v_j>q_j$; either the word-list rule or this similarity rule can flag the passage. With an evidence marker, flagging requires $v_j\geq0.58$ and $v_j-q_j\geq0.15$. A URL-redirect match takes priority. Selecting the most specific sentence reduces flagging caused only by a generic opening line. The rule can also miss a vague claim when another sentence in the passage is specific.
+
+The freeze file records the detector version and thresholds before the audited run. These settings remain fixed during that run. Earlier use of batches 1 and 2 for development is still relevant, so the 80-example result remains a development result.
+
+\subsubsection{Claim--figure, assurance, and omission checks}
+
+The numerical branch checks selected topics, including emissions, water, waste, and non-renewable energy. A sentence must contain both improvement wording and a phrase linked to the measure. A review record is created when the linked filed value increases despite reduction-style wording. The record keeps the sentence, concept, previous and current values, and assurance information. Matching within a sentence reduces accidental links, such as comparing a Scope 2 reduction claim with a Scope 1 increase.
+
+These matches follow rules and still need review. A broad word such as \emph{water} may link different measures. A quantity per unit of output may decrease while the total quantity increases. Units and business coverage may also change. Each case must be checked before calling a statement contradictory. The assurance-gap rule looks for a topic-linked fact and assurance information. The omission rule looks for a prior-period concept without a matching current-period concept. Missing assurance or a missing value alone does not establish misconduct.
+
+Two code limits affect these checks. The assurance-gap routine selects a matching fact without fully restricting period, unit, and dimension, and currently treats a text value of zero as absent. The omission routine also excludes selected prior entries with zero values. Both behaviours can create misleading flags. The later language-only results do not validate these branches. The Completeness score, in contrast, accepts structured zeros as valid responses. A stronger numerical check must distinguish a missing value, a valid zero, a non-applicable item, a failed match, and a value that cannot be compared.
+
+\subsection{Principle mapping and the zero-shot comparator}
+\label{sec:mapping}
+
+The mapping service reuses the recovered classifier. The existing output layer produces nine raw scores, called logits. Softmax converts these scores into principle probabilities. Reuse of the trained classifier is called supervised transfer in the evaluation. For passages filed under principle $k$, the service averages $p_k(x)$ and keeps the lowest-scoring passage for inspection. The company summary averages the available principle means. This probability indicates model support for the principle label. The value is not a percentage of legal requirements met or a separately verified compliance probability.
+
+The zero-shot comparison uses MPNet vectors for the same test passages. Zero-shot means that this ranking method is not fitted to the principle-labelled training set. Each principle has an expanded definition and a fixed set of example passages, called anchors. The ranking score combines similarity to the definition and to the anchors:
+\begin{equation}
+z_k(x)=0.50\,d_k(x)+0.50\left[0.70\max_a s_{ka}(x)+0.30\,\operatorname{mean}_a s_{ka}(x)\right],
+\label{eq:hybrid}
+\end{equation}
+where $d_k$ compares the passage with the principle definition, and $s_{ka}$ compares the passage with anchor $a$. Both methods rank nine principles on the same examples. The supervised classifier has access to training labels; the zero-shot ranking method does not. The observed difference therefore combines the effects of the model representation and labelled training.
+
+\subsection{Transparency Score and peer comparison}
+\label{sec:score}
+
+The Transparency Score combines four percentages on a 0--100 scale:
+\begin{equation}
+TS_f=0.40\,C_f+0.30\,Sp_f+0.20\,Cl_f+0.10\,G_f.
+\label{eq:ts}
+\end{equation}
+The weights are fixed choices in the implementation. No verified regulatory source prescribes the 0.40/0.30/0.20/0.10 split. Each component is rounded to two decimal places, and the final sum is also rounded to two decimal places. The score describes disclosure content. The calculation does not measure environmental performance or the probability of greenwashing.
+
+\subsubsection{Completeness: which reporting items have a usable response?}
+
+Let $U$ contain every distinct concept name in the saved database. Let $A_f$ contain the concepts with at least one accepted response in filing $f$. Completeness is the share of that full concept list with an accepted response:
+\begin{equation}
+C_f=100\,\frac{|A_f|}{|U|}.
+\label{eq:complete}
+\end{equation}
+The saved database contains 1,057 distinct concepts. This total, the denominator, includes both structured and narrative items. The total is not an official count of mandatory BRSR questions. Repeating a concept under several dimensions still counts that concept only once.
+
+Blank responses and listed placeholders such as \emph{NA} and \emph{not applicable} do not count. Structured zero values do count. Narrative text blocks follow an extra rule: placeholders and a standalone zero are rejected. Text longer than 30 characters needs at least ten words separated by whitespace. Shorter values can pass if no placeholder matches. Address fields do not use this narrative word rule. The full-database denominator can lower a company's score when some concepts do not apply to the business. Adding new concepts to the database can also change the denominator. A fixed concept list is therefore needed for comparisons under the same score version.
+
+\subsubsection{Specificity: how often does a narrative contain an evidence marker?}
+
+Scoring uses text-block facts with at least 30 characters. Duplicate concept--text pairs are removed after trimming extra spaces. The same wording under different concepts can still count as several passages. Let $N_f$ be the number of retained passages and $K_f$ the number with at least one evidence pattern from Section~\ref{sec:detector}. Specificity is
+\begin{equation}
+Sp_f=100\,\frac{K_f}{N_f}.
+\label{eq:specificity}
+\end{equation}
+A paragraph with five numbers counts once, as does a paragraph with one recognised standard. The denominator is the number of passages, not the number of possible indicators. The percentage is easy to read as the share of text with a marker. However, a policy name or reporting year can match without providing strong support for the claim.
+
+\subsubsection{Clarity: how much selected text avoids a vagueness flag?}
+
+Let $V_f$ be the number of scoring passages flagged by the combined fixed language detector. Clarity is
+\begin{equation}
+Cl_f=100\left(1-\frac{V_f}{N_f}\right).
+\label{eq:clarity}
+\end{equation}
+Clarity rises when fewer passages trigger the detector. This measure records the absence of a vagueness flag; the measure is not a complete test of readability, factual accuracy, or logical consistency. If no scoring passages exist, the code returns zero for both Specificity and Clarity. Missing text therefore does not receive perfect Clarity.
+
+\subsubsection{SDG breadth: how many goals are linked to marked passages?}
+
+The fourth component refers to the 17 United Nations Sustainable Development Goals (SDGs) \cite{un2015}. A principle qualifies when an explicitly tagged narrative has at least 20 characters and an evidence marker. A fixed map then links that principle to goal numbers. The map uses P1: \{16\}; P2: \{9,12\}; P3: \{3,5,8\}; P4: \{10,17\}; P5: \{8,10,16\}; P6: \{6,7,12,13,15\}; P7: \{16,17\}; P8: \{1,8,10,11\}; and P9: \{9,12\}. For qualifying principles $D_f$ and mapping $M$, the score counts distinct linked goals:
+\begin{equation}
+G_f=100\,\frac{\left|\bigcup_{k\in D_f}M(k)\right|}{17}.
+\label{eq:sdg}
+\end{equation}
+Saved exports call this component \emph{SDG Alignment}. The term \emph{SDG breadth} better describes the number of linked goals. The code does not check text against the 169 SDG targets. The map covers only 14 of the 17 goals, so the maximum component value is 82.35\%. The duplicate-removal dictionary also keeps only one principle for each repeated concept--text pair. The retained principle can depend on the order of database records. The result is therefore a broad rule-based indicator, not a verified measure of SDG delivery.
+
+\subsubsection{Sector grouping and percentiles}
+
+The benchmark links each company score to a sector using the recorded industry code and a local mapping. Code prefixes provide a repeatable starting point, but mixed code formats, several business activities, or incorrect stored codes can place companies in the wrong peer group. The financial analysis uses the saved group \emph{Financial Services (excl. Insurance)}. Insurance and auxiliary financial services are separate groups.
+
+For company $c$ in sector $S$, the percentile is
+\begin{equation}
+P_c=100\,\frac{\#\{j\in S:TS_j<TS_c\}}{|S|}.
+\label{eq:percentile}
+\end{equation}
+The percentile is the percentage of sector companies with a strictly lower score. Companies with tied scores receive the same percentile, and the highest score need not receive 100. Groups with at least five companies enter the main sector comparison. Five is a reporting rule, not proof of statistical reliability. Sector means, medians, ranges, and standard deviations describe the saved company scores. Grouping companies by sector does not validate the score components.
+
+\subsection{Service layer and runtime traceability}
+\label{sec:api}
+
+The service provides company search, filing analysis, score breakdowns, peer comparisons, and principle mapping. The principle-mapping endpoint returns the method name and model path so an operator can identify the classifier used. The verified route reports \artifact{recovered_seed99_supervised_classifier} and uses the recovered checkpoint from Section~\ref{sec:classifier}. If that classifier is unavailable, the endpoint returns an error. A different method is therefore not silently presented under the same label.
+
+The successful request in the audit shows that the service loaded the required model for one company. This request does not measure accuracy across a test set. The company's mean probability is a filing output, not a system-performance result. Model-loading status, passage scores, and peer comparisons keep separate output labels.

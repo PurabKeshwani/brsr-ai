@@ -234,7 +234,11 @@ def get_compliance_mapping(session: Session, filing_id: int) -> ComplianceMapper
         if principle_dim in PRINCIPLE_TO_LABEL and len(text) >= MIN_TEXT_LENGTH:
             text_to_principles.setdefault(text, set()).add(PRINCIPLE_TO_LABEL[principle_dim])
 
-SUPERVISED_MODEL_PATH = Path("data/models/brsr_principle_classifier/final_model_unweighted_93.68")
+# Recovered Stage 3 seed-99 checkpoint selected by validation macro-F1.
+# The original best_model directory predates strict LayerNorm alias recovery;
+# use the recovered copy whose weights were strictly loaded and save/reload
+# verified tensor-for-tensor.
+SUPERVISED_MODEL_PATH = Path("data/models/brsr_company_split_classifier/seed_99/recovered_checkpoint_7460")
 
 
 @lru_cache(maxsize=1)

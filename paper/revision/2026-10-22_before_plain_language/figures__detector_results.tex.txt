@@ -1,0 +1,16 @@
+\begin{figure}[tbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[width=0.85\linewidth,height=6cm,ybar,bar width=17pt,ymin=0,ymax=1.12,
+  ylabel={Decision measure},symbolic x coords={Precision,Recall,F1},xtick=data,
+  ymajorgrids=true,legend style={at={(0.5,1.03)},anchor=south,legend columns=1},
+  nodes near coords,nodes near coords style={font=\scriptsize,/pgf/number format/fixed,/pgf/number format/precision=3}]
+\addplot[fill=ink!35,draw=ink] coordinates {(Precision,0.7073)(Recall,0.7838)(F1,0.7436)};
+\addlegendentry{Development reference ($n=80$)}
+\addplot[fill=teal!65,draw=teal] coordinates {(Precision,0.6000)(Recall,0.8077)(F1,0.6885)};
+\addlegendentry{AI reference ($n=70$, exploratory)}
+\end{axis}
+\end{tikzpicture}
+\caption{How to read the text-detector results: precision measures how often a flagged passage also receives the reference vagueness label; recall measures how many reference-vague passages are found; F1 balances both. The two cohorts use different examples and label sources, so the bars do not establish a controlled gain or decline. No result in this figure evaluates the numerical or assurance branches.}
+\label{fig:detector}
+\end{figure}

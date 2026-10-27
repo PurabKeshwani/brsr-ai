@@ -1,0 +1,153 @@
+{
+  "evaluation": "Technical recovery and recheck of the already-observed Stage 2 concept-disjoint Section C diagnostic",
+  "fresh_test": false,
+  "n": 1190,
+  "unique_cins": 174,
+  "unique_heldout_concepts": 17,
+  "selected_checkpoints": {
+    "concept_disjoint": "data\\models\\brsr_concept_disjoint_classifier\\seed_42\\checkpoints\\checkpoint-6270",
+    "full_concept_baseline": "data\\models\\brsr_company_split_classifier\\seed_99\\checkpoints\\checkpoint-7460"
+  },
+  "recovered_models": {
+    "concept_disjoint": "data\\models\\brsr_concept_disjoint_classifier\\seed_42\\recovered_checkpoint_6270",
+    "full_concept_baseline": "data\\models\\brsr_company_split_classifier\\seed_99\\recovered_checkpoint_7460"
+  },
+  "checkpoint_repair": {
+    "method": "LayerNorm gamma->weight and beta->bias; strict state-dict load; exact save/reload tensor check",
+    "expected_remapped_aliases_per_model": 50
+  },
+  "concept_disjoint_model": {
+    "n": 1190,
+    "unique_cins": 174,
+    "unique_concepts": 17,
+    "top1_correct": 1039,
+    "top1_accuracy": 0.873109243697479,
+    "top1_cin_cluster_bootstrap_ci95": [
+      0.8549551331983175,
+      0.8921653072018216
+    ],
+    "top2_correct": 1150,
+    "top2_accuracy": 0.9663865546218487,
+    "macro_f1": 0.6857920143026888,
+    "per_principle": {
+      "P1": {
+        "n": 293,
+        "top1_accuracy": 0.9453924914675768,
+        "top2_accuracy": 0.9795221843003413
+      },
+      "P2": {
+        "n": 151,
+        "top1_accuracy": 0.7615894039735099,
+        "top2_accuracy": 0.9735099337748344
+      },
+      "P3": {
+        "n": 188,
+        "top1_accuracy": 0.9574468085106383,
+        "top2_accuracy": 0.9787234042553191
+      },
+      "P4": {
+        "n": 131,
+        "top1_accuracy": 0.8854961832061069,
+        "top2_accuracy": 1.0
+      },
+      "P5": {
+        "n": 96,
+        "top1_accuracy": 0.7291666666666666,
+        "top2_accuracy": 0.9791666666666666
+      },
+      "P6": {
+        "n": 163,
+        "top1_accuracy": 0.9815950920245399,
+        "top2_accuracy": 0.9938650306748467
+      },
+      "P7": {
+        "n": 0,
+        "top1_accuracy": null,
+        "top2_accuracy": null
+      },
+      "P8": {
+        "n": 166,
+        "top1_accuracy": 0.7228915662650602,
+        "top2_accuracy": 0.8614457831325302
+      },
+      "P9": {
+        "n": 2,
+        "top1_accuracy": 0.5,
+        "top2_accuracy": 1.0
+      }
+    }
+  },
+  "full_concept_baseline": {
+    "n": 1190,
+    "unique_cins": 174,
+    "unique_concepts": 17,
+    "top1_correct": 1166,
+    "top1_accuracy": 0.9798319327731092,
+    "top1_cin_cluster_bootstrap_ci95": [
+      0.9715188813264636,
+      0.9876434427123396
+    ],
+    "top2_correct": 1183,
+    "top2_accuracy": 0.9941176470588236,
+    "macro_f1": 0.7870178741057533,
+    "per_principle": {
+      "P1": {
+        "n": 293,
+        "top1_accuracy": 1.0,
+        "top2_accuracy": 1.0
+      },
+      "P2": {
+        "n": 151,
+        "top1_accuracy": 0.9668874172185431,
+        "top2_accuracy": 1.0
+      },
+      "P3": {
+        "n": 188,
+        "top1_accuracy": 0.9893617021276596,
+        "top2_accuracy": 1.0
+      },
+      "P4": {
+        "n": 131,
+        "top1_accuracy": 1.0,
+        "top2_accuracy": 1.0
+      },
+      "P5": {
+        "n": 96,
+        "top1_accuracy": 0.96875,
+        "top2_accuracy": 0.9791666666666666
+      },
+      "P6": {
+        "n": 163,
+        "top1_accuracy": 0.9815950920245399,
+        "top2_accuracy": 0.9938650306748467
+      },
+      "P7": {
+        "n": 0,
+        "top1_accuracy": null,
+        "top2_accuracy": null
+      },
+      "P8": {
+        "n": 166,
+        "top1_accuracy": 0.9397590361445783,
+        "top2_accuracy": 0.9759036144578314
+      },
+      "P9": {
+        "n": 2,
+        "top1_accuracy": 0.5,
+        "top2_accuracy": 1.0
+      }
+    }
+  },
+  "paired_top1_delta_concept_disjoint_minus_baseline": {
+    "estimate": -0.10672268907563025,
+    "cin_cluster_bootstrap_ci95": [
+      -0.12363096821442077,
+      -0.08964275267326083
+    ]
+  },
+  "previous_unrepaired_result": {
+    "concept_disjoint_top1": 0.873109243697479,
+    "full_concept_baseline_top1": 0.9798319327731092
+  },
+  "interpretation": "Weak-label agreement diagnostic only; test rows were already evaluated before technical checkpoint recovery, so this is not a fresh held-out result."
+}

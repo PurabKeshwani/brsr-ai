@@ -1,0 +1,9 @@
+{
+  "run_id": "P1-TRAIN-ONLY-MLM-20261019T130838328061Z",
+  "status": "FAIL",
+  "error_type": "OSError",
+  "error": "bert-base-uncased does not appear to have a file named pytorch_model.bin or model.safetensors.",
+  "validation_performance": "NOT RUN",
+  "test_performance": "NOT RUN",
+  "completed_at_utc": "2026-10-19T13:10:20.832179+00:00"
+}
