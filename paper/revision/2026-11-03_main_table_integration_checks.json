@@ -1,0 +1,103 @@
+{
+  "sectorRowCount": 72,
+  "pairedRowCount": 16,
+  "sectorRowsUnchanged": true,
+  "pairedRowsUnchanged": true,
+  "allExistingResultsDataRowsUnchanged": true,
+  "noStaleSupplementReferences": true,
+  "referencesStillLast": true,
+  "newPairedTableHasOnePageGuard": true,
+  "sectorAndYearwisePlacement": true,
+  "existingSixResultsTablesByteForByteUnchanged": true,
+  "tableOrder": [
+    {
+      "number": 1,
+      "label": "tab:lit"
+    },
+    {
+      "number": 2,
+      "label": "tab:comparison_summary"
+    },
+    {
+      "number": 3,
+      "label": "tab:class_counts"
+    },
+    {
+      "number": 4,
+      "label": "tab:source"
+    },
+    {
+      "number": 5,
+      "label": "tab:per_principle"
+    },
+    {
+      "number": 6,
+      "label": "tab:detector"
+    },
+    {
+      "number": 7,
+      "label": "tab:mapping"
+    },
+    {
+      "number": 8,
+      "label": "tab:case_facts"
+    },
+    {
+      "number": 9,
+      "label": "tab:case_score"
+    },
+    {
+      "number": 10,
+      "label": "tab:financial_selected"
+    },
+    {
+      "number": 11,
+      "label": "tab:all_financial"
+    },
+    {
+      "number": 12,
+      "label": "tab:all_sectors"
+    },
+    {
+      "number": 13,
+      "label": "tab:sector_complete"
+    },
+    {
+      "number": 14,
+      "label": "tab:esaf"
+    },
+    {
+      "number": 15,
+      "label": "tab:paired_components"
+    }
+  ],
+  "totalTables": 15,
+  "undefinedReferences": [],
+  "undefinedCitations": [],
+  "duplicateLabels": [],
+  "staleReferences": [],
+  "removedLabelsAbsent": true,
+  "retainedSectorRowsUnchanged": true,
+  "retainedPairedRowsUnchanged": true,
+  "compiledSectionCount": 7,
+  "compiledSources": [
+    "main.tex",
+    "sections/01_introduction.tex",
+    "sections/02_literature.tex",
+    "sections/02a_proposed_solution.tex",
+    "sections/03_methodology.tex",
+    "figures/architecture.tex",
+    "sections/04_evaluation.tex",
+    "figures/source_results.tex",
+    "figures/training_history.tex",
+    "figures/principle_f1.tex",
+    "figures/concept_holdouts.tex",
+    "figures/detector_results.tex",
+    "sections/05_results.tex",
+    "figures/company_contributions.tex",
+    "sections/07_conclusion.tex",
+    "references.tex"
+  ],
+  "referencesLast": true,
+  "compile": "PASS: built-in LaTeX compiler, including existing page and compact-table height guards"
+}

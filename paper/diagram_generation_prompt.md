@@ -1,40 +1,99 @@
-# GRASP diagram: detector reuse for Clarity
+# Architecture illustration prompt, exact methodology titles
 
-Date: 2026-10-26
-Mode: built-in image_gen; edit using the existing paper diagram as reference.
-Edit target: paper/figures/grasp_pipeline.png
-Original preserved: paper/revision/2026-10-26_before_detector_reuse/grasp_pipeline.png
-Final paper asset: paper/figures/grasp_pipeline.png
+Create a publication-quality academic architecture diagram titled "GRASP: From BRSR Reports to Traceable Disclosure Analysis".
 
-## Exact generation prompt
+Use a portrait 4:5 canvas at high resolution. Design for a full-width figure in a single-column journal, readable at 164 mm printed width. Use a white background, navy text, muted teal processing cards, pale blue data resources, and restrained amber review markers. Use consistent thin-line icons, flat vector styling, generous white space, and one clean sans-serif typeface. Avoid gradients, shadows, 3D objects, decorative leaves, stock illustrations, and ornamental graphics.
 
-Use case: precise-object-edit / infographic-diagram.
-Asset type: a publication-quality research-paper architecture figure, high-resolution portrait raster on an opaque white background.
-Input image 1 is the EDIT TARGET and the visual style reference. Rebuild this exact GRASP architecture as a clean professional diagram with the SAME seven numbered modules, SAME exact module titles, SAME simple outlined icons, pale teal panels, dark navy strokes and typography. The requested change is one essential dependency: module 6 reuses the language vagueness detector defined in module 4 to calculate Clarity, weighted 20% in the Transparency Score.
+CRITICAL TITLE RULE
+The seven module titles below must appear verbatim, including wording, case, and hyphens. Numbers belong in separate small circular badges. Allow a title to wrap onto two or three lines; never abbreviate or substitute a shorter title. The wording matches the Methodology subsection headings.
 
-CRITICAL SCIENTIFIC CONTENT:
-The solid main connections are exactly: input -> 1; 1 -> 2; 2 -> 3; 3 -> 5; 1 -> 4; 1 -> 6; 4 -> 7; 5 -> 7; 6 -> 7; 7 -> output.
-Add one DASHED dark-teal directed connection 4 -> 6. Its two-line label must read exactly "Detector reuse for" and "Clarity (20%)". This refers ONLY to reuse of the language vagueness detector, not all numerical/assurance flags entering the score. Do NOT add 4 -> 5, 3 -> 6 or any other connections. Do NOT imply the classifier probabilities or all review flags are score components.
+LAYOUT
+Arrange three horizontal bands: "DATA PREPARATION AND MODEL TRAINING", "DISCLOSURE ANALYSIS", and "REPORTING AND ACCESS". Use visually balanced workflow cards, not a table. Each card contains a line icon, exact module title, three short processing labels, and a clearly separated output strip.
 
-LAYOUT TO AVOID ARROW CROSSINGS:
-Keep input and module 1 centred at the top. Arrange the rest as two clean vertical lanes with ample whitespace: on the RIGHT, stack module 2, module 3 and module 5 in that order; on the LEFT, module 4 above module 6. Put module 7 centred below both lanes, and the final output below 7. This makes modules 4 and 6 vertically adjacent so their dashed dependency can be a short clearly labelled downward arrow.
-Route the direct module 1 -> 6 solid database-input connection along the FAR LEFT outside edge, entering the LEFT edge of module 6; it must bypass module 4 without touching it.
-Route module 1 -> 4 to the TOP of module 4. Route 1 -> 2 into module 2 at the top. Keep the solid 2 -> 3 -> 5 chain in the right lane. Give module 4 a SEPARATE solid result connection leaving its RIGHT edge, travelling down the empty CENTRAL corridor, then joining the result collection bus below modules 5 and 6. Modules 5 and 6 also feed that bus; show a single intentional junction into 7.
-No edges may run through text or boxes; no unconnected edges may cross or overlap; no ambiguous junctions. A genuine shared results bus with a visible junction is allowed. Make generous spacing, aligned panels, balanced readable typography. Preserve the portrait aspect ratio near 4:5 so this remains legible on a journal page.
+Place a compact input element above the first band: document-stack icon, heading "BRSR XBRL reports", and labels "Text segments", "Numerical facts", "Reporting context". Connect the input to Module 1.
 
-EXACT TEXT, render verbatim:
-Input: "BRSR XBRL filings"
-1: "Filing acquisition and structured storage"
-2: "Narrative selection and weak-label construction"
-3: "Domain adaptation and principle classification"
-4: "Vagueness and filing-consistency checks"
-5: "Principle mapping and the zero-shot comparator"
-6: "Transparency Score and peer comparison"
-7: "Service layer and runtime traceability"
-Output: "Company and sector reports"
-Small labels on the direct 1 -> 2, 1 -> 4 and 1 -> 6 edges: "Filing data".
-On 3 -> 5: "Trained model".
-New dashed 4 -> 6 dependency label: "Detector reuse for" / "Clarity (20%)".
-Minimal two-item legend, with line samples, in the bottom margin: "Data / model / results" for a solid line, "Detector reuse" for a dashed line.
+BAND A
+Place Modules 1, 2 and 3 from left to right, with straight arrows 1 → 2 → 3. This is the dataset and training workflow. Below these cards, add a shared-data strip labelled "Shared report data from Module 1", with small labels "Text segments | Numerical facts | Context and assurance". Connect Module 1 to that strip. Give the shared-data strip three separate short downward connections into Modules 4, 5 and 6.
 
-CONSTRAINTS: Preserve the seven modules and numbering exactly, no extra modules, no prose paragraphs, no formulas other than the requested 20% annotation, no decorative stock images, no watermark, no shadows or 3D, no overlapping arrows, no spelling errors. Icons remain consistent black outline icons appropriate to documents/database, labels, BERT/AI chip, review/magnifier, principle network, score/comparison, and API/server. Design should read as a restrained scientific architecture diagram, not a poster.
+BAND B
+Place Modules 4, 5 and 6 as three parallel cards below the shared-data strip. Do not connect these cards sequentially. Module 5 additionally contains a small resource badge "BERT model · M3". Repeat that exact badge at the output of Module 3 to show the classifier dependency without a long crossing connector. In the same way, Module 6 contains a small resource badge "Vagueness detector · M4" for the Clarity component, and the same badge is repeated at the output of Module 4. No long connector is drawn between Modules 4 and 6.
+
+BAND C
+Place Module 7 as one wide card below Modules 4 to 6. Draw three parallel vertical arrows from Modules 4 to 6 into three separate ports on Module 7. Beneath Module 7, show a compact output group with three line icons labelled "Company review", "Sector comparison", and "Evidence inspection". Connect the group with one short central arrow.
+
+EXACT MODULE CONTENT
+
+MODULE 1
+Icon: document entering a database.
+Exact title: "Report acquisition and structured storage"
+Processing labels:
+• Parse concepts and raw values
+• Preserve units, periods and dimensions
+• Link company, report and fact records
+Output strip: "Structured report database"
+
+MODULE 2
+Icon: tagged document with organised data layers.
+Exact title: "Text segment selection and weak-label construction"
+Processing labels:
+• Select and clean text segments
+• Derive axis, concept and note labels
+• Deduplicate and split companies by CIN
+Output strip: "42,409 weak-labelled text segments"
+
+MODULE 3
+Icon: neural-network chip.
+Exact title: "Domain adaptation and principle classification"
+Processing labels:
+• Masked-language-model adaptation
+• Nine-principle BERT fine-tuning
+• Select and strictly verify the checkpoint
+Output strip: "Recovered seed-99 BERT classifier"
+Resource badge: "BERT model · M3"
+
+MODULE 4
+Icon: magnifying glass with a small review marker.
+Exact title: "Vagueness detection and report-consistency checks"
+Processing labels:
+• Hedging word list and MPNet similarity
+• Claim–figure and assurance-gap checks
+• Auxiliary omission check
+Output strip: "Vagueness flags and review records"
+Small scope label: "Evaluation covers the text-vagueness branch"
+Resource badge: "Vagueness detector · M4"
+
+MODULE 5
+Icon: compass connected to nine category markers.
+Exact title: "Principle mapping and the zero-shot comparator"
+Processing labels:
+• Supervised principle probabilities
+• MPNet definitions and anchors
+• Compare ranked principle assignments
+Output strip: "Principle summaries and ranked text segments"
+Resource badge: "BERT model · M3"
+
+MODULE 6
+Icon: gauge with four component bars.
+Exact title: "Transparency Score and peer comparison"
+Processing labels:
+• Completeness 40% · Specificity 30%
+• Clarity 20% (reuses detector) · SDG breadth 10%
+• Sector summaries and percentiles
+Output strip: "Transparency Score and peer position"
+Small scope label: "Fixed heuristic weights"
+Resource badge: "Vagueness detector · M4"
+
+MODULE 7
+Icon: server connected to a browser window.
+Exact title: "Service layer and runtime traceability"
+Processing labels:
+• Company lookup and report access
+• Expose method and recovered model path
+• Return components and review evidence
+Output strip: "Traceable company and sector views"
+
+CONNECTOR AND TYPOGRAPHY RULES
+Use straight or orthogonal connectors in dedicated gutters. No intersections, diagonal shortcuts, overlapping labels, or arrows through boxes. Allow junction dots only for intentional shared-data branches. Keep arrowheads away from text and icons. Use identical icon sizes and card padding. Prioritise readable exact titles; widen a card or increase height instead of shrinking text. Preserve clear visual hierarchy between band labels, module titles, processing labels, and output strips.
+
+SCIENTIFIC ACCURACY
+Modules 4, 5 and 6 are parallel analyses. Principle probabilities and numerical review flags (claim–figure, assurance-gap, omission) are separate outputs and are not terms in the Transparency Score formula. The only link from Module 4 to Module 6 is the reuse of the vagueness detector to calculate Clarity. The recovered classifier is used specifically by Module 5. Numerical and assurance checks remain review heuristics. Include no invented accuracy, greenwashing verdict, legal-compliance badge, independent-human-validation badge, extra model, or additional module. Keep all seven titles exact. Use no personal pronouns.

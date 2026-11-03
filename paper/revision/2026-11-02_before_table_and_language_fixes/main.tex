@@ -1,0 +1,65 @@
+\documentclass[11pt,a4paper,onecolumn]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=23mm]{geometry}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{array,booktabs,tabularx,longtable}
+\usepackage{caption,subcaption}
+\usepackage{enumitem}
+\usepackage{placeins}
+\usepackage{tikz,pgfplots}
+\usetikzlibrary{arrows.meta,positioning,calc}
+\pgfplotsset{compat=1.17}
+\usepackage[hidelinks]{hyperref}
+\usepackage{url}
+\definecolor{ink}{HTML}{203447}
+\definecolor{teal}{HTML}{227C80}
+\definecolor{softgray}{HTML}{EDF1F4}
+\definecolor{warm}{HTML}{B56B42}
+\captionsetup{font=small,labelfont=bf,labelsep=period}
+\setlist[itemize]{leftmargin=1.5em,itemsep=3pt,topsep=4pt}
+\setlist[enumerate]{leftmargin=1.8em,itemsep=3pt,topsep=4pt}
+\setlength{\parskip}{5pt plus 1pt}
+\setlength{\parindent}{0pt}
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.17}
+\renewcommand{\topfraction}{0.90}
+\renewcommand{\textfraction}{0.08}
+\renewcommand{\floatpagefraction}{0.75}
+\setlength{\emergencystretch}{2em}
+\raggedbottom
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newcommand{\artifact}[1]{\nolinkurl{#1}}
+\newcommand{\na}{\textemdash}
+\newsavebox{\methodologyoverviewbox}
+\pgfplotsset{every axis/.append style={label style={font=\small},tick label style={font=\small},legend style={font=\small,draw=none},axis line style={black!55},grid style={black!12},major tick length=2pt}}
+\title{\textbf{GRASP: A Greenwashing Recognition and Scoring Pipeline\\for Structured BRSR Disclosures in India}}
+\author{\normalsize Yugchhaya Galphat, Purab Keshwani, Khushi Dayaramani,\\
+\normalsize Ronit Chugwani, and Karan Sarani\\[5pt]
+\small Computer Department, Vivekanand Education Society's Institute of Technology\\
+\small Mumbai, India\\[3pt]
+\footnotesize yugchhaya.dhote@ves.ac.in; 2023.purab.keshwani@ves.ac.in\\
+\footnotesize 2023.khushi.dayaramani@ves.ac.in; 2023.ronit.chugwani@ves.ac.in\\
+\footnotesize 2023.karan.sarani@ves.ac.in}
+\date{}
+\begin{document}
+\maketitle
+\begin{abstract}
+India's listed companies now file the Business Responsibility and Sustainability Report (BRSR) in a common format, but reviewing one of these reports is still slow work. An analyst has to match each written claim with the figure filed for that claim, the period the figure covers, and the industry of the company. GRASP is a seven-module pipeline for this review. The first module collects reports filed in XBRL, a structured digital format, and stores each report with the company and period details. The tags and concept mappings inside each report then supply weak labels, meaning principle labels assigned automatically from the structure of the report and not by a person. A BERT language model adapted to BRSR text uses these labels to classify text segments under the nine BRSR principles. Word lists and sentence similarity pick out vague wording. The numerical and assurance checks work differently, because each check creates a review record that ties a claim to the figure filed for that claim. Principle mapping then shows how strongly the model supports each principle. A four-part Transparency Score allows companies to be compared within a sector, and the vagueness detector is reused to calculate one of the four parts, Clarity. An application programming interface (API) gives access to all outputs. The saved results cover 1,164 companies. The classifier was tested on 6,201 text segments from companies left out of supervised training. The classifier matches the weak labels on 93.00\% of these text segments. The Transparency Score was checked against 20 historical human ratings and gives a correlation of $r=0.6314$. With linked text segments, score breakdowns, and peer comparisons, an analyst can trace the evidence and see which disclosures deserve review first.
+\end{abstract}
+\noindent\textbf{Keywords:} BRSR; sustainability disclosure; weak supervision; BERT; vagueness detection; transparency scoring; sector benchmarking.
+\input{sections/01_introduction}
+\input{sections/02_literature}
+\input{sections/02a_proposed_solution}
+\input{sections/03_methodology}
+\input{sections/04_evaluation}
+\input{sections/05_results}
+\input{sections/06_discussion}
+\input{sections/07_conclusion}
+\input{references}
+\end{document}

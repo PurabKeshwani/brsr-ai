@@ -1,0 +1,142 @@
+{
+  "date": "2026-11-02",
+  "main_document": "D:/brsr-ai-phase0-1/brsr-ai/paper/main.tex",
+  "compiler": "Desktop built-in LaTeX compiler",
+  "compile_status": "SUCCESS",
+  "activeFiles": 17,
+  "characters": 129525,
+  "missingInputs": [],
+  "unresolvedReferences": [],
+  "duplicateLabels": [],
+  "missingCitationKeys": [],
+  "forbiddenPronouns": [],
+  "tableMap": [
+    {
+      "number": "1",
+      "label": "tab:lit",
+      "references": 1
+    },
+    {
+      "number": "2",
+      "label": "tab:comparison_summary",
+      "references": 1
+    },
+    {
+      "number": "3",
+      "label": "tab:class_counts",
+      "references": 1
+    },
+    {
+      "number": "4",
+      "label": "tab:source",
+      "references": 3
+    },
+    {
+      "number": "5",
+      "label": "tab:per_principle",
+      "references": 2
+    },
+    {
+      "number": "6",
+      "label": "tab:detector",
+      "references": 1
+    },
+    {
+      "number": "7",
+      "label": "tab:mapping",
+      "references": 1
+    },
+    {
+      "number": "8",
+      "label": "tab:case_facts",
+      "references": 1
+    },
+    {
+      "number": "9",
+      "label": "tab:case_score",
+      "references": 1
+    },
+    {
+      "number": "10",
+      "label": "tab:financial_selected",
+      "references": 1
+    },
+    {
+      "number": "11",
+      "label": "tab:esaf",
+      "references": 2
+    },
+    {
+      "number": "12",
+      "label": "tab:all_financial",
+      "references": 1
+    },
+    {
+      "number": "13",
+      "label": "tab:all_sectors",
+      "references": 2
+    },
+    {
+      "number": "S1",
+      "label": "tab:supp_financial",
+      "references": 2
+    },
+    {
+      "number": "S2",
+      "label": "tab:supp_sectors",
+      "references": 3
+    },
+    {
+      "number": "S3",
+      "label": "tab:supp_paired",
+      "references": 2
+    },
+    {
+      "number": "S4",
+      "label": "tab:supp_pharma",
+      "references": 2
+    }
+  ],
+  "literatureGraspOnlyAfterReview": true,
+  "discussionExcluded": true,
+  "abstractNoXBRL": true,
+  "futureWorkOpening": true,
+  "onePageResultsTableGuards": true,
+  "data": {
+    "sourceCounts": {
+      "financial_companies": 94,
+      "sectors": 72,
+      "paired_records": 16,
+      "paired_companies": 8,
+      "pharma_examples": 7
+    },
+    "eligibleSectors": 47,
+    "eligibleCompanies": 1109,
+    "totalCompanies": 1164,
+    "financialBands": [
+      {
+        "band": 60,
+        "n": 11,
+        "mean": "62.39"
+      },
+      {
+        "band": 50,
+        "n": 35,
+        "mean": "54.77"
+      },
+      {
+        "band": 40,
+        "n": 26,
+        "mean": "45.22"
+      },
+      {
+        "band": 0,
+        "n": 22,
+        "mean": "34.05"
+      }
+    ]
+  },
+  "training_or_inference_run": false,
+  "approved_metrics_changed": false,
+  "visual_page_inspection": false
+}

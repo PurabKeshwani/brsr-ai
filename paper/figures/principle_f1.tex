@@ -1,4 +1,4 @@
-\begin{figure}[tbp]
+\begin{figure}[H]
 \centering
 \begin{tikzpicture}
 \begin{axis}[width=0.88\linewidth,height=5.7cm,ybar,bar width=16pt,ymin=0,ymax=1.10,
@@ -7,6 +7,6 @@
 \addplot[fill=teal!65,draw=teal] coordinates {(P1,0.9511)(P2,0.8992)(P3,0.9588)(P4,0.9549)(P5,0.8751)(P6,0.9145)(P7,0.8551)(P8,0.9064)(P9,0.9272)};
 \end{axis}
 \end{tikzpicture}
-\caption{F1 by principle for the recovered classifier. A higher bar means a better balance of precision and recall against the recorded weak labels. P7 has 69 test examples, compared with 1,715 for P3. Table~\ref{tab:per_principle} gives all example counts and measures.}
+\caption{F1 across the nine principles. Higher values indicate a better balance of precision and recall against weak labels. Table~\ref{tab:per_principle} provides the corresponding text-segment counts.}
 \label{fig:per_principle}
 \end{figure}

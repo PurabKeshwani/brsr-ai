@@ -1,4 +1,4 @@
-\begin{figure}[tbp]
+\begin{figure}[H]
 \centering
 \begin{subfigure}{0.48\linewidth}
 \centering
@@ -10,7 +10,7 @@
 \addplot[warm,only marks,mark=*,mark size=3.5pt] coordinates {(4,0.919368)};
 \end{axis}
 \end{tikzpicture}
-\caption{Category agreement is highest at epoch 4.}
+\caption{Validation macro-F1 peaks at epoch 4.}
 \end{subfigure}\hfill
 \begin{subfigure}{0.48\linewidth}
 \centering
@@ -20,8 +20,8 @@
 \addplot[ink,thick,mark=square*] coordinates {(1,0.310062)(2,0.360093)(3,0.401145)(4,0.447556)(5,0.468024)};
 \end{axis}
 \end{tikzpicture}
-\caption{Loss records changes in prediction confidence.}
+\caption{Validation loss increases across epochs.}
 \end{subfigure}
-\caption{Five recorded training epochs for seed 99. The marked point identifies checkpoint 7,460, selected by validation macro-F1. The two panels present category agreement and probability-based loss, showing the recorded basis for checkpoint selection.}
+\caption{Validation history for seed 99 across five epochs. The marked point identifies checkpoint 7,460, selected by macro-F1 rather than minimum validation loss.}
 \label{fig:training}
 \end{figure}

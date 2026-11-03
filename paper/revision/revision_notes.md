@@ -96,31 +96,3 @@ The current abstract contains 176 words and highlights all seven pipeline parts 
 ## Proposed Solution restored before Methodology
 
 Read the historical reference PDF, page 2, and added sections/02a_proposed_solution.tex between the literature review and methodology. The new overview explains the shared filing record, the three design requirements, seven modules, and four reporting levels using the current implementation. Numerical review records remain separate from language flags; principle mapping uses classifier probabilities. Updated the introduction roadmap. The existing architecture figure and all result tables remain in place. The main document compiled successfully, with zero prohibited-word matches or unresolved source references. Earlier page-6 assertions describe the previous layout; absolute pagination was not rechecked after this section insertion. No terminal command, training, or model inference was run.
-
-## Beginner-friendly abstract and terminology
-
-Rewrote the abstract in simple professional English, removed XBRL, and retained the full pipeline and two main results. Report means the complete company BRSR document; text segment means a selected portion of report text used for analysis. Passage and sample are not used as synonyms in the revised abstract. The 6,201 test count explicitly refers to text segments, not reports or companies. Apply these definitions during later section-by-section edits; the rest of the manuscript has not yet received this terminology pass. The existing main document compiled successfully. No terminal command, training, or model inference was run.
-
-## Beginner-friendly introduction
-
-Rewrote the requested introduction paragraphs as three clearly separated design questions, each followed by the relevant GRASP approach. Explained labels, weak labels, reporting concepts, four score components, and the roles of training, validation, and test groups. Simplified the evaluation overview and section roadmap. Kept the opening reporting background and aligned terminology in the analyst-workflow and related-method paragraphs: report means the complete document; text segment means a selected text portion. No passage/sample synonyms remain in the introduction. All cited sources and the 42,409 count were retained. The open introduction file compiled successfully through the existing main document. No terminal command, training, or inference was run.
-
-## Beginner-friendly Proposed Solution
-
-Expanded the Proposed Solution into a clear overview of seven modules. Explained weak labels, BERT domain adaptation and masked language modelling, hedging lexicon, semantic similarity, classifier probabilities, zero-shot comparison, Transparency Score components, and the service/API role. Report denotes the complete company document; text segment denotes the selected analysis unit. Passage and sample are absent from the revised section. Retained AI-assisted mapping provenance, classifier reuse, separate language/numerical review outputs, and the four application reporting levels. Methodology headings, the supplied diagram, and result values are unchanged. The existing main document compiled successfully from the edited section path; the current editor was retained. No terminal command, training, or model inference was run.
-
-## Proposed Solution restructured around the intervention
-
-Replaced the earlier module-by-module explanation following user clarification. The current section presents the overall solution, connects three design choices to the introduction problems, explains architecture choices and required resources, distinguishes supervised BERT training from zero-shot MPNet, and states intended analyst benefits. The 1,164-company application coverage supports implementation feasibility; no cost, timing, superiority, or new performance result was invented. Detailed algorithms and training steps are referred to Methodology. Text segment remains the analysis unit. The existing document compiled successfully, and no replacement document or tab was opened.
-
-## Methodology opening and Figure 1 caption
-
-Replaced the opening explanation with a connected flow from BRSR report data to classifier training, review checks, score calculation, and API outputs. Removed the sentence about identical figure/subsection titles and the duplicate title-correspondence statement in the caption. The shorter caption names the inputs, outputs, and main connections. Kept the supplied image, dimensions, dedicated overview page, and later methodology subsections unchanged. The existing main document compiled successfully, including the overview-box height guard.
-
-## Generated diagram with detector reuse
-
-Used the existing grasp_pipeline.png as the input to the built-in image generation tool. Preserved the seven numbered module titles and icon/palette style, and rearranged the review/scoring branch to show a direct dashed 4-to-6 dependency labelled Detector reuse for Clarity (20%). Solid data/model/result routes converge at the service layer; the generated image was visually checked for correct labels and non-crossing routes. Installed the selected image at the existing paper asset path, preserving the original image and original prompt in 2026-10-26_before_detector_reuse. Updated the Figure 1 caption and the Clarity paragraph to explain detector reuse. The exact generation prompt is in paper/diagram_generation_prompt.md. The current main document compiled successfully, including the overview height guard. No model-training, predictive inference, scoring-code change, or terminal command was performed.
-
-## Discussion and Practical Use removed
-
-Removed the complete Discussion and Practical Use section, its main-document input, and the corresponding introduction-roadmap sentence. The original section and affected source versions are preserved in 2026-10-26_before_discussion_removal. Results now leads directly to Conclusion, with the existing Results float barrier retained. No active manuscript reference to the removed section remains. The current main document compiled successfully; all active cross-references resolve.

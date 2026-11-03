@@ -81,12 +81,12 @@
   ],
   "derived_financial_linkage_sha256": "69bf2be7395574c1be5980ff721455ce8859be8c0c00dfc5d8fb4d9334793a26",
   "manuscript_sha256": {
-    "main.tex": "cb4eafd6b660a2b08f05514aab6bc74deada0e7aaf71319d9da0cc9afb58bc20",
-    "sections/01_introduction.tex": "27db0733eb8b92b636d67a2c48acba920d9052ce1827837f378e4d180bc3da4d",
+    "main.tex": "3bb74cde4cdd4461a349a5837631ec441a538c9be905c7ce97f739f23e0fd44f",
+    "sections/01_introduction.tex": "a82c84b67bcafd865eaa1112d54005387d46104630ffd4a8cc98efa30532010d",
     "sections/02_literature.tex": "5f33ae36233444dd53b6481bfe097bcb493bff19746e78dcbbdc160e2e522a66",
-    "sections/02a_proposed_solution.tex": "080e072d290a805e0b0f0420b4e11b5a58a24785665dab149a3bd3044986c0b0",
-    "sections/03_methodology.tex": "5404cb28602ecdea16e8e89d1d0b9aded8ad3945223d8181ff787513d49129ad",
-    "figures/architecture.tex": "d34d78177c556cb379a3ba7fea6cee62dc7d245815c648d70a613fe685552d93",
+    "sections/02a_proposed_solution.tex": "af75a5522704769be0d7815955af0ae08039dcdb59596001f8eb89c0d647eeee",
+    "sections/03_methodology.tex": "2f4417faf09824383f78931bc98334e3385fe991442d0564ae3f6f852dfefb34",
+    "figures/architecture.tex": "a4b8246e7db804193476cb0bfe4ddfa50d066a4326502787bff11d61d87f43ca",
     "sections/04_evaluation.tex": "34c1bc3eed593d03646a49cbf73d837d495b2907411509fcbd30b15435f7f442",
     "figures/source_results.tex": "b17af726705970c5fbfc3232df709d44951009a97654e0d7467d0c95e207e1c8",
     "figures/training_history.tex": "40da701a32ff17fc231869d5ffb58101f2125555622c4c55e368ba5d6905b891",
@@ -95,6 +95,7 @@
     "figures/detector_results.tex": "2861bbbce80ac9284532d62a3fd360e161593c53a17726eac21f3fb4310e2c09",
     "sections/05_results.tex": "358160c962ba6bd18c5d2d7b46bc00b27bd60fbd715f7b47071d7014c9e5000c",
     "figures/company_contributions.tex": "bb32cb8b82fb0c7f0381785e0eb0fc449b7a7400b7183d95df195b36b69e6e09",
+    "sections/06_discussion.tex": "a789fbdcdda2117f84a6585e020b794648729d8437b20f4225b58f15a53f1a94",
     "sections/07_conclusion.tex": "466cf2025562a26326fba7d53efd115054627bab84696db8576314b012a67ab1",
     "references.tex": "d06fefa594426874df9ed4ac125b41ebcf42839db12c375ee5ef6cd440a054bd"
   },
@@ -105,16 +106,16 @@
     "tables/sector_all_rows.tex"
   ],
   "generated_table_note": "Earlier complete TeX row files preserve the first revision. The main manuscript now uses compact summaries for Tables 12 and 13; supplementary CSVs S1 and S2 retain the complete current listings. S3 and S4 retain paired-year components and Pharmaceuticals examples.",
-  "diagram_prompt_sha256": "41286f281b33c956f29ebef5a15a13f01270001615e89b46f0f5d29d117116d6",
-  "manuscript_bundle_sha256": "9f6c61df82ed25ed887b88caa50f5ab31ef33890d6ab0077caea5775cddd158b",
+  "diagram_prompt_sha256": "f0949d25b7724ba358ecdddaa8f9d0ba0d6183758345575d94c64de8dc5b77f7",
+  "manuscript_bundle_sha256": "47171ad12c3d3e6804ca9938b6e95751e22c610bf895e791a54ae215c4513e71",
   "latest_revision": {
-    "date": "2026-10-26",
-    "scope": "Removed Discussion and Practical Use completely from the manuscript and source inputs; updated the introduction roadmap so Results is followed by Conclusion",
+    "date": "2026-10-22",
+    "scope": "Restored Proposed Solution before Methodology using page 2 of the historical reference, with current pipeline roles and an updated introduction roadmap",
     "new_training": false,
     "new_inference": false
   },
   "image_sha256": {
-    "figures/grasp_pipeline.png": "204c21fecbf7b818eb5b41fd09deca6715964d39fbbf8e97b5d8ee949fbbd284"
+    "figures/grasp_pipeline.png": "5d3fa6bcfb9e4ff183c9e72a0b64bbdbf157eab8699ee991bb4d6cefeb41b879"
   },
   "supplementary_sha256": {
     "supplementary/README.md": "58040bc087fc938b734637eb15871d192d0c8f93eb22f70598cc9d1591321f73",
@@ -134,17 +135,5 @@
   "plain_language_revision_sha256": "86fc5e77ea86b021b48271d2b170a10a3b3446b693fe6cfeb56b557f35a14551",
   "eight_request_audit_sha256": "2c38765b0234b8c594aecf1295f366c66a7e7de6467e754dbb3adbb9a02e7a2c",
   "positive_tone_revision_sha256": "1a0d35b3e100bb366f51564aecf95862098273b63d965a2766c273a68ea81894",
-  "manuscript_bundle_hash_convention": "SHA256 of JSON.stringify(manuscript_sha256), using manuscript input traversal order",
-  "diagram_generation": {
-    "mode": "built-in image_gen",
-    "input_backup": "paper/revision/2026-10-26_before_detector_reuse/grasp_pipeline.png",
-    "input_sha256": "5d3fa6bcfb9e4ff183c9e72a0b64bbdbf157eab8699ee991bb4d6cefeb41b879",
-    "selected_generation": "C:/Users/amitk/.codex/generated_images/01a14a9f-e271-74f3-a3db-dc0e797e9a28/exec-0ee42d4f-709c-4ebd-8482-692206d1560b.png",
-    "final_asset": "paper/figures/grasp_pipeline.png",
-    "output_sha256": "204c21fecbf7b818eb5b41fd09deca6715964d39fbbf8e97b5d8ee949fbbd284",
-    "prompt": "paper/diagram_generation_prompt.md",
-    "new_dependency": "4 -> 6; detector reuse for Clarity (20%)",
-    "source_code_changed": false,
-    "metric_values_changed": false
-  }
+  "manuscript_bundle_hash_convention": "SHA256 of JSON.stringify(manuscript_sha256), using manuscript input traversal order"
 }

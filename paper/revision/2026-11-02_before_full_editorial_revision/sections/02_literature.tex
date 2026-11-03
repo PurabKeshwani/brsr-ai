@@ -1,0 +1,60 @@
+\section{Literature Review}
+\label{sec:literature}
+
+Automated sustainability analysis covers several tasks. These tasks are finding relevant text segments, identifying commitments, checking whether a statement is specific, retrieving evidence, and organising results. Each task gives a useful signal, but a language signal alone does not prove that a company has misled a reader. Misleading a reader about environmental performance is commonly called \emph{greenwashing}. Calamai et al. review these tasks and point out continuing problems with available datasets and evaluation methods \cite{calamai2025}. For this reason, the review below treats each task separately from the claim of verified greenwashing.
+
+\subsection{Language models and training labels}
+
+BERT is a language model that learns the meaning of a word from the words around the word \cite{devlin2019}. This general learning is called \emph{pretraining}. After pretraining, BERT can be trained further on labelled examples to classify text. Gururangan et al. show that extra training on text from the same field and task improves several classification tasks \cite{gururangan2020}. This finding supports adapting a model to sustainability reports. However, a lower language-model loss, which is the error measured during training, does not by itself show better principle classification.
+
+Sentence-BERT turns each sentence into a \emph{vector}, which is a list of numbers that represents the meaning of the sentence \cite{reimers2019}. Two vectors can then be compared with \emph{cosine similarity}, a measure of how close two meanings are. Similarity helps find related wording, but similarity does not confirm that a statement is supported by evidence.
+
+Manual labelling is slow, so \emph{weak supervision} uses rules to create labels automatically. Snorkel combines several labelling rules and estimates how uncertain the resulting labels are \cite{ratner2017}. Conflicting or repeated labelling rules can affect many dataset rows, so the source of each label matters. Kapoor and Narayanan explain how \emph{data leakage}, where information from the test data reaches the training data, and weak evaluation design can make machine-learning results look stronger than the evidence supports \cite{kapoor2023}. Company overlap, repeated text, label sources, and saved-model loading therefore form useful parts of an evaluation record.
+
+\subsection{Climate topics, commitments, and communication quality}
+
+ClimaText provides labelled sentences for detecting climate-related topics \cite{varini2020}. A topic label helps select relevant text, but the label does not show whether a claim is supported. ClimateBERT adds pretraining on climate text and is tested on climate-language tasks \cite{webersinke2021}. Bingler et al. use ClimateBERT to study selective and unclear reporting under the Task Force on Climate-related Financial Disclosures (TCFD) framework \cite{bingler2022}. A later study links \emph{cheap talk}, meaning climate statements with little substance, to climate initiatives, emissions growth, and reputation risk \cite{bingler2024}. These studies connect corporate language with performance information and show why disclosure quality needs to be interpreted alongside company outcomes.
+
+ClimateBERT-NetZero studies net-zero and reduction commitments using approximately 3,500 expert-labelled examples, target classification, and question answering \cite{schimanski2023}. Finding a target and extracting the details of the target are separate tasks. Vinella et al. study greenwashing risk with generated labels and a fine-tuned ClimateBERT model \cite{vinella2024}. Generated labels increase the training data, but the evaluation still depends on how the labels were produced. The origin of generated labels is therefore part of the evidence needed to interpret a reported result.
+
+\subsection{Report-level tools and Indian disclosure studies}
+
+ChatReport combines language-model help, text retrieved from reports, and expert feedback to support disclosure review \cite{ni2023}. ESGReveal prepares documents, asks standard questions, and uses language-model agents to extract structured information from ESG reports \cite{zou2025}. Both studies show the value of a connected review tool. Linking an output to the source report allows a reviewer to check the supporting text and the surrounding context.
+
+Shankar and Xu describe a BERT classifier trained with expert labels to classify sentences in Indian sustainability reports \cite{shankar2025}. The source is an SSRN working paper, which is a paper shared before peer review. The paper was posted in 2025, and the manuscript is dated 2024. Garg et al. review BRSR disclosures from 1,012 Indian businesses for 2022--23 \cite{garg2025}. This institutional report gives Indian reporting context and a broad review of disclosure practices. The report is not a machine-learning detection benchmark.
+
+Table~\ref{tab:lit} summarises the reviewed studies in year order. The final column states the main takeaway from each study, linking the findings to questions about training labels, evidence, and disclosure review.
+
+{\small
+\begin{longtable}{@{}L{0.85cm}L{2.35cm}L{2.65cm}L{2.65cm}L{2.65cm}L{2.65cm}@{}}
+\caption{Summary of related research and key takeaways. The studies address different tasks and datasets; the findings describe the contribution of each study.}\label{tab:lit}\\
+\toprule
+\textbf{Year} & \textbf{Objective} & \textbf{Methodology} & \textbf{Main findings} & \textbf{Scope / limitation} & \textbf{Inference drawn}\\
+\midrule\endfirsthead
+\multicolumn{6}{l}{\textit{Table \thetable\ continued}}\\
+\toprule
+\textbf{Year} & \textbf{Objective} & \textbf{Methodology} & \textbf{Main findings} & \textbf{Scope / limitation} & \textbf{Inference drawn}\\
+\midrule\endhead
+\midrule\multicolumn{6}{r}{\textit{Continued on next page}}\\\endfoot
+\bottomrule\endlastfoot
+2019 & Learn general text features: BERT \cite{devlin2019}. & Pretraining with context on both sides of a word, followed by labelled training. & One pretrained model supports several language tasks. & General pretraining does not define BRSR categories. & A pretrained encoder provides a general language base that can be adapted to a reporting task.\\
+2019 & Compare sentence meanings \cite{reimers2019}. & Paired sentence encoders and vector similarity. & Supports efficient search for related sentences. & Similar wording does not prove factual support. & Sentence representations support efficient comparison, while evidence support remains a separate question.\\
+2020 & Adapt a model to specialised text \cite{gururangan2020}. & Further pretraining on domain and task text. & Improves several reported classification tasks. & Gains depend on the training text and target task. & Specialised language can be learned before training for the final labelled task.\\
+2020 & Find climate-topic sentences: ClimaText \cite{varini2020}. & Dataset with sentence-level climate labels. & Provides data for testing topic detection. & A topic label does not assess a claim's credibility. & Climate relevance provides a useful first filter, while claim assessment requires additional evidence.\\
+2021 & Model climate language: ClimateBERT \cite{webersinke2021}. & Further pretraining on climate paragraphs. & Improves the reported climate-language tasks. & Climate tasks do not cover every social or governance principle. & Domain adaptation improves reported climate tasks; broader reporting categories require task-specific evaluation.\\
+2022 & Study climate-risk reporting \cite{bingler2022}. & ClimateBERT analysis of TCFD-related language. & Finds vague claims and selective reporting. & TCFD categories differ from BRSR principles. & Disclosure categories depend on the reporting framework used to organise the text.\\
+2023 & Find net-zero and reduction targets \cite{schimanski2023}. & Expert labels, ClimateBERT, and question answering. & Finds targets and related details. & Detecting a target does not verify delivery. & A detected target describes a commitment; progress requires evidence about the reported outcome.\\
+2023 & Support report review: ChatReport \cite{ni2023}. & Text retrieval, model responses, and expert feedback. & Links report analysis to source text. & Retrieved text and answers still need evaluation. & Source-linked responses make automated report analysis easier to inspect.\\
+2024 & Study risk using generated labels \cite{vinella2024}. & Generated labels and ClimateBERT fine-tuning. & Demonstrates an early language-model approach. & Results depend on the generated-label rules. & Generated labels can expand training data, but the label-generation method shapes the evaluation reference.\\
+2024 & Compare cheap talk with company outcomes \cite{bingler2024}. & Text-based indicator and outcome analysis. & Finds links with emissions growth and negative coverage. & A statistical link does not verify every claim. & Outcome data adds context to language indicators without verifying every individual statement.\\
+2025 & Extract ESG report data: ESGReveal \cite{zou2025}. & Document preparation, standard queries, retrieval, and model agents. & Supports structured extraction and disclosure analysis. & Results depend on documents and model choice. & A connected extraction workflow can organise report content into reusable records for analysis.\\
+2025 & Classify Indian report sentences \cite{shankar2025}. & Expert-labelled text and supervised BERT. & Reports sentence-level greenwashing detection. & Working paper with different data and labels. & Supervised classification is applicable to Indian disclosures, with performance tied to the selected data and labels.\\
+2025 & Review Indian BRSR disclosures \cite{garg2025}. & Institutional review of 1,012 businesses for 2022--23. & Describes BRSR reporting practices. & A disclosure study, not a detection test set. & Indian reporting practices provide context for interpreting sector and company disclosure patterns.\\
+2025 & Review greenwashing text research \cite{calamai2025}. & Survey of tasks, data, and methods. & Identifies separate tasks and testing gaps. & No single language task establishes greenwashing. & Topic detection, commitment extraction, and evidence assessment answer different review questions.\\
+\end{longtable}}
+
+\subsection{Research findings and motivation}
+
+The reviewed studies support three connected requirements for disclosure analysis. Language models can organise report text, but a claim also needs a link to the relevant evidence. Automatically generated labels can reduce manual preparation, but the label source must remain visible. Company comparisons also need a clear account of the score calculation, the report year, and the sector group.
+
+GRASP brings these requirements into one workflow for structured Indian BRSR reports. A shared report database connects text segments with reported values and reporting context. Tags and concept mappings provide documented training labels for a nine-principle classifier. Review checks keep the relevant text and evidence available, while a four-component Transparency Score supports company and sector comparisons. The evaluation examines the classifier by label source, company group, and reporting concept so that each result has a stated reference.

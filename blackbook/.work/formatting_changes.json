@@ -1,0 +1,36 @@
+{
+  "source": "D:/brsr-ai-phase0-1/brsr-ai/Modified Capstone_Project_II_26CMCP71_Blackbook_Template_SEM_VII_2026-27.docx",
+  "edited": "D:/brsr-ai-phase0-1/brsr-ai/blackbook/44-ApplicationDesignProductDevelopment-YugchhayaGalphat.docx",
+  "cover": "Cloned approved modern cover paragraphs and logo dimensions; populated GRASP and student names; removed oversized subtitle and moved extra metadata to existing certificate",
+  "body": "Times New Roman 12 pt; 1.5 line spacing; 10 pt paragraph gap",
+  "headings": "20 /16 /14 pt bold",
+  "tables": "11 pt; 1.15 lines; repeated headers; rows do not split",
+  "captions": "12 pt; chapter-based numbering",
+  "pagination": "Hidden cover number; Roman preliminary pages; Arabic starting at Chapter 1",
+  "original_backup": "D:/brsr-ai-phase0-1/brsr-ai/blackbook/.work/44-blackbook-before-formatting.docx",
+  "final_pages": 75,
+  "verified_outputs": [
+    "D:/brsr-ai-phase0-1/brsr-ai/blackbook/44-ApplicationDesignProductDevelopment-YugchhayaGalphat.docx",
+    "D:/brsr-ai-phase0-1/brsr-ai/blackbook/44-ApplicationDesignProductDevelopment-YugchhayaGalphat.pdf"
+  ],
+  "verification": {
+    "template_unchanged": true,
+    "original_baseline_unchanged": true,
+    "all_33_table_values_unchanged": true,
+    "body_narratives_unchanged_except_caption_reference": true,
+    "body_paragraphs_checked": 286,
+    "table_count": 33,
+    "equations": 7,
+    "broken_relationships": [],
+    "pdf_pages": 75,
+    "overflows": [],
+    "headless_renderer": "Microsoft Word COM, invisible instance",
+    "computer_use_for_this_pass": false,
+    "visual_review": "All pages reviewed; final changed pages and supporting-document placeholders reviewed again",
+    "verified_at_utc": "2026-11-01T09:35:21.973Z"
+  },
+  "output_sha256": {
+    "docx": "443e5037fefe7d9eca7672079c6ecac4b7bbcadea73436982606b029f37fcc1f",
+    "pdf": "16714f817b1e4e81dabd29f1147adadc1d086061ea2f152de83ad856f7a6bdd0"
+  }
+}

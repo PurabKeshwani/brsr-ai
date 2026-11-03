@@ -1,0 +1,955 @@
+[
+  {
+    "page": 1,
+    "top": "VIVEKANAND EDUCATION SOCIETY’S INSTITUTE OF TECHNOLOGY An Autonomous Institute Affiliated to University of Mumbai Department of Computer Engineering CAPSTONE PROJECT",
+    "end": "A. Y. 2026 – 27",
+    "characters": 515,
+    "lastY": 722,
+    "footer": "Capstone Project – II Blackbook | Academic Year 2026 – 27",
+    "fontSizes": [
+      12,
+      12.96,
+      14.04
+    ]
+  },
+  {
+    "page": 2,
+    "top": "CERTIFICATE VIVEKANAND EDUCATION SOCIETY’S INSTITUTE OF TECHNOLOGY An Autonomous Institute Affiliated to University of Mumbai Department of Computer Engineering",
+    "end": "PSO2; CO1 – CO6",
+    "characters": 996,
+    "lastY": 648,
+    "footer": "Capstone Project – II Blackbook | Academic Year 2026 – 27 | Page ii",
+    "fontSizes": [
+      11.04,
+      11.52,
+      12,
+      24
+    ]
+  },
+  {
+    "page": 3,
+    "top": "PROJECT REPORT APPROVAL For B.E. (Computer Engineering) The Capstone Project –II report entitled “GRASP: A Greenwashing Recognition and Scoring",
+    "end": "Principal: ____________________________________________ Date: ____________________ Place: ____________________",
+    "characters": 596,
+    "lastY": 453,
+    "footer": "Capstone Project – II Blackbook | Academic Year 2026 – 27 | Page iii",
+    "fontSizes": [
+      12,
+      14.04,
+      24
+    ]
+  },
+  {
+    "page": 4,
+    "top": "DECLARATION The undersigned students declare that this report presents the work carried out for the Capstone Project –II submission entitled “GRASP”. Sources of ideas, methods, data and results are",
+    "end": "D17B 45 Date: ____________________ Place: Mumbai",
+    "characters": 808,
+    "lastY": 502,
+    "footer": "Capstone Project – II Blackbook | Academic Year 2026 – 27 | Page iv",
+    "fontSizes": [
+      11.04,
+      12,
+      24
+    ]
+  },
+  {
+    "page": 5,
+    "top": "ACKNOWLEDGEMENT Sincere gratitude is expressed to Yugchhaya Galphat for guidance, review and support throughout the development of GRASP. The mentor’s feedback helped shape the reporting workflow, research presentation and interpretation of the results.",
+    "end": "Khushi Dayaramani Ronit Chugwani Karan Sarani",
+    "characters": 1232,
+    "lastY": 547,
+    "footer": "Capstone Project – II Blackbook | Academic Year 2026 – 27 | Page v",
+    "fontSizes": [
+      12,
+      20.04
+    ]
+  },
+  {
+    "page": 6,
+    "top": "COURSE OUTCOMES AND MAPPING Course Outcome Description",
+    "end": "– CO6 is provided by the integrated modules, testing records, quantitative analysis, service design, research comparison and technical documentation.",
+    "characters": 1350,
+    "lastY": 671,
+    "footer": "Capstone Project – II Blackbook | Academic Year 2026 – 27 | Page vi",
+    "fontSizes": [
+      11.04,
+      12,
+      20.04
+    ]
+  },
+  {
+    "page": 7,
+    "top": "TABLE OF CONTENTS ABSTRACT................................................................................................................................. xiii CHAPTER 1: INTRODUCTION ................................................................................................... 1 1.1 Introduction",
+    "end": "3.5 Constraints .......................................................................................................................... 15 CHAPTER 4: PROPOSED DESIGN ........................................................................................... 16 4.1 Block Diagram of the System ............................................................................................. 16",
+    "characters": 3282,
+    "lastY": 726,
+    "footer": "Capstone Project – II Blackbook | Academic Year 2026 – 27 | Page vii",
+    "fontSizes": [
+      12,
+      20.04
+    ]
+  },
+  {
+    "page": 8,
+    "top": "4.2 Modular Design of the System ........................................................................................... 17 4.3 Detailed Design ................................................................................................................... 17 4.4 Scheduling and Tracking .................................................................................................... 19",
+    "end": "8.2 Future Scope ....................................................................................................................... 48 REFERENCES ............................................................................................................................. 49 APPENDIX I: EVIDENCE AND SUPPORTING DOCUMENTS ............................................. 52",
+    "characters": 3243,
+    "lastY": 711,
+    "footer": "Capstone Project – II Blackbook | Academic Year 2026 – 27 | Page viii",
+    "fontSizes": [
+      12
+    ]
+  },
+  {
+    "page": 9,
+    "top": "A. User Guide and Reproduction Notes ................................................................................... 52 B. Complete Recorded Sector Summary .................................................................................. 52 C. Publication or Acceptance Proof .......................................................................................... 56",
+    "end": "...................................................................................................... 61 I. Progress Review Sheet 2 ....................................................................................................... 62 J. Demonstration Video Reference ........................................................................................... 63",
+    "characters": 1291,
+    "lastY": 300,
+    "footer": "Capstone Project – II Blackbook | Academic Year 2026 – 27 | Page ix",
+    "fontSizes": [
+      12
+    ]
+  },
+  {
+    "page": 10,
+    "top": "LIST OF FIGURES Figure 4. 1. GRASP architecture from public filing data to company and sector outputs. .......... 16 Figure 4.",
+    "end": "Figure 7. 7. Mean Transparency Scores for selected eligible sectors. Group sizes are shown with the names; bars describe saved company scores rather than environmental performance. .......... 43",
+    "characters": 2410,
+    "lastY": 524,
+    "footer": "Capstone Project – II Blackbook | Academic Year 2026 – 27 | Page x",
+    "fontSizes": [
+      12,
+      20.04
+    ]
+  },
+  {
+    "page": 11,
+    "top": "LIST OF TABLES Table 1. 1. SDG alignment and available evidence ........................................................................ 4 Table 2.",
+    "end": "......................................................... 46 Table A. 1. Complete recorded sector score summary ................................................................. 52",
+    "characters": 3356,
+    "lastY": 648,
+    "footer": "Capstone Project – II Blackbook | Academic Year 2026 – 27 | Page xi",
+    "fontSizes": [
+      12,
+      20.04
+    ]
+  },
+  {
+    "page": 12,
+    "top": "ABBREVIATIONS Abbreviation Meaning API",
+    "end": "Transparency Score XBRL eXtensible Business Reporting Language",
+    "characters": 690,
+    "lastY": 522,
+    "footer": "Capstone Project – II Blackbook | Academic Year 2026 – 27 | Page xii",
+    "fontSizes": [
+      11.04,
+      20.04
+    ]
+  },
+  {
+    "page": 13,
+    "top": "ABSTRACT India’s Business Responsibility and Sustainability Reporting (BRSR) framework produces a large collection of company disclosures containing text and numerical information. Reviewing this collection manually requires analysts to locate relevant statements, identify supporting figures and",
+    "end": "vagueness detection; Transparency Score.",
+    "characters": 1831,
+    "lastY": 526,
+    "footer": "Capstone Project – II Blackbook | Academic Year 2026 – 27 | Page xiii",
+    "fontSizes": [
+      11.52,
+      12,
+      20.04
+    ]
+  },
+  {
+    "page": 14,
+    "top": "CHAPTER 1: INTRODUCTION 1.1 Introduction Business Responsibility and Sustainability Reporting (BRSR) gives Indian listed companies a common structure for reporting environmental, social and governance information. A filing",
+    "end": "that emissions have reduced. A phrase detector may recognise a reduction claim, but a reviewer also needs the relevant emissions value, comparison period and unit. Showing the sentence beside the reported numbers creates a more useful review record than a language label alone.",
+    "characters": 2375,
+    "lastY": 723,
+    "footer": "Capstone Project – II Blackbook | Academic Year 2026 – 27 | Page 1",
+    "fontSizes": [
+      12,
+      15.96,
+      20.04
+    ]
+  },
+  {
+    "page": 15,
+    "top": "A second motivation is consistency. Analysts may interpret the same disclosure differently when the principle assignment and score calculation are not visible. Filing-derived labels provide a repeatable starting point for model training. Recording the label source makes it possible to assess whether the classifier behaves differently on explicitly tagged answers and concept-mapped",
+    "end": "such as commitments or targets, but a word match alone provides little information about the quality of",
+    "characters": 2401,
+    "lastY": 715,
+    "footer": "Capstone Project – II Blackbook | Academic Year 2026 – 27 | Page 2",
+    "fontSizes": [
+      12,
+      15.96
+    ]
+  },
+  {
+    "page": 16,
+    "top": "supporting evidence. Sentence embeddings compare meaning and can group related disclosures without requiring a labelled training set. Domain-specific transformer models, including ClimateBERT, improve the representation of climate-related language through additional pretraining [2]. Retrieval and language model systems",
+    "end": "For an analyst, the workflow brings text, figures and review signals into one interface. For a researcher, the saved dataset and evaluation artifacts make the label source and test population explicit. For a company preparing a report, the component breakdown can identify which parts of",
+    "characters": 2261,
+    "lastY": 704,
+    "footer": "Capstone Project – II Blackbook | Academic Year 2026 – 27 | Page 3",
+    "fontSizes": [
+      12,
+      15.96
+    ]
+  },
+  {
+    "page": 17,
+    "top": "disclosure need more supporting information. These uses support review and comparison without replacing professional judgement. The saved application dataset contains 1,164 company scores and 1,172 filings. The score collection covers 72 recorded sector groups; 47 groups contain at least five companies and are",
+    "end": "Filing identifiers, raw values, label sources and runtime model path support inspection; no legal compliance certification.",
+    "characters": 1705,
+    "lastY": 570,
+    "footer": "Capstone Project – II Blackbook | Academic Year 2026 – 27 | Page 4",
+    "fontSizes": [
+      11.04,
+      12,
+      15.96
+    ]
+  },
+  {
+    "page": 18,
+    "top": "CHAPTER 2: LITERATURE SURVEY 2.1 Brief Overview Research on sustainability disclosure analysis spans language representation, topic classification, evidence retrieval, greenwashing screening and company-level reporting. The review focuses on",
+    "end": "a zero-shot principle",
+    "characters": 2122,
+    "lastY": 691,
+    "footer": "Capstone Project – II Blackbook | Academic Year 2026 – 27 | Page 5",
+    "fontSizes": [
+      12,
+      14.04,
+      15.96,
+      20.04
+    ]
+  },
+  {
+    "page": 19,
+    "top": "comparator. The supervised BERT classifier and zero-shot comparator use different learning conditions and are described accordingly. 2.2.2 Climate-related language and greenwashing analysis ClimateBERT applies additional pretraining to climate-related text [2]. ClimaText provides a",
+    "end": "language models can reduce the effort of finding and organising relevant information. GRASP instead begins with structured filing facts and keeps the relationship between narrative text and numerical items in a relational database.",
+    "characters": 2248,
+    "lastY": 689,
+    "footer": "Capstone Project – II Blackbook | Academic Year 2026 – 27 | Page 6",
+    "fontSizes": [
+      12,
+      14.04
+    ]
+  },
+  {
+    "page": 20,
+    "top": "The distinction is practical. Answer generation is useful for a question asked by a reviewer, while a structured pipeline can repeatedly apply the same calculation to a complete filing collection. GRASP retains a supervised classifier for principle assignment and explicit rules for inspectable review records. This choice makes the source and calculation visible without requiring generated",
+    "end": "Compare text with clear and vague reference statements.",
+    "characters": 2259,
+    "lastY": 720,
+    "footer": "Capstone Project – II Blackbook | Academic Year 2026 – 27 | Page 7",
+    "fontSizes": [
+      11.04,
+      12,
+      14.04
+    ]
+  },
+  {
+    "page": 21,
+    "top": "Year / reference Objective and method Main finding or scope",
+    "end": "reviewed. The publication text is used as technical prior art; publication is not treated as proof of a granted right or product validation. No freedom-to-operate conclusion is drawn from this limited search.",
+    "characters": 1773,
+    "lastY": 654,
+    "footer": "Capstone Project – II Blackbook | Academic Year 2026 – 27 | Page 8",
+    "fontSizes": [
+      11.04,
+      12,
+      15.96
+    ]
+  },
+  {
+    "page": 22,
+    "top": "Table 2. 2. Patent publications reviewed Publication / date Disclosed mechanism",
+    "end": "on separate companies, and company-level outputs are presented from one worked example to sector-wide summaries. This is more precise than claiming that one model independently solves all aspects of greenwashing.",
+    "characters": 1949,
+    "lastY": 613,
+    "footer": "Capstone Project – II Blackbook | Academic Year 2026 – 27 | Page 9",
+    "fontSizes": [
+      11.04,
+      12,
+      15.96
+    ]
+  },
+  {
+    "page": 23,
+    "top": "2.5 Comparison with Existing Systems Table 2. 3. Practical comparison of disclosure-analysis approaches Approach",
+    "end": "controls, upload validation, source licensing, storage policies and review responsibility should be established before wider deployment. A flag should be interpreted as a request for evidence review, especially before public communication about a named company.",
+    "characters": 2192,
+    "lastY": 702,
+    "footer": "Capstone Project – II Blackbook | Academic Year 2026 – 27 | Page 10",
+    "fontSizes": [
+      11.04,
+      12,
+      15.96
+    ]
+  },
+  {
+    "page": 24,
+    "top": "Sustainability feasibility is considered through model reuse, stored results and bounded peer comparisons. Retraining is separated from normal dashboard use. These choices can reduce repeated work, but no numerical energy saving is asserted without measurement. 2.7 Expected Outcomes",
+    "end": "selected numerical review records and a four-part Transparency Score. The evaluation outcome is a clearly stated result for each task, including the data unit and reference source. The application outcome is easier navigation from a company summary to the information behind the score.",
+    "characters": 759,
+    "lastY": 253,
+    "footer": "Capstone Project – II Blackbook | Academic Year 2026 – 27 | Page 11",
+    "fontSizes": [
+      12,
+      15.96
+    ]
+  },
+  {
+    "page": 25,
+    "top": "CHAPTER 3: REQUIREMENT GATHERING 3.1 Requirements Scope and Sources Requirements were derived from the reporting structure, the research problem, the implemented services and the available evaluation artifacts. No interview study or survey of end users is",
+    "end": "components with fixed weights. Completeness, Specificity, Clarity, SDG coverage and total.",
+    "characters": 2032,
+    "lastY": 720,
+    "footer": "Capstone Project – II Blackbook | Academic Year 2026 – 27 | Page 12",
+    "fontSizes": [
+      11.04,
+      12,
+      15.96,
+      20.04
+    ]
+  },
+  {
+    "page": 26,
+    "top": "ID Requirement Output / acceptance evidence FR-09",
+    "end": "before public deployment. XML/XBRL upload path is implemented; full penetration testing is not recorded.",
+    "characters": 2043,
+    "lastY": 693,
+    "footer": "Capstone Project – II Blackbook | Academic Year 2026 – 27 | Page 13",
+    "fontSizes": [
+      11.04,
+      12,
+      15.96
+    ]
+  },
+  {
+    "page": 27,
+    "top": "Quality Required behaviour Current evidence / further verification Scalability",
+    "end": "JSON/CSV/Markdown audits Recorded methods, results and evidence references.",
+    "characters": 1710,
+    "lastY": 681,
+    "footer": "Capstone Project – II Blackbook | Academic Year 2026 – 27 | Page 14",
+    "fontSizes": [
+      11.04,
+      12,
+      15.96
+    ]
+  },
+  {
+    "page": 28,
+    "top": "3.5 Constraints The labelled corpus reflects the available filing text and the programmatic labelling procedure. Section C supplies most text segments, and Principle 7 has fewer examples than the other classes. Evaluation should therefore include source-wise and per-principle results rather than only an",
+    "end": "saved sector benchmarks. The frontend and backend must use consistent service addresses. The current upload service handles structured XML/XBRL filings; an interface label that mentions PDF should not be interpreted as an implemented general PDF extraction capability.",
+    "characters": 1066,
+    "lastY": 346,
+    "footer": "Capstone Project – II Blackbook | Academic Year 2026 – 27 | Page 15",
+    "fontSizes": [
+      12,
+      15.96
+    ]
+  },
+  {
+    "page": 29,
+    "top": "CHAPTER 4: PROPOSED DESIGN 4.1 Block Diagram of the System GRASP uses a shared filing store to connect language analysis with reported data. Collection and parsing supply the stored facts. Dataset construction and training produce the principle classifier.",
+    "end": "dataset and produces a checkpoint. During application use, the saved model can be loaded for principle assignment without repeating training. Score calculations use filing facts and detector outputs, while the API returns structured results to the browser.",
+    "characters": 930,
+    "lastY": 705,
+    "footer": "Capstone Project – II Blackbook | Academic Year 2026 – 27 | Page 16",
+    "fontSizes": [
+      12,
+      15.96,
+      20.04
+    ]
+  },
+  {
+    "page": 30,
+    "top": "4.2 Modular Design of the System Table 4. 1. Modules, inputs and outputs Module",
+    "end": "prevents unrelated reporting items from being combined accidentally. A unique company-year constraint distinguishes repeated submissions from different reporting years. Re-ingestion replaces the facts for that filing within the ingestion workflow. Raw value",
+    "characters": 1896,
+    "lastY": 695,
+    "footer": "Capstone Project – II Blackbook | Academic Year 2026 – 27 | Page 17",
+    "fontSizes": [
+      11.04,
+      12,
+      14.04,
+      15.96
+    ]
+  },
+  {
+    "page": 31,
+    "top": "strings are retained rather than rounded or converted at extraction time. Numerical interpretation belongs to the analysis layer, where assumptions can be inspected separately. Figure 4. 2. Core database relationships. A company has multiple filings, and each filing has",
+    "end": "Figure 4. 3. Read-only company analysis request from browser selection to a source-linked response.",
+    "characters": 1190,
+    "lastY": 667,
+    "footer": "Capstone Project – II Blackbook | Academic Year 2026 – 27 | Page 18",
+    "fontSizes": [
+      12,
+      14.04
+    ]
+  },
+  {
+    "page": 32,
+    "top": "4.3.3 Interface and API contracts Table 4. 2. Main service endpoints Endpoint",
+    "end": "result verification. It does not provide a signed week-by-week attendance or meeting history, so the plan below shows work packages and dependencies rather than invented calendar completion dates.",
+    "characters": 1671,
+    "lastY": 643,
+    "footer": "Capstone Project – II Blackbook | Academic Year 2026 – 27 | Page 19",
+    "fontSizes": [
+      11.04,
+      12,
+      14.04,
+      15.96
+    ]
+  },
+  {
+    "page": 33,
+    "top": "Table 4. 3. Work packages and completion evidence Package Dependency",
+    "end": "for the reported analysis, but upload handling and wider deployment still require appropriate retention and access policies. Energy use and carbon savings were not measured, so sustainability claims are restricted to these documented design choices.",
+    "characters": 1629,
+    "lastY": 619,
+    "footer": "Capstone Project – II Blackbook | Academic Year 2026 – 27 | Page 20",
+    "fontSizes": [
+      11.04,
+      12,
+      15.96
+    ]
+  },
+  {
+    "page": 34,
+    "top": "CHAPTER 5: IMPLEMENTATION OF THE PROPOSED SYSTEM 5.1 Development Methodology Implementation began with the filing data layer, followed by dataset construction, model",
+    "end": "until an analysis requires arithmetic. This prevents extraction from silently changing precision or converting a non-answer to zero. The filing record retains its source URL and reporting dates, and all related facts point to that filing.",
+    "characters": 1953,
+    "lastY": 699,
+    "footer": "Capstone Project – II Blackbook | Academic Year 2026 – 27 | Page 21",
+    "fontSizes": [
+      12,
+      14.04,
+      15.96,
+      20.04
+    ]
+  },
+  {
+    "page": 35,
+    "top": "The saved company-year constraint prevents multiple filing records for the same company and financial-year end. Re- ingestion replaces that filing’s fact collection through the ingestion workflow. A collection log supports resuming completed and failed downloads. These controls",
+    "end": "groups were removed. Candidate rows and groups are different units; subtracting a count of groups from a count of rows does not reconstruct the final total. The historical Section B value of 17,219 is not used as a current measured count.",
+    "characters": 2090,
+    "lastY": 611,
+    "footer": "Capstone Project – II Blackbook | Academic Year 2026 – 27 | Page 22",
+    "fontSizes": [
+      12,
+      14.04
+    ]
+  },
+  {
+    "page": 36,
+    "top": "Figure 5. 1. Single-label dataset construction from narrative facts, recorded label sources and company-based splitting. 5.2.3 Company split and BERT fine-tuning",
+    "end": "were compared using validation macro-F1. Seed 99 and checkpoint 7,460 were selected for the audited final evaluation. The checkpoint contained 50 LayerNorm parameters with older gamma/beta aliases. Recovery renamed these to weight/bias,",
+    "characters": 1668,
+    "lastY": 706,
+    "footer": "Capstone Project – II Blackbook | Academic Year 2026 – 27 | Page 23",
+    "fontSizes": [
+      12,
+      14.04
+    ]
+  },
+  {
+    "page": 37,
+    "top": "required every expected parameter to load and verified tensor equality after save and reload. Recovery changed parameter names, not the learned numerical values. The legacy masked-language-model corpus builder reads company narratives across the database. Company separation in the approved evaluation therefore applies to labelled fine-tuning. Later",
+    "end": "≥0.15. Bare URL / listed redirect Apply the redirect rule with priority.",
+    "characters": 2097,
+    "lastY": 713,
+    "footer": "Capstone Project – II Blackbook | Academic Year 2026 – 27 | Page 24",
+    "fontSizes": [
+      11.04,
+      12,
+      14.04
+    ]
+  },
+  {
+    "page": 38,
+    "top": "Condition Rule Evaluation version stage4-rule-detector-2026-10-18; thresholds verified against the freeze",
+    "end": "labelled training set. Each principle has a definition and a set of anchor examples. Half of the ranking score comes from definition similarity. The other half combines the maximum anchor similarity with the mean anchor similarity, weighted 0.70 and 0.30.",
+    "characters": 2249,
+    "lastY": 671,
+    "footer": "Capstone Project – II Blackbook | Academic Year 2026 – 27 | Page 25",
+    "fontSizes": [
+      11.04,
+      12,
+      14.04
+    ]
+  },
+  {
+    "page": 39,
+    "top": "𝑧ₖ(𝑥) = 0.50 𝑑ₖ(𝑥) + 0.50 [0.70 𝑚𝑎𝑥ₐ 𝑠ₖₐ(𝑥) + 0.30 𝑚𝑒𝑎𝑛ₐ 𝑠ₖₐ(𝑥)] Here d is similarity to the definition and s is similarity to an anchor. The supervised and zero-shot methods are evaluated on the same test rows, which supports a paired comparison. The comparison does",
+    "end": "scoring text segments without a flag. A separate second vagueness model is not trained for scoring. For example, one flagged segment among 52 gives a Clarity value of 98.08%. If no scoring text segments are available, Specificity and Clarity return zero.",
+    "characters": 2173,
+    "lastY": 683,
+    "footer": "Capstone Project – II Blackbook | Academic Year 2026 – 27 | Page 26",
+    "fontSizes": [
+      11.52,
+      12,
+      14.04
+    ]
+  },
+  {
+    "page": 40,
+    "top": "𝐶𝑙 = 100 × (1 − 𝑓𝑙𝑎𝑔𝑔𝑒𝑑 𝑠𝑐𝑜𝑟𝑖𝑛𝑔 𝑡𝑒𝑥𝑡 𝑠𝑒𝑔𝑚𝑒𝑛𝑡𝑠 / 𝑠𝑐𝑜𝑟𝑖𝑛𝑔 𝑡𝑒𝑥𝑡 𝑠𝑒𝑔𝑚𝑒𝑛𝑡𝑠) Mapped SDG coverage counts distinct goals linked to qualifying explicitly tagged narratives. A narrative must contain at least 20 characters and an evidence marker. The fixed principle-to-goal map supplies the goal numbers. Repeated goals count once. The union is divided by the 17 SDGs.",
+    "end": "The backend exposes analysis using FastAPI, and the frontend presents company search, reports, comparison and filing upload. The recovered classifier route identifies the method and checkpoint path. A missing model asset returns a service error rather than silently substituting a different",
+    "characters": 2029,
+    "lastY": 706,
+    "footer": "Capstone Project – II Blackbook | Academic Year 2026 – 27 | Page 27",
+    "fontSizes": [
+      11.04,
+      11.52,
+      12,
+      14.04
+    ]
+  },
+  {
+    "page": 41,
+    "top": "method. This supports runtime traceability without confusing the service check with model evaluation. 5.3 Dataset Sources and Utilisation Table 5.",
+    "end": "Application scoring uses filing facts and its own narrative selection rules rather than the classifier dataset alone. Company counts, filing counts, classifier text segments and scoring text segments should therefore not be added together or treated as interchangeable sample sizes.",
+    "characters": 1128,
+    "lastY": 635,
+    "footer": "Capstone Project – II Blackbook | Academic Year 2026 – 27 | Page 28",
+    "fontSizes": [
+      11.04,
+      12,
+      15.96
+    ]
+  },
+  {
+    "page": 42,
+    "top": "CHAPTER 6: TESTING OF THE PROPOSED SYSTEM 6.1 Testing Objectives and Scope Testing checks data separation, model integrity, detector reproducibility, score interpretation and",
+    "end": "pairwise intersections zero. Saved split assertions: PASS.",
+    "characters": 1923,
+    "lastY": 698,
+    "footer": "Capstone Project – II Blackbook | Academic Year 2026 – 27 | Page 29",
+    "fontSizes": [
+      11.04,
+      12,
+      15.96,
+      20.04
+    ]
+  },
+  {
+    "page": 43,
+    "top": "ID Input / expected behaviour Recorded result Evidence / status",
+    "end": "results table. The current live interface was used for screenshots only. Approved result tables use the saved paper and audit snapshots. Interface counters, current runtime outputs and saved publication",
+    "characters": 2043,
+    "lastY": 709,
+    "footer": "Capstone Project – II Blackbook | Academic Year 2026 – 27 | Page 30",
+    "fontSizes": [
+      11.04,
+      12
+    ]
+  },
+  {
+    "page": 44,
+    "top": "metrics are not interchangeable. A snapshot difference should be reconciled before a future release rather than replaced silently in the research record. 6.4 Inferences Drawn from Test Cases The checks establish three useful properties of the reported workflow. First, the supervised",
+    "end": "Further deployment testing should measure endpoint latency, upload limits, malformed-input handling, model-asset failures, concurrency and access policies under a fixed environment. These are defined engineering tasks rather than completed results in the present evidence set.",
+    "characters": 1184,
+    "lastY": 376,
+    "footer": "Capstone Project – II Blackbook | Academic Year 2026 – 27 | Page 31",
+    "fontSizes": [
+      12,
+      15.96
+    ]
+  },
+  {
+    "page": 45,
+    "top": "CHAPTER 7: RESULTS AND DISCUSSION 7.1 User Interface Screens The following screens were captured from the local application on 1 November 2026. The browser currently displays the interface name GRASP, while GRASP identifies the research pipeline",
+    "end": "Figure 7. 1. Live company search locates matching names and CINs before opening a filing report.",
+    "characters": 787,
+    "lastY": 716,
+    "footer": "Capstone Project – II Blackbook | Academic Year 2026 – 27 | Page 32",
+    "fontSizes": [
+      12,
+      15.96,
+      20.04
+    ]
+  },
+  {
+    "page": 46,
+    "top": "Figure 7. 2. Live filing report for Triveni Turbine Limited, showing company identity, reporting year and filed numerical trends.",
+    "end": "Figure 7. 2. Live filing report for Triveni Turbine Limited, showing company identity, reporting year and filed numerical trends.",
+    "characters": 129,
+    "lastY": 483,
+    "footer": "Capstone Project – II Blackbook | Academic Year 2026 – 27 | Page 33",
+    "fontSizes": [
+      12
+    ]
+  },
+  {
+    "page": 47,
+    "top": "Figure 7. 3. Peer-comparison selection with two financial companies. The interface supports a group of two to five companies.",
+    "end": "Figure 7. 3. Peer-comparison selection with two financial companies. The interface supports a group of two to five companies.",
+    "characters": 125,
+    "lastY": 483,
+    "footer": "Capstone Project – II Blackbook | Academic Year 2026 – 27 | Page 34",
+    "fontSizes": [
+      12
+    ]
+  },
+  {
+    "page": 48,
+    "top": "Figure 7. 4. Structured filing upload screen. The implemented route accepts XML/XBRL files; no file was uploaded for this documentation capture. 7.2 Performance Evaluation Measures",
+    "end": "so a small class still affects the result. For the vagueness detector, precision is the share of flagged examples that the reference also labels vague. Recall is the share of reference-vague examples detected by the system. Accuracy is the",
+    "characters": 900,
+    "lastY": 693,
+    "footer": "Capstone Project – II Blackbook | Academic Year 2026 – 27 | Page 35",
+    "fontSizes": [
+      12,
+      15.96
+    ]
+  },
+  {
+    "page": 49,
+    "top": "share of all examples with a matching decision. These meanings can be understood without treating a flag as a proven case of greenwashing. A 95% confidence interval describes uncertainty under the stated resampling or estimation procedure. The classifier and paired-comparison intervals resample companies by CIN, keeping",
+    "end": "P3: employee and worker well-being 11,835 27.91%",
+    "characters": 1865,
+    "lastY": 721,
+    "footer": "Capstone Project – II Blackbook | Academic Year 2026 – 27 | Page 36",
+    "fontSizes": [
+      11.04,
+      12,
+      15.96
+    ]
+  },
+  {
+    "page": 50,
+    "top": "Principle Full corpus total Share P4: stakeholder interests",
+    "end": "0.8551 0.8551 69",
+    "characters": 1378,
+    "lastY": 708,
+    "footer": "Capstone Project – II Blackbook | Academic Year 2026 – 27 | Page 37",
+    "fontSizes": [
+      11.04,
+      12,
+      14.04,
+      15.96
+    ]
+  },
+  {
+    "page": 51,
+    "top": "Principle Precision Recall F1",
+    "end": "The large source gap is an important interpretation of the overall result. Section C supplies 86.10% of the corpus and uses concept-derived labels. Its wording is often related to a recurring question template. Section B has explicitly tagged principle labels but also contains cross-cutting or reused",
+    "characters": 1240,
+    "lastY": 731,
+    "footer": "Capstone Project – II Blackbook | Academic Year 2026 – 27 | Page 38",
+    "fontSizes": [
+      11.04,
+      12,
+      14.04
+    ]
+  },
+  {
+    "page": 52,
+    "top": "content, much of which is removed by the conflicting-label filter. Source-wise results indicate that the aggregate score should be described as agreement with taxonomy-derived labels rather than independent proof of principle understanding. Figure 7.",
+    "end": "principle labels. On 5,934 grouped test examples, Hit@1 is 93.36%, micro-F1 is 0.8898 and macro-F1 is 0.8782 at threshold 0.5. The baseline Hit@1 on that grouped target is 93.55%. The redesign changes the target definition and is not presented as an across-the-board improvement.",
+    "characters": 1599,
+    "lastY": 693,
+    "footer": "Capstone Project – II Blackbook | Academic Year 2026 – 27 | Page 39",
+    "fontSizes": [
+      12,
+      14.04
+    ]
+  },
+  {
+    "page": 53,
+    "top": "7.4.4 Frozen vagueness detector and score correlation The frozen development comparison identifies 29 of the 37 reference-vague examples, while 12 of its 41 flags are not marked vague by that reference. The 80 decisions include 31 matching clear examples and eight missed reference-vague examples. This produces F1 0.7436. The separate AI",
+    "end": "7.6.1 Level 1: one company from filing to outcome Triveni Turbine Limited provides a complete worked example. The saved filing ends on 31 March 2026 and contains 1,862 raw facts. The score calculation accepts 613 of the 1,057 distinct database",
+    "characters": 2277,
+    "lastY": 730,
+    "footer": "Capstone Project – II Blackbook | Academic Year 2026 – 27 | Page 40",
+    "fontSizes": [
+      12,
+      14.04,
+      15.96
+    ]
+  },
+  {
+    "page": 54,
+    "top": "concepts, giving Completeness 57.99%. The scoring text contains 52 unique concept – text pairs. Of these, 33 contain an evidence marker, giving Specificity 63.46%; one is flagged vague, giving",
+    "end": "YES BANK, while YES BANK has broader mapped SDG coverage. Showing components prevents the total from being treated as a single unexplained rank. The year is the financial-year- end year reconstructed from the latest saved filing linked by CIN.",
+    "characters": 1732,
+    "lastY": 710,
+    "footer": "Capstone Project – II Blackbook | Academic Year 2026 – 27 | Page 41",
+    "fontSizes": [
+      11.04,
+      12,
+      14.04
+    ]
+  },
+  {
+    "page": 55,
+    "top": "7.6.3 Level 3: complete financial-sector group The recorded Financial Services group, excluding Insurance, contains 94 companies. Mean Transparency Score is 48.17, median 49.79 and standard deviation 9.88. Scores range from 29.83 to 67.56. The saved year linkage includes 77 filings ending in 2026 and 17 ending in 2025. This is",
+    "end": "six companies. Wearing Apparel has the lowest mean, 42.33 across six companies, followed by Education at 42.43. These are descriptive group averages under the implemented score; the results do not establish the causes of sector differences.",
+    "characters": 1676,
+    "lastY": 669,
+    "footer": "Capstone Project – II Blackbook | Academic Year 2026 – 27 | Page 42",
+    "fontSizes": [
+      11.04,
+      12,
+      14.04
+    ]
+  },
+  {
+    "page": 56,
+    "top": "Figure 7. 7. Mean Transparency Scores for selected eligible sectors. Group sizes are shown with the names; bars describe saved company scores rather than environmental performance. Table 7.",
+    "end": "The pharmaceutical group illustrates within-sector variation. Its 65 companies have a mean of 51.18 and range from 32.38 to 73.72. Dabur is at the upper end and Kopran at the lower end in the saved table. Clarity exceeds 85 for 58 of the 65 companies, so differences in evidence detail and",
+    "characters": 1007,
+    "lastY": 728,
+    "footer": "Capstone Project – II Blackbook | Academic Year 2026 – 27 | Page 43",
+    "fontSizes": [
+      11.04,
+      12
+    ]
+  },
+  {
+    "page": 57,
+    "top": "coverage remain important even when language is usually not flagged vague. The complete 72- sector table is provided in the supporting appendix. 7.6.5 Paired reporting years Eight companies have a paired-year score comparison in the saved analysis. Mean score rises from",
+    "end": "Relevant evidence includes the database design, saved models, audit artifacts, source tables and actual interface captures. Operational electricity and embodied hardware impacts were not measured.",
+    "characters": 1423,
+    "lastY": 696,
+    "footer": "Capstone Project – II Blackbook | Academic Year 2026 – 27 | Page 44",
+    "fontSizes": [
+      11.04,
+      12,
+      14.04,
+      15.96
+    ]
+  },
+  {
+    "page": 58,
+    "top": "7.7.2 Material sustainability topics Table 7. 10. Material topics and implementation evidence Topic",
+    "end": "records also support the inspection of emissions statements, and runtime traceability supports accountable information use. These connections describe the function of the tool, not a measured contribution to national SDG indicators.",
+    "characters": 1838,
+    "lastY": 667,
+    "footer": "Capstone Project – II Blackbook | Academic Year 2026 – 27 | Page 45",
+    "fontSizes": [
+      11.04,
+      12,
+      14.04
+    ]
+  },
+  {
+    "page": 59,
+    "top": "7.7.5 Sustainability assessment rubric Table 7. 11. Template rubric mapped to available evidence Criterion",
+    "end": "reliability have not been quantified. A future assessment can add power measurements, a timed analyst task, accessibility checks and controlled service load tests. The present sustainability account remains tied to available implementation evidence.",
+    "characters": 1547,
+    "lastY": 554,
+    "footer": "Capstone Project – II Blackbook | Academic Year 2026 – 27 | Page 46",
+    "fontSizes": [
+      11.04,
+      12,
+      14.04
+    ]
+  },
+  {
+    "page": 60,
+    "top": "CHAPTER 8: CONCLUSION GRASP connects public BRSR filings with a structured disclosure-review workflow. The implementation preserves",
+    "end": "unrecorded blinding. The score uses a fixed database concept universe and a fixed principle-to- SDG map. Sector assignment, mixed-year snapshots and the limited paired-year subset should be considered when interpreting application comparisons.",
+    "characters": 2374,
+    "lastY": 711,
+    "footer": "Capstone Project – II Blackbook | Academic Year 2026 – 27 | Page 47",
+    "fontSizes": [
+      12,
+      15.96,
+      20.04
+    ]
+  },
+  {
+    "page": 61,
+    "top": "Current application screens and approved research snapshots can differ as code or data changes. Publication tables remain tied to the saved audit artifacts. Broader deployment requires controlled upload, security, concurrency, accessibility and response-time testing. 8.2 Future Scope",
+    "end": "approach can be studied under other structured sustainability standards, including international frameworks. Such extensions should preserve the distinction between disclosure quality, model support and independently verified company performance.",
+    "characters": 1600,
+    "lastY": 480,
+    "footer": "Capstone Project – II Blackbook | Academic Year 2026 – 27 | Page 48",
+    "fontSizes": [
+      12,
+      15.96
+    ]
+  },
+  {
+    "page": 62,
+    "top": "REFERENCES [1] Securities and Exchange Board of India, \"Business responsibility and sustainability reporting by listed",
+    "end": "– 3992. https://doi.org/10.18653/v1/D19-1410.",
+    "characters": 2063,
+    "lastY": 722,
+    "footer": "Capstone Project – II Blackbook | Academic Year 2026 – 27 | Page 49",
+    "fontSizes": [
+      12,
+      20.04
+    ]
+  },
+  {
+    "page": 63,
+    "top": "[10] A. Ratner, S. H. Bach, H. Ehrenberg, J. Fries, S. Wu, and C. Ré, \"Snorkel: Rapid training data creation with weak supervision,\" Proceedings of the VLDB Endowment, vol. 11, no. 3, pp. 269 – 282, 2017. https://doi.org/10.14778/3157794.3157797.",
+    "end": "2013. https://specifications.xbrl.org/work- product-index-group-base-spec-base-spec.html.",
+    "characters": 2059,
+    "lastY": 687,
+    "footer": "Capstone Project – II Blackbook | Academic Year 2026 – 27 | Page 50",
+    "fontSizes": [
+      12
+    ]
+  },
+  {
+    "page": 64,
+    "top": "[19] K. Song, X. Tan, T. Qin, J. Lu, and T.-Y. Liu, \"MPNet: Masked and permuted pre-training for language understanding,\" in Advances in Neural Information Processing Systems, vol. 33, 2020, pp. 16857 –",
+    "end": "– S4; source files under src and frontend. These are local implementation artifacts, not additional published studies.",
+    "characters": 1517,
+    "lastY": 512,
+    "footer": "Capstone Project – II Blackbook | Academic Year 2026 – 27 | Page 51",
+    "fontSizes": [
+      12
+    ]
+  },
+  {
+    "page": 65,
+    "top": "APPENDIX I: EVIDENCE AND SUPPORTING DOCUMENTS A. User Guide and Reproduction Notes To inspect a company, open the local browser workspace, search the company name and choose",
+    "end": "29.83 67.56 Eligible",
+    "characters": 1901,
+    "lastY": 716,
+    "footer": "Capstone Project – II Blackbook | Academic Year 2026 – 27 | Page 52",
+    "fontSizes": [
+      11.04,
+      12,
+      15.96,
+      20.04
+    ]
+  },
+  {
+    "page": 66,
+    "top": "Sector N Mean Min",
+    "end": "30.59 63.81 Eligible",
+    "characters": 1314,
+    "lastY": 715,
+    "footer": "Capstone Project – II Blackbook | Academic Year 2026 – 27 | Page 53",
+    "fontSizes": [
+      11.04
+    ]
+  },
+  {
+    "page": 67,
+    "top": "Sector N Mean Min",
+    "end": "42.37 52.22 Small",
+    "characters": 1250,
+    "lastY": 700,
+    "footer": "Capstone Project – II Blackbook | Academic Year 2026 – 27 | Page 54",
+    "fontSizes": [
+      11.04
+    ]
+  },
+  {
+    "page": 68,
+    "top": "Sector N Mean Min",
+    "end": "41.54 41.54 Small",
+    "characters": 1113,
+    "lastY": 649,
+    "footer": "Capstone Project – II Blackbook | Academic Year 2026 – 27 | Page 55",
+    "fontSizes": [
+      11.04
+    ]
+  },
+  {
+    "page": 69,
+    "top": "C. Publication or Acceptance Proof Insert the accepted/published paper, acceptance letter or applicable IPR document here. This space is intentionally blank; no publication or acceptance status is asserted. RESERVED FOR THE ORIGINAL SUPPORTING DOCUMENT",
+    "end": "RESERVED FOR THE ORIGINAL SUPPORTING DOCUMENT Document reference: __________________________________________ Date / authority: _____________________________________________",
+    "characters": 379,
+    "lastY": 218,
+    "footer": "Capstone Project – II Blackbook | Academic Year 2026 – 27 | Page 56",
+    "fontSizes": [
+      12,
+      15.96
+    ]
+  },
+  {
+    "page": 70,
+    "top": "D. Publication or Presentation Certificate Insert the official",
+    "end": "RESERVED FOR THE ORIGINAL SUPPORTING DOCUMENT Document reference: __________________________________________ Date / authority: _____________________________________________",
+    "characters": 328,
+    "lastY": 218,
+    "footer": "Capstone Project – II Blackbook | Academic Year 2026 – 27 | Page 57",
+    "fontSizes": [
+      12,
+      15.96
+    ]
+  },
+  {
+    "page": 71,
+    "top": "E. Plagiarism Similarity Report Insert the complete institution-approved plagiarism report here. No similarity percentage has been entered. RESERVED FOR THE ORIGINAL SUPPORTING DOCUMENT",
+    "end": "RESERVED FOR THE ORIGINAL SUPPORTING DOCUMENT Document reference: __________________________________________ Date / authority: _____________________________________________",
+    "characters": 312,
+    "lastY": 218,
+    "footer": "Capstone Project – II Blackbook | Academic Year 2026 – 27 | Page 58",
+    "fontSizes": [
+      12,
+      15.96
+    ]
+  },
+  {
+    "page": 72,
+    "top": "F. AI-Content Report Insert the AI-content report required by the department here. No AI-detection score or certificate has been fabricated. RESERVED FOR THE ORIGINAL SUPPORTING DOCUMENT",
+    "end": "RESERVED FOR THE ORIGINAL SUPPORTING DOCUMENT Document reference: __________________________________________ Date / authority: _____________________________________________",
+    "characters": 313,
+    "lastY": 218,
+    "footer": "Capstone Project – II Blackbook | Academic Year 2026 – 27 | Page 59",
+    "fontSizes": [
+      12,
+      15.96
+    ]
+  },
+  {
+    "page": 73,
+    "top": "G. Competition or Award Evidence Insert certificates or participation/award proof only if applicable. Otherwise retain an approved not-applicable statement. RESERVED FOR THE ORIGINAL SUPPORTING DOCUMENT",
+    "end": "RESERVED FOR THE ORIGINAL SUPPORTING DOCUMENT Document reference: __________________________________________ Date / authority: _____________________________________________",
+    "characters": 329,
+    "lastY": 218,
+    "footer": "Capstone Project – II Blackbook | Academic Year 2026 – 27 | Page 60",
+    "fontSizes": [
+      12,
+      15.96
+    ]
+  },
+  {
+    "page": 74,
+    "top": "H. Progress Review Sheet 1 Insert the signed Progress Review Sheet 1 supplied by the department here. No attendance, marks or signatures have been entered. RESERVED FOR THE ORIGINAL SUPPORTING DOCUMENT",
+    "end": "RESERVED FOR THE ORIGINAL SUPPORTING DOCUMENT Document reference: __________________________________________ Date / authority: _____________________________________________",
+    "characters": 328,
+    "lastY": 218,
+    "footer": "Capstone Project – II Blackbook | Academic Year 2026 – 27 | Page 61",
+    "fontSizes": [
+      12,
+      15.96
+    ]
+  },
+  {
+    "page": 75,
+    "top": "I. Progress Review Sheet 2 Insert the signed Progress Review Sheet 2 supplied by the department here. No attendance, marks or signatures have been entered. RESERVED FOR THE ORIGINAL SUPPORTING DOCUMENT",
+    "end": "RESERVED FOR THE ORIGINAL SUPPORTING DOCUMENT Document reference: __________________________________________ Date / authority: _____________________________________________",
+    "characters": 328,
+    "lastY": 218,
+    "footer": "Capstone Project – II Blackbook | Academic Year 2026 – 27 | Page 62",
+    "fontSizes": [
+      12,
+      15.96
+    ]
+  },
+  {
+    "page": 76,
+    "top": "J. Demonstration Video Reference Add the GitHub path or approved video reference here. The implementation video must not exceed three minutes. Video preparation and upload are separate from this Blackbook. RESERVED FOR THE ORIGINAL SUPPORTING DOCUMENT",
+    "end": "RESERVED FOR THE ORIGINAL SUPPORTING DOCUMENT Document reference: __________________________________________ Date / authority: _____________________________________________",
+    "characters": 378,
+    "lastY": 218,
+    "footer": "Capstone Project – II Blackbook | Academic Year 2026 – 27 | Page 63",
+    "fontSizes": [
+      12,
+      15.96
+    ]
+  }
+]

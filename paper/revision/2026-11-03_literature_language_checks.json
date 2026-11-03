@@ -1,0 +1,28 @@
+{
+  "onlyRequestedNarrativeChanged": true,
+  "openingUnchanged": true,
+  "tableByteForByteUnchanged": true,
+  "citationKeysAndCountsUnchanged": true,
+  "allNumbersUnchanged": true,
+  "headingsUnchanged": true,
+  "prohibitedWordMatches": [],
+  "paragraphCounts": [
+    {
+      "title": "Language models and training labels",
+      "paragraphs": 2
+    },
+    {
+      "title": "Climate topics, commitments, and disclosure quality",
+      "paragraphs": 2
+    },
+    {
+      "title": "Report-level tools and Indian disclosure studies",
+      "paragraphs": 2
+    },
+    {
+      "title": "Research findings and motivation",
+      "paragraphs": 1
+    }
+  ],
+  "graspOnlyInFinalSubsection": true
+}

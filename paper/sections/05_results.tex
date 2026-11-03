@@ -1,18 +1,17 @@
-\section{Results Across Four Reporting Levels}
+\section{Company, Sector, and Year-wise Results}
 \label{sec:results}
 
-The previous section evaluates the analysis methods. This section presents the saved outputs at four levels: one company, selected companies in one sector, the full financial-sector group, and all recorded sectors. All company values come from the saved exports. The examples connect passage-level analysis with company scores and sector summaries.
+The application results present four reporting levels: one company, selected companies within a sector, the complete financial-sector group, and all recorded sectors. A separate paired-year analysis examines change over time. The database contains 1,164 companies and 1,172 reports, including eight companies with two reports. Company and sector summaries use one score per CIN from the latest available report selected by the export procedure. The following examples connect these summaries with the component counts and source records. Throughout this section, $C$, $Sp$, $Cl$, and $G$ denote Completeness, Specificity, Clarity, and SDG breadth, respectively. Component values are percentages, and TS is the combined Transparency Score.
 
-The saved database contains 1,164 company records and 1,172 filing records. The score export has one row for each of 1,164 unique CINs, using the most recent available filing selected by the script. These counts define the company collection used in the reporting examples.
-
-\subsection{One company: from filed facts to an interpretable outcome}
+\Needspace{5\baselineskip}
+\subsection{One company: evidence and score calculation}
 \label{sec:case}
 
-Triveni Turbine Limited is a worked example with all four score components and a sector comparison. The linked database filing ends on 31 March 2026 and contains 1,862 raw facts. Table~\ref{tab:case_facts} shows three previous/current value pairs with matching concepts, units, and periods. Scope 1 emissions rise, Scope 2 emissions fall, and water withdrawal falls. These different directions show why one general claim of environmental improvement cannot be compared with every environmental figure.
+Triveni Turbine Limited provides a worked example with complete score components and a sector comparison. The report ends on 31 March 2026 and contains 1,862 raw facts. Table~\ref{tab:case_facts} presents previous- and current-year values for matched concepts and units. Scope 1 emissions increase, whereas Scope 2 emissions and water withdrawal decrease. The unit tCO2e means tonnes of carbon dioxide equivalent. These different directions illustrate why a broad claim about environmental improvement needs a measure-specific check, including the reporting period and business boundary.
 
-\begin{table}[tbp]
+\begin{table}[H]
 \centering\small
-\caption{Filed values for Triveni Turbine, copied from filing record 197 without correction. Concept, period, and unit links allow the pairs to be checked. The source links identify the original company values.}
+\caption{Previous- and current-year values from Triveni Turbine report record 197. The original concept, unit, and period fields remain linked to each value.}
 \label{tab:case_facts}
 \begin{tabularx}{\linewidth}{@{}Yrrl@{}}
 \toprule\textbf{Filed measure} & \textbf{FY2024--25} & \textbf{FY2025--26} & \textbf{Filed unit}\\\midrule
@@ -22,13 +21,11 @@ Total water withdrawal & 88,662.28 & 85,611.54 & Kilolitres\\\bottomrule
 \end{tabularx}
 \end{table}
 
-The workflow stores the figures beside narrative facts and reporting categories. An eligible passage receives a principle label from an explicit tag, concept map, or principle note. The classifier ranks the nine principles, and the language detector identifies evidence markers and vague wording. Numerical checks retrieve the value pairs in Table~\ref{tab:case_facts}. The worked example presents the saved facts and score components for this filing.
+The score can be reconstructed from the retained records. Completeness is $100(613/1057)=57.99\%$, based on 613 accepted concepts. Among 52 retained concept--text pairs, 33 contain an evidence marker, giving Specificity of 63.46\%. One text segment is flagged as vague, giving Clarity of 98.08\%. Twelve mapped goals produce SDG breadth of 70.59\%. Table~\ref{tab:case_score} applies the fixed weights, yielding $23.196+19.038+19.616+7.059=68.909$, rounded to 68.91. Figure~\ref{fig:company_contributions} shows the weighted component contributions. Within Machinery and Equipment, the company has a sector percentile of 94.4, compared with a mean score of 49.46 across 36 companies.
 
-Every part of the saved score can be explained. The filing has 613 accepted concepts out of 1,057 in the database, giving Completeness of $100(613/1057)=57.99\%$. Scoring retains 52 concept--text pairs. Specificity of 63.46\% corresponds to 33 of 52 passages with a recognised evidence pattern. Clarity of 98.08\% corresponds to one flagged passage and 51 without a flag. SDG breadth of 70.59\% corresponds to 12 of the 17 goals under the fixed map. These counts reproduce the saved component percentages.
-
-\begin{table}[tbp]
+\begin{table}[H]
 \centering\small
-\caption{Transparency Score calculation for Triveni Turbine. Each percentage is multiplied by the weight. The final column shows the contribution before rounding the total.}
+\caption{Weighted components of the Triveni Turbine score. Each contribution equals the component percentage multiplied by the fixed weight.}
 \label{tab:case_score}
 \begin{tabularx}{\linewidth}{@{}Yrrr@{}}
 \toprule\textbf{Component} & \textbf{Percentage} & \textbf{Weight} & \textbf{Contribution}\\\midrule
@@ -40,19 +37,16 @@ SDG breadth & 70.59 & 0.10 & 7.059\\\midrule
 \end{tabularx}
 \end{table}
 
-Equation~\eqref{eq:ts} gives $23.196+19.038+19.616+7.059=68.909$, rounded to 68.91. Figure~\ref{fig:company_contributions} plots each weighted contribution. The Machinery and Equipment group contains 36 companies with mean score 49.46. Triveni's percentile of 94.4 places the filing near the upper end of this recorded peer group.
-
 \input{figures/company_contributions}
-\FloatBarrier
-
-\subsection{Selected financial companies: component differences and available years}
+\Needspace{5\baselineskip}
+\subsection{Selected financial companies: component differences}
 \label{sec:selected_finance}
 
-The second level compares companies within one recorded sector. The saved \emph{Financial Services (excl. Insurance)} group has 94 companies. Table~\ref{tab:financial_selected} shows the four highest and three lowest scores. These examples show the range and are not a random sample. The next level summarises the full group.
+The saved Financial Services (excl. Insurance) group contains 94 companies. Table~\ref{tab:financial_selected} presents the four highest and three lowest scores, showing component differences across the score range rather than a random company group. REC Limited scores 67.56, compared with 29.83 for Vardhman Holdings. Specificity is 57.69\% and 2.78\%, respectively, while Completeness is 56.01\% and 35.00\%. The shared formula makes the source of the score difference visible. Business activity, applicable reporting items, and report year remain relevant when interpreting the comparison.
 
-\begin{table}[tbp]
+\begin{table}[H]
 \centering\small
-\caption{Financial-company examples from the high and low ends of the score range. FY end 2026 and 2025 mean 31 March of those years. $C$, $Sp$, $Cl$, and $G$ are percentages; TS is the combined score. Years were reconstructed from the latest filing for each CIN.}
+\caption{Selected high- and low-scoring financial companies. FY end denotes 31 March of the stated year, reconstructed from the latest report per CIN. Components are percentages; TS is the combined score.}
 \label{tab:financial_selected}
 \begin{tabularx}{\linewidth}{@{}Yrrrrrr@{}}
 \toprule\textbf{Company} & \textbf{FY end} & \textbf{$C$} & \textbf{$Sp$} & \textbf{$Cl$} & \textbf{$G$} & \textbf{TS}\\\midrule
@@ -67,41 +61,18 @@ Vardhman Holdings & 2025 & 35.00 & 2.78 & 75.00 & 0.00 & 29.83 \\
 \end{tabularx}
 \end{table}
 
-REC Limited scores 67.56 and Vardhman Holdings scores 29.83. Specificity is 57.69\% for REC and 2.78\% for Vardhman; Completeness is 56.01\% and 35.00\%. The component view shows where the disclosures differ under the same formula. Review also uses the business model, recorded sector, applicable reporting items, and available filing year to interpret the comparison.
-
-A year comparison uses repeated filings for the same company. For ESAF Small Finance Bank, Completeness rises from 34.34\% to 54.59\%, Specificity from 30.23\% to 41.30\%, and Clarity from 93.02\% to 93.48\%. SDG breadth stays at 11.76\%. The combined score rises from 42.59 to 54.10, or 11.51 points. Completeness contributes about 8.10 points, Specificity 3.32 points, and Clarity 0.09 points. The breakdown connects each component change to the reported score movement.
-
-Table~\ref{tab:esaf} presents all eight companies with two available years. Six scores rise and two fall. The group mean rises from 45.17 to 50.40, a change of 5.23 points. The final column gives the component with the largest absolute weighted contribution to each change. Contributions from other components complete the total. Supplementary Table S3 retains both filing records, year labels, and every component for the eight-company group.
-
-\begin{table}[tbp]
-\centering\small
-\caption{Two-year Transparency Scores for all eight available companies. Changes and weighted contributions are score points. $C$, $Sp$, $Cl$, and $G$ are defined in Eq.~\eqref{eq:ts}. The last column gives the component with the largest absolute contribution to the change.}
-\label{tab:esaf}
-\begin{tabularx}{\linewidth}{@{}Yrrrr@{}}
-\toprule\textbf{Company} & \textbf{FY2024--25} & \textbf{FY2025--26} & \textbf{Change} & \textbf{Largest contribution}\\\midrule
-Praj Industries & 38.55 & 50.30 & +11.75 & $C$: +9.91 \\
-ESAF Small Finance Bank & 42.59 & 54.10 & +11.51 & $C$: +8.10 \\
-Sudarshan Colorants & 49.74 & 58.78 & +9.04 & $Sp$: +7.00 \\
-Gopal Snacks & 41.30 & 47.29 & +5.99 & $Sp$: +8.53 \\
-G R Infraprojects & 35.94 & 38.87 & +2.93 & $Sp$: +3.07 \\
-Sudarshan Chemical & 62.95 & 65.32 & +2.37 & $G$: +2.35 \\
-VIP Industries & 45.91 & 45.56 & -0.35 & $Cl$: -2.36 \\
-SML Mahindra & 44.38 & 42.98 & -1.40 & $Cl$: -1.17 \\
-\midrule
-Group mean & 45.17 & 50.40 & +5.23 & \na\\\bottomrule
-\end{tabularx}
-\end{table}
-
+\Needspace{5\baselineskip}
 \subsection{The complete financial-sector group}
 \label{sec:all_finance}
 
-For all 94 financial-sector companies, the mean is 48.17, the median is 49.79, and the standard deviation is 9.88. Scores range from 29.83 to 67.56, a spread of 37.73 points. Mean Completeness is 49.77\%, Specificity 28.35\%, Clarity 90.67\%, and SDG breadth 16.27\%. Clarity is much higher than Specificity. This difference shows why avoiding vague phrases alone does not provide concrete evidence.
+Across all 94 financial companies, the mean score is 48.17, the median is 49.79, and the standard deviation is 9.88. The median identifies the middle score, while standard deviation describes the spread around the mean. Scores range from 29.83 to 67.56, a difference of 37.73 points. Mean component values are 49.77\% for Completeness, 28.35\% for Specificity, 90.67\% for Clarity, and 16.27\% for SDG breadth. The separation between Clarity and Specificity shows that avoiding vague wording does not necessarily provide concrete evidence.
 
-The latest recorded filing ends in March 2026 for 77 companies and March 2025 for 17. Year labels were reconstructed by CIN from the database using the script's latest-filing rule; the original score CSV omits a filing identifier. The group is a latest-available filing collection. The separate eight-company comparison uses paired reports to examine year-wise score changes.
+Table~\ref{tab:all_financial} groups companies into four score bands. Eleven companies score at least 60, while 22 score below 40. Mean Specificity rises from 14.30\% in the lowest band to 47.24\% in the highest. The sector mean is 0.56 points below the overall company mean of 48.73, although the company range shows substantial variation within the sector. The latest report ends in March 2026 for 77 companies and March 2025 for 17 companies. These dates were reconstructed by CIN because the original score export omitted report identifiers, so this comparison uses the latest available reports rather than one common reporting year.
 
-\begin{table}[tbp]
+\begin{table}[H]
+\begin{singlepagetable}
 \centering\small
-\caption{All 94 financial companies grouped by score. Each company appears in one band. Component columns give mean percentages; TS gives the mean combined score. Supplementary Table S1 lists every company, reconstructed filing year, and sector percentile.}
+\caption{Financial-sector score distribution across all 94 companies. Component columns report band means.}
 \label{tab:all_financial}
 \begin{tabularx}{\linewidth}{@{}Yrrrrrrr@{}}
 \toprule\textbf{Score band} & \textbf{N} & \textbf{Mean TS} & \textbf{Range} & \textbf{$C$} & \textbf{$Sp$} & \textbf{$Cl$} & \textbf{$G$}\\\midrule
@@ -112,29 +83,25 @@ Below 40.00 & 22 & 34.05 & 29.83--39.80 & 31.33 & 14.30 & 84.02 & 4.28 \\
 \midrule
 All financial companies & 94 & 48.17 & 29.83--67.56 & 49.77 & 28.35 & 90.67 & 16.27\\\bottomrule
 \end{tabularx}
+\end{singlepagetable}
 \end{table}
 
-Table~\ref{tab:all_financial} groups the scores into four ranges. Eleven companies score at least 60, 35 score from 50 to below 60, 26 score from 40 to below 50, and 22 score below 40. Mean Specificity is 14.30\% in the lowest range and 47.24\% in the highest. These ranges describe the distribution of the combined score and the associated component means.
-
-
-The full financial group provides a score distribution and a component breakdown for all 94 companies. The financial mean is 0.56 points below the overall mean of 48.73. This summary places the sector alongside the full company collection, while the company rows show the variation within the sector.
-
-\subsection{All sectors: coverage, score distribution, and interpretation}
+\Needspace{5\baselineskip}
+\subsection{All sectors: coverage and score distribution}
 \label{sec:all_sectors}
 
-The final level covers 1,164 company scores across 72 recorded sectors. Scores range from 26.88 to 75.58, with mean 48.73 and median 47.25. Forty-seven sectors contain at least five companies and account for 1,109 scores. The other 25 sectors contain 55 companies. Table~\ref{tab:all_sectors} lists the 47 larger groups separately and combines the smaller groups in one labelled row. Supplementary Table S2 lists all individual sectors.
+The complete collection contains 1,164 company scores across 72 recorded sectors. The mean is 48.73, the median is 47.25, and scores range from 26.88 to 75.58. Forty-seven sectors contain at least five companies and account for 1,109 scores; the remaining 25 sectors contain 55 companies. Table~\ref{tab:all_sectors} lists the 47 eligible sectors and pools the smaller groups. Table~\ref{tab:sector_details} provides additional statistics for 40 selected sectors, including medians and group sizes.
 
-Among the 47 sectors used for comparison, Warehousing and Transport Support has the highest mean, 54.55 across six companies. Wearing Apparel has the lowest mean, 42.33 across six companies. Education follows at 42.43, also across six companies. The highest and lowest means differ by 12.22 points. These are descriptive comparisons of the saved company scores, with group sizes shown beside the means.
-
-The larger groups provide further context. Chemicals Manufacturing has 101 companies with mean 49.56; Financial Services has 94 with mean 48.17; Pharmaceuticals has 65 with mean 51.18. Pharmaceuticals spans 32.38--73.72, and Chemicals spans 32.18--75.34. Reporting both sector means and company ranges presents the differences within each recorded group.
+Among eligible groups, Warehousing and Transport Support has the highest mean, 54.55 across six companies. Wearing Apparel has the lowest mean, 42.33 across six companies, followed by Education at 42.43 across six companies. The highest and lowest means differ by 12.22 points. Larger groups provide additional context: Chemicals Manufacturing contains 101 companies with a mean of 49.56, Financial Services contains 94 with a mean of 48.17, and Pharmaceuticals contains 65 with a mean of 51.18. Pharmaceuticals scores range from 32.38 to 73.72, compared with 32.18 to 75.34 in Chemicals Manufacturing. These figures describe the saved scores and show variation both within and between recorded sectors.
 
 \begin{table}[p]
+\begin{singlepagetable}
 \centering
 \begingroup
 \footnotesize
 \setlength{\tabcolsep}{5pt}
-\renewcommand{\arraystretch}{1.00}
-\caption{Sector scores for all 1,164 companies. The 47 sectors with at least five companies are listed separately. The other 25 sectors are combined below the line. SD shows the spread of company scores. The main comparison uses a five-company reporting threshold. Supplementary Table S2 lists all 72 sectors and medians.}
+\renewcommand{\arraystretch}{1.10}
+\caption{Transparency Scores across all 1,164 companies. The 47 sectors with at least five companies are listed separately, and 25 smaller sectors are pooled. SD is the standard deviation. Additional sector statistics appear in Table~\ref{tab:sector_details}.}
 \label{tab:all_sectors}
 \begin{tabularx}{\linewidth}{@{}Yrrrr@{}}
 \toprule\textbf{Sector or reporting group} & \textbf{N} & \textbf{Mean TS} & \textbf{Range} & \textbf{SD}\\\midrule
@@ -190,10 +157,150 @@ Other 25 small sectors (combined) & 55 & 44.08 & 27.56--70.97 & 8.95\\
 \textbf{All 72 sectors} & \textbf{1,164} & \textbf{48.73} & \textbf{26.88--75.58} & \textbf{9.98}\\\bottomrule
 \end{tabularx}
 \endgroup
+\end{singlepagetable}
+\end{table}
+\FloatBarrier
+
+Within the recorded Pharmaceuticals group, Dabur India scores 73.72 and Kopran scores 32.38, a gap of 41.34 points. Completeness is 73.13\% for Dabur India and 32.92\% for Kopran; Specificity is 57.38\% and 23.68\%, respectively. Clarity exceeds 85\% for 58 of the 65 companies, so differences in coverage and evidence markers remain important even when vague wording is uncommon.
+
+% Source data: table_S2_all_sectors.csv.
+Table~\ref{tab:sector_details} gives detailed statistics for 40 selected sectors, ordered by company count. $N$ is the company count, Median is the middle score, and SD is the standard deviation. Peer group indicates whether a sector meets the five-company minimum used for comparisons.
+
+\begin{table}[H]
+\begin{singlepagetable}
+\centering\footnotesize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.12}
+\caption{Detailed Transparency Score statistics for 40 selected sectors, ordered by company count. Table~\ref{tab:all_sectors} summarises all sector groups.}
+\label{tab:sector_details}
+\begin{tabular}{@{}L{6.0cm}rrrrrr@{}}
+\toprule
+\textbf{Sector} & \textbf{$N$} & \textbf{Mean} & \textbf{Median} & \textbf{Range} & \textbf{SD} & \textbf{Peer group}\\
+\midrule
+Chemicals Manufacturing & 101 & 49.56 & 47.91 & 32.18--75.34 & 9.32 & Yes \\
+Financial Services (excl. Insurance) & 94 & 48.17 & 49.79 & 29.83--67.56 & 9.88 & Yes \\
+Pharmaceuticals & 65 & 51.18 & 50.03 & 32.38--73.72 & 10.06 & Yes \\
+Basic Metals & 60 & 50.80 & 47.92 & 34.61--75.58 & 10.87 & Yes \\
+Electrical Equipment & 51 & 48.80 & 47.68 & 26.88--67.03 & 9.56 & Yes \\
+Computer Programming and Information Technology Services & 49 & 50.24 & 46.07 & 32.89--73.98 & 12.25 & Yes \\
+Non-Metallic Mineral Products & 40 & 50.36 & 48.72 & 35.66--69.20 & 8.69 & Yes \\
+Food Products Manufacturing & 38 & 47.57 & 44.90 & 30.04--69.86 & 9.60 & Yes \\
+Motor Vehicles & 37 & 51.76 & 49.88 & 33.29--70.12 & 9.98 & Yes \\
+Machinery and Equipment & 36 & 49.46 & 47.20 & 35.61--69.67 & 10.06 & Yes \\
+Rubber and Plastics & 36 & 49.22 & 46.09 & 35.44--73.87 & 9.90 & Yes \\
+Auxiliary Financial Services & 31 & 47.26 & 49.32 & 27.67--61.39 & 9.08 & Yes \\
+Electricity, Gas, Steam and AC Supply & 31 & 53.67 & 55.43 & 31.95--74.23 & 11.49 & Yes \\
+Fabricated Metal Products & 27 & 50.29 & 48.95 & 35.03--65.72 & 8.66 & Yes \\
+Textiles & 26 & 47.44 & 47.53 & 31.77--67.65 & 10.16 & Yes \\
+Wholesale Trade & 24 & 45.46 & 40.71 & 28.05--64.86 & 12.39 & Yes \\
+Civil Engineering & 23 & 48.31 & 46.79 & 31.99--66.15 & 10.84 & Yes \\
+Retail Trade & 21 & 43.06 & 41.42 & 34.22--56.45 & 6.12 & Yes \\
+Construction & 20 & 48.73 & 47.94 & 36.58--63.25 & 8.32 & Yes \\
+Insurance and Pension Funding & 20 & 51.52 & 53.52 & 29.92--64.17 & 10.12 & Yes \\
+Real Estate Activities & 19 & 47.90 & 47.54 & 35.17--63.42 & 8.78 & Yes \\
+Human Health Activities & 18 & 46.37 & 45.50 & 33.92--62.86 & 8.12 & Yes \\
+Information Service Activities & 18 & 47.39 & 44.03 & 33.97--64.19 & 9.71 & Yes \\
+Computer, Electronic and Optical Products & 17 & 47.46 & 46.26 & 32.93--65.45 & 7.59 & Yes \\
+Other Transport Equipment & 17 & 50.83 & 48.79 & 37.67--66.89 & 9.39 & Yes \\
+Other Manufacturing & 16 & 46.11 & 43.02 & 30.59--63.81 & 10.19 & Yes \\
+Telecommunications & 15 & 50.63 & 46.05 & 36.57--69.19 & 11.43 & Yes \\
+Accommodation & 14 & 48.67 & 46.75 & 31.28--67.57 & 10.06 & Yes \\
+Mining and Quarrying & 13 & 47.40 & 41.94 & 29.01--73.16 & 13.27 & Yes \\
+Beverages Manufacturing & 10 & 47.30 & 41.20 & 34.70--67.71 & 13.18 & Yes \\
+Other (Division 99) & 10 & 48.39 & 43.36 & 34.80--73.44 & 12.12 & Yes \\
+Wholesale/Retail Trade - Motor Vehicles & 10 & 49.25 & 45.00 & 37.40--67.92 & 11.47 & Yes \\
+Architecture and Engineering & 9 & 48.50 & 43.34 & 37.49--64.86 & 10.06 & Yes \\
+Coke and Refined Petroleum & 9 & 52.32 & 53.21 & 38.20--69.63 & 11.13 & Yes \\
+Paper Products & 9 & 43.27 & 44.26 & 33.42--48.93 & 4.88 & Yes \\
+Broadcasting & 8 & 43.65 & 46.96 & 31.66--52.74 & 7.64 & Yes \\
+Land Transport & 7 & 47.42 & 47.52 & 34.72--63.63 & 10.11 & Yes \\
+Water Supply and Waste Management & 7 & 43.33 & 38.97 & 36.73--56.76 & 8.29 & Yes \\
+Wood Products & 7 & 46.18 & 46.66 & 36.16--64.51 & 9.72 & Yes \\
+Education & 6 & 42.43 & 40.46 & 33.28--55.70 & 7.74 & Yes \\
+\bottomrule
+\end{tabular}
+\end{singlepagetable}
 \end{table}
 
-The Pharmaceuticals example gives another view within one sector. Dabur India scores 73.72 and Kopran scores 32.38, a gap of 41.34 points. Completeness is 73.13\% and 32.92\%, and Specificity is 57.38\% and 23.68\%. Clarity exceeds 85\% for 58 of the 65 companies. The combined view shows how several components contribute to company rankings. Supplementary Table S4 preserves the four highest and three lowest examples with every component.
+\clearpage
 
-The four levels let an analyst move from a component calculation to a company score, then to a sector comparison, and finally to the full company collection. At each step, the denominator, source records, and meaning of the output remain visible. This structure supports both detailed disclosure review and summary comparison.
+\newsavebox{\pairedyearoverviewbox}
+\begin{lrbox}{\pairedyearoverviewbox}
+\begin{minipage}{\linewidth}
+\setlength{\parskip}{4pt}
+\setlength{\intextsep}{4pt}
+\captionsetup{skip=4pt}
+\subsection{Year-wise changes in the available paired reports}
+\label{sec:yearwise}
 
-\FloatBarrier
+Eight companies across sectors have reports for both FY2024--25 and FY2025--26. Table~\ref{tab:esaf} compares the paired scores and identifies the component with the largest absolute weighted contribution to each change. Six scores rise and two fall. The group mean increases from 45.17 to 50.40, or 5.23 points. This available-case comparison describes the eight recorded pairs rather than a market-wide trend. Table~\ref{tab:paired_components} provides both report identifiers, year labels, and all component values.
+
+\begin{table}[H]
+\begin{singlepagetable}
+\centering\footnotesize
+\renewcommand{\arraystretch}{1.05}
+\caption{Paired-year scores for eight companies across sectors. The final column identifies the largest absolute weighted contribution to each score change.}
+\label{tab:esaf}
+\begin{tabularx}{\linewidth}{@{}Yrrrr@{}}
+\toprule\textbf{Company} & \textbf{FY2024--25} & \textbf{FY2025--26} & \textbf{Change} & \textbf{Largest contribution}\\\midrule
+Praj Industries & 38.55 & 50.30 & +11.75 & $C$: +9.91 \\
+ESAF Small Finance Bank & 42.59 & 54.10 & +11.51 & $C$: +8.10 \\
+Sudarshan Colorants & 49.74 & 58.78 & +9.04 & $Sp$: +7.00 \\
+Gopal Snacks & 41.30 & 47.29 & +5.99 & $Sp$: +8.53 \\
+G R Infraprojects & 35.94 & 38.87 & +2.93 & $Sp$: +3.07 \\
+Sudarshan Chemical & 62.95 & 65.32 & +2.37 & $G$: +2.35 \\
+VIP Industries & 45.91 & 45.56 & -0.35 & $Cl$: -2.36 \\
+SML Mahindra & 44.38 & 42.98 & -1.40 & $Cl$: -1.17 \\
+\midrule
+Group mean & 45.17 & 50.40 & +5.23 & \na\\\bottomrule
+\end{tabularx}
+\end{singlepagetable}
+\end{table}
+
+ESAF Small Finance Bank illustrates the component calculation over time. Completeness rises from 34.34\% to 54.59\%, Specificity from 30.23\% to 41.30\%, and Clarity from 93.02\% to 93.48\%, while SDG breadth remains 11.76\%. The combined score increases from 42.59 to 54.10. Of the 11.51-point gain, Completeness contributes about 8.10 points, Specificity 3.32, and Clarity 0.09. This decomposition explains the recorded score change using the same fixed weights applied in the company and sector comparisons.
+
+% Source data: table_S3_paired_year_components.csv.
+\begin{table}[H]
+\begin{singlepagetable}
+Table~\ref{tab:paired_components} gives all score components and report identifiers for the eight company pairs in Table~\ref{tab:esaf}. Report ID identifies the database record. FY2024--25 and FY2025--26 end on 31 March 2025 and 31 March 2026, respectively.\par\medskip
+\centering\footnotesize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.05}
+\caption{Complete score components for all 16 reports from the eight paired-year companies. Report identifiers connect each row to the source record.}
+\label{tab:paired_components}
+\begin{tabular}{@{}L{5.1cm}rlrrrrr@{}}
+\toprule
+\textbf{Company} & \textbf{Report ID} & \textbf{FY} & \textbf{$C$} & \textbf{$Sp$} & \textbf{$Cl$} & \textbf{$G$} & \textbf{TS}\\
+\midrule
+ESAF Small Finance Bank Ltd. & 1207 & 2024--25 & 34.34 & 30.23 & 93.02 & 11.76 & 42.59 \\
+ESAF Small Finance Bank Ltd. & 457 & 2025--26 & 54.59 & 41.30 & 93.48 & 11.76 & 54.10 \\
+G R Infraprojects Limited (GRIL) & 1302 & 2024--25 & 33.87 & 19.57 & 82.61 & 0.00 & 35.94 \\
+G R Infraprojects Limited (GRIL) & 723 & 2025--26 & 36.52 & 29.79 & 76.60 & 0.00 & 38.87 \\
+GOPAL SNACKS LIMITED & 1186 & 2024--25 & 34.82 & 31.58 & 89.47 & 0.00 & 41.30 \\
+GOPAL SNACKS LIMITED & 1396 & 2025--26 & 26.96 & 60.00 & 86.67 & 11.76 & 47.29 \\
+Praj Industries Ltd. & 1239 & 2024--25 & 30.94 & 20.59 & 91.18 & 17.65 & 38.55 \\
+Praj Industries Ltd. & 443 & 2025--26 & 55.72 & 25.00 & 93.75 & 17.65 & 50.30 \\
+SML MAHINDRA LIMITED & 1085 & 2024--25 & 33.49 & 35.29 & 96.08 & 11.76 & 44.38 \\
+SML MAHINDRA LIMITED & 751 & 2025--26 & 33.77 & 34.15 & 90.24 & 11.76 & 42.98 \\
+Sudarshan Chemical Industries Limited & 1008 & 2024--25 & 75.02 & 36.00 & 96.00 & 29.41 & 62.95 \\
+Sudarshan Chemical Industries Limited & 388 & 2025--26 & 73.60 & 39.22 & 94.12 & 52.94 & 65.32 \\
+Sudarshan Colorants India Limited & 1007 & 2024--25 & 39.45 & 37.78 & 86.67 & 52.94 & 49.74 \\
+Sudarshan Colorants India Limited & 385 & 2025--26 & 39.26 & 61.11 & 97.22 & 52.94 & 58.78 \\
+V.I.P INDUSTRIES LIMITED & 1367 & 2024--25 & 29.42 & 48.15 & 92.59 & 11.76 & 45.91 \\
+V.I.P INDUSTRIES LIMITED & 337 & 2025--26 & 30.18 & 53.85 & 80.77 & 11.76 & 45.56 \\
+\bottomrule
+\end{tabular}
+\end{singlepagetable}
+\end{table}
+\end{minipage}
+\end{lrbox}
+\ifdim\dimexpr\ht\pairedyearoverviewbox+\dp\pairedyearoverviewbox\relax>\textheight
+  \PackageError{GRASP-layout}{Paired-year tables exceed one page: \the\dimexpr\ht\pairedyearoverviewbox+\dp\pairedyearoverviewbox\relax}{Reduce local spacing while retaining the records and explanations.}
+\fi
+\noindent\usebox{\pairedyearoverviewbox}\par
+
+\ifnum\getpagerefnumber{tab:esaf}>0\relax
+  \ifnum\getpagerefnumber{tab:esaf}=\getpagerefnumber{tab:paired_components}\relax\else
+    \PackageError{GRASP-layout}{Paired-year tables must share one page}{Keep the paired-year overview in one unbroken box.}
+  \fi
+\fi

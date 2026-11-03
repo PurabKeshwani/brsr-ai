@@ -8,3 +8,7 @@ Prepared: 2026-10-22. These files retain the complete saved outputs behind the c
 - **S4:** the earlier Pharmaceuticals example, comprising the four highest and three lowest saved scores within the recorded sector. Components are joined by CIN from transparency_scores.csv and sector_benchmarks.csv. Sector labels reflect the saved implementation, including applicability and classification limitations.
 
 The original source CSVs remain the evidence sources. The score-band and pooled-row summaries are descriptive arithmetic rather than new predictive results.
+
+## Manuscript inclusion
+
+Updated 2 November 2026: Tables S1–S4 are now included in the PDF through `sections/08_supplementary.tex`. Main-text references use LaTeX labels. CSV row counts are 94, 72, 16, and 7 respectively. The compact main sector table restores all 47 eligible-sector rows from S2.

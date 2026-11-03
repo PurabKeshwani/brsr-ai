@@ -1,0 +1,520 @@
+[
+  {
+    "page": 1,
+    "chars": 648,
+    "top": "VIVEKANAND EDUCATION SOCIETY’S INSTITUTE OF TECHNOLOGY An Autonomous Institute Affiliated to University of Mumbai Department of Computer Engineering",
+    "bottom": "D17B 45 Under the guidance of Yugchhaya Galphat",
+    "lastBaseline": 594
+  },
+  {
+    "page": 2,
+    "chars": 996,
+    "top": "CERTIFICATE VIVEKANAND EDUCATION SOCIETY’S INSTITUTE OF TECHNOLOGY An Autonomous Institute Affiliated to University of Mumbai",
+    "bottom": "PSO2; CO1 – CO6",
+    "lastBaseline": 616
+  },
+  {
+    "page": 3,
+    "chars": 596,
+    "top": "PROJECT REPORT APPROVAL For B.E. (Computer Engineering) The Capstone Project",
+    "bottom": "Principal: ____________________________________________ Date: ____________________ Place: ____________________",
+    "lastBaseline": 440
+  },
+  {
+    "page": 4,
+    "chars": 808,
+    "top": "DECLARATION The undersigned students declare that this report presents the work carried out for the Capstone Project",
+    "bottom": "D17B 45 Date: ____________________ Place: Mumbai",
+    "lastBaseline": 476
+  },
+  {
+    "page": 5,
+    "chars": 1232,
+    "top": "ACKNOWLEDGEMENT Sincere gratitude is expressed to Yugchhaya Galphat for guidance, review and support throughout the development of GRASP. The mentor’s feedback helped shape the reporting workflow, research",
+    "bottom": "Khushi Dayaramani Ronit Chugwani Karan Sarani",
+    "lastBaseline": 528
+  },
+  {
+    "page": 6,
+    "chars": 1346,
+    "top": "COURSE OUTCOMES AND MAPPING Course Outcome",
+    "bottom": "– CO6 is provided by the integrated modules, testing records, quantitative analysis, service design, research comparison and technical documentation.",
+    "lastBaseline": 577
+  },
+  {
+    "page": 7,
+    "chars": 3268,
+    "top": "TABLE OF CONTENTS ABSTRACT.................................................................................................................................. 13 CHAPTER 1: INTRODUCTION ................................................................................................. 14",
+    "bottom": "3.5 Constraints .......................................................................................................................... 26 CHAPTER 4: PROPOSED DESIGN ........................................................................................... 28 4.1 Block Diagram of the System ............................................................................................. 28",
+    "lastBaseline": 723
+  },
+  {
+    "page": 8,
+    "chars": 3243,
+    "top": "4.2 Modular Design of the System ........................................................................................... 29 4.3 Detailed Design ................................................................................................................... 29",
+    "bottom": "8.2 Future Scope ....................................................................................................................... 60 REFERENCES ............................................................................................................................. 61 APPENDIX I: EVIDENCE AND SUPPORTING DOCUMENTS ............................................. 63",
+    "lastBaseline": 711
+  },
+  {
+    "page": 9,
+    "chars": 1291,
+    "top": "A. User Guide and Reproduction Notes ................................................................................... 63 B. Complete Recorded Sector Summary .................................................................................. 63 C. Publication or Acceptance Proof",
+    "bottom": "...................................................................................................... 72 I. Progress Review Sheet 2 ....................................................................................................... 73 J. Demonstration Video Reference ........................................................................................... 74",
+    "lastBaseline": 300
+  },
+  {
+    "page": 10,
+    "chars": 2436,
+    "top": "LIST OF FIGURES Figure 1. GRASP architecture from public filing data to company and sector outputs. ............. 28",
+    "bottom": "Figure 11. Mean Transparency Scores for selected eligible sectors. Group sizes are shown with the names; bars describe saved company scores rather than environmental performance. .......... 55",
+    "lastBaseline": 521
+  },
+  {
+    "page": 11,
+    "chars": 3338,
+    "top": "LIST OF TABLES Table 1. SDG alignment and available evidence ......................................................................... 17",
+    "bottom": "............................................................ 58 Table 27. Complete recorded sector score summary ................................................................... 63",
+    "lastBaseline": 645
+  },
+  {
+    "page": 12,
+    "chars": 690,
+    "top": "ABBREVIATIONS Abbreviation Meaning",
+    "bottom": "Transparency Score XBRL eXtensible Business Reporting Language",
+    "lastBaseline": 481
+  },
+  {
+    "page": 13,
+    "chars": 1831,
+    "top": "ABSTRACT India’s Business Responsibility and Sustainability Reporting (BRSR) framework produces a large collection of company disclosures containing text and numerical information. Reviewing this",
+    "bottom": "vagueness detection; Transparency Score.",
+    "lastBaseline": 525
+  },
+  {
+    "page": 14,
+    "chars": 2375,
+    "top": "CHAPTER 1: INTRODUCTION 1.1 Introduction Business Responsibility and Sustainability Reporting (BRSR) gives Indian listed companies a",
+    "bottom": "that emissions have reduced. A phrase detector may recognise a reduction claim, but a reviewer also needs the relevant emissions value, comparison period and unit. Showing the sentence beside the reported numbers creates a more useful review record than a language label alone.",
+    "lastBaseline": 721
+  },
+  {
+    "page": 15,
+    "chars": 2401,
+    "top": "A second motivation is consistency. Analysts may interpret the same disclosure differently when the principle assignment and score calculation are not visible. Filing-derived labels provide a repeatable starting point for model training. Recording the label source makes it possible to assess",
+    "bottom": "such as commitments or targets, but a word match alone provides little information about the quality of",
+    "lastBaseline": 713
+  },
+  {
+    "page": 16,
+    "chars": 2261,
+    "top": "supporting evidence. Sentence embeddings compare meaning and can group related disclosures without requiring a labelled training set. Domain-specific transformer models, including ClimateBERT, improve the representation of",
+    "bottom": "For an analyst, the workflow brings text, figures and review signals into one interface. For a researcher, the saved dataset and evaluation artifacts make the label source and test population explicit. For a company preparing a report, the component breakdown can identify which parts of",
+    "lastBaseline": 698
+  },
+  {
+    "page": 17,
+    "chars": 1701,
+    "top": "disclosure need more supporting information. These uses support review and comparison without replacing professional judgement. The saved application dataset contains 1,164 company scores and 1,172 filings. The score",
+    "bottom": "Filing identifiers, raw values, label sources and runtime model path support inspection; no legal compliance certification.",
+    "lastBaseline": 546
+  },
+  {
+    "page": 18,
+    "chars": 2120,
+    "top": "CHAPTER 2: LITERATURE SURVEY 2.1 Brief Overview Research on sustainability disclosure analysis spans language representation, topic classification,",
+    "bottom": "a zero-shot principle",
+    "lastBaseline": 691
+  },
+  {
+    "page": 19,
+    "chars": 2248,
+    "top": "comparator. The supervised BERT classifier and zero-shot comparator use different learning conditions and are described accordingly. 2.2.2 Climate-related language and greenwashing analysis",
+    "bottom": "language models can reduce the effort of finding and organising relevant information. GRASP instead begins with structured filing facts and keeps the relationship between narrative text and numerical items in a relational database.",
+    "lastBaseline": 687
+  },
+  {
+    "page": 20,
+    "chars": 2405,
+    "top": "The distinction is practical. Answer generation is useful for a question asked by a reviewer, while a structured pipeline can repeatedly apply the same calculation to a complete filing collection. GRASP retains a supervised classifier for principle assignment and explicit rules for inspectable",
+    "bottom": "Describe adaptation separately from architecture and evaluation.",
+    "lastBaseline": 715
+  },
+  {
+    "page": 21,
+    "chars": 2006,
+    "top": "Year / reference Objective and method",
+    "bottom": "location. GRASP organises structured filing facts and exposes component- based scores.",
+    "lastBaseline": 649
+  },
+  {
+    "page": 22,
+    "chars": 2210,
+    "top": "Publication / date Disclosed mechanism Connection and distinction",
+    "bottom": "labelled BRSR training set Retain MPNet as a comparator on the same test text segments.",
+    "lastBaseline": 704
+  },
+  {
+    "page": 23,
+    "chars": 2329,
+    "top": "Approach Useful capability GRASP design choice",
+    "bottom": "completed implementation provides company records, text principle assignments, language flags, selected numerical review records and a four-part Transparency Score. The evaluation outcome is a clearly stated result for each task, including the data unit and reference source. The application",
+    "lastBaseline": 710
+  },
+  {
+    "page": 24,
+    "chars": 2028,
+    "top": "CHAPTER 3: REQUIREMENT GATHERING 3.1 Requirements Scope and Sources Requirements were derived from the reporting structure, the research problem, the implemented",
+    "bottom": "with fixed weights. Completeness, Specificity, Clarity, SDG coverage and total.",
+    "lastBaseline": 690
+  },
+  {
+    "page": 25,
+    "chars": 2302,
+    "top": "ID Requirement Output / acceptance evidence",
+    "bottom": "service concerns. Python modules, API schemas and frontend components.",
+    "lastBaseline": 723
+  },
+  {
+    "page": 26,
+    "chars": 1886,
+    "top": "3.4 Hardware, Software, Technologies and Tools The implementation uses a Python analysis backend and a TypeScript browser frontend. The local machine used the .venv-ml environment for machine-learning commands. The versions below",
+    "bottom": "overall accuracy. The company-disjoint split prevents a company from appearing in more than one supervised split. It does not remove all identical wording reused by different companies. The legacy domain-",
+    "lastBaseline": 705
+  },
+  {
+    "page": 27,
+    "chars": 556,
+    "top": "adaptation corpus also requires a separate exposure statement. These conditions are retained in the evaluation interpretation instead of being treated as additional independent test cohorts. Operational constraints include access to the database, trained checkpoints, tokenizer files and",
+    "bottom": "saved sector benchmarks. The frontend and backend must use consistent service addresses. The current upload service handles structured XML/XBRL filings; an interface label that mentions PDF should not be interpreted as an implemented general PDF extraction capability.",
+    "lastBaseline": 178
+  },
+  {
+    "page": 28,
+    "chars": 927,
+    "top": "CHAPTER 4: PROPOSED DESIGN 4.1 Block Diagram of the System GRASP uses a shared filing store to connect language analysis with reported data. Collection and",
+    "bottom": "dataset and produces a checkpoint. During application use, the saved model can be loaded for principle assignment without repeating training. Score calculations use filing facts and detector outputs, while the API returns structured results to the browser.",
+    "lastBaseline": 703
+  },
+  {
+    "page": 29,
+    "chars": 2070,
+    "top": "4.2 Modular Design of the System Table 8. Modules, inputs and outputs",
+    "bottom": "years. Re-ingestion replaces the facts for that filing within the ingestion workflow. Raw value strings are retained rather than rounded or converted at extraction time. Numerical interpretation belongs to the analysis layer, where assumptions can be inspected separately.",
+    "lastBaseline": 650
+  },
+  {
+    "page": 30,
+    "chars": 1213,
+    "top": "Figure 2. Core database relationships. A company has multiple filings, and each filing has multiple context-bearing facts.",
+    "bottom": "Check whether the service is reachable. GET /companies List stored company names and identifiers.",
+    "lastBaseline": 716
+  },
+  {
+    "page": 31,
+    "chars": 1978,
+    "top": "Endpoint Purpose and response GET /companies/{name}/filings",
+    "bottom": "concepts Frozen detector settings and saved comparison results.",
+    "lastBaseline": 704
+  },
+  {
+    "page": 32,
+    "chars": 1179,
+    "top": "Package Dependency Recorded deliverable",
+    "bottom": "for the reported analysis, but upload handling and wider deployment still require appropriate retention and access policies. Energy use and carbon savings were not measured, so sustainability claims are restricted to these documented design choices.",
+    "lastBaseline": 420
+  },
+  {
+    "page": 33,
+    "chars": 1953,
+    "top": "CHAPTER 5: IMPLEMENTATION OF THE PROPOSED SYSTEM 5.1 Development Methodology",
+    "bottom": "until an analysis requires arithmetic. This prevents extraction from silently changing precision or converting a non-answer to zero. The filing record retains its source URL and reporting dates, and all related facts point to that filing.",
+    "lastBaseline": 699
+  },
+  {
+    "page": 34,
+    "chars": 2090,
+    "top": "The saved company-year constraint prevents multiple filing records for the same company and financial-year end. Re- ingestion replaces that filing’s fact collection through the ingestion",
+    "bottom": "groups were removed. Candidate rows and groups are different units; subtracting a count of groups from a count of rows does not reconstruct the final total. The historical Section B value of 17,219 is not used as a current measured count.",
+    "lastBaseline": 604
+  },
+  {
+    "page": 35,
+    "chars": 1666,
+    "top": "Figure 4. Single-label dataset construction from narrative facts, recorded label sources and company- based splitting.",
+    "bottom": "were compared using validation macro-F1. Seed 99 and checkpoint 7,460 were selected for the audited final evaluation. The checkpoint contained 50 LayerNorm parameters with older gamma/beta aliases. Recovery renamed these to weight/bias,",
+    "lastBaseline": 694
+  },
+  {
+    "page": 36,
+    "chars": 2196,
+    "top": "required every expected parameter to load and verified tensor equality after save and reload. Recovery changed parameter names, not the learned numerical values. The legacy masked-language-model corpus builder reads company narratives across the database.",
+    "bottom": "Evaluation version stage4-rule-detector-2026-10-18; thresholds verified against the freeze manifest.",
+    "lastBaseline": 725
+  },
+  {
+    "page": 37,
+    "chars": 2520,
+    "top": "The frozen engine was evaluated on the 80-example development set and compared with one AI annotation set containing 70 examples. These are different reference groups. The AI annotations are explicitly identified as AI-generated, and no two-rater agreement statistic is reported. The",
+    "bottom": "and model representations differ.",
+    "lastBaseline": 723
+  },
+  {
+    "page": 38,
+    "chars": 2341,
+    "top": "5.2.7 Transparency Score calculation The Transparency Score is a weighted sum of four percentages. The implementation fixes the weights at 40% Completeness, 30% Specificity, 20% Clarity and 10% mapped SDG coverage.",
+    "bottom": "map supplies the goal numbers. Repeated goals count once. The union is divided by the 17 SDGs. The configured map covers 14 goals, so its maximum is 82.35%. This component measures mapped goal breadth and does not evaluate all 169 SDG targets.",
+    "lastBaseline": 690
+  },
+  {
+    "page": 39,
+    "chars": 1731,
+    "top": "𝐺 = 100 × 𝑑𝑖𝑠𝑡𝑖𝑛𝑐𝑡 𝑚𝑎𝑝𝑝𝑒𝑑 𝑔𝑜𝑎𝑙𝑠 / 17 Table 12. Fixed principle-to-SDG map",
+    "bottom": "Section B: explicit PrincipleAxis 2,479 5.85%",
+    "lastBaseline": 704
+  },
+  {
+    "page": 40,
+    "chars": 898,
+    "top": "Label source Text segments Share",
+    "bottom": "Application scoring uses filing facts and its own narrative selection rules rather than the classifier dataset alone. Company counts, filing counts, classifier text segments and scoring text segments should therefore not be added together or treated as interchangeable sample sizes.",
+    "lastBaseline": 473
+  },
+  {
+    "page": 41,
+    "chars": 1921,
+    "top": "CHAPTER 6: TESTING OF THE PROPOSED SYSTEM 6.1 Testing Objectives and Scope",
+    "bottom": "pairwise intersections zero. Saved split assertions: PASS.",
+    "lastBaseline": 696
+  },
+  {
+    "page": 42,
+    "chars": 2197,
+    "top": "ID Input / expected behaviour Recorded result",
+    "bottom": "paper and audit snapshots. Interface counters, current runtime outputs and saved publication metrics are not interchangeable. A snapshot difference should be reconciled before a future release rather than replaced silently in the research record.",
+    "lastBaseline": 663
+  },
+  {
+    "page": 43,
+    "chars": 1030,
+    "top": "6.4 Inferences Drawn from Test Cases The checks establish three useful properties of the reported workflow. First, the supervised company split is reproducible and contains no shared CINs. Second, the selected classifier",
+    "bottom": "Further deployment testing should measure endpoint latency, upload limits, malformed-input handling, model-asset failures, concurrency and access policies under a fixed environment. These are defined engineering tasks rather than completed results in the present evidence set.",
+    "lastBaseline": 320
+  },
+  {
+    "page": 44,
+    "chars": 784,
+    "top": "CHAPTER 7: RESULTS AND DISCUSSION 7.1 User Interface Screens The following screens were captured from the local application on 1 November 2026. The browser",
+    "bottom": "approved benchmark result, and a screen capture is not treated as an additional model test. Figure 5. Live company search locates matching names and CINs before opening a filing report.",
+    "lastBaseline": 695
+  },
+  {
+    "page": 45,
+    "chars": 126,
+    "top": "Figure 6. Live filing report for Triveni Turbine Limited, showing company identity, reporting year and filed numerical trends.",
+    "bottom": "Figure 6. Live filing report for Triveni Turbine Limited, showing company identity, reporting year and filed numerical trends.",
+    "lastBaseline": 479
+  },
+  {
+    "page": 46,
+    "chars": 122,
+    "top": "Figure 7. Peer-comparison selection with two financial companies. The interface supports a group of two to five companies.",
+    "bottom": "Figure 7. Peer-comparison selection with two financial companies. The interface supports a group of two to five companies.",
+    "lastBaseline": 479
+  },
+  {
+    "page": 47,
+    "chars": 995,
+    "top": "Figure 8. Structured filing upload screen. The implemented route accepts XML/XBRL files; no file was uploaded for this documentation capture.",
+    "bottom": "For the vagueness detector, precision is the share of flagged examples that the reference also labels vague. Recall is the share of reference-vague examples detected by the system. Accuracy is the share of all examples with a matching decision. These meanings can be understood without treating",
+    "lastBaseline": 709
+  },
+  {
+    "page": 48,
+    "chars": 1858,
+    "top": "A 95% confidence interval describes uncertainty under the stated resampling or estimation procedure. The classifier and paired-comparison intervals resample companies by CIN, keeping each selected company’s text segments together. Variation across three co",
+    "bottom": "P7: responsible public policy 543 1.28%",
+    "lastBaseline": 703
+  },
+  {
+    "page": 49,
+    "chars": 1534,
+    "top": "Principle Full corpus total Share",
+    "bottom": "6,201 total The per-principle results show why the overall value is not sufficient by itself. Principle 7 contributes only 69 test text segments, while Principle 3 contributes 1,715. Macro-F1 gives both",
+    "lastBaseline": 702
+  },
+  {
+    "page": 50,
+    "chars": 1138,
+    "top": "principles equal weight. The class table makes this imbalance visible without confusing the corpus count of 543 Principle 7 examples with the test support of 69. Figure",
+    "bottom": "content, much of which is removed by the conflicting-label filter. Source-wise results indicate that the aggregate score should be described as agreement with taxonomy-derived labels rather than independent proof of principle understanding.",
+    "lastBaseline": 624
+  },
+  {
+    "page": 51,
+    "chars": 1695,
+    "top": "Figure 10. Top-1 agreement by label source with reported company-bootstrap confidence intervals. 7.4.3 Concept exclusion and multi-label diagnostics",
+    "bottom": "The frozen development comparison identifies 29 of the 37 reference-vague examples, while 12 of its 41 flags are not marked vague by that reference. The 80 decisions include 31 matching clear examples and eight missed reference-vague examples. This produces F1 0.7436. The separate AI",
+    "lastBaseline": 702
+  },
+  {
+    "page": 52,
+    "chars": 2209,
+    "top": "comparison contains 21 matching vague decisions, 14 additional flags, five missed reference- vague decisions and 30 matching clear decisions, producing F1 0.6885. These counts describe the text-vagueness subdetector. A binary-prediction area statistic is not",
+    "bottom": "text pairs. Of these, 33 contain an evidence marker, giving Specificity 63.46%; one is flagged vague, giving Clarity 98.08%. Twelve distinct goals are mapped, giving SDG coverage 70.59%.",
+    "lastBaseline": 704
+  },
+  {
+    "page": 53,
+    "chars": 1786,
+    "top": "Table 20. Triveni worked score from the saved application snapshot Component",
+    "bottom": "The recorded Financial Services group, excluding Insurance, contains 94 companies. Mean Transparency Score is 48.17, median 49.79 and standard deviation 9.88. Scores range from 29.83 to 67.56. The saved year linkage includes 77 filings ending in 2026 and 17 ending in 2025. This is",
+    "lastBaseline": 710
+  },
+  {
+    "page": 54,
+    "chars": 1345,
+    "top": "a mixed-year descriptive snapshot, not a controlled comparison of all companies in one financial year. Table",
+    "bottom": "six companies. Wearing Apparel has the lowest mean, 42.33 across six companies, followed by Education at 42.43. These are descriptive group averages under the implemented score; the results do not establish the causes of sector differences.",
+    "lastBaseline": 561
+  },
+  {
+    "page": 55,
+    "chars": 1003,
+    "top": "Figure 11. Mean Transparency Scores for selected eligible sectors. Group sizes are shown with the names; bars describe saved company scores rather than environmental performance.",
+    "bottom": "The pharmaceutical group illustrates within-sector variation. Its 65 companies have a mean of 51.18 and range from 32.38 to 73.72. Dabur is at the upper end and Kopran at the lower end in the saved table. Clarity exceeds 85 for 58 of the 65 companies, so differences in evidence detail and",
+    "lastBaseline": 694
+  },
+  {
+    "page": 56,
+    "chars": 1421,
+    "top": "coverage remain important even when language is usually not flagged vague. The complete 72- sector table is provided in the supporting appendix. 7.6.5 Paired reporting years",
+    "bottom": "Relevant evidence includes the database design, saved models, audit artifacts, source tables and actual interface captures. Operational electricity and embodied hardware impacts were not measured.",
+    "lastBaseline": 678
+  },
+  {
+    "page": 57,
+    "chars": 1835,
+    "top": "7.7.2 Material sustainability topics Table 25. Material topics and implementation evidence",
+    "bottom": "records also support the inspection of emissions statements, and runtime traceability supports accountable information use. These connections describe the function of the tool, not a measured contribution to national SDG indicators.",
+    "lastBaseline": 621
+  },
+  {
+    "page": 58,
+    "chars": 1544,
+    "top": "7.7.5 Sustainability assessment rubric Table 26. Template rubric mapped to available evidence",
+    "bottom": "reliability have not been quantified. A future assessment can add power measurements, a timed analyst task, accessibility checks and controlled service load tests. The present sustainability account remains tied to available implementation evidence.",
+    "lastBaseline": 532
+  },
+  {
+    "page": 59,
+    "chars": 2374,
+    "top": "CHAPTER 8: CONCLUSION GRASP connects public BRSR filings with a structured disclosure-review workflow. The implementation",
+    "bottom": "unrecorded blinding. The score uses a fixed database concept universe and a fixed principle-to- SDG map. Sector assignment, mixed-year snapshots and the limited paired-year subset should be considered when interpreting application comparisons.",
+    "lastBaseline": 707
+  },
+  {
+    "page": 60,
+    "chars": 1600,
+    "top": "Current application screens and approved research snapshots can differ as code or data changes. Publication tables remain tied to the saved audit artifacts. Broader deployment requires controlled upload, security, concurrency, accessibility and response-time testing.",
+    "bottom": "approach can be studied under other structured sustainability standards, including international frameworks. Such extensions should preserve the distinction between disclosure quality, model support and independently verified company performance.",
+    "lastBaseline": 477
+  },
+  {
+    "page": 61,
+    "chars": 2924,
+    "top": "REFERENCES [1] Securities and Exchange Board of India, \"Business responsibility and sustainability reporting by listed entities,\"",
+    "bottom": "102776, 2022. https://doi.org/10.1016/j.frl.2022.102776.",
+    "lastBaseline": 700
+  },
+  {
+    "page": 62,
+    "chars": 2717,
+    "top": "[14] J. A. Bingler, M. Kraus, M. Leippold, and N. Webersinke, \"How cheap talk in climate disclosures relates to climate initiatives, corporate emissions, and reputation risk,\" Journal of Banking & Finance, vol. 164, article 107191, 2024. https://doi.org/10.1016/j.jbankfin.2024.107191.",
+    "bottom": "– S4; source files under src and frontend. These are local implementation artifacts, not additional published studies.",
+    "lastBaseline": 615
+  },
+  {
+    "page": 63,
+    "chars": 1945,
+    "top": "APPENDIX I: EVIDENCE AND SUPPORTING DOCUMENTS A. User Guide and Reproduction Notes",
+    "bottom": "32.38 73.72 Eligible",
+    "lastBaseline": 722
+  },
+  {
+    "page": 64,
+    "chars": 1586,
+    "top": "Sector N Mean",
+    "bottom": "37.40 67.92 Eligible",
+    "lastBaseline": 708
+  },
+  {
+    "page": 65,
+    "chars": 1472,
+    "top": "Sector N Mean",
+    "bottom": "39.59 59.83 Small",
+    "lastBaseline": 708
+  },
+  {
+    "page": 66,
+    "chars": 573,
+    "top": "Sector N Mean",
+    "bottom": "41.54 41.54 Small",
+    "lastBaseline": 313
+  },
+  {
+    "page": 67,
+    "chars": 379,
+    "top": "C. Publication or Acceptance Proof Insert the accepted/published paper, acceptance letter or applicable IPR document here. This space is intentionally blank; no publication or acceptance status is asserted.",
+    "bottom": "RESERVED FOR THE ORIGINAL SUPPORTING DOCUMENT Document reference: __________________________________________ Date / authority: _____________________________________________",
+    "lastBaseline": 199
+  },
+  {
+    "page": 68,
+    "chars": 328,
+    "top": "D. Publication or Presentation Certificate Insert the official publication/presentation certificate here when available. This space is intentionally blank.",
+    "bottom": "RESERVED FOR THE ORIGINAL SUPPORTING DOCUMENT Document reference: __________________________________________ Date / authority: _____________________________________________",
+    "lastBaseline": 199
+  },
+  {
+    "page": 69,
+    "chars": 312,
+    "top": "E. Plagiarism Similarity Report Insert the complete institution-approved plagiarism report here. No similarity percentage has been entered.",
+    "bottom": "RESERVED FOR THE ORIGINAL SUPPORTING DOCUMENT Document reference: __________________________________________ Date / authority: _____________________________________________",
+    "lastBaseline": 199
+  },
+  {
+    "page": 70,
+    "chars": 313,
+    "top": "F. AI-Content Report Insert the AI-content report required by the department here. No AI-detection score or certificate has been fabricated.",
+    "bottom": "RESERVED FOR THE ORIGINAL SUPPORTING DOCUMENT Document reference: __________________________________________ Date / authority: _____________________________________________",
+    "lastBaseline": 199
+  },
+  {
+    "page": 71,
+    "chars": 330,
+    "top": "G. Competition or Award Evidence Insert certificates or participation/award proof only if applicable. Otherwise retain an approved not- applicable statement.",
+    "bottom": "RESERVED FOR THE ORIGINAL SUPPORTING DOCUMENT Document reference: __________________________________________ Date / authority: _____________________________________________",
+    "lastBaseline": 199
+  },
+  {
+    "page": 72,
+    "chars": 328,
+    "top": "H. Progress Review Sheet 1 Insert the signed Progress Review Sheet 1 supplied by the department here. No attendance, marks or signatures have been entered.",
+    "bottom": "RESERVED FOR THE ORIGINAL SUPPORTING DOCUMENT Document reference: __________________________________________ Date / authority: _____________________________________________",
+    "lastBaseline": 199
+  },
+  {
+    "page": 73,
+    "chars": 328,
+    "top": "I. Progress Review Sheet 2 Insert the signed Progress Review Sheet 2 supplied by the department here. No attendance, marks or signatures have been entered.",
+    "bottom": "RESERVED FOR THE ORIGINAL SUPPORTING DOCUMENT Document reference: __________________________________________ Date / authority: _____________________________________________",
+    "lastBaseline": 199
+  },
+  {
+    "page": 74,
+    "chars": 378,
+    "top": "J. Demonstration Video Reference Add the GitHub path or approved video reference here. The implementation video must not exceed three minutes. Video preparation and upload are separate from this Blackbook.",
+    "bottom": "RESERVED FOR THE ORIGINAL SUPPORTING DOCUMENT Document reference: __________________________________________ Date / authority: _____________________________________________",
+    "lastBaseline": 199
+  }
+]

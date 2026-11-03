@@ -1,0 +1,77 @@
+\documentclass[11pt,a4paper,onecolumn]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=23mm]{geometry}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{array,booktabs,tabularx,longtable}
+\usepackage{caption,subcaption}
+\usepackage{enumitem}
+\usepackage{placeins}
+\usepackage{tikz,pgfplots}
+\usetikzlibrary{arrows.meta,positioning,calc}
+\pgfplotsset{compat=1.17}
+\usepackage[hidelinks]{hyperref}
+\usepackage{url}
+\definecolor{ink}{HTML}{203447}
+\definecolor{teal}{HTML}{227C80}
+\definecolor{softgray}{HTML}{EDF1F4}
+\definecolor{warm}{HTML}{B56B42}
+\captionsetup{font=small,labelfont=bf,labelsep=period}
+\setlist[itemize]{leftmargin=1.5em,itemsep=3pt,topsep=4pt}
+\setlist[enumerate]{leftmargin=1.8em,itemsep=3pt,topsep=4pt}
+\setlength{\parskip}{5pt plus 1pt}
+\setlength{\parindent}{0pt}
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.17}
+\renewcommand{\topfraction}{0.90}
+\renewcommand{\textfraction}{0.08}
+\renewcommand{\floatpagefraction}{0.75}
+\setlength{\emergencystretch}{2em}
+\raggedbottom
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newcommand{\artifact}[1]{\nolinkurl{#1}}
+\newcommand{\na}{\textemdash}
+\newsavebox{\methodologyoverviewbox}
+\newsavebox{\compactresultstablebox}
+\newenvironment{singlepagetable}{%
+  \begin{lrbox}{\compactresultstablebox}\begin{minipage}{\linewidth}%
+}{%
+  \end{minipage}\end{lrbox}%
+  \ifdim\dimexpr\ht\compactresultstablebox+\dp\compactresultstablebox\relax>\textheight
+    \PackageError{GRASP-layout}{A compact results table exceeds one page}{Reduce table spacing without removing data.}%
+  \fi
+  \noindent\usebox{\compactresultstablebox}%
+}
+
+\pgfplotsset{every axis/.append style={label style={font=\small},tick label style={font=\small},legend style={font=\small,draw=none},axis line style={black!55},grid style={black!12},major tick length=2pt}}
+\title{\textbf{GRASP: Greenwashing Risk Assessment in Structured Business Responsibility and Sustainability Reporting in India}}
+\author{\normalsize Yugchhaya Galphat, Purab Keshwani, Khushi Dayaramani,\\
+\normalsize Ronit Chugwani, and Karan Sarani\\[5pt]
+\small Computer Department, Vivekanand Education Society's Institute of Technology\\
+\small Mumbai, India\\[3pt]
+\footnotesize yugchhaya.dhote@ves.ac.in; 2023.purab.keshwani@ves.ac.in\\
+\footnotesize 2023.khushi.dayaramani@ves.ac.in; 2023.ronit.chugwani@ves.ac.in\\
+\footnotesize 2023.karan.sarani@ves.ac.in}
+\hypersetup{pdftitle={GRASP: Greenwashing Risk Assessment in Structured Business Responsibility and Sustainability Reporting in India},pdfsubject={Evidence-linked analysis of BRSR disclosures}}
+\date{}
+\begin{document}
+\maketitle
+\begin{abstract}
+India's Business Responsibility and Sustainability Reporting (BRSR) framework produces a large collection of corporate disclosures that combine narrative claims with numerical information. Reviewing these reports requires analysts to locate supporting evidence and compare disclosures across companies. GRASP supports this review through a seven-module pipeline. Reports are collected and stored with company, period, and measurement details. Report tags and concept mappings automatically assign principle labels to selected text segments, creating a weakly labelled dataset. A BERT language model adapted to BRSR text is then trained to assign each text segment to one of nine reporting principles. Word lists and sentence similarity identify vague wording. Numerical and assurance checks create review records linked to the reported evidence. Classifier probabilities provide principle-level summaries, and a Transparency Score combines Completeness, Specificity, Clarity, and Sustainable Development Goal (SDG) breadth. The vagueness detector is reused to calculate Clarity. Company and sector comparisons are made available through an application programming interface. The application outputs cover 1,164 companies. On 6,201 text segments from 175 companies excluded from supervised training, the classifier achieves 93.00\% agreement with report-derived weak labels. The Transparency Score has a Pearson correlation of $r=0.6314$ with 20 historical human ratings. By connecting summary scores with source disclosures, GRASP helps analysts identify review priorities and inspect the evidence behind each result.
+\end{abstract}
+\noindent\textbf{Keywords:} BRSR; sustainability disclosure; weak supervision; BERT; vagueness detection; transparency scoring; sector benchmarking.
+\input{sections/01_introduction}
+\input{sections/02_literature}
+\input{sections/02a_proposed_solution}
+\input{sections/03_methodology}
+\input{sections/04_evaluation}
+\input{sections/05_results}
+\input{sections/07_conclusion}
+\input{references}
+\input{sections/08_supplementary}
+\end{document}

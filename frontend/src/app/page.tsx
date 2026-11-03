@@ -1,7 +1,4 @@
-import { api } from "@/lib/api"
-import { HomeClient } from "@/components/HomeClient"
-
-export default async function Home() {
-  const companies = await api.listCompanies().catch(() => [])
-  return <HomeClient companies={companies} />
+import { CompareWorkspace } from "@/components/workspace/CompareWorkspace";
+export default function Home() {
+  return <CompareWorkspace overview />;
 }

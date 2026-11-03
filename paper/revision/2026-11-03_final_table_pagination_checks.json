@@ -1,0 +1,14 @@
+{
+  "displayedSectorRows": 40,
+  "sectorSubsetExactlyFirst40": true,
+  "removedContinuationRows": 32,
+  "overallSectorCount": 72,
+  "retainedYearwiseContentUnchanged": true,
+  "undefinedReferences": [],
+  "obsoleteFullSectorReferences": false,
+  "temporaryDiagnosticRemoved": true,
+  "pairedOverviewSinglePageGuard": true,
+  "pairedTablePageEqualityGuard": true,
+  "noContinuationInTable13": true,
+  "referencesLast": true
+}

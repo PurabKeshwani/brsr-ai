@@ -7,7 +7,6 @@ client as a raw 500 with a stack trace.
 from __future__ import annotations
 
 from fastapi import UploadFile, File
-import shutil
 import uuid
 from ingestion.xbrl_ingest import ingest_filing
 
@@ -268,7 +267,7 @@ UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
 
 
 @router.post("/companies/upload-and-analyze", response_model=CompanyFullReport)
-async def upload_and_analyze(file: UploadFile = File(...)):
+def upload_and_analyze(file: UploadFile = File(...)):
     """
     Accepts an XBRL file upload (NOT PDF — see project design rationale:
     this system deliberately relies on SEBI-mandated, officially-tagged
@@ -277,17 +276,23 @@ async def upload_and_analyze(file: UploadFile = File(...)):
     immediately and returns the full analysis report, reusing the exact
     same computation path as the standard company-report endpoint.
     """
-    if not file.filename.lower().endswith((".xml", ".xbrl")):
+    filename = file.filename or ""
+    if not filename.lower().endswith((".xml", ".xbrl")):
         raise HTTPException(
             status_code=422,
             detail="Only XBRL files (.xml or .xbrl) are supported. This system relies on "
                    "SEBI's officially-tagged XBRL format rather than PDF extraction, by design."
         )
 
-    temp_path = UPLOAD_DIR / f"{uuid.uuid4().hex}_{file.filename}"
+    temp_path = UPLOAD_DIR / f"{uuid.uuid4().hex}{Path(filename).suffix.lower()}"
     try:
         with open(temp_path, "wb") as f:
-            shutil.copyfileobj(file.file, f)
+            total = 0
+            while chunk := file.file.read(1024 * 1024):
+                total += len(chunk)
+                if total > 20 * 1024 * 1024:
+                    raise HTTPException(413, "Choose a filing smaller than 20 MB")
+                f.write(chunk)
 
         with get_session() as session:
             try:

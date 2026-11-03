@@ -1,0 +1,158 @@
+{
+  "figures": [
+    {
+      "n": 1,
+      "caption": "GRASP architecture from public filing data to company and sector outputs."
+    },
+    {
+      "n": 2,
+      "caption": "Core database relationships. A company has multiple filings, and each filing has multiple context-bearing facts."
+    },
+    {
+      "n": 3,
+      "caption": "Read-only company analysis request from browser selection to a source-linked response."
+    },
+    {
+      "n": 4,
+      "caption": "Single-label dataset construction from narrative facts, recorded label sources and company-based splitting."
+    },
+    {
+      "n": 5,
+      "caption": "Live company search locates matching names and CINs before opening a filing report."
+    },
+    {
+      "n": 6,
+      "caption": "Live filing report for Triveni Turbine Limited, showing company identity, reporting year and filed numerical trends."
+    },
+    {
+      "n": 7,
+      "caption": "Peer-comparison selection with two financial companies. The interface supports a group of two to five companies."
+    },
+    {
+      "n": 8,
+      "caption": "Structured filing upload screen. The implemented route accepts XML/XBRL files; no file was uploaded for this documentation capture."
+    },
+    {
+      "n": 9,
+      "caption": "Validation macro-F1 over five completed epochs. The highest recorded value occurs at epoch 4, which supplies the selected checkpoint."
+    },
+    {
+      "n": 10,
+      "caption": "Top-1 agreement by label source with reported company-bootstrap confidence intervals."
+    },
+    {
+      "n": 11,
+      "caption": "Mean Transparency Scores for selected eligible sectors. Group sizes are shown with the names; bars describe saved company scores rather than environmental performance."
+    }
+  ],
+  "tables": [
+    {
+      "n": 1,
+      "caption": "SDG alignment and available evidence"
+    },
+    {
+      "n": 2,
+      "caption": "Research methods and design inferences"
+    },
+    {
+      "n": 3,
+      "caption": "Patent publications reviewed"
+    },
+    {
+      "n": 4,
+      "caption": "Practical comparison of disclosure-analysis approaches"
+    },
+    {
+      "n": 5,
+      "caption": "Functional requirements and corresponding outputs"
+    },
+    {
+      "n": 6,
+      "caption": "Quality requirements and evidence status"
+    },
+    {
+      "n": 7,
+      "caption": "Implementation tools and roles"
+    },
+    {
+      "n": 8,
+      "caption": "Modules, inputs and outputs"
+    },
+    {
+      "n": 9,
+      "caption": "Main service endpoints"
+    },
+    {
+      "n": 10,
+      "caption": "Work packages and completion evidence"
+    },
+    {
+      "n": 11,
+      "caption": "Frozen language-detector decision rules"
+    },
+    {
+      "n": 12,
+      "caption": "Fixed principle-to-SDG map"
+    },
+    {
+      "n": 13,
+      "caption": "Final labelled corpus by source"
+    },
+    {
+      "n": 14,
+      "caption": "Company-disjoint supervised split"
+    },
+    {
+      "n": 15,
+      "caption": "Recorded verification cases and evidence status"
+    },
+    {
+      "n": 16,
+      "caption": "Approved results and evaluation populations"
+    },
+    {
+      "n": 17,
+      "caption": "Text segments by BRSR principle"
+    },
+    {
+      "n": 18,
+      "caption": "Per-principle classification on the company-disjoint test set"
+    },
+    {
+      "n": 19,
+      "caption": "Source-wise agreement for the recovered classifier"
+    },
+    {
+      "n": 20,
+      "caption": "Triveni worked score from the saved application snapshot"
+    },
+    {
+      "n": 21,
+      "caption": "Selected financial-company results from the saved snapshot"
+    },
+    {
+      "n": 22,
+      "caption": "Financial-sector score bands"
+    },
+    {
+      "n": 23,
+      "caption": "Largest recorded sector groups"
+    },
+    {
+      "n": 24,
+      "caption": "Paired-year company scores"
+    },
+    {
+      "n": 25,
+      "caption": "Material topics and implementation evidence"
+    },
+    {
+      "n": 26,
+      "caption": "Template rubric mapped to available evidence"
+    },
+    {
+      "n": 27,
+      "caption": "Complete recorded sector score summary"
+    }
+  ]
+}

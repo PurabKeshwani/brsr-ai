@@ -13,11 +13,13 @@ from __future__ import annotations
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.middleware.gzip import GZipMiddleware
 
 from api.routes import router
+from api.analytics import router as analytics_router
 from db.session import init_db
 
-app = FastAPI(title="BRSR Greenwashing Analysis API", version="0.1.0")
+app = FastAPI(title="GRASP | BRSR Analysis API", version="0.1.0")
 
 app.add_middleware(
     CORSMiddleware,
@@ -28,6 +30,8 @@ app.add_middleware(
 )
 
 app.include_router(router)
+app.include_router(analytics_router)
+app.add_middleware(GZipMiddleware, minimum_size=1024)
 
 
 @app.on_event("startup")

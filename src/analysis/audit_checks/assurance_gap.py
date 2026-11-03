@@ -86,6 +86,7 @@ def check_assurance_gap(
     session: Session,
     filing_id: int,
     text: str,
+    *, assurance_profile=None, facts=None,
 ) -> list[AssuranceGapSignal]:
     """Inspects a narrative text segment for specific ESG domain claims and
     verifies if the company has officially filed numerical data and third-party
@@ -94,7 +95,8 @@ def check_assurance_gap(
     signals = []
 
     # Get assurance profile for the filing
-    assurance_profile = get_assurance_profile(session, filing_id)
+    if assurance_profile is None:
+        assurance_profile = get_assurance_profile(session, filing_id)
     assurance_by_area = {item.disclosure_area.lower(): item for item in assurance_profile.items}
 
     # Split text into sentences
@@ -112,13 +114,16 @@ def check_assurance_gap(
             # Check if sentence mentions this domain
             if any(p.search(sent) for p in domain_patterns):
                 # Query database to see if numeric fact was actually filed
-                fact_record = (
+                candidates = [f for f in facts if f.concept == concept_name] if facts is not None else (
                     session.query(Fact)
-                    .filter(Fact.filing_id == filing_id, Fact.concept.like(f"%{concept_name}%"))
-                    .first()
+                    .filter(Fact.filing_id == filing_id, Fact.concept == concept_name)
+                    .all()
                 )
+                candidates.sort(key=lambda f: f.period_end or f.period_instant or "", reverse=True)
+                fact_record = next(iter(candidates), None)
 
-                fact_found = fact_record is not None and fact_record.value not in (None, "", "nil", "0", "NA")
+                # A disclosed zero is evidence, not an absent fact.
+                fact_found = fact_record is not None and fact_record.value.strip().lower() not in ("", "nil", "na", "n/a", "none", "-")
                 fact_value = fact_record.value if fact_found else None
 
                 # Check assurance

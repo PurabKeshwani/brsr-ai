@@ -1,0 +1,32 @@
+\section{Discussion and Practical Use}
+\label{sec:discussion}
+
+The previous sections described how GRASP is built, tested, and applied to saved reports. This section explains how the outputs should be read and used. The aim is to show what each output means, and what each output does not mean, so that an analyst can use the results with the right level of trust.
+
+\subsection{How the outputs work together}
+
+GRASP connects three levels of analysis. At the first level, each text segment receives a likely principle and, where needed, a language flag. At the second level, each report is organised into facts, and the four score components are calculated from the facts and the text segments. At the third level, company and sector views place the scores in a wider context. Because the three levels are linked, an analyst can start from a summary score and move down to the text segment or filed fact behind the score.
+
+Three outputs serve different purposes. The classifier assigns each text segment to one of the nine BRSR principles and is compared with the weak labels taken from the structure of the report. The language detector selects text segments whose wording needs review. The Transparency Score combines reported-item coverage, evidence markers, vagueness flags, and mapped SDG breadth. The same detector that flags vague text segments is reused to calculate Clarity, which carries a weight of 20\% in the score. The numerical and assurance records are not part of the score and remain separate review outputs. Section~\ref{sec:evaluation} states the data and the reference used for each output.
+
+\subsection{Reading the evaluation results}
+
+The evaluation gives several views of the classifier. The source-wise results show how the classifier performs on three kinds of text segments: explicitly tagged ones, concept-mapped ones, and principle notes. The tests on excluded concepts show what happens when some reporting questions are left out of training. Together, these views describe the behaviour of the model more fully than a single overall agreement value.
+
+Four conditions make the results easier to trust. First, the training, validation, and test groups contain different companies, so the classifier is always tested on companies that were not used for supervised training. Second, the checkpoint checks confirm which saved parameters produced the reported results. Third, the bootstrap intervals show how much a result could change when the set of companies changes. Bootstrap means that companies are drawn repeatedly with replacement, and the result is recalculated each time. Fourth, the paired comparisons test both methods on the same companies. These conditions make the comparisons clear and repeatable \cite{kapoor2023}.
+
+Two limits apply to the reading of results. Agreement is measured against weak labels, so a high value shows agreement with the recorded assignment and not an independent judgement of meaning. The principle-mapping result reuses the classifier evaluation, and the API check confirms that the model loaded correctly for one company. Neither of the two is a separate test of accuracy.
+
+\subsection{Reading company and sector scores}
+
+The component breakdown shows how each company reaches the combined score. Completeness is the share of the fixed concept list that has an accepted response. Specificity is the share of text segments that contain an evidence marker. Clarity is the share of text segments without a vagueness flag. SDG breadth is the share of the 17 goals linked through the fixed principle map. Because all four components are shown, an analyst can see which part of a disclosure drives a difference between two scores. For example, a high Clarity value together with a low Specificity value means that the wording is not vague, but concrete evidence is missing.
+
+Sector comparisons use the saved industry groups and the latest available report of each company. Year-wise comparisons use only the eight companies that have reports for two years. In both cases, all companies are scored under the same rules, and the report context, the component values, and the year labels remain available for direct checking.
+
+\subsection{Use by analysts}
+
+A typical review follows five steps. The analyst starts with a company or sector summary, selects one component, opens the source text segment, and then checks the reported measure, the period, and the unit. Every flag keeps the rule and the source behind the decision. The service therefore gives a complete path from a review priority to the supporting material.
+
+The four reporting levels support different tasks. The worked company example explains how a score is calculated. The comparison inside one sector shows different component patterns. The full financial-sector group shows the distribution of scores, and the all-sector summary supports wider comparison. The numerical and assurance records give additional material for context review. A flag or a score marks where review should begin and does not prove greenwashing.
+
+\FloatBarrier

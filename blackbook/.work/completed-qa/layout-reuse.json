@@ -1,0 +1,302 @@
+{
+  "samePages": [
+    {
+      "current": 1,
+      "reviewed_page": 1
+    },
+    {
+      "current": 2,
+      "reviewed_page": 2
+    },
+    {
+      "current": 3,
+      "reviewed_page": 3
+    },
+    {
+      "current": 4,
+      "reviewed_page": 4
+    },
+    {
+      "current": 5,
+      "reviewed_page": 5
+    },
+    {
+      "current": 6,
+      "reviewed_page": 6
+    },
+    {
+      "current": 7,
+      "reviewed_page": 7
+    },
+    {
+      "current": 9,
+      "reviewed_page": 9
+    },
+    {
+      "current": 11,
+      "reviewed_page": 11
+    },
+    {
+      "current": 12,
+      "reviewed_page": 12
+    },
+    {
+      "current": 13,
+      "reviewed_page": 13
+    },
+    {
+      "current": 14,
+      "reviewed_page": 14
+    },
+    {
+      "current": 15,
+      "reviewed_page": 15
+    },
+    {
+      "current": 16,
+      "reviewed_page": 16
+    },
+    {
+      "current": 17,
+      "reviewed_page": 17
+    },
+    {
+      "current": 18,
+      "reviewed_page": 18
+    },
+    {
+      "current": 19,
+      "reviewed_page": 19
+    },
+    {
+      "current": 20,
+      "reviewed_page": 20
+    },
+    {
+      "current": 21,
+      "reviewed_page": 21
+    },
+    {
+      "current": 22,
+      "reviewed_page": 22
+    },
+    {
+      "current": 23,
+      "reviewed_page": 23
+    },
+    {
+      "current": 24,
+      "reviewed_page": 24
+    },
+    {
+      "current": 25,
+      "reviewed_page": 25
+    },
+    {
+      "current": 26,
+      "reviewed_page": 26
+    },
+    {
+      "current": 27,
+      "reviewed_page": 27
+    },
+    {
+      "current": 28,
+      "reviewed_page": 28
+    },
+    {
+      "current": 29,
+      "reviewed_page": 29
+    },
+    {
+      "current": 30,
+      "reviewed_page": 30
+    },
+    {
+      "current": 31,
+      "reviewed_page": 31
+    },
+    {
+      "current": 32,
+      "reviewed_page": 32
+    },
+    {
+      "current": 33,
+      "reviewed_page": 33
+    },
+    {
+      "current": 34,
+      "reviewed_page": 34
+    },
+    {
+      "current": 35,
+      "reviewed_page": 35
+    },
+    {
+      "current": 36,
+      "reviewed_page": 36
+    },
+    {
+      "current": 37,
+      "reviewed_page": 37
+    },
+    {
+      "current": 38,
+      "reviewed_page": 38
+    },
+    {
+      "current": 39,
+      "reviewed_page": 39
+    },
+    {
+      "current": 40,
+      "reviewed_page": 40
+    },
+    {
+      "current": 41,
+      "reviewed_page": 41
+    },
+    {
+      "current": 42,
+      "reviewed_page": 42
+    },
+    {
+      "current": 43,
+      "reviewed_page": 43
+    },
+    {
+      "current": 44,
+      "reviewed_page": 44
+    },
+    {
+      "current": 45,
+      "reviewed_page": 45
+    },
+    {
+      "current": 46,
+      "reviewed_page": 46
+    },
+    {
+      "current": 47,
+      "reviewed_page": 47
+    },
+    {
+      "current": 48,
+      "reviewed_page": 48
+    },
+    {
+      "current": 49,
+      "reviewed_page": 49
+    },
+    {
+      "current": 50,
+      "reviewed_page": 50
+    },
+    {
+      "current": 51,
+      "reviewed_page": 51
+    },
+    {
+      "current": 52,
+      "reviewed_page": 52
+    },
+    {
+      "current": 53,
+      "reviewed_page": 53
+    },
+    {
+      "current": 54,
+      "reviewed_page": 54
+    },
+    {
+      "current": 60,
+      "reviewed_page": 60
+    },
+    {
+      "current": 61,
+      "reviewed_page": 61
+    },
+    {
+      "current": 64,
+      "reviewed_page": 65
+    },
+    {
+      "current": 65,
+      "reviewed_page": 66
+    },
+    {
+      "current": 66,
+      "reviewed_page": 67
+    },
+    {
+      "current": 67,
+      "reviewed_page": 68
+    },
+    {
+      "current": 68,
+      "reviewed_page": 69
+    },
+    {
+      "current": 69,
+      "reviewed_page": 70
+    },
+    {
+      "current": 70,
+      "reviewed_page": 71
+    },
+    {
+      "current": 71,
+      "reviewed_page": 72
+    },
+    {
+      "current": 72,
+      "reviewed_page": 73
+    },
+    {
+      "current": 73,
+      "reviewed_page": 74
+    },
+    {
+      "current": 74,
+      "reviewed_page": 75
+    },
+    {
+      "current": 75,
+      "reviewed_page": 76
+    }
+  ],
+  "changed": [
+    8,
+    10,
+    55,
+    56,
+    57,
+    58,
+    59,
+    62,
+    63
+  ],
+  "inspected": [
+    8,
+    10,
+    55,
+    56,
+    57,
+    58,
+    59,
+    62,
+    63,
+    64,
+    65,
+    66,
+    67,
+    68,
+    69,
+    70,
+    71,
+    72,
+    73,
+    74,
+    75
+  ]
+}

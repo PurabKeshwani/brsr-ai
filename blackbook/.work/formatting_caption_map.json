@@ -1,0 +1,158 @@
+{
+  "figures": [
+    {
+      "number": "4.1",
+      "caption": "GRASP architecture from public filing data to company and sector outputs."
+    },
+    {
+      "number": "4.2",
+      "caption": "Core database relationships. A company has multiple filings, and each filing has multiple context-bearing facts."
+    },
+    {
+      "number": "4.3",
+      "caption": "Read-only company analysis request from browser selection to a source-linked response."
+    },
+    {
+      "number": "5.1",
+      "caption": "Single-label dataset construction from narrative facts, recorded label sources and company-based splitting."
+    },
+    {
+      "number": "7.1",
+      "caption": "Live company search locates matching names and CINs before opening a filing report."
+    },
+    {
+      "number": "7.2",
+      "caption": "Live filing report for Triveni Turbine Limited, showing company identity, reporting year and filed numerical trends."
+    },
+    {
+      "number": "7.3",
+      "caption": "Peer-comparison selection with two financial companies. The interface supports a group of two to five companies."
+    },
+    {
+      "number": "7.4",
+      "caption": "Structured filing upload screen. The implemented route accepts XML/XBRL files; no file was uploaded for this documentation capture."
+    },
+    {
+      "number": "7.5",
+      "caption": "Validation macro-F1 over five completed epochs. The highest recorded value occurs at epoch 4, which supplies the selected checkpoint."
+    },
+    {
+      "number": "7.6",
+      "caption": "Top-1 agreement by label source with reported company-bootstrap confidence intervals."
+    },
+    {
+      "number": "7.7",
+      "caption": "Mean Transparency Scores for selected eligible sectors. Group sizes are shown with the names; bars describe saved company scores rather than environmental performance."
+    }
+  ],
+  "tables": [
+    {
+      "number": "1.1",
+      "caption": "SDG alignment and available evidence"
+    },
+    {
+      "number": "2.1",
+      "caption": "Research methods and design inferences"
+    },
+    {
+      "number": "2.2",
+      "caption": "Patent publications reviewed"
+    },
+    {
+      "number": "2.3",
+      "caption": "Practical comparison of disclosure-analysis approaches"
+    },
+    {
+      "number": "3.1",
+      "caption": "Functional requirements and corresponding outputs"
+    },
+    {
+      "number": "3.2",
+      "caption": "Quality requirements and evidence status"
+    },
+    {
+      "number": "3.3",
+      "caption": "Implementation tools and roles"
+    },
+    {
+      "number": "4.1",
+      "caption": "Modules, inputs and outputs"
+    },
+    {
+      "number": "4.2",
+      "caption": "Main service endpoints"
+    },
+    {
+      "number": "4.3",
+      "caption": "Work packages and completion evidence"
+    },
+    {
+      "number": "5.1",
+      "caption": "Frozen language-detector decision rules"
+    },
+    {
+      "number": "5.2",
+      "caption": "Fixed principle-to-SDG map"
+    },
+    {
+      "number": "5.3",
+      "caption": "Final labelled corpus by source"
+    },
+    {
+      "number": "5.4",
+      "caption": "Company-disjoint supervised split"
+    },
+    {
+      "number": "6.1",
+      "caption": "Recorded verification cases and evidence status"
+    },
+    {
+      "number": "7.1",
+      "caption": "Approved results and evaluation populations"
+    },
+    {
+      "number": "7.2",
+      "caption": "Text segments by BRSR principle"
+    },
+    {
+      "number": "7.3",
+      "caption": "Per-principle classification on the company-disjoint test set"
+    },
+    {
+      "number": "7.4",
+      "caption": "Source-wise agreement for the recovered classifier"
+    },
+    {
+      "number": "7.5",
+      "caption": "Triveni worked score from the saved application snapshot"
+    },
+    {
+      "number": "7.6",
+      "caption": "Selected financial-company results from the saved snapshot"
+    },
+    {
+      "number": "7.7",
+      "caption": "Financial-sector score bands"
+    },
+    {
+      "number": "7.8",
+      "caption": "Largest recorded sector groups"
+    },
+    {
+      "number": "7.9",
+      "caption": "Paired-year company scores"
+    },
+    {
+      "number": "7.10",
+      "caption": "Material topics and implementation evidence"
+    },
+    {
+      "number": "7.11",
+      "caption": "Template rubric mapped to available evidence"
+    },
+    {
+      "number": "A.1",
+      "caption": "Complete recorded sector score summary"
+    }
+  ]
+}

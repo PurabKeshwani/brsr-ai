@@ -1,6 +1,6 @@
 # Comprehensive Frontend & System UI Audit
 
-**Project:** BeyondPDF — AI-Powered SEBI BRSR Disclosure Analysis & Greenwashing Detection  
+**Project:** GRASP — AI-Powered SEBI BRSR Disclosure Analysis & Greenwashing Detection
 **Audit Type:** Read-Only UI & Architecture Assessment  
 **Auditor:** Antigravity Agentic Pair Programmer  
 **Date:** October 2026  
@@ -11,7 +11,7 @@
 ## 1. PROJECT OVERVIEW
 
 ### 1.1 Product Purpose & Capabilities
-**BeyondPDF** is an automated auditing, scoring, and benchmarking platform for SEBI (Securities and Exchange Board of India) Business Responsibility and Sustainability Reporting (BRSR) filings. Built as an evidence-backed capstone research system, its primary mission is to detect corporate ESG greenwashing and measure disclosure transparency without the inaccuracies of legacy PDF/OCR scrapers.
+**GRASP** is an automated auditing, scoring, and benchmarking platform for SEBI (Securities and Exchange Board of India) Business Responsibility and Sustainability Reporting (BRSR) filings. Built as an evidence-backed capstone research system, its primary mission is to detect corporate ESG greenwashing and measure disclosure transparency without the inaccuracies of legacy PDF/OCR scrapers.
 
 The system ingests machine-readable, officially tagged SEBI XBRL filings (`.xml`, `.xbrl`) and runs them through a multi-engine audit pipeline:
 1. **Truth Auditor (`src/analysis/truth_auditor.py`)**: Checks corporate narrative prose against the company's own officially filed multi-year numeric disclosures to flag **Claim-Evidence Contradictions**, detects **Silent Removals** (disclosures present in prior periods that were quietly omitted in subsequent filings), and flags **Vague/Unsubstantiated Commitments** lacking quantitative KPIs.
@@ -440,7 +440,7 @@ frontend/src/components/
 
 ### 7.1 App Shell Structure
 - **Root Layout (`frontend/src/app/layout.tsx`)**:
-  - **Header (`layout.tsx:38-75`)**: Sticky glassmorphic topbar (`h-16`, `sticky top-0 z-50 glass-panel`). Contains the brand mark ("BeyondPDF" in Playfair italic with a pulsing green dot) and 4 navigation links:
+  - **Header (`layout.tsx:38-75`)**: Sticky glassmorphic topbar (`h-16`, `sticky top-0 z-50 glass-panel`). Contains the brand mark ("GRASP" in Playfair italic with a pulsing green dot) and 4 navigation links:
     - `Companies` (`/companies`)
     - `Compare` (`/compare`)
     - `Methodology` (incorrectly points to `/`)

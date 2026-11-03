@@ -1,0 +1,134 @@
+{
+  "sourceChars": 106178,
+  "compiledFiles": [
+    "main.tex",
+    "sections/01_introduction.tex",
+    "sections/02_literature.tex",
+    "sections/02a_proposed_solution.tex",
+    "sections/03_methodology.tex",
+    "figures/architecture.tex",
+    "sections/04_evaluation.tex",
+    "figures/source_results.tex",
+    "figures/training_history.tex",
+    "figures/principle_f1.tex",
+    "figures/concept_holdouts.tex",
+    "figures/detector_results.tex",
+    "sections/05_results.tex",
+    "figures/company_contributions.tex",
+    "sections/07_conclusion.tex",
+    "references.tex",
+    "sections/08_supplementary.tex"
+  ],
+  "tableCount": 17,
+  "tableLabels": [
+    "tab:lit",
+    "tab:comparison_summary",
+    "tab:class_counts",
+    "tab:source",
+    "tab:per_principle",
+    "tab:detector",
+    "tab:mapping",
+    "tab:case_facts",
+    "tab:case_score",
+    "tab:financial_selected",
+    "tab:all_financial",
+    "tab:all_sectors",
+    "tab:esaf",
+    "tab:supp_financial",
+    "tab:supp_sectors",
+    "tab:supp_paired",
+    "tab:supp_pharma"
+  ],
+  "equationCount": 10,
+  "figureCount": 7,
+  "undefinedReferences": [],
+  "undefinedCitations": [],
+  "comparisons": [
+    {
+      "file": "main.tex",
+      "equationsUnchanged": true,
+      "plotCoordinatesUnchanged": true,
+      "numericTableCellsUnchanged": true
+    },
+    {
+      "file": "sections/02_literature.tex",
+      "equationsUnchanged": true,
+      "plotCoordinatesUnchanged": true,
+      "numericTableCellsUnchanged": true
+    },
+    {
+      "file": "sections/03_methodology.tex",
+      "equationsUnchanged": true,
+      "plotCoordinatesUnchanged": true,
+      "numericTableCellsUnchanged": true
+    },
+    {
+      "file": "sections/04_evaluation.tex",
+      "equationsUnchanged": true,
+      "plotCoordinatesUnchanged": true,
+      "numericTableCellsUnchanged": true
+    },
+    {
+      "file": "sections/05_results.tex",
+      "equationsUnchanged": true,
+      "plotCoordinatesUnchanged": true,
+      "numericTableCellsUnchanged": true
+    },
+    {
+      "file": "sections/08_supplementary.tex",
+      "equationsUnchanged": true,
+      "plotCoordinatesUnchanged": true,
+      "numericTableCellsUnchanged": true
+    },
+    {
+      "file": "figures/source_results.tex",
+      "equationsUnchanged": true,
+      "plotCoordinatesUnchanged": true,
+      "numericTableCellsUnchanged": true
+    },
+    {
+      "file": "figures/principle_f1.tex",
+      "equationsUnchanged": true,
+      "plotCoordinatesUnchanged": true,
+      "numericTableCellsUnchanged": true
+    },
+    {
+      "file": "figures/training_history.tex",
+      "equationsUnchanged": true,
+      "plotCoordinatesUnchanged": true,
+      "numericTableCellsUnchanged": true
+    },
+    {
+      "file": "figures/concept_holdouts.tex",
+      "equationsUnchanged": true,
+      "plotCoordinatesUnchanged": true,
+      "numericTableCellsUnchanged": true
+    },
+    {
+      "file": "figures/detector_results.tex",
+      "equationsUnchanged": true,
+      "plotCoordinatesUnchanged": true,
+      "numericTableCellsUnchanged": true
+    },
+    {
+      "file": "figures/company_contributions.tex",
+      "equationsUnchanged": true,
+      "plotCoordinatesUnchanged": true,
+      "numericTableCellsUnchanged": true
+    }
+  ],
+  "prohibitedWordMatches": [],
+  "relevantWarnings": [],
+  "badMargins": [],
+  "oldTitlePresent": false,
+  "originalPages": 32,
+  "correctedPages": 30,
+  "finalCompile": "PASS: built-in desktop LaTeX compiler and local Tectonic renderer",
+  "visualReview": "All 30 final page images reviewed via eight contact sheets; original pages 20, 21, 22 and 24 inspected individually before fixes.",
+  "knownDiagramIssue": "Figure 1 bitmap does not visually show detector reuse for Clarity; text explains reuse. Image content was not changed in this layout revision.",
+  "output": {
+    "path": "D:/brsr-ai-phase0-1/brsr-ai/output/pdf/GRASP_Final_Formatted.pdf",
+    "bytes": 1126407,
+    "sha256": "2b1ce53149842a54b681db3dc5fa920e6f97b5679f600b4c267d1d058bd481b4"
+  }
+}

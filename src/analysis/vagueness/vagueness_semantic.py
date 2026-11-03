@@ -42,8 +42,11 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass
 from functools import lru_cache
+from typing import TYPE_CHECKING
 
-from sentence_transformers import SentenceTransformer, util
+if TYPE_CHECKING:
+    from sentence_transformers import SentenceTransformer
+
 
 MODEL_NAME = "all-mpnet-base-v2"
 
@@ -91,6 +94,7 @@ def _split_sentences(text: str) -> list[str]:
 
 @lru_cache(maxsize=1)
 def _get_model() -> SentenceTransformer:
+    from sentence_transformers import SentenceTransformer
     return SentenceTransformer(MODEL_NAME)
 
 
@@ -118,6 +122,7 @@ class SemanticVaguenessResult:
 
 
 def analyze_semantic_vagueness(text: str) -> SemanticVaguenessResult:
+    from sentence_transformers import util
     model = _get_model()
     vague_emb, quantified_emb = _get_reference_embeddings()
 

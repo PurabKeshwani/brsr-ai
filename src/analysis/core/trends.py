@@ -14,6 +14,8 @@ periods in one filing (FY2025-26: 870.29, FY2024-25: 290.06).
 from __future__ import annotations
 
 from dataclasses import dataclass
+import json
+import math
 from typing import Optional
 
 from sqlalchemy.orm import Session
@@ -50,12 +52,27 @@ def get_multi_year_series(
     if dimension_filter:
         facts = [f for f in facts if _dimensions_match(f.dimensions, dimension_filter)]
 
-    results = []
+    # Different units or dimensional boundaries cannot form one comparable
+    # trend. Prefer the aggregate context; otherwise fail closed if ambiguous.
+    groups = {}
     for f in facts:
         value = to_number(f.value)
-        if value is None:
+        period = f.period_instant or f.period_end
+        if value is None or not math.isfinite(value) or not period:
             continue
-        results.append(YearValue(period_end=f.period_end, period_instant=f.period_instant, value=value))
+        key = (f.unit, json.dumps(f.dimensions or {}, sort_keys=True))
+        groups.setdefault(key, {}).setdefault(period, []).append(f)
+    aggregates = {key: values for key, values in groups.items() if key[1] == "{}"}
+    eligible = aggregates or groups
+    if len(eligible) != 1:
+        return []
+    results = []
+    for period, records in next(iter(eligible.values())).items():
+        values = {to_number(f.value) for f in records}
+        if len(values) != 1:
+            continue
+        f = records[0]
+        results.append(YearValue(period_end=f.period_end, period_instant=f.period_instant, value=next(iter(values))))
 
     results.sort(key=lambda yv: yv.period_label)
     return results

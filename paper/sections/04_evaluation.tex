@@ -1,54 +1,51 @@
-\section{Evaluation Design and Audited Model Results}
+\section{Evaluation and Model Results}
 \label{sec:evaluation}
 
-The evaluation reports four kinds of output: agreement with filing-derived labels, performance against development labels, comparison with historical human ratings, and saved company scores. Final values come from the consolidated audit and recovered-result JSON files. Each comparison records the dataset, reference source, and unit of analysis.
+Evaluation covers principle classification, text-vagueness screening, comparison with historical human ratings, and verification of the service connection. Each result identifies the text group or company cohort and the reference used for comparison. Classifier and mapping results use the recovered seed-99 checkpoint. Company-score applications are presented separately in Section~\ref{sec:results}.
 
-\subsection{Data groups, evaluation measures, and uncertainty}
+\Needspace{5\baselineskip}
+\subsection{Evaluation measures and uncertainty}
 
-For principle classification, Top-1 agreement is the share of passages whose highest-ranked principle matches the recorded label. Top-2 agreement is the share whose recorded label appears among the two highest-ranked principles. Top-2 gives an analyst a short candidate list. A higher Top-2 value does not mean better accuracy when only one answer is allowed.
-
-Precision shows how reliable a predicted category is. If 100 passages receive an environmental-principle prediction and 90 carry that reference label, precision is 90\%. Recall shows how much of a reference category is found. If 100 passages carry the environmental label and the classifier finds 80, recall is 80\%. F1 balances precision and recall through the harmonic mean:
+Top-1 agreement is the proportion of text segments whose highest-ranked principle matches the recorded weak label. Top-2 agreement counts a match when the label appears among the two highest-ranked principles. Precision describes how often a predicted principle matches the reference, while recall describes how much of a reference category is recovered. For principle $k$, F1 combines precision $P_k$ and recall $R_k$ through the harmonic mean:
 \begin{equation}
 F1_k=\frac{2P_kR_k}{P_k+R_k},\qquad
 \operatorname{MacroF1}=\frac{1}{9}\sum_{k=1}^{9}F1_k.
 \label{eq:f1}
 \end{equation}
-Macro-F1 gives each principle equal weight, so the largest class cannot determine the entire score. Support means the number of reference examples for a principle. The references are weak labels. A result described as correct therefore means agreement with the recorded assignment, not an independent judgement of the passage's meaning.
+Macro-F1 averages the nine principle-level F1 values with equal weight, preventing the largest class from dominating the measure. Support is the number of reference text segments for a principle. All classification measures assess agreement with report-derived labels rather than independent semantic judgements.
 
-A 95\% confidence interval shows uncertainty in an estimate under the stated sampling method. For classification and mapping, the audit uses 2,000 bootstrap samples with seed 4206. Companies are sampled with replacement, and all passages from a selected CIN are kept together. This CIN-cluster method accounts for passages from the same company being related. Paired comparisons use the same sampled companies for both methods. These intervals describe variation within the available data; label errors and earlier exposure during model development remain outside that estimate. The 20-company score comparison uses 10,000 bootstrap samples of company-score pairs with seed 42. No detector intervals were calculated.
+Classification and mapping intervals use 2,000 company-cluster bootstrap samples with seed 4206. Companies are drawn with replacement, retaining all text segments from each selected CIN, and paired comparisons use the same draw for both methods. The 20-company score comparison uses 10,000 bootstrap samples of company-score pairs with seed 42. The resulting 95\% confidence intervals describe sampling variation within the available data. Detector confidence intervals were not calculated. The supervised split has no shared companies, but the earlier masked-language-model builder reads across the company database, and the exact adaptation-corpus membership of the selected encoder is unverified. Company-disjoint claims therefore concern supervised fine-tuning. The reported recovery results re-evaluate the established test group rather than a newly collected cohort.
 
-\subsection{Method comparisons and generalisation checks}
+\Needspace{5\baselineskip}
+\subsection{Comparative evaluation}
 \label{sec:comparison_summary}
 
-Table~\ref{tab:comparison_summary} summarises three comparisons: results by label source, performance on concepts excluded from training, and supervised versus zero-shot mapping. The table records the examples and training conditions for each comparison. These are method and data-split comparisons rather than a controlled change to one component.
+Table~\ref{tab:comparison_summary} brings together three complementary comparisons: label sources, excluded reporting concepts, and supervised versus zero-shot ranking. Each comparison addresses a different question and retains the relevant data and training conditions. Domain adaptation is part of the final training sequence, but these comparisons do not isolate a numerical gain from adaptation or data cleaning.
 
-\begin{table}[tbp]
+\begin{table}[H]
 \centering\small
-\caption{Three comparisons of Top-1 agreement with filing-derived labels. Data and training conditions are recorded for each row. Percentages from different rows describe different groups. Sections~\ref{sec:eval_sources}, \ref{sec:concept_diagnostics}, and~\ref{sec:eval_mapping} give intervals and further measures.}
+\caption{Overview of classifier comparisons. Each row states the evaluation group and training conditions; the rows do not form a single-component ablation.}
 \label{tab:comparison_summary}
 \begin{tabularx}{\linewidth}{@{}L{2.6cm}L{2.5cm}L{3.1cm}Y@{}}
 \toprule\textbf{Comparison} & \textbf{Evaluation population} & \textbf{Top-1 agreement} & \textbf{Interpretation}\\\midrule
-Label source & B: 352; C: 5,364; notes: 485 segments & B: 63.35\%; C: 95.15\%; notes: 90.72\% & Results for parts of the same 6,201-row test set. Sources use different text and labelling rules.\\
-Full-concept and excluded-concept training & Same 1,190 segments from 174 companies & Full concept: 97.98\%; excluded concept: 87.31\% & The training sets differ in concept coverage, example count, and seed.\\
-Zero-shot MPNet versus supervised BERT & Same 6,201 segments from 175 companies & MPNet: 67.63\%; BERT: 93.00\% & The methods have different access to labels. The BERT value reuses the classifier result.\\\bottomrule
+Label source & B: 352; C: 5,364; notes: 485 text segments & B: 63.35\%; C: 95.15\%; notes: 90.72\% & Results for parts of the same 6,201-text-segment test group. The sources use different text and labelling rules.\\
+Full-concept and excluded-concept training & Same 1,190 text segments from 174 companies & Full concept: 97.98\%; excluded concept: 87.31\% & The two training sets differ in concept coverage, number of training examples, and seed.\\
+Zero-shot MPNet versus supervised BERT & Same 6,201 text segments from 175 companies & MPNet: 67.63\%; BERT: 93.00\% & The two methods have different access to labels. The BERT value reuses the classifier result.\\\bottomrule
 \end{tabularx}
 \end{table}
 
-The reported comparisons use the final labelled split and the training conditions listed in the table. Domain adaptation is part of the final model's training sequence. No separate numerical gain is assigned to adaptation or data cleaning.
-
-\subsection{Dataset size and results by label source}
+\Needspace{5\baselineskip}
+\subsection{Dataset composition and label-source results}
 \label{sec:eval_sources}
 
-The final single-label dataset contains 42,409 samples: 2,479 from explicit principle-axis facts, 36,513 from Section C mappings, and 3,417 from principle notes. The builder excludes 36,491 noisy facts and removes 2,640 groups with several labels. Fact rows and groups are different counting units. These exclusions cannot simply be added as final examples.
+The dataset contains 42,409 labelled text segments: 2,479 from explicit principle-axis facts, 36,513 from Section C mappings, and 3,417 from principle notes. Filtering excludes 36,491 noisy facts and removes 2,640 groups carrying several labels. These counts describe different units and cannot be added as discarded final text segments. Within Section B, 41,898 narrative candidates reduce to 25,214 after removing 16,684 unsuitable entries. Removing 18 same-label duplicates and 22,717 entries from multi-label groups leaves 2,479 dataset rows. Table~\ref{tab:class_counts} reports the final principle distribution and test counts.
 
-The Section B build starts with 41,898 narrative candidates. The content filter removes 16,684 candidates, leaving 25,214 clean entries. Removing 18 repeated same-label entries and 22,717 entries from groups with several labels produces 2,479 final rows. These steps reconcile the current source counts.
-
-\begin{table}[tbp]
+\begin{table}[H]
 \centering\small
-\caption{Final weak-label dataset by principle. The last column gives example counts in the company-separated test set.}
+\caption{Distribution of labelled text segments across the nine principles and the company-disjoint test group.}
 \label{tab:class_counts}
 \begin{tabularx}{\linewidth}{@{}Yr r@{}}
-\toprule\textbf{Principle} & \textbf{Dataset rows} & \textbf{Test rows}\\\midrule
+\toprule\textbf{Principle} & \textbf{All text segments} & \textbf{Test text segments}\\\midrule
 P1: Ethics and governance & 5,015 & 773\\
 P2: Sustainable goods and services & 5,566 & 808\\
 P3: Employee and worker wellbeing & 11,835 & 1,715\\
@@ -62,35 +59,35 @@ P9: Consumer responsibility & 5,003 & 727\\\midrule
 \end{tabularx}
 \end{table}
 
-\begin{table}[tbp]
+Source-wise agreement varies substantially, as shown in Table~\ref{tab:source} and Figure~\ref{fig:source}. Top-1 agreement is 63.35\% for Section B, 95.15\% for Section C, and 90.72\% for principle notes. Section C contributes 86.1\% of the full dataset and 5,364 of the 6,201 test text segments, so the overall result is strongly influenced by this source. Section B results describe the subset retained after single-label filtering. Reporting source-wise performance alongside the overall measure makes these differences visible.
+
+\begin{table}[H]
 \centering\small
-\caption{Recovered classifier results by label source on the same test set. A company can supply several sources, so the company counts overlap. Top-1 intervals are calculated by resampling companies.}
+\caption{Agreement by label source within the same test group. Company counts may overlap across sources; intervals resample companies.}
 \label{tab:source}
 \begin{tabularx}{\linewidth}{@{}Yrrrrl@{}}
-\toprule\textbf{Source} & \textbf{Segments} & \textbf{CINs} & \textbf{Top-1} & \textbf{Top-2} & \textbf{Top-1 95\% CI}\\\midrule
+\toprule\textbf{Source} & \textbf{Text segments} & \textbf{CINs} & \textbf{Top-1} & \textbf{Top-2} & \textbf{Top-1 95\% CI}\\\midrule
 Section B: explicit axis & 352 & 71 & 63.35\% & 80.40\% & 56.55--69.67\%\\
 Section C: concept map & 5,364 & 174 & 95.15\% & 99.01\% & 94.41--95.92\%\\
 Principle notes & 485 & 103 & 90.72\% & 95.46\% & 86.55--94.09\%\\\bottomrule
 \end{tabularx}
 \end{table}
 
-Table~\ref{tab:source} reports agreement of 63.35\% for explicit-axis passages and 95.15\% for concept-mapped passages. Section C supplies 86.1\% of the full labelled dataset and 5,364 of the 6,201 test rows. The overall value therefore reflects the source mix. Section B contains the examples retained by the single-label filtering procedure. Figure~\ref{fig:source} presents the three sources together, and the excluded-concept tests provide a second view of performance across reporting questions.
-
 \input{figures/source_results}
 
-\subsection{Recovered classifier performance and training history}
+\Needspace{5\baselineskip}
+\subsection{Classifier performance and training history}
+\label{sec:training_history}
 
-The recovered seed-99 model matches 5,767 of 6,201 reference labels. Top-1 agreement is 93.00\% (95\% CI: 92.04--93.89\%). The reference label appears among the two highest predictions for 6,057 examples, giving 97.68\% Top-2 agreement (95\% CI: 97.10--98.21\%). Macro-F1 is 0.9158 (95\% CI: 0.9036--0.9277). The text-overlap check identifies 50 exact train/test matches across different companies, or 0.81\% of test rows. The supervised split has zero CIN overlap.
+The recovered classifier matches 5,767 of 6,201 test labels, giving 93.00\% Top-1 agreement \mbox{(95\% CI: 92.04--93.89\%)}. The reference label appears among the two highest predictions for 6,057 text segments, giving 97.68\% Top-2 agreement \mbox{(95\% CI: 97.10--98.21\%)}. Macro-F1 is 0.9158 \mbox{(95\% CI: 0.9036--0.9277)}. Although the supervised splits share no CINs, 50 test text segments exactly match training wording from other companies, accounting for 0.81\% of the test group.
 
-Figure~\ref{fig:training} shows the five recorded epochs for seed 99. Validation macro-F1 rises from 0.9048 at epoch 1 to 0.9194 at epoch 4, then reaches 0.9189 at epoch 5. Validation loss rises over the same period. F1 describes category decisions, while loss also considers prediction confidence. The recorded selection criterion chooses epoch 4 by validation macro-F1.
+Figure~\ref{fig:training} shows the five recorded epochs for seed 99. Validation macro-F1 increases from 0.9048 at epoch 1 to 0.9194 at epoch 4, followed by 0.9189 at epoch 5. The selection criterion therefore retains epoch 4. Validation loss rises over the same period because loss also reflects prediction confidence, whereas macro-F1 measures the balance of category decisions. Table~\ref{tab:per_principle} and Figure~\ref{fig:per_principle} report performance across all nine principles. P7 has 69 test text segments, compared with 1,715 for P3, making class support important when interpreting the individual scores.
 
 \input{figures/training_history}
 
-Table~\ref{tab:per_principle} groups performance by principle; Table~\ref{tab:source} groups performance by label source. Each principle row shows prediction reliability, reference-category coverage, and the balance between both. P7 has only 69 test examples, so the P7 estimate needs extra care. Figure~\ref{fig:per_principle} summarises F1, while the table also gives precision, recall, and example counts.
-
-\begin{table}[tbp]
+\begin{table}[H]
 \centering\small
-\caption{Results for nine principles on 6,201 passages. Precision shows how often a predicted principle matches the reference. Recall shows how much of the reference category is found. F1 balances both.}
+\caption{Per-principle results against weak labels on 6,201 test text segments. Support gives the reference count; precision, recall, and F1 describe category performance.}
 \label{tab:per_principle}
 \begin{tabularx}{\linewidth}{@{}Yrrrr@{}}
 \toprule\textbf{Principle} & \textbf{Support} & \textbf{Precision} & \textbf{Recall} & \textbf{F1}\\\midrule
@@ -110,28 +107,26 @@ Macro average & 6,201 & 0.9175 & 0.9146 & 0.9158\\\bottomrule
 
 \input{figures/principle_f1}
 
-\subsection{Tests on excluded concepts and multiple labels}
+\Needspace{5\baselineskip}
+\subsection{Generalisation to excluded reporting concepts}
 \label{sec:concept_diagnostics}
 
-Separating companies asks whether the model can classify passages from another company. Separating concepts asks whether the model can classify passages for reporting questions excluded from labelled training. The first check excludes 17 Section C concepts and evaluates 1,190 rows. On these same rows, the full-concept model reaches 97.98\% Top-1 agreement and the excluded-concept model reaches 87.31\%. The paired difference is $-10.67$ percentage points (95\% CI: $-12.36$ to $-8.96$). Both checkpoints passed strict parameter-name recovery before re-evaluation.
+Company separation tests new supervised company groups, while concept exclusion tests reporting questions omitted from labelled training. Excluding 17 Section C concepts produces an evaluation group of 1,190 text segments. On this same group, the full-concept model achieves 97.98\% Top-1 agreement and the excluded-concept model achieves 87.31\%. The paired difference is $-10.67$ percentage points \mbox{(95\% CI: $-12.36$ to $-8.96$)}. Both checkpoints passed strict parameter-name recovery. The full-concept model uses seed 99, whereas the excluded-concept model uses seed 42 and fewer training text segments; the observed difference therefore reflects these conditions together.
 
-The full-concept model uses seed 99. The excluded-concept model uses seed 42 and fewer training examples. The paired interval describes the difference on shared test rows under these training conditions. The comparison includes changes in concept coverage, training examples, and seed.
-
-Across three excluded-concept runs, mean Top-1 agreement is 81.64\%, with sample standard deviation 4.92 percentage points. Mean Top-2 is 95.34\%, with standard deviation 1.31 percentage points. Mean macro-F1 is 0.6752, with standard deviation 0.0170. Figure~\ref{fig:concept} shows each run and test size. Standard deviations describe variation across the three runs. All runs reuse the original test-company group, and concept exclusion is defined for labelled training. The earlier adaptation-corpus membership is described in Section~\ref{sec:classifier}.
+Across three excluded-concept runs, mean Top-1 agreement is 81.64\%, with a standard deviation of 4.92 percentage points. Mean Top-2 agreement is 95.34\% (standard deviation 1.31 percentage points), and mean macro-F1 is 0.6752 (standard deviation 0.0170). Figure~\ref{fig:concept} shows the individual results and evaluation sizes. These standard deviations describe variation across the three runs, not confidence intervals. All runs reuse the original test-company group, and concept exclusion applies to labelled training; the adaptation-corpus condition described above still applies.
 
 \input{figures/concept_holdouts}
 
-The multi-label version groups company text and combines the recorded principle labels for each group. The test set contains 5,934 examples from the same 175 companies. Hit@1 checks whether the highest-ranked prediction belongs to the recorded label set and reaches 93.36\% (95\% CI: 92.54--94.11\%). At threshold 0.5, micro-F1 is 0.8898 (0.8743--0.9035), and macro-F1 is 0.8782 (0.8606--0.8942). The single-label model reaches Hit@1 of 93.55\% on the same grouped labels. This comparison evaluates an alternative target definition: one company-text example can contain several principle assignments, including assignments from generic text reused under different questions.
+\Needspace{5\baselineskip}
+\subsection{Fixed text-vagueness detector}
 
-\subsection{Frozen text-vagueness results}
+Table~\ref{tab:detector} reports two separate label groups under fixed detector settings. The development group contains 80 text segments, with 37 labelled vague. The detector raises 41 flags, of which 29 match the reference. Precision is therefore $29/41=0.7073$, and recall is $29/37=0.7838$. Sixty decisions agree with the reference, giving accuracy of 0.7500 and F1 of 0.7436. Blinding of the earlier development labels is not documented, so this result is reported as a development comparison.
 
-Table~\ref{tab:detector} reports the fixed detector on two separate groups. Batches 1 and 2 contain 80 earlier development examples. The detector flags 41 examples, and 29 flags match the reference vagueness label. The detector finds 29 of the 37 reference-vague examples. These counts give precision 0.7073 and recall 0.7838. In total, 60 of the 80 decisions match the reference, giving accuracy 0.7500 and F1 0.7436.
+The second group contains 70 AI-annotated text segments. The detector raises 35 flags, with 21 matching the 26 AI-vague labels, giving F1 of 0.6885. Figure~\ref{fig:detector} compares precision, recall, and F1 across the two groups. The AI comparison is exploratory rather than independent human validation, and the groups are not pooled because the text and reference sources differ.
 
-Batch 3 contains 70 AI-labelled examples. The detector flags 35 passages, and 21 flags match the AI vagueness label. The detector identifies 21 of the 26 passages labelled vague, giving F1 0.6885. Figure~\ref{fig:detector} displays precision, recall, and F1 alongside the 80-example development group. The groups use different passages and reference sources and are reported separately.
-
-\begin{table}[tbp]
+\begin{table}[H]
 \centering\small
-\caption{Fixed text-vagueness detector on two label groups. The first row uses 80 development examples, and the second uses 70 AI-labelled examples. Reference conditions are stated in the evaluation text.}
+\caption{Language-detector performance under fixed settings. Development labels and AI annotations are separate evaluation references.}
 \label{tab:detector}
 \begin{tabularx}{\linewidth}{@{}Yrrrrr@{}}
 \toprule\textbf{Reference labels} & \textbf{N} & \textbf{Accuracy} & \textbf{Precision} & \textbf{Recall} & \textbf{F1}\\\midrule
@@ -142,16 +137,15 @@ AI annotations & 70 & 0.7286 & 0.6000 & 0.8077 & 0.6885\\\bottomrule
 
 \input{figures/detector_results}
 
-The reported precision, recall, and F1 cover the combined word-list and sentence-similarity detector. Claim--figure and assurance-gap outputs are rule-generated review records without a completed accuracy evaluation. Batches 1 and 2 are development data, and annotation blinding is not documented in the saved records. Batch 3 uses one AI-generated annotation set and is an exploratory reference comparison. Continuous-score ROC AUC and between-rater agreement are outside the reported measures.
-
+\Needspace{5\baselineskip}
 \subsection{Supervised transfer versus zero-shot mapping}
 \label{sec:eval_mapping}
 
-Both methods rank principles for the same 6,201 test examples. The MPNet definition-plus-anchor method reaches 67.63\% Top-1 and 83.34\% Top-2 agreement. The recovered supervised classifier reaches 93.00\% and 97.68\%. Table~\ref{tab:mapping} gives the confidence intervals. The paired Top-1 difference is $+25.37$ percentage points (95\% CI: $+24.02$ to $+26.71$). The comparison combines model representation and access to labelled training. The output measures principle-label agreement.
+Both ranking methods are evaluated on the same 6,201 text segments and report-derived principle labels. MPNet's definition-plus-anchor method achieves 67.63\% Top-1 and 83.34\% Top-2 agreement, compared with 93.00\% and 97.68\% for the recovered supervised classifier. Table~\ref{tab:mapping} gives the corresponding confidence intervals and macro-F1 values. The paired Top-1 difference is $+25.37$ percentage points \mbox{(95\% CI: $+24.02$ to $+26.71$)}. This comparison includes differences in representation and access to labelled training, so the gap is not an isolated measure of encoder quality. The supervised row reuses the classifier evaluation rather than providing a second independent test.
 
-\begin{table}[tbp]
+\begin{table}[H]
 \centering\small
-\caption{Principle mapping on the same company-separated test rows. Intervals resample companies. The supervised row reuses the classifier result and is not a second independent test.}
+\caption{Supervised and zero-shot principle ranking on the same company-disjoint test group. Confidence intervals use company-cluster resampling.}
 \label{tab:mapping}
 \begin{tabularx}{\linewidth}{@{}Yrrl@{}}
 \toprule\textbf{Method} & \textbf{Top-1} & \textbf{Top-2} & \textbf{Macro-F1}\\\midrule
@@ -162,16 +156,16 @@ Recovered supervised transfer & 93.00\% & 97.68\% & 0.9158\\
 \end{tabularx}
 \end{table}
 
-The supervised row reuses the classifier evaluation from the same company-separated test set. Both methods are compared against the filing-derived reference labels defined in Section~\ref{sec:labels}. The result is reported once as an underlying model evaluation and reused for the mapping application.
+\Needspace{5\baselineskip}
+\subsection{Transparency Score and historical human ratings}
 
-\subsection{Transparency Score compared with historical human ratings}
+Across 20 historical company ratings, Pearson correlation between automated and human scores is $r=0.6314$ \mbox{(95\% CI: 0.2683--0.8519; $p=0.0028$)}. Spearman rank correlation is $\rho=0.6285$ \mbox{(95\% CI: 0.2321--0.8540)}. Mean absolute error is 12.16 points, and root mean squared error is 15.19 points. The squared correlation is $r^2=0.3986$, describing association without a separately fitted predictive regression. These measures report both how the scores vary together and the size of the score differences.
 
-The historical human-rating group contains 20 companies. Pearson correlation measures how automated and human scores vary together: $r=0.6314$ (95\% CI: 0.2683--0.8519; $p=0.0028$). Spearman correlation compares score ranks: $\rho=0.6285$ (95\% CI: 0.2321--0.8540). Mean absolute error is 12.16 points, and root mean squared error, which gives larger errors more weight, is 15.19 points. The audit reports $r^2=0.3986$. This squared correlation describes association; no separate predictive regression was fitted for this result.
+All 20 ratings come from one documented source, and rater blinding is not recorded. The original Zensar packet contains a URL-related extraction issue, while Geojit's business model differs from manufacturing-oriented reporting items. Both companies remain in the reported cohort. The comparison retains the original ratings and fixed score formula; synthetic ratings and AI assessments are separate records.
 
-The historical comparison uses 20 company ratings from one documented source. The saved file contains both ratings and automated scores; rater blinding is not documented. The original Zensar text packet includes a URL-related extraction issue, and Geojit's business model differs from manufacturing-oriented reporting items. Both companies remain in the full group. The analysis uses the original ratings and fixed score formula, with all 20 cases retained; synthetic ratings and AI assessments are kept separate.
+\Needspace{5\baselineskip}
+\subsection{API model-loading verification}
 
-\subsection{Checking the API connection}
-
-The audit records a successful principle-mapping API request for 360 ONE WAM LIMITED on 19 October 2026. The response identifies the recovered seed-99 classifier and checkpoint path. The returned 89.17\% summary is the average model probability for that filing. This request verifies model loading for one company.
+A principle-mapping request for 360 ONE WAM LIMITED on 19 October 2026 returned the recovered seed-99 method identifier and checkpoint path. The response included a mean principle probability of 89.17\% for that report. This request verifies the service connection to the intended model for one company. The returned probability summarises the report and is not an additional accuracy measurement.
 
 \FloatBarrier
